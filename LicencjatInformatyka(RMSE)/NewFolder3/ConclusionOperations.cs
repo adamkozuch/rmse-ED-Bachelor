@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Documents;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 
 namespace LicencjatInformatyka_RMSE_.NewFolder3
@@ -109,30 +110,25 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         //}
 
 
-
-
-      static  private List<SimpleTree> ReturnAlternativeTrees(List<Rule> rulesWithSameConclusion)
+        private static List<SimpleTree> ReturnAlternativeTrees(List<Rule> rulesWithSameConclusion)
         {
-          var listOfSubtrees = new List<SimpleTree>();
+            var listOfSubtrees = new List<SimpleTree>();
 
-          foreach (var _rule in rulesWithSameConclusion)
-          {
-              var parent = new SimpleTree() {rule = _rule};
+            foreach (Rule _rule in rulesWithSameConclusion)
+            {
+                var parent = new SimpleTree {rule = _rule};
 
-              listOfSubtrees.Add(parent);
-          }
-          return listOfSubtrees;
+                listOfSubtrees.Add(parent);
+            }
+            return listOfSubtrees;
         }
-
-
-
 
 
         public static void Conclude(List<Rule> baseList, Rule ruleForCheck)
         {
             ////////////////////////////////////////////////////////////////////////
             //  List<Rule> rulesWithSameName = FindRulesWithParticularConclusion(ruleForCheck, baseList);
-
+            List<Rule> divideList = new List<Rule>();
 
             var conditionTree = new SimpleTree {rule = ruleForCheck};
             IEnumerable<SimpleTree> AddedChilds;
@@ -146,39 +142,48 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
 
                 int inut = AddedChilds.Count();
 
-                foreach (var addedChild in AddedChilds)
+                foreach (SimpleTree addedChild in AddedChilds)
                 {
-                    
-
-                    foreach (var simpleTree in addedChild.rule.Conditions)
+                    foreach (string simpleTree in addedChild.rule.Conditions)
                     {
-
-
-
-
-                        var rule = FindRulesWithParticularConclusion(simpleTree, baseList);
+                        List<Rule> rule = FindRulesWithParticularConclusion(simpleTree, baseList);
 
                         if (rule.Count == 0)
                         {
-                            addedChild.Children.Add(new SimpleTree() {Dopytywalny = true});
+                            addedChild.Children.Add(new SimpleTree {Dopytywalny = true});
                             // narazie tylko żeby nie przeszkadzało
-
                         }
                         else
                         {
                             List<SimpleTree> alt = ReturnAlternativeTrees(rule);
-                        addedChild.Children.AddRange(alt);
+                            addedChild.Children.AddRange(alt);
+                            if (rule.Count > 1)
+                            {
+                                divideList.AddRange(rule);
+
+                            }
+
                         }
-
-                        
                     }
-
                 }
                 int inu = AddedChilds.Count();
             } while (AddedChilds.Count() != 0);
 
-            int i = 0;
+           DivideTree(conditionTree,divideList);
         }
+
+
+        private static void DivideTree(SimpleTree tree, List<Rule> divideList)
+        {
+
+            var i = FamilyToEnumerable(tree).Where(p => p.rule == divideList[0]);
+
+            foreach (var VARIABLE in i)
+            {
+                var r = VARIABLE;
+            }
+        }
+
 
         public static
             List<string> FindConditionsOrReturnCheckedCondition
