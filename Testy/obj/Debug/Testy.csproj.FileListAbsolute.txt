@@ -1,0 +1,9 @@
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\Testy\obj\Debug\Testy.csprojResolveAssemblyReference.cache
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\Testy\bin\Debug\Testy.dll
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\Testy\bin\Debug\Testy.pdb
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\Testy\bin\Debug\LicencjatInformatyka(RMSE).exe
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\Testy\bin\Debug\nunit.framework.dll
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\Testy\bin\Debug\LicencjatInformatyka(RMSE).pdb
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\Testy\bin\Debug\nunit.framework.xml
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\Testy\obj\Debug\Testy.dll
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\Testy\obj\Debug\Testy.pdb
