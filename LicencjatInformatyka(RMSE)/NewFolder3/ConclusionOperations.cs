@@ -115,16 +115,9 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         {
           var listOfSubtrees = new List<SimpleTree>();
 
-          foreach (var rule in rulesWithSameConclusion)
+          foreach (var _rule in rulesWithSameConclusion)
           {
-              var parent = new SimpleTree() {Name = rule.Conclusion};
-
-              foreach (var condition in rule.Conditions)
-              {
-                  var child = new SimpleTree() {Name = condition};
-                  parent.Children.Add(child);
-                  child.Parent = parent;
-              }
+              var parent = new SimpleTree() {rule = _rule};
 
               listOfSubtrees.Add(parent);
           }
@@ -138,75 +131,54 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         public static void Conclude(List<Rule> baseList, Rule ruleForCheck)
         {
             ////////////////////////////////////////////////////////////////////////
-          //  List<Rule> rulesWithSameName = FindRulesWithParticularConclusion(ruleForCheck, baseList);
-            
-            
-            var conditionTree = new SimpleTree {Name = ruleForCheck.Conclusion};
-            var listOfConditions = new List<string>();
-            IEnumerable<SimpleTree> parentsWithoutAddedChilds = FamilyToEnumerable(conditionTree);
-            ////////////////////////////////////////////////////////////////////////////////////////
-
-            var numberOfRules = FindRulesWithParticularConclusion(ruleForCheck, baseList);
-
-            var subtrees = ReturnAlternativeTrees(numberOfRules);
-
-            foreach (var simpleTree in subtrees)
-            {
-
-            }
+            //  List<Rule> rulesWithSameName = FindRulesWithParticularConclusion(ruleForCheck, baseList);
 
 
-
-
-
-
-
+            var conditionTree = new SimpleTree {rule = ruleForCheck};
+            IEnumerable<SimpleTree> AddedChilds;
 
             do
             {
-                parentsWithoutAddedChilds = FamilyToEnumerable(conditionTree).
+                AddedChilds = FamilyToEnumerable(conditionTree).
                     Where(p => p.Children.Count == 0).
-                    Where(p => p.Dopytywalny == false); // Wyszukuje końcowe osobniki
+                    Where(p => p.Dopytywalny == false);
 
-                var numberOfRules = FindRulesWithParticularConclusion(ruleForCheck, baseList);
 
-                var subtrees = ReturnAlternativeTrees(numberOfRules);
+                int inut = AddedChilds.Count();
 
-                foreach (var simpleTree in subtrees)
+                foreach (var addedChild in AddedChilds)
                 {
                     
-                }
 
-                     
+                    foreach (var simpleTree in addedChild.rule.Conditions)
+                    {
 
 
-                        foreach (SimpleTree checkedParent in parentsWithoutAddedChilds)
+
+
+                        var rule = FindRulesWithParticularConclusion(simpleTree, baseList);
+
+                        if (rule.Count == 0)
                         {
-                            listOfConditions = FindConditionsOrReturnCheckedCondition(checkedParent.Name, baseList);
-                            if (listOfConditions == null)
-                            {
-                                checkedParent.Dopytywalny = true;
-                            }
-                            else
-                            {
-                                foreach (string warunekKtoryBedzieDodany in listOfConditions)
-                                {
-                                    var t = new SimpleTree {Name = warunekKtoryBedzieDodany};
-                                    checkedParent.Children.Add(t);
-                                }
-                            }
+                            addedChild.Children.Add(new SimpleTree() {Dopytywalny = true});
+                            // narazie tylko żeby nie przeszkadzało
+
                         }
-                    
+                        else
+                        {
+                            List<SimpleTree> alt = ReturnAlternativeTrees(rule);
+                        addedChild.Children.AddRange(alt);
+                        }
 
-                
+                        
+                    }
 
-            } while (parentsWithoutAddedChilds.Count() != 0);
+                }
+                int inu = AddedChilds.Count();
+            } while (AddedChilds.Count() != 0);
 
+            int i = 0;
         }
-
-
-
-
 
         public static
             List<string> FindConditionsOrReturnCheckedCondition
