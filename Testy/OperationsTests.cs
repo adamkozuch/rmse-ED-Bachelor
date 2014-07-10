@@ -42,7 +42,7 @@ namespace Testy
             rules.RulesList.Add(r2);
             rules.RulesList.Add(r3);
             rules.RulesList.Add(r22);
-           ConclusionOperations.Conclude(rules.RulesList, r);
+           ConclusionOperations.BuildComplexTree(rules.RulesList, r);
             Assert.AreEqual(true, true);
         }
 

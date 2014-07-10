@@ -3,7 +3,7 @@ using LicencjatInformatyka_RMSE_.NewFolder2;
 
 namespace LicencjatInformatyka_RMSE_.NewFolder3
 {
-    class SimpleTree
+  public  class SimpleTree
     {
       public  Rule rule { get; set; }
         public bool Dopytywalny { get; set; }

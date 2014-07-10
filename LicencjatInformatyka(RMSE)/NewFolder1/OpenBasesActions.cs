@@ -24,7 +24,15 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
             {
 
                 LoadedRules.ReadAndAddRules(dlg.FileName);
-                ConclusionOperations.Conclude(LoadedRules.RulesList,LoadedRules.RulesList[0]);
+                ConclusionOperations.BuildComplexTree(LoadedRules.RulesList,LoadedRules.RulesList[0]);
+                var tree = ConclusionOperations.BuildComplexTree(LoadedRules.RulesList, LoadedRules.RulesList[0]);
+                var flatteredTree = ConclusionOperations.TreeToEnumerable(tree);
+                string result = "";
+                foreach (var simpleTree in flatteredTree)
+                {
+                    result += simpleTree.rule.Conclusion+ " ";
+                }
+                int i = 0;
 
             }
 

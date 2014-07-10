@@ -21,25 +21,6 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         }
 
 
-        // Funkcje Create Read Delete dla warunkow dopytywalnych
-        // Oraz algorytm wnioskowania w przód oraz wstecz
-        //public static void CheckTypeOfRule(List<Rule> r)
-        //{
-        //    Stopwatch watch = new Stopwatch();
-        //    watch.Start();
-        //    foreach (Rule regulaTestowana in r)
-        //        foreach (string warunek in regulaTestowana.Conditions)
-        //            foreach (Rule regulaInna in r)
-        //            {
-        //                if (warunek == regulaInna.Conclusion)
-        //                {
-        //                    regulaTestowana.Dopytywalne = false;
-        //                    break;
-        //                }
-        //            }
-        //    watch.Stop();
-        //    Console.WriteLine(watch.ElapsedMilliseconds);
-        //}
 
         public static void ForwardChaining()
         {
@@ -50,64 +31,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         }
 
 
-        //public static void InputOfConstrains(Dictionary<string, bool> dictionary, GatheredBases d)
-        //{
-        //    foreach (var constrain in d.ConstrainList)
-        //    {
-        //        foreach (var fact in dictionary)
-        //        {
-        //            if (fact.Value == true)
-        //            {
-        //                foreach (var VARIABLE in constrain.ConstrainsList)
-        //                {
-        //                    if (VARIABLE == fact.Key)
-        //                    {
-        //                        ConstrainChange(constrain, fact.Key, dictionary);
-        //                        // wprowadzenie ograniczenia do systemu
-        //                        // czy baza ograniczeń jest aktualizowana po całym obiegu 
-        //                        // czy raczej po każdej zmianie wniosku
-        //                        // odpowiedzią jest cykl przynajmniej w przypadku wnioskowania w przód bo jeden cykl równa się jedna reguła
-        //                        //czy 
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
-
-        // Method divide string to part with rule and rest of rule
-
-        // ta metoda ma spłaszczyć tylko jeden konkretny warunek problem w tym gdzie zzapisac ten warunek biorąc pod uwagę że 
-        // metoda będzie zwracała samą siebie 
-        //public static List<string> Spłaszczenie(Rule regulaRule, List<Rule> listaRules, List<string> listaSplaszczonych)
-        //{
-        //    foreach (var sprawdzanyWarunek in regulaRule.Conditions)
-        //    {
-        //        //int i = CountConditions(sprawdzanyWarunek, listaRules);
-        //        // to tutaj coś powinno się wykonać tyle razy ile zostało znalezionych wnioskow
-
-        //        //for (int n = 0; n < i; n++)
-        //        //{
-        //            List<string> tabList = FindConditionsOrReturnCheckedCondition(sprawdzanyWarunek, listaRules);
-
-        //            if (tabList[0] == sprawdzanyWarunek)
-        //            {
-        //                // to jest zakonczenie pętli
-        //                listaSplaszczonych.Add(sprawdzanyWarunek);
-        //            }
-        //            else
-        //            {
-        //                Rule r = FindRule(sprawdzanyWarunek, listaRules);
-        //                //czy jak dodam rezultat sołaszczenia do listySplaszczonych to dane nie beda sie dublowaly
-        //                List<string>list = new List<string>();
-        //                ConclusionOperations.Spłaszczenie(r, listaRules, listaSplaszczonych);
-
-        //            }
-        //        }
-        //    //}
-        //    return listaSplaszczonych;
-        //}
+       
 
 
         private static List<SimpleTree> ReturnAlternativeTrees(List<Rule> rulesWithSameConclusion)
@@ -124,10 +48,9 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         }
 
 
-        public static void Conclude(List<Rule> baseList, Rule ruleForCheck)
+        public static SimpleTree BuildComplexTree(List<Rule> baseList, Rule ruleForCheck)
         {
-            ////////////////////////////////////////////////////////////////////////
-            //  List<Rule> rulesWithSameName = FindRulesWithParticularConclusion(ruleForCheck, baseList);
+           
             List<List<Rule>> divideList = new List<List<Rule>>();
 
             var conditionTree = new SimpleTree {rule = ruleForCheck};
@@ -135,7 +58,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
 
             do
             {
-                AddedChilds = FamilyToEnumerable(conditionTree).
+                AddedChilds = TreeToEnumerable(conditionTree).
                     Where(p => p.Children.Count == 0).
                     Where(p => p.Dopytywalny == false);
 
@@ -151,7 +74,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
                         if (rule.Count == 0)
                         {
                             var r = new Rule();
-                            r.Conclusion = "Ostatnia";
+                            r.Conclusion = simpleTree;
                             addedChild.Children.Add(new SimpleTree {Dopytywalny = true,rule =r });
                             // narazie tylko żeby nie przeszkadzało
                         }
@@ -171,7 +94,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
                 int inu = AddedChilds.Count();
             } while (AddedChilds.Count() != 0);
 
-           DivideTree(conditionTree,divideList);
+            return conditionTree;
         }
 
 
@@ -179,13 +102,13 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         {
 
          var h =   CartesianProduct(divideList);
-          //  var i = FamilyToEnumerable(tree).Where(p => p.rule == divideList[0]);
+          //  var i = TreeToEnumerable(tree).Where(p => p.rule == divideList[0]);
             string s="";
-        var i =   FamilyToEnumerable(tree).Where(p => p != tree.Children[0].Children[0]);
+        var i =   TreeToEnumerable(tree).Where(p => p != tree.Children[0].Children[0]);
 
             foreach (var list in h)
             {
-          //   var u =   FamilyToEnumerable(tree).Where(l => l.rule != list);
+          //   var u =   TreeToEnumerable(tree).Where(l => l.rule != list);
 
                foreach (var simpleTree in list)
                {
@@ -268,7 +191,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         }
 
 
-        private static IEnumerable<SimpleTree> FamilyToEnumerable(SimpleTree f)
+        public static IEnumerable<SimpleTree> TreeToEnumerable(SimpleTree f)
         {
             var stack = new Stack<SimpleTree>();
             stack.Push(f);
