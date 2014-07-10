@@ -15,6 +15,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         public SimpleTree Parent 
         {
             get{return _parent; }
+            set { _parent = value; }
         }
 
 

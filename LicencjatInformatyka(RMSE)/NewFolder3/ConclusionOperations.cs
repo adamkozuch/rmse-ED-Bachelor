@@ -109,14 +109,56 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         //}
 
 
-        public static void Conclude(List<Rule> baseList, string ruleForCheck)
+
+
+      static  private List<SimpleTree> ReturnAlternativeTrees(List<Rule> rulesWithSameConclusion)
+        {
+          var listOfSubtrees = new List<SimpleTree>();
+
+          foreach (var rule in rulesWithSameConclusion)
+          {
+              var parent = new SimpleTree() {Name = rule.Conclusion};
+
+              foreach (var condition in rule.Conditions)
+              {
+                  var child = new SimpleTree() {Name = condition};
+                  parent.Children.Add(child);
+                  child.Parent = parent;
+              }
+
+              listOfSubtrees.Add(parent);
+          }
+          return listOfSubtrees;
+        }
+
+
+
+
+
+        public static void Conclude(List<Rule> baseList, Rule ruleForCheck)
         {
             ////////////////////////////////////////////////////////////////////////
-            List<Rule> rulesWithSameName = FindRulesWithParticularConclusion(ruleForCheck, baseList);
-            var conditionTree = new SimpleTree {Name = ruleForCheck};
+          //  List<Rule> rulesWithSameName = FindRulesWithParticularConclusion(ruleForCheck, baseList);
+            
+            
+            var conditionTree = new SimpleTree {Name = ruleForCheck.Conclusion};
             var listOfConditions = new List<string>();
             IEnumerable<SimpleTree> parentsWithoutAddedChilds = FamilyToEnumerable(conditionTree);
             ////////////////////////////////////////////////////////////////////////////////////////
+
+            var numberOfRules = FindRulesWithParticularConclusion(ruleForCheck, baseList);
+
+            var subtrees = ReturnAlternativeTrees(numberOfRules);
+
+            foreach (var simpleTree in subtrees)
+            {
+
+            }
+
+
+
+
+
 
 
 
@@ -128,47 +170,41 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
 
                 var numberOfRules = FindRulesWithParticularConclusion(ruleForCheck, baseList);
 
-                if (numberOfRules.Count > 1)
+                var subtrees = ReturnAlternativeTrees(numberOfRules);
+
+                foreach (var simpleTree in subtrees)
                 {
-                    foreach (var numberOfRule in numberOfRules)
-                    {
-                        foreach (var ofRule in numberOfRule.Conditions)
+                    
+                }
+
+                     
+
+
+                        foreach (SimpleTree checkedParent in parentsWithoutAddedChilds)
                         {
-
-                            conditionTree.Children.Add(numberOfRule.Conclusion);
-                         
+                            listOfConditions = FindConditionsOrReturnCheckedCondition(checkedParent.Name, baseList);
+                            if (listOfConditions == null)
                             {
-                                
+                                checkedParent.Dopytywalny = true;
                             }
-                            conditionTree.Children[1].Children.Add(ofRule.);
-
-
-                            foreach (SimpleTree checkedParent in parentsWithoutAddedChilds)
+                            else
                             {
-                                listOfConditions = FindConditionsOrReturnCheckedCondition(checkedParent.Name, baseList);
-                                if (listOfConditions == null)
+                                foreach (string warunekKtoryBedzieDodany in listOfConditions)
                                 {
-                                    checkedParent.Dopytywalny = true;
-                                }
-                                else
-                                {
-                                    foreach (string warunekKtoryBedzieDodany in listOfConditions)
-                                    {
-                                        var t = new SimpleTree {Name = warunekKtoryBedzieDodany};
-                                        checkedParent.Children.Add(t);
-                                    }
+                                    var t = new SimpleTree {Name = warunekKtoryBedzieDodany};
+                                    checkedParent.Children.Add(t);
                                 }
                             }
                         }
+                    
 
-                    }
-                    while (parentsWithoutAddedChilds.Count() != 0) ;
+                
 
-                    int i = 0;
-                }
-            } 
+            } while (parentsWithoutAddedChilds.Count() != 0);
 
         }
+
+
 
 
 
