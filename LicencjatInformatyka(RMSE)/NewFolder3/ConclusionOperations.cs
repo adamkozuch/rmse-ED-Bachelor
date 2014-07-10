@@ -128,7 +128,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         {
             ////////////////////////////////////////////////////////////////////////
             //  List<Rule> rulesWithSameName = FindRulesWithParticularConclusion(ruleForCheck, baseList);
-            List<Rule> divideList = new List<Rule>();
+            List<List<Rule>> divideList = new List<List<Rule>>();
 
             var conditionTree = new SimpleTree {rule = ruleForCheck};
             IEnumerable<SimpleTree> AddedChilds;
@@ -150,7 +150,9 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
 
                         if (rule.Count == 0)
                         {
-                            addedChild.Children.Add(new SimpleTree {Dopytywalny = true});
+                            var r = new Rule();
+                            r.Conclusion = "Ostatnia";
+                            addedChild.Children.Add(new SimpleTree {Dopytywalny = true,rule =r });
                             // narazie tylko żeby nie przeszkadzało
                         }
                         else
@@ -159,7 +161,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
                             addedChild.Children.AddRange(alt);
                             if (rule.Count > 1)
                             {
-                                divideList.AddRange(rule);
+                                divideList.Add(rule);
 
                             }
 
@@ -173,17 +175,42 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         }
 
 
-        private static void DivideTree(SimpleTree tree, List<Rule> divideList)
+        private static void DivideTree(SimpleTree tree, List<List<Rule>> divideList)
         {
 
-            var i = FamilyToEnumerable(tree).Where(p => p.rule == divideList[0]);
+         var h =   CartesianProduct(divideList);
+          //  var i = FamilyToEnumerable(tree).Where(p => p.rule == divideList[0]);
+            string s="";
+        var i =   FamilyToEnumerable(tree).Where(p => p != tree.Children[0].Children[0]);
 
-            foreach (var VARIABLE in i)
+            foreach (var list in h)
             {
-                var r = VARIABLE;
+          //   var u =   FamilyToEnumerable(tree).Where(l => l.rule != list);
+
+               foreach (var simpleTree in list)
+               {
+                    s += simpleTree.Conclusion.ToString() + " ";
+                }
+
+                int b = 0;
             }
+
+           
         }
 
+
+        static IEnumerable<IEnumerable<T>> CartesianProduct<T>
+    (this IEnumerable<IEnumerable<T>> sequences)
+        {
+            IEnumerable<IEnumerable<T>> emptyProduct =
+              new[] { Enumerable.Empty<T>() };
+            return sequences.Aggregate(
+              emptyProduct,
+              (accumulator, sequence) =>
+                from accseq in accumulator
+                from item in sequence
+                select accseq.Concat(new[] { item }));
+        }
 
         public static
             List<string> FindConditionsOrReturnCheckedCondition

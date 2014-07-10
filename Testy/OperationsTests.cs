@@ -47,6 +47,18 @@ namespace Testy
         }
 
 
+        [Test]
+        public void Wczytujemy_Baze()
+        {
+          
+            RuleBase r = new RuleBase();
+            r.ReadAndAddRules(@"‪C:\Users\Adamk\Desktop\Test\test.txt");
+
+        
+
+
+            Assert.AreEqual(true, true);
+        }
 
 
         [Test]

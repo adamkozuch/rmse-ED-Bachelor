@@ -1,8 +1,9 @@
+using LicencjatInformatyka_RMSE_.NewFolder3;
 using LicencjatInformatyka_RMSE_.NewFolder4;
 
 namespace LicencjatInformatyka_RMSE_.NewFolder1
 {
-    class OpenBasesActions
+    internal class OpenBasesActions
     {
         private ViewModel _viewModel;
 
@@ -11,37 +12,29 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
             _viewModel = viewModel;
         }
 
-        public void  OpenRuleBase()
+        public void OpenRuleBase()
         {
-           
+
             RuleBase LoadedRules = new RuleBase();
-            
+
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
             dlg.ShowDialog();
-            
-            if (dlg.FileName != "")
-            {  
-              
-                LoadedRules.ReadAndAddRules(dlg.FileName);
 
-                //ConclusionOperations.CheckTypeOfRule(LoadedRules.RulesList);
-           
+            if (dlg.FileName != "")
+            {
+
+                LoadedRules.ReadAndAddRules(dlg.FileName);
+                ConclusionOperations.Conclude(LoadedRules.RulesList,LoadedRules.RulesList[0]);
+
             }
 
-         
-
-            //foreach (var VARIABLE in mk.RuleList)
-            //{
-            //    ConclusionOperations.Sp³aszczenie(VARIABLE, mk.RuleList,str1);
-            //    string s = wypisz(VARIABLE, str1);
-            //    nowy += s;
-            //   str1.Clear();
-            //}
-            //Text = nowy;
-            //OnPropertyChanged("Text");
-       
-        
         }
+
+    
+
+
+
+
 
         public void OpenConstrainBase()
         {   

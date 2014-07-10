@@ -11,9 +11,9 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
     {
         private ILanguageConfig _languageConfig;
 
-        public ViewModel(ILanguageConfig languageConfig)
+        public ViewModel()
         {
-            this._languageConfig = languageConfig;
+       //     this._languageConfig = languageConfig;
 
 
             _openBasesActions = new OpenBasesActions(this);
