@@ -33,14 +33,16 @@ namespace Testy
             
             RuleBase rules = new RuleBase();
             Rule r = new Rule(1,"Wniosek",new List<string>(){"Wniosek1"},true);
-            Rule r1 = new Rule(1, "Wniosek1", new List<string>() { "Wniosek2" }, true);
-            Rule r2 = new Rule(1, "Wniosek2", new List<string>() { "Wniosek3" }, true);
-            Rule r3 = new Rule(1, "Wniose3", new List<string>() { "Wniosek4" }, true);
+            Rule r1 = new Rule(2, "Wniosek1", new List<string>() { "Wniosek2" }, true);
+            Rule r2 = new Rule(3, "Wniosek2", new List<string>() { "Wniosek3" }, true);
+            Rule r22 = new Rule(5, "Wniosek2", new List<string>() { "Wniosek6" }, true);
+            Rule r3 = new Rule(4, "Wniose3", new List<string>() { "Wniosek4" }, true);
             rules.RulesList.Add(r);
             rules.RulesList.Add(r1);
             rules.RulesList.Add(r2);
             rules.RulesList.Add(r3);
-           ConclusionOperations.Conclude(rules.RulesList, "Wniosek");
+            rules.RulesList.Add(r22);
+           ConclusionOperations.Conclude(rules.RulesList, r);
             Assert.AreEqual(true, true);
         }
 

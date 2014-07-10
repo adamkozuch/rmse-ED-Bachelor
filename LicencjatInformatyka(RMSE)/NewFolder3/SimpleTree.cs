@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
+using LicencjatInformatyka_RMSE_.NewFolder2;
 
 namespace LicencjatInformatyka_RMSE_.NewFolder3
 {
     class SimpleTree
     {
-          public string Name { get; set; }
+      public  Rule rule { get; set; }
         public bool Dopytywalny { get; set; }
             public SimpleTree _parent { get; set; }
     List<SimpleTree> _children = new List<SimpleTree>();
