@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Documents;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 
 namespace LicencjatInformatyka_RMSE_.NewFolder3
 {
     public static class ConclusionOperations
     {
-
         public static Fact CheckIfStringIsFact(string nameOfConclusion, List<Fact> listOfFacts)
         {
-            foreach (var factItem in listOfFacts)
+            foreach (Fact factItem in listOfFacts)
             {
                 if (factItem.FactName == nameOfConclusion)
                 {
@@ -20,9 +18,8 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
             }
             return null;
         }
-        
-        
-        
+
+
         // Funkcje Create Read Delete dla warunkow dopytywalnych
         // Oraz algorytm wnioskowania w przód oraz wstecz
         //public static void CheckTypeOfRule(List<Rule> r)
@@ -104,7 +101,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         //                //czy jak dodam rezultat sołaszczenia do listySplaszczonych to dane nie beda sie dublowaly
         //                List<string>list = new List<string>();
         //                ConclusionOperations.Spłaszczenie(r, listaRules, listaSplaszczonych);
-                        
+
         //            }
         //        }
         //    //}
@@ -112,70 +109,87 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         //}
 
 
-
-
-
         public static void Conclude(List<Rule> baseList, string ruleForCheck)
         {
+            ////////////////////////////////////////////////////////////////////////
             List<Rule> rulesWithSameName = FindRulesWithParticularConclusion(ruleForCheck, baseList);
-            SimpleTree tree = new SimpleTree(){Name = ruleForCheck};
-            var rezultat = new List<string>();
+            var conditionTree = new SimpleTree {Name = ruleForCheck};
+            var listOfConditions = new List<string>();
+            IEnumerable<SimpleTree> parentsWithoutAddedChilds = FamilyToEnumerable(conditionTree);
+            ////////////////////////////////////////////////////////////////////////////////////////
 
-            var iListaBezDzieci= FamilyToEnumerable(tree);
+
+
             do
             {
-                iListaBezDzieci = FamilyToEnumerable(tree).
+                parentsWithoutAddedChilds = FamilyToEnumerable(conditionTree).
                     Where(p => p.Children.Count == 0).
-                    Where(p =>p.Dopytywalny==false);// jeśli ta pętla nie zwróci nic zkończyć
+                    Where(p => p.Dopytywalny == false); // Wyszukuje końcowe osobniki
 
-                foreach (var galazBezDziecka in iListaBezDzieci)
+                var numberOfRules = FindRulesWithParticularConclusion(ruleForCheck, baseList);
+
+                if (numberOfRules.Count > 1)
                 {
-                    rezultat = FindConditionsOrReturnCheckedCondition(galazBezDziecka.Name, baseList);
-                    if (rezultat == null)
+                    foreach (var numberOfRule in numberOfRules)
                     {
-                        galazBezDziecka.Dopytywalny = true;
-                    }
-                    else
-                    {
-
-                        foreach (var warunekKtoryBedzieDodany in rezultat)
+                        foreach (var ofRule in numberOfRule.Conditions)
                         {
 
+                            conditionTree.Children.Add(numberOfRule.Conclusion);
+                         
+                            {
+                                
+                            }
+                            conditionTree.Children[1].Children.Add(ofRule.);
 
 
-
-                            SimpleTree t = new SimpleTree() {Name = warunekKtoryBedzieDodany};
-                            galazBezDziecka.Children.Add(t);
+                            foreach (SimpleTree checkedParent in parentsWithoutAddedChilds)
+                            {
+                                listOfConditions = FindConditionsOrReturnCheckedCondition(checkedParent.Name, baseList);
+                                if (listOfConditions == null)
+                                {
+                                    checkedParent.Dopytywalny = true;
+                                }
+                                else
+                                {
+                                    foreach (string warunekKtoryBedzieDodany in listOfConditions)
+                                    {
+                                        var t = new SimpleTree {Name = warunekKtoryBedzieDodany};
+                                        checkedParent.Children.Add(t);
+                                    }
+                                }
+                            }
                         }
+
                     }
+                    while (parentsWithoutAddedChilds.Count() != 0) ;
+
+                    int i = 0;
                 }
-
-            } while (iListaBezDzieci.Count() != 0);
-
-            int i = 0;
-
+            } 
 
         }
 
 
-        public static List<string> FindConditionsOrReturnCheckedCondition
+
+        public static
+            List<string> FindConditionsOrReturnCheckedCondition
             (string checkedCondition, List<Rule> baseList)
         {
             var lista = new List<string>();
 
-            foreach (var rule in baseList)    
+            foreach (Rule rule in baseList)
             {
-                if (rule.Conclusion == checkedCondition)  // Checking if rule in rulebase is condition 
+                if (rule.Conclusion == checkedCondition) // Checking if rule in rulebase is condition 
                 {
-                    lista.AddRange(rule.Conditions);  //LINQ
+                    lista.AddRange(rule.Conditions); //LINQ
                     // zwraca dowolną liczbę zestawów warunkow( jakby były np. dwie reguly o tej samej nazwie)
                 }
             }
             if (lista.Count == 0) // If not find conditions for rule return checked condition 
-                return null;            //    lista.Add(checkedCondition);
+                return null; //    lista.Add(checkedCondition);
 
             return lista;
-         
         }
 
 
@@ -184,7 +198,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         {
             var rulesThatMatch = new List<Rule>();
 
-            foreach (var rule in baseList)
+            foreach (Rule rule in baseList)
             {
                 if (rule.Conclusion == NameOfCondition)
                 {
@@ -199,39 +213,34 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         public static List<Fact> LoadConstrain(Constrain constrain, string trueConstrain)
         {
             var factsList = new List<Fact>();
-            foreach (var constrainItem in constrain.ConstrainsList)
+            foreach (string constrainItem in constrain.ConstrainsList)
             {
                 if (constrainItem == trueConstrain)
                 {
-                    factsList.Add(new Fact(){FactName =constrainItem,FactValue = true});
+                    factsList.Add(new Fact {FactName = constrainItem, FactValue = true});
                 }
                 else
                 {
-                    factsList.Add(new Fact() { FactName = constrainItem, FactValue = false });
+                    factsList.Add(new Fact {FactName = constrainItem, FactValue = false});
                 }
             }
             return factsList;
         }
 
 
-
-        static IEnumerable<SimpleTree> FamilyToEnumerable(SimpleTree f)
+        private static IEnumerable<SimpleTree> FamilyToEnumerable(SimpleTree f)
         {
-            Stack<SimpleTree> stack = new Stack<SimpleTree>();
+            var stack = new Stack<SimpleTree>();
             stack.Push(f);
             while (stack.Count > 0)
             {
-                var family = stack.Pop();
+                SimpleTree family = stack.Pop();
                 yield return family;
-                foreach (var child in family.Children)
+                foreach (SimpleTree child in family.Children)
                     stack.Push(child);
             }
         }
 
-
-     
-
-    
 
         public static object Flatter(List<Rule> ruleList)
         {
