@@ -53,50 +53,48 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="NewFolder1\OpenBasesActions.cs" />
-    <Compile Include="NewFolder1\RelayCommand.cs" />
-    <Compile Include="NewFolder1\ViewModel.cs" />
-    <Compile Include="Var\Advice.cs" />
-    <Compile Include="Var\Argument.cs" />
-    <Compile Include="Var\constrain.cs" />
-    <Compile Include="Var\Fact.cs" />
-    <Compile Include="Var\Graphic.cs" />
-    <Compile Include="Var\model.cs" />
-    <Compile Include="Var\rule.cs" />
-    <Compile Include="Var\Sound.cs" />
-    <Compile Include="NewFolder3\Arithmetic.cs" />
-    <Compile Include="NewFolder3\ConclusionOperations.cs" />
-    <Compile Include="NewFolder3\NTREE.cs" />
-    <Compile Include="NewFolder3\OperationsOnString.cs" />
-    <Compile Include="NewFolder3\RaportAndDescription.cs" />
-    <Compile Include="NewFolder3\SimpleTree.cs" />
-    <Compile Include="NewFolder3\TreeVisitor.cs" />
-    <Compile Include="NewFolder4\RuleBase.cs" />
-    <Compile Include="NewFolder4\SoundBase.cs" />
+    <Compile Include="Command\OpenBasesActions.cs" />
+    <Compile Include="Command\RelayCommand.cs" />
+    <Compile Include="Command\ViewModel.cs" />
+    <Compile Include="ElementsOfBases\Advice.cs" />
+    <Compile Include="ElementsOfBases\Argument.cs" />
+    <Compile Include="ElementsOfBases\constrain.cs" />
+    <Compile Include="ElementsOfBases\Fact.cs" />
+    <Compile Include="ElementsOfBases\Graphic.cs" />
+    <Compile Include="ElementsOfBases\model.cs" />
+    <Compile Include="ElementsOfBases\rule.cs" />
+    <Compile Include="ElementsOfBases\Sound.cs" />
+    <Compile Include="OperationsOnBases\Arithmetic.cs" />
+    <Compile Include="OperationsOnBases\ConclusionOperations.cs" />
+    <Compile Include="OperationsOnBases\OperationsOnString.cs" />
+    <Compile Include="OperationsOnBases\RaportAndDescription.cs" />
+    <Compile Include="OperationsOnBases\SimpleTree.cs" />
+    <Compile Include="Bases\RuleBase.cs" />
+    <Compile Include="Bases\SoundBase.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="NewFolder4\AdviceBase.cs" />
+    <Compile Include="Bases\AdviceBase.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="NewFolder4\ConfigInterface.cs" />
-    <Compile Include="NewFolder4\ConstrainBase.cs" />
-    <Compile Include="NewFolder4\GraphicBase.cs" />
+    <Compile Include="Bases\ConfigInterface.cs" />
+    <Compile Include="Bases\ConstrainBase.cs" />
+    <Compile Include="Bases\GraphicBase.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="NewFolder4\ModelBase.cs" />
-    <Compile Include="NewFolder5\GatheredBases.cs" />
-    <Compile Include="NewFolder5\IGatheredBases.cs" />
-    <Compile Include="NewFolder5\ILanguageConfig.cs" />
-    <Compile Include="NewFolder5\KnowledgeDatabaseAnalyze.cs" />
-    <Compile Include="NewFolder5\PolishLanguageConfig.cs" />
+    <Compile Include="Bases\ModelBase.cs" />
+    <Compile Include="Additional\GatheredBases.cs" />
+    <Compile Include="Additional\IGatheredBases.cs" />
+    <Compile Include="Additional\ILanguageConfig.cs" />
+    <Compile Include="Additional\KnowledgeDatabaseAnalyze.cs" />
+    <Compile Include="Additional\PolishLanguageConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

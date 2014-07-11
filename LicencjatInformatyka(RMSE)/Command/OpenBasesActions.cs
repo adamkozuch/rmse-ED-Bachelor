@@ -1,3 +1,4 @@
+using System.Linq;
 using LicencjatInformatyka_RMSE_.NewFolder3;
 using LicencjatInformatyka_RMSE_.NewFolder4;
 
@@ -24,16 +25,16 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
             {
 
                 LoadedRules.ReadAndAddRules(dlg.FileName);
-                ConclusionOperations.BuildComplexTree(LoadedRules.RulesList,LoadedRules.RulesList[0]);
+              
                 var tree = ConclusionOperations.BuildComplexTree(LoadedRules.RulesList, LoadedRules.RulesList[0]);
-                var flatteredTree = ConclusionOperations.TreeToEnumerable(tree);
+                var flatteredTree = ConclusionOperations.TreeToEnumerable(tree).Where(p => p.Dopytywalny);
                 string result = "";
                 foreach (var simpleTree in flatteredTree)
                 {
+                    
                     result += simpleTree.rule.Conclusion+ " ";
                 }
                 int i = 0;
-
             }
 
         }

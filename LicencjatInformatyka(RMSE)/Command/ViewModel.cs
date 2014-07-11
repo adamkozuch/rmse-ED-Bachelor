@@ -20,7 +20,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
             OpenRuleCommand = new RelayCommand(pars => _openBasesActions.OpenRuleBase());
             OpenConstrainCommand = new RelayCommand(pars => _openBasesActions.OpenConstrainBase());
             OpenModelCommand = new RelayCommand(pars => _openBasesActions.OpenModelBase());
-            ConcludeCommand = new RelayCommand(pars => Conclude());
+          
             
 
 
@@ -28,8 +28,8 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
         
         
         #region Field
-        LinkedList <string> bList = new LinkedList<string>();
-        private string s;
+       
+      
         GatheredBases _dataFromAllBases = new GatheredBases();
         private Dictionary<string,bool> dynamicBase = new Dictionary<string, bool>();
         public event PropertyChangedEventHandler PropertyChanged = null;
@@ -57,23 +57,6 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
 
 
         #region Method
-
-        string wypisz(Rule r, List<string> sList )
-        {
-            s += "\n" + "RULE   :" + r.Conclusion + "   ";
-            foreach(var i in sList)
-            {
-                s +="   "+ i;
-                Console.Write(s);
-            }
-           
-            return s;
-        }
-
-        public void Conclude()
-        {
-            
-        }
 
       virtual protected void OnPropertyChanged(string propName)
       {
