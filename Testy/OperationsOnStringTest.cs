@@ -22,7 +22,7 @@ namespace Testy
         {
             string ruleFromDoc = "1,\"otrzymuje wpis\",[\"ocena z przedmiotów A,B,C  >=3 \",\"zapłacił czesne\"], 1)";
             var splitedString = OperationsOnString.SplitRuleToTwoPartsConditionsAndAnother(ruleFromDoc);
-            Assert.AreEqual(splitedString[0].Count(),2);
+            Assert.AreEqual(splitedString.Count(),2);
     
 
         }
