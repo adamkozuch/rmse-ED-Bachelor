@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Windows.Documents;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 
 namespace LicencjatInformatyka_RMSE_.NewFolder3
@@ -68,26 +69,27 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         }
 
 
-        private static List<List<Rule>> difference(List<List<Rule>> divideList, List<Rule> r)
+        private static List<List<Rule>> difference(List<List<Rule>> divideList, List<Rule> currentTable)
         {
             var list = new List<List<Rule>>();
             
-            
+            int i = 0;
             foreach (var lista in divideList)
             {
                 
-                int i = 0;
+                
                 var g = new List<Rule>(); 
                 foreach (var rule in lista)
                 {
-                    if(rule != r[i])
+                    if(rule != currentTable[i])
                         g.Add(rule);
-                        i++;
+                        
                 }
+                i++;
                 list.Add(g);
                 
             }
-            return list;
+            return list; // w tej liści chcę otrzymać divide list pomniejszoną o elementy z current table
         }
 
         public static T DeepCopy<T>(T obj)
@@ -102,26 +104,36 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
             }
         }
 
+        public static void CondludeFromTree(List<Rule> rulesFromSingleTree)
+        {
+            
+
+
+
+
+        }
+
         private static void DivideTree(SimpleTree tree, List<List<Rule>> divideList)
         {
             IEnumerable<IEnumerable<Rule>> cartesianProducts = CartesianProduct(divideList);
             List<List<Rule>> list = new List<List<Rule>>();
             string s = "";
-          
+            int licznik = 0;
+            HashSet<List<SimpleTree>> cos = new HashSet<List<SimpleTree>>();
             foreach (var particularConfig in cartesianProducts.ToList())
             {
-                var r = particularConfig;
-                list.Add(  r.ToList());
+                
         
-                foreach (var oneTable in list)
-                {
-                    var y = difference(divideList, oneTable).SelectMany(m =>m);
-                    y = y.ToArray();
-                    var res = divideList.SelectMany(il => il);
-                    res = res.ToArray();
+                    var y = difference(divideList, particularConfig.ToList()).SelectMany(m =>m);
+                 
+                  //tutaj jest problem
+              
 
 
-                    var t = TreeToEnumerable(tree).Where(p => p.rule != y.First());  // może być tak że kolekcja jest nodyfikowana i jest usowane za duzo elementow
+                var t = RoboczaMetoda(tree,y.ToList() );
+                    
+                       
+                      // może być tak że kolekcja jest nodyfikowana i jest usowane za duzo elementow
                     //{
                     //    foreach (var VARIABLE in y)
                     //    {
@@ -130,19 +142,52 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
                     //    }
                     //    return false;
                     //});
-                    
-                       
-                        
-                     
-
-                    foreach (var VARIABLE in t)
+                bool jakastam=true; 
+                var n = t.ToArray();
+                foreach (var bla in cos)
+                {
+                      int o = 0;
+                    int p = 0;
+                    foreach (var VARIABLE in n)
                     {
-                        if(VARIABLE.Dopytywalny)
-                        s += " "+ VARIABLE.rule.Conclusion;
+                        if (n.Count() != bla.Count)
+                            break;
+                        if (bla[o] == VARIABLE)
+                            p++;
+                        o++;
                     }
-                    s += "\n\n";
+                    if (p == n.Count())
+                    {
+                        jakastam = false;
+                        break;
+                    }
                 }
+
+
+
+                if(jakastam)
+                cos.Add(t.ToList());
+                //s += licznik.ToString();
+                    //foreach (var VARIABLE in cos)
+                    //{
+                    //    if(VARIABLE.Dopytywalny==true)
+                    //    s += " "+ VARIABLE.rule.Conclusion + VARIABLE.rule.NumberOfRule.ToString();
+                    //}
+                    //s += "\n\n";
+                licznik ++;
             }
+
+            foreach (var VARIABLE in cos)
+            {
+                foreach (var simpleTree in VARIABLE)
+                {
+                    if(simpleTree.Dopytywalny)
+                    s +=" "+ simpleTree.rule.Conclusion.ToString();
+                }
+                s += "\n\n";
+            }
+
+
               int i = 0;
 
         }
@@ -168,11 +213,40 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
             while (stack.Count > 0)
             {
                 SimpleTree family = stack.Pop();
+
                 yield return family;
                 foreach (SimpleTree child in family.Children)
+
                     stack.Push(child);
             }
         }
+
+        public static IEnumerable<SimpleTree> RoboczaMetoda(SimpleTree f, List<Rule> sRules )
+        {
+            var stack = new Stack<SimpleTree>();
+            stack.Push(f);
+            while (stack.Count > 0)
+            {
+                SimpleTree family = stack.Pop();
+               
+                
+                yield return family;
+                foreach (SimpleTree child in family.Children)
+                {
+                    var i = true;
+                    foreach (var sRule in sRules)
+                    {
+                        if (sRule == child.rule)
+                            i = false;
+                    }
+                    if(i)
+                       stack.Push(child);
+                }
+
+            }
+        }
+
+
 
         public static
             List<string> FindConditionsOrReturnCheckedCondition
