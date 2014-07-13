@@ -54,6 +54,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\OpenBasesActions.cs" />
+    <Compile Include="Command\OperacjeNaDopytywalnych.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Command\ViewModel.cs" />
     <Compile Include="ElementsOfBases\Advice.cs" />
@@ -66,6 +67,7 @@
     <Compile Include="ElementsOfBases\Sound.cs" />
     <Compile Include="OperationsOnBases\Arithmetic.cs" />
     <Compile Include="OperationsOnBases\ConclusionOperations.cs" />
+    <Compile Include="OperationsOnBases\ForwardChaining.cs" />
     <Compile Include="OperationsOnBases\OperationsOnString.cs" />
     <Compile Include="OperationsOnBases\RaportAndDescription.cs" />
     <Compile Include="OperationsOnBases\SimpleTree.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Additional\ILanguageConfig.cs" />
     <Compile Include="Additional\KnowledgeDatabaseAnalyze.cs" />
     <Compile Include="Additional\PolishLanguageConfig.cs" />
+    <Compile Include="OperationsOnBases\TreeOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

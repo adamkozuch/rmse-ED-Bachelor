@@ -2,6 +2,7 @@
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
 using LicencjatInformatyka_RMSE_.NewFolder4;
+using LicencjatInformatyka_RMSE_.OperationsOnBases;
 using NUnit.Framework;
 using System.Linq.Expressions;
 using  System.Linq;
@@ -22,8 +23,8 @@ namespace Testy
 
             string nameOfConclusion = "Wniosek";
 
-            Fact result = ConclusionOperations.CheckIfStringIsFact(nameOfConclusion, factList);
-            Assert.AreEqual(result.FactValue, true);
+            var result = ConclusionOperations.CheckIfStringIsFact(nameOfConclusion, factList);
+            Assert.AreEqual(result, true);
         }
 
 
@@ -42,7 +43,7 @@ namespace Testy
             rules.RulesList.Add(r2);
             rules.RulesList.Add(r3);
             rules.RulesList.Add(r22);
-           ConclusionOperations.BuildComplexTree(rules.RulesList, r);
+           TreeOperations.ReturnComplexTreeAndDifferences(rules.RulesList, r);
             Assert.AreEqual(true, true);
         }
 
@@ -61,20 +62,20 @@ namespace Testy
         }
 
 
-        [Test]
-        public void Check_If_One_Condition_Is_Entered_In_DynamicBase()
-        {
-            var factList = new List<Fact>
-            {
-                new Fact {FactName = "Wniosek", FactValue = true}
-            };
+       // [Test]
+        //public void Check_If_One_Condition_Is_Entered_In_DynamicBase()
+        //{
+        //    var factList = new List<Fact>
+        //    {
+        //        new Fact {FactName = "Wniosek", FactValue = true}
+        //    };
 
 
-            string nameOfConclusion = "Wniosek";
+        //    string nameOfConclusion = "Wniosek";
 
-            Fact result = ConclusionOperations.CheckIfStringIsFact(nameOfConclusion, factList);
-            Assert.AreEqual(result.FactName, "Wniosek");
-        }
+        //    Fact result = ConclusionOperations.CheckIfStringIsFact(nameOfConclusion, factList);
+        //    Assert.AreEqual(result.FactName, "Wniosek");
+        //}
 
         //[Test]
         //public void Check_Three_Rules_With_No_Double_Conclusion_Return_One_Flattered_Rule()

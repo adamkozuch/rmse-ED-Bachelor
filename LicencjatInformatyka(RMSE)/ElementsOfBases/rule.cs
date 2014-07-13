@@ -7,12 +7,10 @@ namespace LicencjatInformatyka_RMSE_.NewFolder2
   public  class Rule
     {
       private bool _dopytywalne=true;
-
-     
-
+        private bool _conclusionValue;
 
 
-     public   Rule()
+        public   Rule()
         {}
 
       public  Rule(int number, string conclusion, List<string>  conditions, bool semaphor)
@@ -36,9 +34,13 @@ namespace LicencjatInformatyka_RMSE_.NewFolder2
 
       public string Conclusion { get; set; }
 
-      public bool ConclusionValue { get; set; }
+        public bool ConclusionValue
+        {
+            get { return  _conclusionValue; }
+            set { _conclusionValue = value; }
+        }
 
-      public List<string> Conditions { get; set; }
+        public List<string> Conditions { get; set; }
 
       public bool Semaphor { get; set; }
     }

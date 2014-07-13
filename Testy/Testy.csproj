@@ -57,6 +57,7 @@
     <Compile Include="OperationsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RuleBaseTest.cs" />
+    <Compile Include="TreeOperations.Test.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
