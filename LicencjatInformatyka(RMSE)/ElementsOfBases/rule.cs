@@ -7,7 +7,8 @@ namespace LicencjatInformatyka_RMSE_.NewFolder2
   public  class Rule
     {
       private bool _dopytywalne=true;
-        private bool _conclusionValue;
+      private bool _conclusionValue;
+        public bool Model { get; set; }
 
 
         public   Rule()

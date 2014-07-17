@@ -2,9 +2,11 @@
 {
     public class Argument
     {
-        private string ArgumentName { get; set; }
-        private float Value { get; set; }
+        public string ArgumentName { get; set; }
+        public float Value { get; set; }
 
+        public Argument()
+        { }
         public Argument(string argument, float value)
         {
             this.ArgumentName = argument;

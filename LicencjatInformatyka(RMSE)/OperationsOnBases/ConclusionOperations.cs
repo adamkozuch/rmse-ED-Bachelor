@@ -11,11 +11,11 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
     public static class ConclusionOperations
     {
 
-        public static List<List<SimpleTree>> Type { get; set; }
+       
 
 
         public static
-            List<string> FindConditionsOrReturnCheckedCondition
+            List<string> FindConditionsOrReturnNull
             (string checkedCondition, List<Rule> baseList)
         {
             var lista = new List<string>();
@@ -52,7 +52,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         }
 
 
-        public static List<Fact> LoadConstrain(Constrain constrain, string trueConstrain)
+        public static List<Fact> LoadConstrainAndReturnFactList(Constrain constrain, string trueConstrain)
         {
             var factsList = new List<Fact>();
             foreach (string constrainItem in constrain.ConstrainsList)

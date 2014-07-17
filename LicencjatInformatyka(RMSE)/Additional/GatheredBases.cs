@@ -1,50 +1,51 @@
 ﻿using System.Collections.Generic;
+using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.NewFolder2;
+using LicencjatInformatyka_RMSE_.NewFolder4;
 
 namespace LicencjatInformatyka_RMSE_.NewFolder5
 {
   public  class GatheredBases : IGatheredBases
   {
-        private List<Rule> _ruleList = new List<Rule>();
-        private List<Constrain> _constrainList = new List<Constrain>();
-        private List<Model> _modelsList= new List<Model>();
-        private List<Fact> _factsList = new List<Fact>();
-        private List<Argument>  _argumentList = new List<Argument>();
-        //private List<Advice> _adviceList = new List<Advice>();
-        //private List<Advice> _adviceList = new List<Advice>();
-        //private List<Advice> _adviceList = new List<Advice>();
-        
-      
-      public List<Fact> FactsList
+        private RuleBase _ruleBase = new RuleBase();
+        private ConstrainBase _constrainBase = new ConstrainBase();
+        private ModelBase _modelsList =new ModelBase();
+        private FactBase _factBase = new FactBase();
+        private ArgumentBase _argumentBase = new ArgumentBase();
+
+
+        public FactBase FactBase
         {
-            get { return _factsList; }
-            set { _factsList = value; }
+            get { return _factBase; }
+            set { _factBase = value; }
         }
 
-      public List<Rule> RuleList
+        public ArgumentBase ArgumentBase
         {
-            get { return _ruleList; }
-            set { _ruleList = value; }
+            get { return _argumentBase; }
+            set { _argumentBase = value; }
+        }
+ 
+
+      public RuleBase RuleBase
+        {
+            get { return _ruleBase; }
+            set { _ruleBase = value; }
         }
 
-        public List<Constrain> ConstrainList
+        public ConstrainBase ConstrainBase
         {
-            get { return _constrainList; }
-            set { _constrainList = value; }
+            get { return _constrainBase; }
+            set { _constrainBase = value; }
         }
 
-        public List<Model> ModelsList
+        public ModelBase ModelsBase
         {
             get { return _modelsList; }
             set { _modelsList = value; }
         }
 
-        public List<Argument> ArgumentsList
-        {
-            get { return _argumentList; }
-            set { value = _argumentList; }
-        }
-
+   
 
        
 
@@ -86,5 +87,8 @@ namespace LicencjatInformatyka_RMSE_.NewFolder5
                 throw new System.NotImplementedException();
             }
         }
+
+
+      
   }
 }

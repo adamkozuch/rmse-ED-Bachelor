@@ -6,22 +6,22 @@ using LicencjatInformatyka_RMSE_.NewFolder3;
 
 namespace LicencjatInformatyka_RMSE_.NewFolder4
 {
-    class ConstrainBase
+  public  class ConstrainBase
     {
-        List<Constrain> limitList = new List<Constrain>();
+      private  List<Constrain> _constrainList = new List<Constrain>();
         
-        public List<Constrain> LimitList
+        public List<Constrain> ConstrainList
         {
-            get { return limitList; }
-            set { limitList = value; }
+            get { return _constrainList; }
+            set { _constrainList = value; }
         }
-        public void ReadConstrains(string limits)
+        public void ReadConstrains(string path)
         {
-            foreach (string line in File.ReadLines(limits))
+            foreach (string line in File.ReadLines(path))
             {  
                 Match m = Regex.Match(line, "^ograniczenie");
                 if(m.Success)
-              limitList.Add(  RuleChecker(line));
+              _constrainList.Add(  RuleChecker(line));
             }
         }
 

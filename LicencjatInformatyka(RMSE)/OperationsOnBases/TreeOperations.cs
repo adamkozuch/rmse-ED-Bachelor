@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
+using LicencjatInformatyka_RMSE_.NewFolder5;
 
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 {
@@ -13,7 +14,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
         }
 
         // Najgorzej wygl¹daj¹ca metoda
-        public static Dictionary<List<List<Rule>>, SimpleTree> ReturnComplexTreeAndDifferences(List<Rule> baseList, Rule ruleForCheck)
+        public static Dictionary<List<List<Rule>>, SimpleTree> ReturnComplexTreeAndDifferences
+            (GatheredBases bases, Rule ruleForCheck)
         {
             var divideList = new List<List<Rule>>();
 
@@ -28,7 +30,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
                 foreach (SimpleTree parentWithoutChild in parentWithoutChildren)
                 {
-                    RefactoringMethod(baseList, parentWithoutChild, divideList);
+                    ExpandBrunchOrMakeAskable(bases, parentWithoutChild, divideList);
                 }
             } while (parentWithoutChildren.Count() != 0);
             
@@ -41,17 +43,18 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             return treeAndDifferencesDictionary;
         }
 
-        private static void RefactoringMethod
-            (List<Rule> baseList, SimpleTree parentWithoutChild, List<List<Rule>> divideList)
+        private static void ExpandBrunchOrMakeAskable
+            (GatheredBases bases, SimpleTree parentWithoutChild, List<List<Rule>> divideList)
         {
             foreach (string condition in parentWithoutChild.rule.Conditions)
             {
                 List<Rule> returnedRules = ConclusionOperations.FindRulesWithParticularConclusion(condition,
-                    baseList);
+                    bases.RuleBase.RulesList);
 
                 if (returnedRules.Count == 0)
                 {
-                    var endRule = new Rule {Conclusion = condition};
+                    bool model =   CheckModel(condition, bases);
+                    var endRule = new Rule {Conclusion = condition, Model = model};
                     parentWithoutChild.Children.Add(new SimpleTree {Dopytywalny = true, rule = endRule,Parent = parentWithoutChild});
                 }
                 else
@@ -65,6 +68,11 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                     }
                 }
             }
+        }
+
+        private static bool CheckModel(string condition, GatheredBases bases)
+        {
+            return bases.ModelsBase.ModelList.Any(model => model.Conclusion == condition);
         }
 
         private static List<List<Rule>> ReturnDifferenceBetweenTables(List<List<Rule>> divideList,
@@ -178,8 +186,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             }
         }
 
-        public static List<object> NowaMetodaSprzecznosc
-            (List<Rule> baseList, Rule ruleForCheck, int o)
+        public static List<object> MethodForContradiction
+            (GatheredBases bases, Rule ruleForCheck, int o)
         {
             var divideList = new List<List<Rule>>();
             
@@ -194,7 +202,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
                 foreach (SimpleTree parentWithoutChild in parentWithoutChildren)
                 {
-                    RefactoringMethod(baseList, parentWithoutChild, divideList); 
+                    ExpandBrunchOrMakeAskable(bases, parentWithoutChild, divideList); 
                     i++;
 
                 if (i==o)

@@ -11,9 +11,9 @@ namespace LicencjatInformatyka_RMSE_.NewFolder4
     {
         private readonly ILanguageConfig _config;
 
-        public ModelBase(ILanguageConfig config)
+        public ModelBase()
         {
-            _config = config;
+            
         }
 
 

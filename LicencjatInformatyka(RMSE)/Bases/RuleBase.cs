@@ -23,7 +23,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder4
 
      
 
-        public void ReadAndAddRules(string rules)
+        public void ReadRules(string rules)
         {
             foreach (string line in File.ReadLines(rules, Encoding.GetEncoding("Windows-1250")))
             {

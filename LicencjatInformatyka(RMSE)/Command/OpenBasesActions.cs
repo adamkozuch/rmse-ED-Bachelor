@@ -1,76 +1,74 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
-using System.Windows.Documents;
 using LicencjatInformatyka_RMSE_.NewFolder1;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
-using LicencjatInformatyka_RMSE_.NewFolder4;
-using LicencjatInformatyka_RMSE_.OperationsOnBases;
+using LicencjatInformatyka_RMSE_.NewFolder5;
 using Microsoft.Win32;
 
 namespace LicencjatInformatyka_RMSE_.Command
 {
     internal class OpenBasesActions
     {
-        public readonly List<Fact> bazaFaktow = new List<Fact>();
+        
+        
+        private readonly GatheredBases _gatheredBases ;
         private ViewModel _viewModel;
-        private readonly OperacjeNaDopytywalnych _operacjeNaDopytywalnych;
 
-        public OpenBasesActions(ViewModel viewModel)
+        public OpenBasesActions(ViewModel viewModel, GatheredBases bases)
         {
             _viewModel = viewModel;
-            _operacjeNaDopytywalnych = new OperacjeNaDopytywalnych(this);
+            _gatheredBases = bases;
+         
         }
 
-        public void OpenRuleBase()
+        public void ReadRuleBase()
         {
-            var loadedRules = new RuleBase();
+            var fileDialog = new OpenFileDialog();
+            fileDialog.ShowDialog();
 
-            var dlg = new OpenFileDialog();
-            dlg.ShowDialog();
-
-            if (dlg.FileName != "")
+            if (fileDialog.FileName != "")
             {
-                loadedRules.ReadAndAddRules(dlg.FileName);
-
-              Sprzecznosc.SprzecznoscZewnetrzna(loadedRules.RulesList);
-
-
-                var tree = TreeOperations.ReturnComplexTreeAndDifferences(loadedRules.RulesList, loadedRules.RulesList[0]);
-                var possibleTrees = TreeOperations.ReturnPossibleTrees(tree.Values.First(), tree.Keys.First());
-
-                _operacjeNaDopytywalnych.ZnajdzDopytywalneWarunki(possibleTrees);
+                _gatheredBases.RuleBase.ReadRules(fileDialog.FileName);
             }
         }
 
-
-        public void OpenConstrainBase()
+        public void ReadConstrainBase()
         {
-            //ConstrainBase LoadedConstrains = new ConstrainBase();
+            var fileDialog = new OpenFileDialog();
+            fileDialog.ShowDialog();
 
-            //Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            //dlg.ShowDialog();
-            //if (dlg.FileName != "")
-            //{
-            //    LoadedConstrains.ReadConstrains(dlg.FileName);
-            //    _viewModel.mk.ConstrainList = LoadedConstrains.LimitList;
-
-            //}
+            if (fileDialog.FileName != "")
+            {
+                _gatheredBases.ConstrainBase.ReadConstrains(fileDialog.FileName);
+            }
         }
 
-        public void OpenModelBase()
+        public void ReadModelBase()
         {
-            //ModelBase LoadedModels = new ModelBase();
+            var fileDialog = new OpenFileDialog();
+            fileDialog.ShowDialog();
 
-            //Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-            //dlg.ShowDialog();
-            //if (dlg.FileName != "")
-            //{
-            //    LoadedModels.ReadModels(dlg.FileName);
-            //    _viewModel.mk.ModeList = LoadedModels.ModelList;
-            //}
+            if (fileDialog.FileName != "")
+            {
+                _gatheredBases.ModelsBase.ReadModels(fileDialog.FileName);
+            }
+        }
+
+       
+
+        private void AskForConstrainValue(List<Constrain> list)
+        {
+            foreach (Constrain constrain in list)
+            {
+                string trueConstrain = FillTrueConstrain(constrain);
+                _gatheredBases.FactBase.FactList.AddRange(ConclusionOperations.LoadConstrainAndReturnFactList(constrain, trueConstrain));
+            }
+        }
+
+        private string FillTrueConstrain(Constrain constrain)
+        {
+            throw new NotImplementedException();  // mechanizm w UI
         }
     }
 }

@@ -27,7 +27,12 @@ namespace LicencjatInformatyka_RMSE_
         {
          
             InitializeComponent();
-            
+           
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Some text", "ddd", MessageBoxButton.YesNo);
         }
 
        

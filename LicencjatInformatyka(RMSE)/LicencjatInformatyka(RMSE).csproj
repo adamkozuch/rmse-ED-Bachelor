@@ -53,8 +53,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Bases\ArgumentBase.cs" />
+    <Compile Include="Bases\FactBase.cs" />
+    <Compile Include="Command\ActionsOnBase.cs" />
     <Compile Include="Command\OpenBasesActions.cs" />
-    <Compile Include="Command\OperacjeNaDopytywalnych.cs" />
+    <Compile Include="OperationsOnBases\ConclusionClass.cs" />
     <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="Command\ViewModel.cs" />
     <Compile Include="ElementsOfBases\Advice.cs" />
@@ -67,10 +70,11 @@
     <Compile Include="ElementsOfBases\Sound.cs" />
     <Compile Include="OperationsOnBases\Arithmetic.cs" />
     <Compile Include="OperationsOnBases\ConclusionOperations.cs" />
+    <Compile Include="OperationsOnBases\Contradiction.cs" />
     <Compile Include="OperationsOnBases\ForwardChaining.cs" />
     <Compile Include="OperationsOnBases\OperationsOnString.cs" />
     <Compile Include="OperationsOnBases\RaportAndDescription.cs" />
-    <Compile Include="OperationsOnBases\SimpleTree.cs" />
+    <Compile Include="ElementsOfBases\SimpleTree.cs" />
     <Compile Include="Bases\RuleBase.cs" />
     <Compile Include="Bases\SoundBase.cs" />
     <Page Include="MainWindow.xaml">

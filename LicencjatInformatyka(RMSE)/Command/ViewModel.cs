@@ -11,16 +11,17 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
     class ViewModel
     {
         private ILanguageConfig _languageConfig;
-
+        private GatheredBases bases;
         public ViewModel()
         {
        //     this._languageConfig = languageConfig;
+            bases = new GatheredBases();
 
+            _openBasesActions = new OpenBasesActions(this,bases);
 
-            _openBasesActions = new OpenBasesActions(this);
-            OpenRuleCommand = new RelayCommand(pars => _openBasesActions.OpenRuleBase());
-            OpenConstrainCommand = new RelayCommand(pars => _openBasesActions.OpenConstrainBase());
-            OpenModelCommand = new RelayCommand(pars => _openBasesActions.OpenModelBase());
+            OpenRuleCommand = new RelayCommand(pars => _openBasesActions.ReadRuleBase());
+            //OpenConstrainCommand = new RelayCommand(pars => _openBasesActions.OpenConstrainBase());
+            //OpenModelCommand = new RelayCommand(pars => _openBasesActions.OpenModelBase());
           
             
 

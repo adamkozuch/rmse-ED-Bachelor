@@ -53,7 +53,7 @@ namespace Testy
         {
           
             RuleBase r = new RuleBase();
-            r.ReadAndAddRules(@"‪C:\Users\Adamk\Desktop\Test\test.txt");
+            r.ReadRules(@"‪C:\Users\Adamk\Desktop\Test\test.txt");
 
         
 
