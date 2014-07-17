@@ -50,7 +50,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder2
             VariablesList = variablesList;
             Semaphor = semaphor;
             ModelType = "linear";
-            ModelValue = ar.LinearValue(factorsList, variablesList);
+      
         }
 
         public Model(int modelNumber, string startCondition,

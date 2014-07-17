@@ -10,6 +10,8 @@ namespace LicencjatInformatyka_RMSE_.NewFolder4
     public class ModelBase
     {
         private readonly ILanguageConfig _config;
+        private List<Model> _modelList = new List<Model>();
+        private List<Argument> _argumentList = new List<Argument>();
 
         public ModelBase()
         {
@@ -17,8 +19,17 @@ namespace LicencjatInformatyka_RMSE_.NewFolder4
         }
 
 
-        public List<Model> ModelList { get; set; }
-        public List<Argument> ArgumentList { get; set; }
+        public List<Model> ModelList
+        {
+            get { return _modelList; }
+            set { _modelList = value; }
+        }
+
+        public List<Argument> ArgumentList
+        {
+            get { return _argumentList; }
+            set { _argumentList = value; }
+        }
 
         public void ReadRules()
         {
@@ -39,7 +50,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder4
 
             //browsking apriopriate model
             // Trzeba się zastanowic nad leszym sposobem na identyfikację mało uniwersalny
-            if (TypeOfModel == _config.SimpleModel)
+            if (TypeOfModel == "model")
             {
                 ModelList.Add(SimpleModel(line));
             }

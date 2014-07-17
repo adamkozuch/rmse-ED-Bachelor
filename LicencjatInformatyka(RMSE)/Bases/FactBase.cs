@@ -13,7 +13,13 @@ namespace LicencjatInformatyka_RMSE_.Bases
 {
    public class FactBase
     {
-       public List<Fact> FactList { get; set; }
+       private List<Fact> _factList = new List<Fact>();
+
+       public List<Fact> FactList
+       {
+           get { return _factList; }
+           set { _factList = value; }
+       }
 
 
        public void ReadFacts(string path)

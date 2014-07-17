@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Runtime.InteropServices;
 using LicencjatInformatyka_RMSE_.NewFolder1;
 using LicencjatInformatyka_RMSE_.NewFolder5;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
@@ -9,11 +10,13 @@ namespace LicencjatInformatyka_RMSE_.Command
     {
         private ViewModel _viewModel;
         private GatheredBases _bases;
+        private ConclusionClass conclusion;
 
         public ActionsOnBase(GatheredBases bases, ViewModel model)
         {
             _viewModel = model;
             _bases = bases;
+          conclusion  = new ConclusionClass(_bases);
         }
 
         public void CheckOutsideContradiction()
@@ -26,17 +29,19 @@ namespace LicencjatInformatyka_RMSE_.Command
             Contradiction.CheckContradictionInConstrains(_bases, _bases.ConstrainBase.ConstrainList);
         }
 
-        private void MetodaWnioskujaca()
+        public void MetodaWnioskujaca()
         {
-            //    _openBasesActions(_openBasesActions.bazaOgraniczen); // dopytanie ograniczeñ musi byc na pocz¹tku
-            //    // Jeœli w sp³aszczonej reule w warunkac dopytywalnych bêd¹ wiecej jak jeden warunkow z ograniczenia to 
-            //    // mamy sprzecznoœæ. Musimy sprawdzaæ wszystkie sp³aszczone opcje po kolei
+                // trzeba znalezc metode dopytujaca
+            //_openBasesActions(_openBasesActions.bazaOgraniczen); // dopytanie ograniczeñ musi byc na pocz¹tku
+                // Jeœli w sp³aszczonej reule w warunkac dopytywalnych bêd¹ wiecej jak jeden warunkow z ograniczenia to 
+                // mamy sprzecznoœæ. Musimy sprawdzaæ wszystkie sp³aszczone opcje po kolei
 
-            //    var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases.RuleBase.RulesList, _bases.RuleBase.RulesList[0]);
-            //    var possibleTrees = TreeOperations.ReturnPossibleTrees(tree.Values.First(), tree.Keys.First());
+                var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases, _bases.RuleBase.RulesList[0]);
+                var possibleTrees = TreeOperations.ReturnPossibleTrees(tree.Values.First(), tree.Keys.First());
 
-            //    _openBasesActions._operacjeNaDopytywalnych.Conclude(possibleTrees);
-            //}
-        }
+                conclusion.Conclude(possibleTrees);
+
+            }
+        
     }
 }

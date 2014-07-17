@@ -18,11 +18,12 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
             bases = new GatheredBases();
 
             _openBasesActions = new OpenBasesActions(this,bases);
+            _actionsOnBase = new ActionsOnBase(bases,this);
 
             OpenRuleCommand = new RelayCommand(pars => _openBasesActions.ReadRuleBase());
-            //OpenConstrainCommand = new RelayCommand(pars => _openBasesActions.OpenConstrainBase());
-            //OpenModelCommand = new RelayCommand(pars => _openBasesActions.OpenModelBase());
-          
+            OpenConstrainCommand = new RelayCommand(pars => _openBasesActions.ReadConstrainBase());
+            OpenModelCommand = new RelayCommand(pars => _openBasesActions.ReadModelBase());
+           ConcludeCommand = new RelayCommand(pars =>  _actionsOnBase.MetodaWnioskujaca() );
             
 
 
@@ -42,6 +43,8 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
         public ICommand TextCommand { get; set; }
         private string _text ;
         private readonly OpenBasesActions _openBasesActions;
+        private readonly ActionsOnBase _actionsOnBase;
+
 
         #endregion
 

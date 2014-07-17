@@ -41,7 +41,7 @@ namespace LicencjatInformatyka_RMSE_.Bases
        var argument = OperationsOnString.RemoveBeggining(line);
        var argumentConverted = OperationsOnString.SplitArguments(argument);
        if (CheckIfAskable(argumentConverted) == false)
-           return new Argument() { ArgumentName = argumentConverted[0],Value = float.Parse(argumentConverted[1])};
+           return new Argument() { ArgumentName = argumentConverted[0],Value = argumentConverted[1]};
        else
        {
            MessageBox.Show("Fakt " + argumentConverted + "nie jest dopytywalny");

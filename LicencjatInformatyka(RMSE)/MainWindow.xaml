@@ -11,8 +11,10 @@
 
 
     <Grid >
-        <Button Content="Button" HorizontalAlignment="Left" Height="62" Margin="312,50,0,0" VerticalAlignment="Top" Width="136" Command="{Binding OpenRuleCommand}" />
-        <Button Content="Button" HorizontalAlignment="Left" Margin="127,235,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Załaduj reguly" HorizontalAlignment="Left" Height="62" Margin="312,50,0,0" VerticalAlignment="Top" Width="136" Command="{Binding OpenRuleCommand}" />
+        <Button Content="Załaduj ograniczenia" HorizontalAlignment="Left" Margin="94,50,0,0" VerticalAlignment="Top" Width="112" Command="{Binding OpenConstrainCommand}"  Height="62"/>
+        <Button Content="Załaduj modele" HorizontalAlignment="Left" Height="62" Margin="500,50,0,0" VerticalAlignment="Top" Width="136" Command="{Binding OpenModelCommand}" />
+        <Button Content="Wnioskuj cos" HorizontalAlignment="Left" Height="66" Margin="312,167,0,0" VerticalAlignment="Top" Width="162" Command="{Binding ConcludeCommand}"  />
 
     </Grid>
 </Window>

@@ -90,6 +90,7 @@ namespace LicencjatInformatyka_RMSE_.Command
             foreach (Model model in models)
             {
                 bool start = CheckStartCOndition(model.StartCondition);
+                start = true;
                 if (start)
                 {
                     if (model.ModelType == "simple")
@@ -129,6 +130,7 @@ namespace LicencjatInformatyka_RMSE_.Command
                     }
                 }
             }
+            MessageBox.Show("Dopytaj " +arg);
             return null;
         }
 
@@ -143,7 +145,7 @@ namespace LicencjatInformatyka_RMSE_.Command
                     IEnumerable<Model> models = FindModels(firstModelValue);
                     if (!models.Any())
                     {
-                        firstModelValue = AskValue();
+                        firstModelValue = AskValue(model.FirstArg);
                     }
                     else
                     {
@@ -172,22 +174,7 @@ namespace LicencjatInformatyka_RMSE_.Command
                 var argumentValueList = new List<string>();
                 foreach (string argument in model.ArgumentsList)
                 {
-                    string argumentValue = CheckInArguments(argument);
-                    if (null == argumentValue)
-                    {
-                        IEnumerable<Model> models = FindModels(argument);
-                        if (!models.Any())
-                            AskValue();
-                        else
-                        {
-                            foreach (Model model1 in models)
-                            {
-                                argumentValue = DoArithmetic(model1);
-                                if (argumentValue != null)
-                                    break;
-                            }
-                        }
-                    }
+                    var argumentValue = ArgumentValue(argument);
                     if (argumentValue != null)
                         argumentValueList.Add(argumentValue);
                     else
@@ -202,12 +189,76 @@ namespace LicencjatInformatyka_RMSE_.Command
             }
             else if (model.ModelType == "linear")
             {
+                List<string> factors = new List<string>();
+                List<string> variablesList = new List<string>();
+                foreach (var factor in model.FactorsList)
+                {
+                    var factorValue = ArgumentValue(factor);
+                    if (factorValue != null)
+                        factors.Add(factorValue);
+                    else 
+                    {
+                      MessageBox.Show("Nieukonkretniony");
+                        return null;
+                    }
+                }
 
+                foreach (var variable in model.VariablesList)
+                {
+                    var variableValue = ArgumentValue(variable);
+                    if (variableValue != null)
+                        factors.Add(variableValue);
+                    else
+                    {
+                        MessageBox.Show("Nieukonkretniony");
+                        return null;
+                    }
+                }
+             return   Arithmetic.LinearValue(factors, variablesList);
 
             }
-            else if (model.ModelType == "poly")
+            else if (model.ModelType == "polynomial")
             {
+                var variable = ArgumentValue(model.VariableValue);
+                List<string> factorsList = new List<string>();
+                foreach (var factor in model.FactorsList)
+                {
+                    var factorValue = ArgumentValue(factor);
+                    if (factorValue != null)
+                        factorsList.Add(factorValue);
+                    else
+                    {
+                        MessageBox.Show("Nieukonkretniony");
+                        return null;
+                    }
+                }
+
+
             } //posprawdzac nazwy
+
+            MessageBox.Show("Cos nie tak z modelami");
+            return null;
+        }
+
+        private string ArgumentValue(string argument)
+        {
+            string argumentValue = CheckInArguments(argument);
+            if (null == argumentValue)
+            {
+                IEnumerable<Model> models = FindModels(argument);
+                if (!models.Any())
+                    AskValue(argument);
+                else
+                {
+                    foreach (Model model1 in models)
+                    {
+                        argumentValue = DoArithmetic(model1);
+                        if (argumentValue != null)
+                            break;
+                    }
+                }
+            }
+            return argumentValue;
         }
 
         private IEnumerable<Model> FindModels(string firstModelValue)
@@ -216,9 +267,10 @@ namespace LicencjatInformatyka_RMSE_.Command
         }
 
 
-        private string AskValue()
+        private string AskValue( string s)
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Pytam o wartosc  "+s);
+            return null;
         }
 
         private string CheckInArguments(string firstArg)
@@ -260,7 +312,8 @@ namespace LicencjatInformatyka_RMSE_.Command
 
         private bool Ask()
         {
-            throw new NotImplementedException();
+            MessageBox.Show("Pytam o bool");
+            return false;
         }
     }
 }

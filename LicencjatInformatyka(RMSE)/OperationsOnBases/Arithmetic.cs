@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 
 namespace LicencjatInformatyka_RMSE_.NewFolder3
 {
@@ -156,10 +157,11 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
             //    //return Math.Atan(var1);
             //}
 
-
+            MessageBox.Show("Zły znak");
+            return false;
         }
 
-        public static int LinearValue(List<string>farctorsList, List<string>variablesList  )
+        public static string LinearValue(List<string>farctorsList, List<string>variablesList  )
         {
 
             int result = 0;
@@ -170,7 +172,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
                 result += factor*variable;
             }
 
-            return result;
+            return result.ToString();
         }
 
         public static string ExtendedArithmeticModel(List<string> argumentList,  string znak)
