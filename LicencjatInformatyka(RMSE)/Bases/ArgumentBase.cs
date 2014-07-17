@@ -26,7 +26,7 @@ namespace LicencjatInformatyka_RMSE_.Bases
            if (m.Success)
            {
 
-               var value = CreateFact(line);
+               var value = CreateArgument(line);
                if (value != null)
                    argumentList.Add(value);
 

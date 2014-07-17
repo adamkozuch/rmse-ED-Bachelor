@@ -54,10 +54,12 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                     {
                         // trzeba zebrać wszystkie warunki startowe
                         // jeszcze zrobić mały research 
+
                         foreach (var model in models)
                         {
-                            // skomplikowane
-
+                            List<string> list= new List<string>();
+                           var listOfStartedConditions = GatherStartConditions(model, bases,list);
+                            CheckContradictionBetweenRulesAndStartedConditions(listOfStartedConditions, condition.Value);
                         }
 
 
@@ -68,6 +70,62 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             }
 
 
+        }
+        // metode mozna wykozystac do modeli relacyjnych jako warunki startowe
+        private static bool CheckContradictionBetweenRulesAndStartedConditions
+            (List<string> listOfStartedConditions, SimpleTree ruleForCheck)
+        {
+            while (ruleForCheck.Parent != null)
+            {
+
+                foreach (var StartedCondition in listOfStartedConditions)
+                {
+                    if (StartedCondition == ruleForCheck.rule.Conclusion)
+                    {
+                        MessageBox.Show("Konflikt pomiędzy modelami i regułami" +StartedCondition );
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
+
+        // metoda do przepracowania
+        private static List<string> GatherStartConditions(Model model, GatheredBases bases, List<string> r )
+        {
+            if(model.StartCondition!="bez warunku")
+                r.Add(model.StartCondition);
+
+            if (model.ModelType == "simple")
+            {
+                var models = bases.ModelsBase.ModelList.Where(p => p.Conclusion == model.FirstArg);
+                foreach (var model1 in models)
+                {
+                  r.AddRange( GatherStartConditions(model1, bases, r));  //
+                }
+                 models = bases.ModelsBase.ModelList.Where(p => p.Conclusion ==model.SecoundArg ); 
+                 foreach (var model1 in models)
+                {
+                    r.AddRange(GatherStartConditions(model1, bases, r));  //
+                }
+                
+            }
+            if (model.ModelType == "extended")
+            {
+                foreach (var argument in model.ArgumentsList)
+                {
+                   var models = bases.ModelsBase.ModelList.Where(p => p.Conclusion == argument);
+                    foreach (var model1 in models)
+                    {
+                        r.AddRange(GatherStartConditions(model1, bases, r));  //
+                    }
+                    
+                }
+                
+
+
+            }
+            return r;
         }
 
         public static void CheckContradictionInConstrains

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LicencjatInformatyka_RMSE_.NewFolder3
 {
@@ -7,111 +8,158 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
     {
 
         // zrobić ją statyczna
-        private int Znak(string znak, string variable1,string variable2)
+        public static double OperationForBasicModel(string znak, string variable1,string variable2)
         {
 
-            int var1 = int.Parse(variable1);
-            int var2 = int.Parse(variable2);
+            float var1 = float.Parse(variable1);
+            float var2 = float.Parse(variable2);
 
 
+            if (var2 != 0)
+            {
+                #region TwoArguments
+                if (znak == "+")
+                {
+                    return var1 + var2;
+                }
+                else if (znak == "-")
+                {
+                    return var1 - var2;
+                }
+                else if (znak == "*")
+                {
+                    return var1*var2;
+                }
+                else if (znak == "/")
+                {
+                    return var1/var2;
+                }
+                else if (znak == "=")
+                {
+                    return var1 = var2;
+                }
+                else if (znak == "div")
+                {
 
-            if (znak == "+")
-            {
-                return var1 + var2;
-            } else if (znak=="-")
-            {
-                return var1 - var2;
-            } else if (znak=="*")
-            {
-                return var1*var2;
-            }else if (znak == "/")
-            {
-                return var1/var2;
-            }else if (znak=="=")
-            {
-                return var1 = var2;
-            } else if (znak=="div")
-            {
-                
-            }else if (znak == "mod")
-            {
-               
-                return var1%var2;
-            }else if (znak=="min")
-            {
-                return Math.Min(var1, var2);
-            }else if (znak == "max")
-            {
-                return Math.Max(var1, var2);
-            }else if (znak=="%")
-            {
-                
-            }else if (znak=="zaokraglenie_do_N")
-            {
-                
-            }else if (znak == "A^N")
-            {
-                
+                }
+                else if (znak == "mod")
+                {
+
+                    return var1%var2;
+                }
+                else if (znak == "min")
+                {
+                    return Math.Min(var1, var2);
+                }
+                else if (znak == "max")
+                {
+                    return Math.Max(var1, var2);
+                }
+                else if (znak == "%")
+                {
+
+                }
+                else if (znak == "zaokraglenie_do_N")
+                {
+
+                }
+                else if (znak == "A^N")
+                {
+
+                }
+                #endregion 
             }
+            else
+            {
+                #region OneArgument
+                if (znak == "sqrt")
+                {
+                    return Math.Sqrt(var1);
+                }else if (znak=="sin")
+                {
+                    return Math.Sin(var1);
+                }else if (znak=="cos")
+                {
+                    return Math.Cos(var1);
+                }
+                else if (znak == "tan")
+                {
+                    return Math.Tan(var1);
+                }
+                else if (znak == "arctan")
+                {
+                    return Math.Atan(var1);
+                }
+                else if (znak == "log")
+                {
+                    return Math.Log(var1);
+                }
+                else if (znak == "ln")
+                {
+                    return Math.Log10(var1);
+                }
+                else if (znak == "exp")
+                {
+                    return Math.Exp(var1);
+                }
+                else if (znak == "round")
+                {
+                    return Math.Round(var1);
+                }
+                else if (znak == "trunc")
+                {
+                    return Math.Truncate(var1);
+                }
+                else if (znak == "abs")
+                {
+                    return Math.Abs(var1);
+                }
 
+                #endregion 
+            }
             return 1;
 
         }
 
 
-        //private double Znak1(string znak,string variable)
-        //{
+        public static bool RelationalOperation(string znak, string variable1, string variable2)
+        {
+            double var1 = double.Parse(variable1);
+            double var2 = double.Parse(variable2);
 
-        //   double var1 = double.Parse(variable);
-          
+            if (znak == ">")
+            {
+                return var1>var2;
+            }
+            else if (znak == "==")
+            {
+                return var1==var2;
+            }
+            else if (znak == "<")
+            {
+                return var1 < var2;
+            }
+            else if (znak == ">=")
+            {
+                return var1 >= var2;
+            }
+            else if (znak == "<=")
+            {
+                return var1 <= var2;
+            }
+            //else if (znak == "><")
+            //{
+            //   // return var1  var2;
+            //}
+            //else if (znak == "<>")
+            //{
+            //    //return Math.Atan(var1);
+            //}
 
-        //    if (znak == "sqrt")
-        //    {
-        //     return   Math.Sqrt(var1);
-        //    }
-        //    else if (znak == "sin")
-        //    {
-        //      return  Math.Sin(var1);
-        //    }
-        //    else if (znak == "cos")
-        //    {
-        //       return Math.Cos(var1);
-        //    }
-        //    else if (znak == "tan")
-        //    {
-        //      return  Math.Tan(var1);
-        //    }
-        //    else if (znak == "arctan")
-        //    {
-        //       return Math.Atan(var1);
-        //    }
-        //    else if (znak == "log")
-        //    {
-        //        //Math.Log(var1,)
-        //    }
-        //    else if (znak == "ln")
-        //    {
-        //        //Math.l
-        //    }
-        //    else if (znak == "exp")
-        //    {
 
-        //    }
-        //    else if (znak == "round")
-        //    {
-        //        Math.Round(var1);
-        //    }
-        //    else if (znak == "trunc")
-        //    {
-        //        Math.Truncate(var1);
-        //    }
-        //    else if (znak == "abs")
-        //    {
-        //        Math.Abs(var1);
-        //    }    
-        //}
+        }
 
-        public int LinearValue(List<string>farctorsList, List<string>variablesList  )
+        public static int LinearValue(List<string>farctorsList, List<string>variablesList  )
         {
 
             int result = 0;
@@ -125,44 +173,88 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
             return result;
         }
 
-        public void ExtendedArithmeticModel(List<string> r,  string znak)
+        public static string ExtendedArithmeticModel(List<string> argumentList,  string znak)
         {
+            var numbers = new List<double>();
+            foreach (var VARIABLE in argumentList)
+            {
+                numbers.Add(double.Parse(VARIABLE));
+            }
+            var result=0.0;
+
             if (znak == "+")
             {
+                foreach (var number in numbers)
+                {
+                    result += number;
+                }
                 
             }else if (znak == "*")
             {
+                foreach (var number in numbers)
+                {
+                    if (result == 0)
+                    {
+                        result = number;
+                    }
+                    else
+                    {
+                        result = result*number;
+                    }
+                }
+               
                 
             }else if (znak == "min_list")
             {
-                
-            }else if (znak == "max_list")
-            {
-                
+                result = numbers[0];
+                result = numbers.Concat(new[] {result}).Min();
             }
-                
+            else if (znak == "max_list")
+            {
+                result = numbers[0];
+                result = numbers.Concat(new[] {result}).Max();
+            }
+            return result.ToString();
         }
 
-        //public int ExtendedRelationalModel(string znak)
-        //{
-        //    if (znak == "<,<")
-        //    {
+        public static bool ExtendedRelationalModel
+            (string znak, string variable1, string variable2,string variable3)
+        {
 
-        //    }
-        //    else if (znak == "<,<=")
-        //    {
+            //double var1 = double.Parse(variable1);
+            //double var2 = double.Parse(variable2);
+            //double var3 = double.Parse(variable3);
 
-        //    }
-        //    else if (znak == "<=,<")
-        //    {
-
-        //    }
-        //    else if (znak == "<=,<=")
-        //    {
-
-        //    }
-
-        //}
+            if (znak == "<,<")
+            {
+                if(RelationalOperation("<",variable1,variable2))
+                    if (RelationalOperation("<", variable2, variable3))
+                        return true;
+                return false;
+            }
+            else if (znak == "<,<=")
+            {
+                if (RelationalOperation("<", variable1, variable2))
+                    if (RelationalOperation("<=", variable2, variable3))
+                        return true;
+                return false;
+            }
+            else if (znak == "<=,<")
+            {
+                if (RelationalOperation("<=", variable1, variable2))
+                    if (RelationalOperation("<", variable2, variable3))
+                        return true;
+                return false;
+            }
+            else if (znak == "<=,<=")
+            {
+                if (RelationalOperation("<=", variable1, variable2))
+                    if (RelationalOperation("<=", variable2, variable3))
+                        return true;
+                return false;
+            }
+            return false; //Exception(ex); // jakos to trzeba obsluzyc
+        }
 
     }
 }

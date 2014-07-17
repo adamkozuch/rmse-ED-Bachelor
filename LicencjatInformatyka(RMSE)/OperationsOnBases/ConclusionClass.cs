@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Windows;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
@@ -12,7 +11,15 @@ namespace LicencjatInformatyka_RMSE_.Command
 {
     internal class ConclusionClass
     {
-        private GatheredBases _bases;
+        public enum ModelType
+        {
+            simple,
+            extended,
+            linear,
+            poly
+        }
+
+        private readonly GatheredBases _bases;
 
         public ConclusionClass(GatheredBases bases)
         {
@@ -23,20 +30,19 @@ namespace LicencjatInformatyka_RMSE_.Command
         {
             foreach (var onePossibility in possibleTrees) //flattering all possible configurations of conditions
             {
-                var askableTable = onePossibility.Where(var => var.Dopytywalny).ToList();
+                List<SimpleTree> askableTable = onePossibility.Where(var => var.Dopytywalny).ToList();
 
                 // sprawdzamy czy jest w bazie faktow
-                foreach (var rule in askableTable)
+                foreach (SimpleTree rule in askableTable)
                 {
-                    foreach (var fact in _bases.FactBase.FactList)
+                    foreach (Fact fact in _bases.FactBase.FactList)
                     {
-
-                        if (rule.rule.Conclusion == fact.FactName)  //set value of asking conditions
+                        if (rule.rule.Conclusion == fact.FactName) //set value of asking conditions
                             rule.rule.ConclusionValue = true;
                     }
                 }
-               
-                var conclusionValue  = CheckConclusionValue(askableTable); // Check if all asking are true
+
+                bool conclusionValue = CheckConclusionValueOrCountModel(askableTable); // Check if all asking are true
 
                 if (conclusionValue)
                 {
@@ -47,100 +53,178 @@ namespace LicencjatInformatyka_RMSE_.Command
             return false;
         }
 
-        private  bool CheckConclusionValue(List<SimpleTree> askingTable)
+        private bool CheckConclusionValueOrCountModel(List<SimpleTree> askingTable)
         {
             int i = 0;
-            foreach (var simpleTree in askingTable)
+            foreach (SimpleTree simpleTree in askingTable)
             {
                 if (simpleTree.rule.Model)
                 {
                     ProcessModel(simpleTree.rule.Conclusion);
-
-
                 }
 
                 if (simpleTree.rule.ConclusionValue)
                     i++;
                 else
                 {
-                    
-                    MessageBox.Show("Wprowadz wartoœæ warunku" +" "+ simpleTree.rule.Conclusion);
+                    MessageBox.Show("Wprowadz wartoœæ warunku" + " " + simpleTree.rule.Conclusion);
                     simpleTree.rule.ConclusionValue = true;
                 }
             }
 
             if (i == askingTable.Count)
                 return true; // hipoteza jest prawdziwa
-            return false;//else trzeba sprawdzac dalej
+            return false; //else trzeba sprawdzac dalej
         }
 
-        private   void ProcessModel(string conclusion)
-        {
 
-            var models = _bases.ModelsBase.ModelList.Where(p => p.Conclusion == conclusion);
-            foreach (var model in models)
+        /// <summary>
+        ///     masakra z tymi modelami trzeba to jeszcze raz przeanalizowaæ wprowadziæ
+        ///     obliczenia i sprawdziæ logikê oraz uproœciæ
+        /// </summary>
+        /// <param name="conclusion"></param>
+        // t¹ metodê trzeba potraktowaæ jako pocz¹tek w którym jest przetwarzany model relacyjny
+        private bool ProcessModel(string conclusion)
+        {
+            IEnumerable<Model> models = _bases.ModelsBase.ModelList.Where(p => p.Conclusion == conclusion);
+            foreach (Model model in models)
             {
-              var start =  CheckStartCOndition(model.StartCondition);
+                bool start = CheckStartCOndition(model.StartCondition);
                 if (start)
                 {
                     if (model.ModelType == "simple")
                     {
-                        DoRelations(model);
-                        DoArithmetic(model);
+                        var concreteArgs = new List<string>();
+                        string str1 = FillArgsTable(model.FirstArg);
+                        string str2 = FillArgsTable(model.SecoundArg);
+
+                        return Arithmetic.RelationalOperation(model.Operation, str1, str2);
                     }
-                    else
+                    if (model.ModelType == "extended")
                     {
-                        DoArithmetic(model);
+                        string str1 = FillArgsTable(model.ArgumentsList[0]);
+                        string str2 = FillArgsTable(model.ArgumentsList[1]);
+                        string str3 = FillArgsTable(model.ArgumentsList[2]); // trzeba sprawdziæ czy s¹ nulami
+                        return Arithmetic.ExtendedRelationalModel(model.Operation, str1, str2, str3);
                     }
-
                 }
-
             }
+            MessageBox.Show("Nieukonkretniono modleu");
+            return false; // ni
         }
 
-        private float DoArithmetic(Model model)
+        private string FillArgsTable(string arg)
+        {
+            Model model;
+            string r = CheckInArguments(arg);
+            if (r == null)
+            {
+                IEnumerable<Model> mod = FindModels(arg);
+                foreach (Model VARIABLE in mod)
+                {
+                    string value = DoArithmetic(VARIABLE);
+                    if (value != null)
+                    {
+                        return value;
+                    }
+                }
+            }
+            return null;
+        }
+
+        private string DoArithmetic(Model model)
         {
             if (model.ModelType == "simple")
             {
-                var firstModelValue = CheckInArguments(model.FirstArg);
-                if (firstModelValue ==null )
+                string firstModelValue = CheckInArguments(model.FirstArg);
+                string secoundModelValue = CheckInArguments(model.SecoundArg);
+                if (firstModelValue == null)
                 {
-                   return Robocza(model);
+                    IEnumerable<Model> models = FindModels(firstModelValue);
+                    if (!models.Any())
+                    {
+                        firstModelValue = AskValue();
+                    }
+                    else
+                    {
+                        foreach (Model mod in models)
+                        {
+                            firstModelValue = DoArithmetic(mod);
+                            if (firstModelValue != null)
+                                break;
+                        }
+                    }
                 }
-                
-                    return AskValue();
-                
+
+                if (firstModelValue == null)
+                    return null;
+                if (secoundModelValue == null)
+                    return null;
+
+
+                return Arithmetic.OperationForBasicModel
+                    (model.Operation, firstModelValue, secoundModelValue).ToString();
+                // to musi byc rezultat ale nie wiem czy przeparsowac
+                // do stringa
             }
-           
+            if (model.ModelType == "extended")
+            {
+                var argumentValueList = new List<string>();
+                foreach (string argument in model.ArgumentsList)
+                {
+                    string argumentValue = CheckInArguments(argument);
+                    if (null == argumentValue)
+                    {
+                        IEnumerable<Model> models = FindModels(argument);
+                        if (!models.Any())
+                            AskValue();
+                        else
+                        {
+                            foreach (Model model1 in models)
+                            {
+                                argumentValue = DoArithmetic(model1);
+                                if (argumentValue != null)
+                                    break;
+                            }
+                        }
+                    }
+                    if (argumentValue != null)
+                        argumentValueList.Add(argumentValue);
+                    else
+                    {
+                        MessageBox.Show("Nieukonkretniony");
+                        return null;
+                    }
+
+                    if (argumentValueList.Count == model.ArgumentsList.Count)
+                        return Arithmetic.ExtendedArithmeticModel(argumentValueList, model.Operation);
+                }
+            }
+            else if (model.ModelType == "linear")
+            {
+
+
+            }
+            else if (model.ModelType == "poly")
+            {
+            } //posprawdzac nazwy
         }
 
-        private float Robocza(Model model)
+        private IEnumerable<Model> FindModels(string firstModelValue)
         {
-            var models = _bases.ModelsBase.ModelList.Where(p => p.Conclusion == model.FirstArg);
-            // brak jest sprawdzenia warunku modelu i dopytania
-            if (models.Count() == 0)
-            {
-                return AskValue();
-            }
-
-            foreach (var VARIABLE in models)
-            {
-              var startCondition =  CheckStartCOndition(model.StartCondition);
-                if(startCondition)
-                return DoArithmetic(VARIABLE);
-            }
-          
+            return _bases.ModelsBase.ModelList.Where(model => model.Conclusion == firstModelValue).ToList();
         }
 
-        private float AskValue()
+
+        private string AskValue()
         {
             throw new NotImplementedException();
         }
 
-        private float? CheckInArguments(string firstArg)
+        private string CheckInArguments(string firstArg)
         {
             // trzeba zrobic zwracanie null w razie braku odpowiedniego argumentu albo zwrocic zero
-            foreach (var argument in _bases.ArgumentBase.argumentList)
+            foreach (Argument argument in _bases.ArgumentBase.argumentList)
             {
                 if (firstArg == argument.ArgumentName)
                     return argument.Value;
@@ -155,23 +239,23 @@ namespace LicencjatInformatyka_RMSE_.Command
 
         private bool CheckStartCOndition(string startCondition)
         {
-            var value = ConclusionOperations.CheckIfStringIsFact(startCondition,_bases.FactBase.FactList);
+            bool value = ConclusionOperations.CheckIfStringIsFact(startCondition, _bases.FactBase.FactList);
             if (value)
                 return true;
-            var rules = ConclusionOperations.FindRulesWithParticularConclusion(startCondition, _bases.RuleBase.RulesList);
+            List<Rule> rules = ConclusionOperations.FindRulesWithParticularConclusion(startCondition,
+                _bases.RuleBase.RulesList);
             if (rules.Count == 0)
                 Ask();
-            foreach (var rule in rules)
+            foreach (Rule rule in rules)
             {
-
-
-               var complexTree = TreeOperations.ReturnComplexTreeAndDifferences(_bases,rule);
-              var val =  Conclude(TreeOperations.ReturnPossibleTrees(complexTree.Values.First(),complexTree.Keys.First()));
-                if(val)
+                Dictionary<List<List<Rule>>, SimpleTree> complexTree =
+                    TreeOperations.ReturnComplexTreeAndDifferences(_bases, rule);
+                bool val =
+                    Conclude(TreeOperations.ReturnPossibleTrees(complexTree.Values.First(), complexTree.Keys.First()));
+                if (val)
                     return true;
             }
             return false;
-            
         }
 
         private bool Ask()
