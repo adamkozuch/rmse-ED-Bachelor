@@ -40,6 +40,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
         public ICommand OpenConstrainCommand { get; set; }
         public ICommand OpenModelCommand { get; set; }
         public ICommand ConcludeCommand { get; set; }
+       
         public ICommand TextCommand { get; set; }
         private string _text ;
         private readonly OpenBasesActions _openBasesActions;

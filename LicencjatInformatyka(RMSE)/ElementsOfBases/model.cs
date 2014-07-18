@@ -54,7 +54,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder2
         }
 
         public Model(int modelNumber, string startCondition,
-           string conclusion,string variableValue, List<string> factorsList, List<string> powerList, bool semaphor)
+           string conclusion,string variableValue, List<string> factorsList, List<int> powerList, bool semaphor)
         {
             ModelNumber = modelNumber;
             StartCondition = startCondition;
@@ -97,7 +97,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder2
 
       public List<string> VariablesList { get; set; }
 
-      public List<string> PowerList { get; set; }
+      public List<int> PowerList { get; set; }
 
       public string ModelType { get; set; }
 

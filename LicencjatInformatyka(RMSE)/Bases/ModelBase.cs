@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using LicencjatInformatyka_RMSE_.NewFolder2;
@@ -125,12 +126,20 @@ namespace LicencjatInformatyka_RMSE_.NewFolder4
             string[] table2 = OperationsOnString.SplitRuleToTwoPartsConditionsAndAnother(line);
             List<string> factorsList = OperationsOnString.SplitArguments(table1[1]);
             List<string> result = OperationsOnString.SplitArguments(table2[0]);
-            List<string> powerList = OperationsOnString.SplitArguments(table2[1]);
+            char[] commaSeparator = new char[] { ',' };
+
+            
+            List<string> powerList = table2[1].Split(commaSeparator).ToList();
+            List<int> powerList1 = new List<int>();
+            foreach (var VARIABLE in powerList)
+            {
+                powerList1.Add(int.Parse(VARIABLE));
+            }
 
             int semaphorNumber = int.Parse(result.Last());
             bool semaphorValue = semaphorNumber == 1;
 
-            return new Model(int.Parse(result[0]), result[1], result[2], result[3], factorsList, powerList,
+            return new Model(int.Parse(result[0]), result[1], result[2], result[3], factorsList, powerList1,
                 semaphorValue);
         }
 

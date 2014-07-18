@@ -32,8 +32,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                             node.rule = node.Parent.rule;
                             if (wartSprawdzana == node)
                             {
-                                MessageBox.Show("Haha mamy sprzeczność bo wartosc " + node.rule.Conclusion +
-                                                "występuje w warunku reguly " + wartSprawdzana.Parent.rule.Conclusion);
+                                MessageBox.Show("Haha mamy sprzeczność bo wartosc " + node.rule.NumberOfRule +
+                                                "występuje w warunku reguly " + wartSprawdzana.Parent.rule.NumberOfRule);
                             }
                         }
                     }
@@ -45,11 +45,12 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
         {
             foreach (var rule in bases.RuleBase.RulesList)
             {
-                var r = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule).Where(p =>p.Value.Dopytywalny);
-                foreach (var condition in r)
+                var r = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule);
+                var t = TreeOperations.TreeToEnumerable(r.Values.First()).Where(p =>p.Dopytywalny);
+                foreach (var condition in t)
                 {
                    
-                    var models = bases.ModelsBase.ModelList.Where(p => p.Conclusion == condition.Value.rule.Conclusion);
+                    var models = bases.ModelsBase.ModelList.Where(p => p.Conclusion == condition.rule.Conclusion);
                     if (models.Count() != 0)
                     {
                         // trzeba zebrać wszystkie warunki startowe
@@ -59,7 +60,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                         {
                             List<string> list= new List<string>();
                            var listOfStartedConditions = GatherStartConditions(model, bases,list);
-                            CheckContradictionBetweenRulesAndStartedConditions(listOfStartedConditions, condition.Value);
+                            CheckContradictionBetweenRulesAndStartedConditions(listOfStartedConditions, condition);
                         }
 
 
@@ -69,15 +70,17 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                 }
             }
 
-
+            MessageBox.Show("Modele i reguly ok");
         }
         // metode mozna wykozystac do modeli relacyjnych jako warunki startowe
         private static bool CheckContradictionBetweenRulesAndStartedConditions
             (List<string> listOfStartedConditions, SimpleTree ruleForCheck)
         {
+            int i = 0;
             while (ruleForCheck.Parent != null)
             {
-
+                if(i!=0)
+                   ruleForCheck = ruleForCheck.Parent;
                 foreach (var StartedCondition in listOfStartedConditions)
                 {
                     if (StartedCondition == ruleForCheck.rule.Conclusion)
@@ -86,6 +89,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                         return false;
                     }
                 }
+                i++;
+                
             }
             return true;
         }

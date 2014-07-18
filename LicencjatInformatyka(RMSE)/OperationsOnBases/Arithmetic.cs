@@ -258,5 +258,23 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
             return false; //Exception(ex); // jakos to trzeba obsluzyc
         }
 
+        public static string PolynomialModel(string variable, List<string> factorList, List<int> powerList)
+        {
+            var result=0.0;
+            for (int i = 0; i < factorList.Count; i++)
+            {
+                if (i == 0)
+                    result = double.Parse(factorList[i]);
+                else
+                {
+                    result = + double.Parse(factorList[i])*Math.Pow(double.Parse(variable),powerList[i]);
+
+                }
+
+
+            }
+            return result.ToString();
+        }
+
     }
 }

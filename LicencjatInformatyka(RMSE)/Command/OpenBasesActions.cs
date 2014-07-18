@@ -4,6 +4,7 @@ using LicencjatInformatyka_RMSE_.NewFolder1;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
 using LicencjatInformatyka_RMSE_.NewFolder5;
+using LicencjatInformatyka_RMSE_.OperationsOnBases;
 using Microsoft.Win32;
 
 namespace LicencjatInformatyka_RMSE_.Command
@@ -31,6 +32,7 @@ namespace LicencjatInformatyka_RMSE_.Command
             {
                 _gatheredBases.RuleBase.ReadRules(fileDialog.FileName);
             }
+            Contradiction.CheckOutsideContradiction(_gatheredBases);
         }
 
         public void ReadConstrainBase()
@@ -53,6 +55,7 @@ namespace LicencjatInformatyka_RMSE_.Command
             {
                 _gatheredBases.ModelsBase.ReadModels(fileDialog.FileName);
             }
+            Contradiction.CheckContradictionWIthModelsAndRulebase(_gatheredBases);
         }
 
        

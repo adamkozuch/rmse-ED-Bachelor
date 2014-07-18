@@ -1,24 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
+using System.Windows.Forms;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
 using LicencjatInformatyka_RMSE_.NewFolder5;
-using LicencjatInformatyka_RMSE_.OperationsOnBases;
+using MessageBox = System.Windows.MessageBox;
 
-namespace LicencjatInformatyka_RMSE_.Command
+namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 {
     internal class ConclusionClass
     {
-        public enum ModelType
-        {
-            simple,
-            extended,
-            linear,
-            poly
-        }
-
+      
         private readonly GatheredBases _bases;
 
         public ConclusionClass(GatheredBases bases)
@@ -142,22 +135,12 @@ namespace LicencjatInformatyka_RMSE_.Command
                 string secoundModelValue = CheckInArguments(model.SecoundArg);
                 if (firstModelValue == null)
                 {
-                    IEnumerable<Model> models = FindModels(firstModelValue);
-                    if (!models.Any())
-                    {
-                        firstModelValue = AskValue(model.FirstArg);
-                    }
-                    else
-                    {
-                        foreach (Model mod in models)
-                        {
-                            firstModelValue = DoArithmetic(mod);
-                            if (firstModelValue != null)
-                                break;
-                        }
-                    }
+                    firstModelValue = ArgumentValue(firstModelValue);
                 }
-
+                if (secoundModelValue == null)
+                {
+                    secoundModelValue = ArgumentValue(secoundModelValue);
+                }
                 if (firstModelValue == null)
                     return null;
                 if (secoundModelValue == null)
@@ -231,6 +214,9 @@ namespace LicencjatInformatyka_RMSE_.Command
                         MessageBox.Show("Nieukonkretniony");
                         return null;
                     }
+                    if (model.FactorsList.Count == factorsList.Count)
+                        return Arithmetic.PolynomialModel(variable, factorsList, model.PowerList); 
+
                 }
 
 
@@ -269,7 +255,8 @@ namespace LicencjatInformatyka_RMSE_.Command
 
         private string AskValue( string s)
         {
-            MessageBox.Show("Pytam o wartosc  "+s);
+            MessageBox.Show("HUJ");
+   
             return null;
         }
 

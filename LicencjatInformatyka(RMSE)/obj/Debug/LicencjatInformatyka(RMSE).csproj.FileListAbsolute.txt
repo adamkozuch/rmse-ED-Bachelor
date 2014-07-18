@@ -13,3 +13,4 @@ C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\LicencjatInformatyka(RMSE).pdb
 C:\Users\Adamk\documents\visual studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Adamk\documents\visual studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\LicencjatInformatyka(RMSE)_MarkupCompile.lref
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\LicencjatInformatyka_RMSE_.Form1.resources
