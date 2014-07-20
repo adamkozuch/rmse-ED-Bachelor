@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder4;
+using LicencjatInformatyka_RMSE_.NewFolder5;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
 using NUnit;
 using NUnit.Framework;
@@ -14,9 +16,10 @@ namespace Testy
     {
 
             RuleBase rules = new RuleBase();
+           GatheredBases bases;
         private void method()
         {
-            
+             bases = new GatheredBases();
             Rule r = new Rule(1, "Dziadek", new List<string>() { "Ojciec" }, true);
             Rule r1 = new Rule(2, "Dziadek", new List<string>() { "Ciocia" }, true);
             Rule r2 = new Rule(3, "Ciocia", new List<string>() { "Corka" }, true);
@@ -27,7 +30,7 @@ namespace Testy
             rules.RulesList.Add(r2);
             rules.RulesList.Add(r3);
             rules.RulesList.Add(r22);
-
+            bases.RuleBase = rules;
         }
 
 
@@ -37,7 +40,7 @@ namespace Testy
         {
             method();
 
-        var tree =     TreeOperations.ReturnComplexTreeAndDifferences(rules.RulesList, rules.RulesList[1]);
+        var tree =     TreeOperations.ReturnComplexTreeAndDifferences(bases, rules.RulesList[1]);
             int treeCount =TreeOperations.TreeToEnumerable( tree.Values.First()).Count();
             int dvideListCount = tree.Keys.Count;
 

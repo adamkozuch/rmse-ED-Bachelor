@@ -2,8 +2,9 @@
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder4;
+using LicencjatInformatyka_RMSE_.NewFolder5;
 
-namespace LicencjatInformatyka_RMSE_.NewFolder5
+namespace LicencjatInformatyka_RMSE_.Additional
 {
   public  class GatheredBases : IGatheredBases
   {

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
 using LicencjatInformatyka_RMSE_.NewFolder5;
@@ -8,6 +9,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 {
     public static class TreeOperations
     {
+        #region MainTree
         private static List<SimpleTree> ReturnAlternativeBranches(List<Rule> rulesWithSameConclusion,SimpleTree parent)
         {
             return rulesWithSameConclusion.Select(rule => new SimpleTree {rule = rule,Parent = parent}).ToList();
@@ -42,59 +44,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             };
             return treeAndDifferencesDictionary;
         }
-
-        private static void ExpandBrunchOrMakeAskable
-            (GatheredBases bases, SimpleTree parentWithoutChild, List<List<Rule>> divideList)
-        {
-            foreach (string condition in parentWithoutChild.rule.Conditions)
-            {
-                List<Rule> returnedRules = ConclusionOperations.FindRulesWithParticularConclusion(condition,
-                    bases.RuleBase.RulesList);
-
-                if (returnedRules.Count == 0)
-                {
-                    bool model =   CheckModel(condition, bases);
-                    var endRule = new Rule {Conclusion = condition, Model = model};
-                    parentWithoutChild.Children.Add(new SimpleTree {Dopytywalny = true, rule = endRule,Parent = parentWithoutChild});
-                }
-                else
-                {
-                    List<SimpleTree> alternativeBranches = ReturnAlternativeBranches(returnedRules,parentWithoutChild);  //
-                    parentWithoutChild.Children.AddRange(alternativeBranches);
-
-                    if (returnedRules.Count > 1)
-                    {
-                        divideList.Add(returnedRules);
-                    }
-                }
-            }
-        }
-
-        private static bool CheckModel(string condition, GatheredBases bases)
-        {
-            return bases.ModelsBase.ModelList.Any(model => model.Conclusion == condition);
-        }
-
-        private static List<List<Rule>> ReturnDifferenceBetweenTables(List<List<Rule>> divideList,
-            List<Rule> currentTable)
-        {
-            var resultList = new List<List<Rule>>();
-
-            int i = 0;
-            foreach (var lista in divideList)
-            {
-                List<Rule> g = lista.Where(rule => rule != currentTable[i]).ToList();
-                i++;
-                resultList.Add(g);
-            }
-            return resultList; // w tej liœci chcê otrzymaæ divide list pomniejszon¹ o elementy z current table
-        }
-
-        public static void CondludeFromTree(List<Rule> rulesFromSingleTree)
-        {
-        }
-
-        public static List<List<SimpleTree>> ReturnPossibleTrees(SimpleTree tree, List<List<Rule>> divideList)
+ public static List<List<SimpleTree>> ReturnPossibleTrees(SimpleTree tree, List<List<Rule>> divideList)
         {
             IEnumerable<IEnumerable<Rule>> cartesianProducts = CartesianProduct(divideList);
 
@@ -118,7 +68,57 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
             return returnResult;
         }
+        private static void ExpandBrunchOrMakeAskable
+            (GatheredBases bases, SimpleTree parentWithoutChild, List<List<Rule>> divideList)
+        {
+            foreach (string condition in parentWithoutChild.rule.Conditions)
+            {
+                List<Rule> returnedRules = ConclusionOperations.FindRulesWithParticularConclusion(condition,
+                    bases.RuleBase.RulesList);
 
+                if (returnedRules.Count == 0)
+                {
+                    bool model =   CheckModel(condition, bases);
+                    var endRule = new Rule {Conclusion = condition, Model = model , NumberOfRule = 100};
+                    parentWithoutChild.Children.Add(new SimpleTree {Dopytywalny = true, rule = endRule,Parent = parentWithoutChild});
+                }
+                else
+                {
+                    List<SimpleTree> alternativeBranches = ReturnAlternativeBranches(returnedRules,parentWithoutChild);  //
+                    parentWithoutChild.Children.AddRange(alternativeBranches);
+
+                    if (returnedRules.Count > 1)
+                    {
+                        divideList.Add(returnedRules);
+                    }
+                }
+            }
+        }
+        #endregion
+
+        private static bool CheckModel(string condition, GatheredBases bases)
+        {
+            return bases.ModelsBase.ModelList.Any(model => model.Conclusion == condition);
+        }
+
+        private static List<List<Rule>> ReturnDifferenceBetweenTables(List<List<Rule>> divideList,
+            List<Rule> currentTable)
+        {
+            var resultList = new List<List<Rule>>();
+
+            int i = 0;
+            foreach (var lista in divideList)
+            {
+                List<Rule> g = lista.Where(rule => rule != currentTable[i]).ToList();
+                i++;
+                resultList.Add(g);
+            }
+            return resultList; // w tej liœci chcê otrzymaæ divide list pomniejszon¹ o elementy z current table
+        }
+
+
+       
+        #region secondary
         private static bool IsDouble(List<List<SimpleTree>> returnResult, SimpleTree[] treeToList)
         {
             foreach (var treeResult in returnResult) // usowanie dubluu¹cych rezultatow
@@ -153,6 +153,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                     from item in sequence
                     select accseq.Concat(new[] {item}));
         }
+        #endregion
 
         public static IEnumerable<SimpleTree> TreeToEnumerable(SimpleTree f)
         {
@@ -186,6 +187,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             }
         }
 
+        #region Contradiction
         public static List<object> MethodForContradiction
             (GatheredBases bases, Rule ruleForCheck, int o)
         {
@@ -213,7 +215,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                     treeAndDifferences.Add(conditionTree);
                     treeAndDifferences.Add(false);
                     return treeAndDifferences;
-                }  // ta pêtla nie jest odporna na sprzecznoœæ
+                }  //TODO: ta pêtla nie jest odporna na sprzecznoœæ
                 }
 
                
@@ -227,6 +229,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             treeAndDifferencesDictionary.Add(true);
            return  treeAndDifferencesDictionary;
         }
-
+        #endregion
     }
 }

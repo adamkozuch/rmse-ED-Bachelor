@@ -1,0 +1,2224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="9db0d522-3d5b-417c-93dc-b8d1a061a9fe"
+  name="NewFolder1"
+  visibility="Private" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <referencesInternal>
+    <reference
+      Id="eeb9bd33-d607-43c3-81a7-15553c1a533d"
+      handle="viewcode://./CodeSchema_Namespace?Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1"
+      tag="ViewCode" />
+  </referencesInternal>
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="ab9ef2a9-7461-44d2-8d30-359f26a7ddda"
+        name="ViewModel"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="e3869823-15d6-4dbb-8fb3-f8b496cedc49"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="9709d6c2-b93f-4877-b407-393c32da70cd"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ed66dadd-4f32-4d02-8406-8f3b40c51ad5">
+                <propertyInstance
+                  Id="7a6de5c4-91ef-4635-8e57-4dfcf9bf5f4a"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="64a27914-f0bb-4165-8611-6d835092bb72">
+                <propertyInstance
+                  Id="b66fa39c-297b-48b9-b7f8-4ef2093272a7"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="217a75dc-c8a7-410c-b01c-8958b99cbe0a">
+                <propertyInstance
+                  Id="cc771960-7e00-4f10-ae48-d82d154734ba"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="ddd67cc5-acbd-4a60-957c-c6d68dddd06a">
+                <propertyInstance
+                  Id="f299db25-9978-405e-a816-c4a6174445c0"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="f437ed89-40d8-40fb-902e-5fddba5ffc9d">
+                <propertyInstance
+                  Id="d2bbbb6d-acf6-47f2-98c0-cb436841297b"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <targetEnds>
+          <association
+            Id="620d36af-02ca-46c4-b04c-19d62024e21e"
+            isDerived="false"
+            sourceEndRoleName="ViewModel"
+            targetEndRoleName="OpenRuleCommand"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="1027258a-35e2-44cb-8114-e065d401c401"
+              LastKnownName="ICommand"
+              LastKnownLocation="Package24_1337.uml" />
+            <description>Property OpenRuleCommand references type ICommand.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="43f4dd97-8438-4e7d-a2de-24a3178d595d"
+                  name="ViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="3e358d0d-761d-42b7-8653-2eb9c68f918e"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="3654c2d7-67d3-452b-a901-ab01c2115dca"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="608eed9c-f912-4b68-a6e3-aa95fbe7efa0"
+                  name="OpenRuleCommand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="a044afc2-8ebf-4ce6-adb5-dd67922ad7ac"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="0df32bc9-f0a8-4e22-911f-c24d3546c4cb"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="6ee6d63d-7585-4c71-9fee-a8503773a914"
+            isDerived="false"
+            sourceEndRoleName="ViewModel"
+            targetEndRoleName="OpenConstrainCommand"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="1027258a-35e2-44cb-8114-e065d401c401"
+              LastKnownName="ICommand"
+              LastKnownLocation="Package24_1337.uml" />
+            <description>Property OpenConstrainCommand references type ICommand.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="98635f4c-cc90-4360-8c81-2494809643a2"
+                  name="ViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="4921ee0c-c953-40f7-90c6-0732f283e36f"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="ffc27cad-868e-44a1-9957-8328736afa38"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a9bbbf90-98e1-4606-b1ac-9906ac91dbf5"
+                  name="OpenConstrainCommand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="76b1f06f-63c4-478f-aab7-a62143789e56"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="7109d0ed-231e-43c1-899d-dba1340faa2c"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="9d2d1af6-0495-433c-966c-e032c9c91e62"
+            isDerived="false"
+            sourceEndRoleName="ViewModel"
+            targetEndRoleName="OpenModelCommand"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="1027258a-35e2-44cb-8114-e065d401c401"
+              LastKnownName="ICommand"
+              LastKnownLocation="Package24_1337.uml" />
+            <description>Property OpenModelCommand references type ICommand.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7c721579-376b-4649-9dd1-a3023c73121d"
+                  name="ViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="4bfaaaa5-7306-4a16-8587-36b4daf132d7"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="9e8467eb-a505-4ddb-9901-eea8265af06e"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="066a17ad-2d58-454b-b47f-1756e0e9e2bd"
+                  name="OpenModelCommand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="e8c0e55d-1bd5-4918-ba7b-3ec919dfd936"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="7129da68-4ff0-4d86-963a-805f1b232216"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="376f30aa-1013-4103-a0c6-93d53bafd574"
+            isDerived="false"
+            sourceEndRoleName="ViewModel"
+            targetEndRoleName="ConcludeCommand"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="1027258a-35e2-44cb-8114-e065d401c401"
+              LastKnownName="ICommand"
+              LastKnownLocation="Package24_1337.uml" />
+            <description>Property ConcludeCommand references type ICommand.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d907d71d-b6c9-4a9c-b036-ed93e36da8cf"
+                  name="ViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="2fe5c975-54cb-4bcb-b695-68537b7974c4"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="dc0ec362-a299-4a19-88aa-c6ee4bd11503"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="4b4068c4-eaf4-4469-86a0-c188fb5ff885"
+                  name="ConcludeCommand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="84a9550c-9561-452f-9751-43bae2095e9e"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="15b607c2-c791-4071-b695-d61c11067824"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="3fcbbc95-dda6-44b0-bcce-271aeea3db67"
+            isDerived="false"
+            sourceEndRoleName="ViewModel"
+            targetEndRoleName="TextCommand"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="1027258a-35e2-44cb-8114-e065d401c401"
+              LastKnownName="ICommand"
+              LastKnownLocation="Package24_1337.uml" />
+            <description>Property TextCommand references type ICommand.</description>
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2996eadc-c814-4979-bfc3-7a89834aeca6"
+                  name="ViewModel"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="a50aa0c7-6fb0-4e2d-8547-b714b3b05e6c"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="db9ca7c8-52f3-4f83-95cb-dedc548e6ebf"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="437e9533-5c72-409b-aad7-090d545cb6fa"
+                  name="TextCommand"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="80b497ef-9adf-43d2-a13f-368cded81213"
+                      name="Lower"
+                      value="1" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="eed31dbb-ff49-48bc-b47d-8641a6d9c8b9"
+                      name="Upper"
+                      value="1" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="31ebf59b-0f87-434d-a47d-2999bad194b9"
+            name="OpenRuleCommand"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="606913df-bbba-4038-87c9-2dfa8fcab297"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3DOpenRuleCommand"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="4e0b5a9b-c5c0-4a41-9590-aaaa9b41a9de"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7da31d96-8c06-4bc5-b549-88a563b789ea">
+                    <propertyInstance
+                      Id="5a17d0ba-d694-4bc5-9d84-69e915525a99"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6741d67c-8019-4750-89ba-de24063ed1c0">
+                    <propertyInstance
+                      Id="8aea2fe1-8db2-4bf5-9da6-c73426707423"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d9fa3198-a4a9-4364-ba6c-416ec668a06c">
+                    <propertyInstance
+                      Id="52162642-87f2-40d1-922a-24ca9c9f991a"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="661658b5-29f3-4230-b270-c6123618e52e">
+                    <propertyInstance
+                      Id="9bf6bbf2-d45a-453d-8e44-1dffe552887e"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="03a6e431-5a4f-4313-bad5-34d0ff91b381">
+                    <propertyInstance
+                      Id="435bc1e8-4338-4042-8c1e-a3f4e9704a87"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7ffe0a65-5a4e-4a46-98c9-5bfa901df8af">
+                    <propertyInstance
+                      Id="f0b44f17-8b53-47c7-8529-d1bf6cf89957"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="75949e11-1423-45d5-890e-95266b979b62">
+                    <propertyInstance
+                      Id="023b78ca-bda6-4966-833e-021062b4c36e"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="1027258a-35e2-44cb-8114-e065d401c401"
+                LastKnownName="ICommand"
+                LastKnownLocation="Package24_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="580c6ac0-281c-4dd7-bb63-3f23526f64ae"
+            name="OpenConstrainCommand"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="3e0de297-ab70-436d-b8ef-614b945d7344"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3DOpenConstrainCommand"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="33209534-94f0-4de7-8cdc-3fea87d2ae08"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="117e3b7f-8434-446d-b746-27e66e34f505">
+                    <propertyInstance
+                      Id="e0853065-2830-4fb9-b331-a405da6ee241"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2c3787eb-26f7-4594-9785-0ffab9f5989a">
+                    <propertyInstance
+                      Id="7a581e21-fb48-49bb-86a4-f30ee5f32e7c"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="000817c1-e10d-413f-afed-06cb24d0327f">
+                    <propertyInstance
+                      Id="8ae3d4cb-9d78-4112-9f7a-29d711574e90"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d39d161a-697c-4f37-bf67-dc04ab1a84f3">
+                    <propertyInstance
+                      Id="fee3634c-3927-43c3-8d76-9eb484b53178"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="52a8643b-dfc4-48a4-a3bf-9f8c8dc430cd">
+                    <propertyInstance
+                      Id="ad314f0d-698a-4da9-9f4a-4b70322e9822"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7549ea36-38f0-49e9-9ca6-1bbb5c40539b">
+                    <propertyInstance
+                      Id="bd4b9022-c240-47b0-b644-e48bcc320bfe"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1ebde452-dc98-4eb8-95d7-5b683e1f777d">
+                    <propertyInstance
+                      Id="5f082999-b1b4-48be-b860-0d1ad374725c"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="1027258a-35e2-44cb-8114-e065d401c401"
+                LastKnownName="ICommand"
+                LastKnownLocation="Package24_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="70733bb8-44e7-4e81-b65f-545dcceb23cb"
+            name="OpenModelCommand"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="78db328a-447e-43ab-ab9c-cf8f9169e482"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3DOpenModelCommand"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="74c77daf-53ed-4dd5-ba41-45f9a209ad3c"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ec160f69-29a5-4e8c-bc96-b9b12be4eeee">
+                    <propertyInstance
+                      Id="7b3db416-c317-4591-ac1a-c8901c4414d9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4da802ec-3bb2-4042-85ea-b4dc0730b1f4">
+                    <propertyInstance
+                      Id="43c23972-77b4-4d89-b94f-7dd758b9299c"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="897915ae-4e1f-45cb-aea6-bf2d5b4336e6">
+                    <propertyInstance
+                      Id="571c5d62-1569-4a51-83bf-d747c8902703"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ce53067d-a58e-4ccc-95f3-3f1525d7ed88">
+                    <propertyInstance
+                      Id="6f52b0e4-58be-4728-8ace-ed2ac0beb0e0"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f03921b4-5101-4900-bf72-989e71edd3d1">
+                    <propertyInstance
+                      Id="a576761e-4a53-4b2c-a6fc-e1c63fc09291"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1c041da8-b447-4b85-b13a-4ce5bd285c47">
+                    <propertyInstance
+                      Id="f5c3ab02-aaaf-4185-9ded-f28038547bae"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d9f6b9dc-de78-4cb9-99cd-494a73d88d0b">
+                    <propertyInstance
+                      Id="88fec0f8-7ff1-4ce7-b8e2-db48ebacddb2"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="1027258a-35e2-44cb-8114-e065d401c401"
+                LastKnownName="ICommand"
+                LastKnownLocation="Package24_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="21e43358-ed0d-4356-b3c6-93ce5d191ca0"
+            name="ConcludeCommand"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="71665268-3a7c-4085-96a9-ef5e38718d3d"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3DConcludeCommand"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="3f6cce42-83f8-4660-aa83-bb40ffa77611"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ec2ca0b7-209f-4a7f-9a48-c61bfe6fed98">
+                    <propertyInstance
+                      Id="ab0fcc84-fee8-4fcc-9800-bcfe9cfa81c9"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0aeca57e-13ab-40a1-959a-8dac28cdf7e1">
+                    <propertyInstance
+                      Id="27543a8b-ab93-40b6-8253-2316387f91ce"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5859673e-acc1-49e6-bedc-96d1a842a169">
+                    <propertyInstance
+                      Id="526e7b6c-9386-4b07-b72f-22aea11cb2dc"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3fe55ce6-b2ed-4ffb-885f-c7e91514f9e0">
+                    <propertyInstance
+                      Id="292bc951-a3d3-4ecc-8c00-26e186b1a6aa"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="411c0678-2787-44b9-8c76-77181eec0c31">
+                    <propertyInstance
+                      Id="392576dc-3292-47f6-ac71-7fc6d0774fc2"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0d9b629c-fa9e-46ba-abfa-73fd4ef26d7a">
+                    <propertyInstance
+                      Id="de410d4a-c268-4f1b-91d6-d26b3f5999dd"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cc738854-b6bb-4204-8759-b0e589d3106f">
+                    <propertyInstance
+                      Id="43601f15-c021-4541-bb46-0d01f34078ea"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="1027258a-35e2-44cb-8114-e065d401c401"
+                LastKnownName="ICommand"
+                LastKnownLocation="Package24_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="9bd92001-1b04-4c90-9184-e4169c38878e"
+            name="TextCommand"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="7f92880d-0381-4ac3-ab15-1194ce3b8239"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3DTextCommand"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="39ad934b-109d-4c36-a25d-a87a1739742d"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4dd2510d-c077-4b51-bde7-fd37d0af7c26">
+                    <propertyInstance
+                      Id="37cda309-974b-402b-a4db-9df67d51499b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4cb47d34-67a0-4d36-8492-dd64645847bc">
+                    <propertyInstance
+                      Id="fc872f45-5abe-49c7-aa53-a872d99036a2"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="19ac46db-cac7-4982-be32-1698736c3065">
+                    <propertyInstance
+                      Id="7d5001c5-90f4-49c6-8464-2fec72cdd060"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="02bd60f1-9ff0-4596-984c-9eaf58d1822b">
+                    <propertyInstance
+                      Id="c1bd52f0-0cc4-4aae-be55-87bf90c88e34"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3c93160c-b80c-40e9-8fb5-a2b6144da8fa">
+                    <propertyInstance
+                      Id="32690305-258c-4cc6-98ac-2d13d549e08b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="faa4a625-7d0c-4d79-a309-5bac99172a7f">
+                    <propertyInstance
+                      Id="e9612314-44ca-4b2b-bcf2-081116e662c8"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3dba4eaa-f179-4b5b-bf1f-598ac5e33b7a">
+                    <propertyInstance
+                      Id="2bf8a91c-aaa0-47a8-b310-f08c709644ef"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="1027258a-35e2-44cb-8114-e065d401c401"
+                LastKnownName="ICommand"
+                LastKnownLocation="Package24_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="89b5af73-393a-409e-9e43-802e938880b6"
+            name="Text"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="b55d658b-5b80-4617-a7d4-ec78caceaa2d"
+                handle="viewcode://./CodeSchema_Property?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3DText"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="bd1cda9e-fbef-408a-abe5-a6cae1c1d9e7"
+                name="property"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="831b9884-ca05-4f64-ba0b-3c732f3e4174">
+                    <propertyInstance
+                      Id="93f55700-47e1-40d9-be3e-79b0fe28790e"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b1750aad-d16c-4736-ab89-53324de2ec3b">
+                    <propertyInstance
+                      Id="22dd2e91-241c-468f-b23a-384c19edd469"
+                      name="Get"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6630f339-4bda-4449-8b1c-9f3eba57ae2a">
+                    <propertyInstance
+                      Id="d5726c65-0d58-44c0-adc7-4ab0b5559064"
+                      name="HasBody"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d5c77615-f23f-4199-94cb-82b676185ca5">
+                    <propertyInstance
+                      Id="8350ea0f-e0e0-46ab-bd79-29f668f328a8"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="507a2a96-e042-4f75-8a55-caf1034f0406">
+                    <propertyInstance
+                      Id="770ad8fa-71c5-45dd-8e2d-0d36a04bc568"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ada96be8-ecfb-41ec-8748-2aae4871088e">
+                    <propertyInstance
+                      Id="5eab4498-554b-4436-953b-88c89bde4f02"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ca3eb937-0151-428d-8971-5dd81e909cf8">
+                    <propertyInstance
+                      Id="7c9e6f76-19c9-41a4-8636-061a3c60f786"
+                      name="Set"
+                      value="public" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject1.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="7bfbc662-5772-42f9-bbda-b96ebf2036b9"
+            name="_languageConfig"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="9bbc01f6-5408-4038-839d-0edd504451b7"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3D_languageConfig"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="63025374-9ed0-45c6-ba3a-a34384fd5297"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="8de827c4-2c8a-4323-a54e-052aa41cf2bd">
+                    <propertyInstance
+                      Id="77fcab0a-747e-43dc-a656-271ddeef50e6"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9ecda0e6-ea14-4781-8548-7629b268b76b">
+                    <propertyInstance
+                      Id="ff591d54-d505-4769-a8f6-152c63c830d1"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fe3dfa0f-6bb4-4f44-af5f-ce0efc91099e">
+                    <propertyInstance
+                      Id="8322506b-0a1f-46fc-89c4-99cb51b9449f"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dc395096-5fbc-44db-8ea2-e4a07d9b5335">
+                    <propertyInstance
+                      Id="20aa79b8-f53b-4743-b821-f5fc02b865c2"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="86f38b77-3709-4482-b8e4-dcb4e397b2de">
+                    <propertyInstance
+                      Id="c973950c-98b1-4e60-8dc9-224c885dbe06"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="044ed043-5a5f-46d3-b136-30793219a842"
+                LastKnownName="ILanguageConfig"
+                LastKnownLocation="Package7_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="5055b63a-8825-40d4-a8eb-a4962d23a736"
+            name="bases"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="494f0136-5c73-482c-8305-e79c745a1c1f"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3Dbases"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="27d42ba7-a168-4652-b433-38fbade98c24"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f836ffa1-1669-4955-b260-9f74087749e0">
+                    <propertyInstance
+                      Id="3e219030-9775-445b-90a2-65cbd7ab5dbb"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0c79d832-9848-411f-9fb9-4cf0f8174532">
+                    <propertyInstance
+                      Id="d83f0055-110f-4923-901f-49d6f3adcdb4"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="688a696f-d822-4a7f-97ef-fb5477b2b2a6">
+                    <propertyInstance
+                      Id="64ec744d-a089-44f0-ae09-e043ee972c4c"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6adaf05b-6a97-49f7-a034-c0ed27523a12">
+                    <propertyInstance
+                      Id="28391873-beab-40ea-aaec-19f46ee8dc51"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2ee075ad-931f-4a23-a718-0cb9181f5b3d">
+                    <propertyInstance
+                      Id="45bb2113-315e-4019-b915-3e5f41962b4a"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="21497551-1d22-4ea6-9f67-16c6af7ea7c3"
+                LastKnownName="GatheredBases"
+                LastKnownLocation="Package9_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a6e50733-267e-4ead-976c-0b4e5bf9e4cf"
+            name="_dataFromAllBases"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="518cb85b-1b43-49d0-8b47-d14133cb1069"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3D_dataFromAllBases"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="7e882eb1-62c4-4ac7-8f43-c27a20f006c4"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="82821cc5-36d8-44f7-823d-7f631e772a0e">
+                    <propertyInstance
+                      Id="e0e093d8-7313-44ba-84bf-4a8ee1da6d32"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9db9d3ba-02a5-434d-a623-b6ae72609228">
+                    <propertyInstance
+                      Id="c1a11503-6994-48c7-83b3-44838c41a537"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="431219f2-7fe0-4621-ad4e-1e8e650b3990">
+                    <propertyInstance
+                      Id="8492ba47-2f5d-4beb-a35b-6332bd8d32d3"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e738982c-108e-4c65-8cc3-8412451e449c">
+                    <propertyInstance
+                      Id="67de164f-aa9b-457a-a92d-4643896f2b0f"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b2a2817f-8540-40cb-b15c-f495da784e19">
+                    <propertyInstance
+                      Id="44ce2efc-1b53-441f-b0ad-44cea3c222c5"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="21497551-1d22-4ea6-9f67-16c6af7ea7c3"
+                LastKnownName="GatheredBases"
+                LastKnownLocation="Package9_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="db65484f-ff91-424e-83ad-323e6e1ff839"
+            name="dynamicBase"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="a75bd76b-6bda-4c2e-a607-026ed7a9e329"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3DdynamicBase"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="a82b24cf-6754-49a2-a3f7-e2532551581a"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="838b5f71-553e-414a-8f93-c11e28d92d93">
+                    <propertyInstance
+                      Id="48e941b8-cb0a-401e-b9aa-c7f4dbc15414"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9c351ceb-83bc-4e1c-862e-9a1212e86b64">
+                    <propertyInstance
+                      Id="ed2bf90e-6f59-4797-a6fe-2bc5d7c6ff5b"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d1b2ba43-d760-44ea-941b-2df5b4530986">
+                    <propertyInstance
+                      Id="83efbf55-9f47-41d5-b07f-2cdbfd28b96c"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fd9ddf5e-b94f-426c-ab65-1a5912d85ef1">
+                    <propertyInstance
+                      Id="b0cae175-f4a8-493d-aeff-3678999baef3"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4cdcbe94-a0df-4dff-8e58-8cdedc059715">
+                    <propertyInstance
+                      Id="829305b9-c493-4d29-9802-382cf39ca018"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="7619abb0-8953-4e9e-9b19-3f5400d0d016"
+                LastKnownName="Dictionary&lt;String‎, Boolean‎&gt;"
+                LastKnownLocation="Package4_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="1946fbb3-9946-47df-9b92-4f6699b4a42c"
+            name="PropertyChanged"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="13896c0b-aced-4b41-a8ca-52ff94d6b994"
+                handle="viewcode://./CodeSchema_Event?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3DPropertyChanged"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="7f7c89d2-fd15-4bd0-bf07-d754ab0931bc"
+                name="event"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7044a8a8-bff5-4f23-896a-82dc81c4ffd3">
+                    <propertyInstance
+                      Id="c3042dc9-2342-4a70-a6ed-840951c36f76"
+                      name="Add"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="198f9731-3048-473e-952f-57f6f154d668">
+                    <propertyInstance
+                      Id="c74d7423-be7a-4b35-8d28-824252c63898"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b08cd8fc-40b4-466a-9472-62a2752526fc">
+                    <propertyInstance
+                      Id="bce4c137-54f4-4437-b9cf-93b508fa8cd3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a4a1ed36-c07c-4fd2-a483-bb37ec54dadb">
+                    <propertyInstance
+                      Id="ef2822bb-4f99-45e6-b2df-32969ad20b12"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dfffed23-4d0b-40a3-8b57-58488fce69bc">
+                    <propertyInstance
+                      Id="6a5157f4-39a0-4bb0-9019-c48c761a3f7d"
+                      name="Remove"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="cf66e93b-9d99-447c-8d1a-145a9a20ac42"
+                LastKnownName="PropertyChangedEventHandler"
+                LastKnownLocation="Package19_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="3da46fad-e352-4612-a735-400723868d47"
+            name="_text"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="a889b0f5-e126-46ce-a4d7-b8f39dcec3b8"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3D_text"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="fdc5551e-603d-42e3-943d-26ffbb93e653"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a548ad81-fc89-4034-a3af-871268acb656">
+                    <propertyInstance
+                      Id="b1f08500-06e1-4f0c-ac28-c3572af4a25b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5a5b09fc-d10d-498c-9644-9ea3cd0dc22e">
+                    <propertyInstance
+                      Id="e9093f81-47fc-4506-8789-d4e4214e1fb9"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="148365db-3b60-4613-8f7e-cd1b4b0e0778">
+                    <propertyInstance
+                      Id="0f2d3e4f-74d5-4306-8f79-9449c8fbd363"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e16f5b29-7cf7-4cff-812d-16af20c568bc">
+                    <propertyInstance
+                      Id="274f961f-78de-43e3-8c2b-b18914bbe86a"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="d1325e11-4fd4-49b2-923e-fe59b564d15d">
+                    <propertyInstance
+                      Id="e2761688-4725-472f-8dde-6a4712eaf7b1"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <primitiveTypeMoniker
+                Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                LastKnownName="String"
+                LastKnownLocation="ModelingProject1.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="e694d54a-e3e0-42c7-9607-b44f44a854c5"
+            name="_openBasesActions"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="d60f9cd5-0680-4697-9414-a1b55ddd1f86"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3D_openBasesActions"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1829911d-1d7d-40a3-aefc-57dd64f8a1b0"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ed918bef-29d6-4540-ad59-37267ecdef4a">
+                    <propertyInstance
+                      Id="0b26cd60-da3f-424d-93be-5827eb7caf10"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b4ad528d-cbcc-40d6-9565-7be2dc667cce">
+                    <propertyInstance
+                      Id="bcc81353-b99b-4b0a-a061-699bd549deba"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fca346db-f0fc-4f7f-b393-555dab34c0a0">
+                    <propertyInstance
+                      Id="0e62a9fc-f7cf-463d-9a18-8b7643c5ddcf"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0127ff3e-2d8a-4fc2-b910-f8f7eede884c">
+                    <propertyInstance
+                      Id="7b09e515-95d1-4e90-969d-dc724178fb87"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f51b1c36-30d7-4133-b37d-67d13aa5aaa4">
+                    <propertyInstance
+                      Id="dd7a380b-c237-4db4-b00a-9658f83455e4"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="ed6e52bb-d590-4509-b5e7-8c624fb6896d"
+                LastKnownName="OpenBasesActions"
+                LastKnownLocation="Package22_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="88381be2-0008-4309-a7e7-14b3f9d0c712"
+            name="_actionsOnBase"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="eb36c6f1-3c69-44bb-b0ab-5bf755d4e021"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3D_actionsOnBase"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="9abe5c1d-72a9-4a38-829c-72a589176869"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a91f6301-6300-4355-ba0e-072d71283007">
+                    <propertyInstance
+                      Id="1ed15f8d-d42b-475b-abcd-119cf189940f"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="0b22753b-18c1-4ddb-8884-3d055b76ff4f">
+                    <propertyInstance
+                      Id="6b1161a8-c8a4-4ff4-90ce-995f241ecc0c"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9e5ecf96-e0a5-4446-80bd-3463ec015a2e">
+                    <propertyInstance
+                      Id="4ca2aaf0-96a1-401b-94cc-100494a6dd80"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f2dc6fd0-6367-4ab3-a56f-87314ee43664">
+                    <propertyInstance
+                      Id="2da4404b-2ea3-431e-8ef4-2e06e3144dab"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="bfd6dca6-068f-4947-9fda-8acb7aab3195">
+                    <propertyInstance
+                      Id="e124f132-95a3-4de9-b27b-45f2c229cb7c"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="e19b9d4a-566b-4c19-adc3-49989b7f5043"
+                LastKnownName="ActionsOnBase"
+                LastKnownLocation="Package22_1337.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="f514ed8f-fe6d-43ba-9b64-097993c73e8b"
+            name="ViewModel"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="8b4c9b2b-6db5-485f-9a0e-be4397ff895c"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3D.ctor"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="8ef35601-c8b7-4818-9d56-089c01dcd3f8"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="53f8ca23-3034-447f-8b7c-9c3cac053d3c">
+                    <propertyInstance
+                      Id="61600946-448f-4c14-9396-6da4d6241e72"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="579da47e-31ba-439f-be2c-2d83e12f89df">
+                    <propertyInstance
+                      Id="5b2827e5-d78b-4e5d-87c5-ea05723e0d54"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="9880c44b-15d4-4e36-8948-25ba9e4dc2b0">
+                    <propertyInstance
+                      Id="91249d1c-c52b-4c76-8a1f-a8ebd513f1d3"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="861d0026-1442-4694-934f-311eecf4083c">
+                    <propertyInstance
+                      Id="f8a8efd2-0cbe-44ec-a761-82a4bb9cc985"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="35dd45fb-ef5e-424e-8fe1-cbd094f7cd8f">
+                    <propertyInstance
+                      Id="1485a9c7-ab0b-41c1-90a1-07bd27ce25ea"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dbc14872-eeca-4239-a087-726a505b2255">
+                    <propertyInstance
+                      Id="347afba2-c1a4-48d2-a345-92cc5947c45a"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+          </operation>
+          <operation
+            Id="50449da5-2e33-4d80-a6e7-db203d7b26da"
+            name="OnPropertyChanged"
+            visibility="Protected"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="2eccb6c4-bc71-4b51-8a02-7c006e253eaa"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3D(Name%3DOnPropertyChanged OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="620d7edb-5148-4c28-8a90-92876d43fcbd"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a628c69c-bdce-4709-9d82-6603d09bb45f">
+                    <propertyInstance
+                      Id="c07ce8c5-bc30-48c4-8bd8-e0263e73411a"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="c3ed2847-b47a-440a-abd6-5f653380b1b8">
+                    <propertyInstance
+                      Id="b793e176-3f31-474e-a694-32859ff6d071"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="caa68c4e-3a69-4f7a-9e19-f09a6bdb0161">
+                    <propertyInstance
+                      Id="550ab6b1-f9b7-414d-b160-c49585ec89b9"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e0c9984a-d098-48fd-b857-0012b3448f0e">
+                    <propertyInstance
+                      Id="0a0ddc46-c456-4158-9ba1-84904e602f6b"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="41eb8a43-5dcf-4d9b-8fcd-9a5f5a43c900">
+                    <propertyInstance
+                      Id="3c059882-076b-43e7-a2e4-95eb0d84182b"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="94b182b9-6bbb-4a12-b3ce-c3fb38c40849">
+                    <propertyInstance
+                      Id="a86ddb3c-81e7-464e-9a7a-74079c66c8cf"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1e68a9e0-9e53-4988-8d8c-a099778580fd"
+                  name="propName"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="25534a41-1017-479e-8c71-4dc1f2937186"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DViewModel Member%3D(Name%3DOnPropertyChanged OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DString)]) ParameterIdentifier%3DpropName"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+                      LastKnownName="String"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="1df737ac-0a62-45db-b8bc-496b0b0702c6"
+        name="RelayCommand"
+        visibility="Package"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <referencesInternal>
+          <reference
+            Id="20f1f7e4-098b-40f7-b09e-23dd96eab481"
+            handle="viewcode://./CodeSchema_Class?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand"
+            tag="ViewCode" />
+        </referencesInternal>
+        <appliedStereotypesInternal>
+          <stereotypeInstance
+            Id="afcb7c16-7115-44b2-8c8d-6acac490e721"
+            name="class"
+            profile="CSharpProfile">
+            <propertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="32e08098-7ae9-484e-9aae-d44226fce62e">
+                <propertyInstance
+                  Id="32b0c9b8-bd53-45b5-93d0-0c834f386da4"
+                  name="ClrAttributes" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="6bf096cf-4e0a-40e7-90ad-dc49ec16889b">
+                <propertyInstance
+                  Id="ec0e9b59-9f30-436c-a0c2-24c757e30d67"
+                  name="IsPartial"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="c7e9bc79-73f4-4087-8d37-6b024382088e">
+                <propertyInstance
+                  Id="bc1ab8cc-31f5-4b46-bd89-57c63923ff8d"
+                  name="IsStatic"
+                  value="False" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="9ec9e74b-5191-4fb1-ac80-405054d5c2ec">
+                <propertyInstance
+                  Id="d94d34b8-4de1-40f7-a79c-d0ccf4bb91ee"
+                  name="IsUnsafe"
+                  value="false" />
+              </stereotypeInstanceHasPropertyInstances>
+              <stereotypeInstanceHasPropertyInstances
+                Id="cfc04882-cd59-498a-9dfb-09183ecca514">
+                <propertyInstance
+                  Id="1cd1f574-80b1-4a46-b6b3-6477a6ac9a31"
+                  name="PackageVisibility"
+                  value="internal" />
+              </stereotypeInstanceHasPropertyInstances>
+            </propertyInstances>
+          </stereotypeInstance>
+        </appliedStereotypesInternal>
+        <suppliersInternal>
+          <interfaceRealization
+            Id="80914935-e2a6-43ee-8496-1a57b2772e96">
+            <interfaceMoniker
+              Id="1027258a-35e2-44cb-8114-e065d401c401"
+              LastKnownName="ICommand"
+              LastKnownLocation="Package24_1337.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="bafeca98-8888-4c6c-8943-58e80123d18f"
+            name="_execute"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="3c22deaa-0913-4fab-b620-aa009f956d86"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3D_execute"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="01f65dfa-adee-425c-86e4-89a9f4c14c1d"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="2b830294-d262-4a39-b3de-7324e700f278">
+                    <propertyInstance
+                      Id="1f15493d-297d-4c7f-af14-f16560d28d12"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4b6e2fd6-6d38-4683-86fa-c583ef2a3b48">
+                    <propertyInstance
+                      Id="4879fa3c-9e19-4005-afd8-830e0789d546"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ae5b1339-eb8c-4807-b7ee-e929f55d6b76">
+                    <propertyInstance
+                      Id="9406315b-a005-4f02-9caf-d92936cf946d"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b4fe01b4-0484-4140-aa51-91d3934e8124">
+                    <propertyInstance
+                      Id="4ac3d044-b0f4-492e-97e5-3fd0ac2cbc79"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fd99e06f-8979-40ab-8e79-afd9f2397c7a">
+                    <propertyInstance
+                      Id="b8d09b94-3cb5-49bc-82ea-923daa2c013e"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="1ce4ac8c-5c4a-4fbc-aa38-2b8c2f2e2fde"
+                LastKnownName="Action&lt;Object‎&gt;"
+                LastKnownLocation="Package2_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="59ed2dc9-61f8-4cb3-b5e8-4f357dd3195d"
+            name="_canExecute"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="176b26ba-78f9-443a-bdd8-a438539a7041"
+                handle="viewcode://./CodeSchema_Field?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3D_canExecute"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="5ad70ae2-ed67-471f-b038-dea8016e4794"
+                name="field"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5764afbe-d0a5-45be-8695-df3c8bdc1e35">
+                    <propertyInstance
+                      Id="8f9d4877-ea1e-4927-a516-7ad2339ecc28"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="80c5cf00-61f4-4272-bb86-eb6f228362a3">
+                    <propertyInstance
+                      Id="4694ca8f-8667-4531-96f9-43ad38774328"
+                      name="IsConst"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7d90ce47-a4e2-43c5-a994-471e940e65f5">
+                    <propertyInstance
+                      Id="f2252b01-80db-4ff7-8519-4d31140cb70c"
+                      name="IsNullable"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b7de8f8e-5bb5-40bc-9154-c51b7e9cc802">
+                    <propertyInstance
+                      Id="107d909f-50bc-46dd-9186-e71562e733ce"
+                      name="IsVolatile"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dcd0b5c8-3c36-4b16-ba0b-edfe2312677f">
+                    <propertyInstance
+                      Id="97ff7f13-e704-4ab1-ac62-73b52e2a8add"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="7d138641-76ef-4179-8f8a-6a59cf9465b3"
+                LastKnownName="Predicate&lt;Object‎&gt;"
+                LastKnownLocation="Package2_1337.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="83accc03-ff9c-48e2-99fd-eb05e4a209c4"
+            name="CanExecuteChanged"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <referencesInternal>
+              <reference
+                Id="0480f842-690f-4377-8dd6-bab879d90cc1"
+                handle="viewcode://./CodeSchema_Event?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3DCanExecuteChanged"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="1ea571cb-6219-48dc-83f8-ec3c9e2af48f"
+                name="event"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="7a32a861-d059-43ab-88ca-0567d9a88de0">
+                    <propertyInstance
+                      Id="f0075fc8-812f-4078-b94d-1528b747f492"
+                      name="Add"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="193adb6b-1c91-400d-9ac8-4371a91f8600">
+                    <propertyInstance
+                      Id="6d951810-b4bb-445e-bea8-aae93d9331ad"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="19cc1038-92de-4efe-a264-c44aff673628">
+                    <propertyInstance
+                      Id="1aa59851-803f-430d-b340-1dd9ada4a187"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="abee7c79-6876-4749-9653-3155d1e44b0b">
+                    <propertyInstance
+                      Id="7ea86d36-4327-4e2d-bedf-32f5cb38ecef"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="96da7f96-bc85-4500-a4f9-f253cd21df2d">
+                    <propertyInstance
+                      Id="ccd1e2d5-29b6-4074-b6e6-2cf40f21e020"
+                      name="Remove"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <type_NamedElement>
+              <classMoniker
+                Id="f4c52999-6b5b-4851-b3d9-240d0fccf91b"
+                LastKnownName="EventHandler"
+                LastKnownLocation="Package2_1337.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="93e9c7f3-f66d-47c3-9b66-e9a7590f557c"
+            name="RelayCommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="72db416a-20cb-4cd7-b306-3e76047a57c6"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="070942c2-e3a3-439c-92a7-a188b49105b6"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="50477b98-bf43-494b-9824-3eb1c358ef03">
+                    <propertyInstance
+                      Id="4ce2c89e-1998-4763-848a-6de4eba1e030"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="6ca2cac5-1b54-4fdf-9ff2-bdf5e6bda48f">
+                    <propertyInstance
+                      Id="84a48101-6041-4968-b739-7efe01c4956e"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="dc7ae7cd-aa9a-4b5a-b35e-b25a11f4fa08">
+                    <propertyInstance
+                      Id="a8e0c97f-a353-46f6-80cc-0f8dae1f517a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="b2812bf3-e375-4460-a73d-891a83793aca">
+                    <propertyInstance
+                      Id="8b6f094c-216b-4cbb-9671-43ced08c7672"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="a7754d32-0e69-486d-9eca-87295238fb1a">
+                    <propertyInstance
+                      Id="cf405239-3ecf-4d9a-9ecf-b01b84e1df63"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="3433fc60-2dee-4420-a900-e9425ef3df4a">
+                    <propertyInstance
+                      Id="2ac67014-e68d-4eb8-b37b-95f24184a70e"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3e442305-bcaf-432b-a7d8-c3508a410065"
+                  name="execute"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="6882d60f-37e3-4089-938b-72aa933af18b"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]))]) ParameterIdentifier%3Dexecute"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1ce4ac8c-5c4a-4fbc-aa38-2b8c2f2e2fde"
+                      LastKnownName="Action&lt;Object‎&gt;"
+                      LastKnownLocation="Package2_1337.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="9edd3c79-0109-4207-b839-14a3434841d7"
+            name="RelayCommand"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="98cbdf31-7797-45ad-8c76-8b56cb0283bc"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DPredicate GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]))])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="345f99a1-533e-4b87-89d8-3f4a95f949a9"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ed4521e1-e905-4152-aa9b-7255573af5ee">
+                    <propertyInstance
+                      Id="0d1a9e10-4bf8-41f4-ae5e-40b3884c1b7d"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="4b543676-5cb1-4c73-99b4-94acefe1fcf1">
+                    <propertyInstance
+                      Id="a5bc6015-8146-4e8a-801a-e29f93d549ba"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="11c6a185-ecb2-4c51-8162-eff93c2bfec3">
+                    <propertyInstance
+                      Id="de846f9c-2795-4217-9ded-65deb3cf254c"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="969deb25-5e55-475c-8feb-04a41beaf069">
+                    <propertyInstance
+                      Id="f32c52fd-f08d-41b8-a240-9f1ff9ef754a"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ab4adc83-f122-47e3-9d03-a43f2094df77">
+                    <propertyInstance
+                      Id="3ba13bda-8818-44dd-9b28-84bbc6504f59"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="53f164d9-ee1d-4b4d-a210-33aebccd7193">
+                    <propertyInstance
+                      Id="1563d8ca-87b4-4f45-a051-14579088e27b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3c84b967-2056-4820-93f8-51943312c48c"
+                  name="execute"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="a43ee03d-97ba-43f1-96cd-38a0ca0cd70e"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DPredicate GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]))]) ParameterIdentifier%3Dexecute"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="1ce4ac8c-5c4a-4fbc-aa38-2b8c2f2e2fde"
+                      LastKnownName="Action&lt;Object‎&gt;"
+                      LastKnownLocation="Package2_1337.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8a2af533-8891-427b-af28-7cf6fe75fb9a"
+                  name="canExecute"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="c7daeb45-2209-421a-963f-3de95b2a1bce"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3D(Name%3D.ctor OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DAction GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]))%2C(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3D(Name%3DPredicate GenericParameterCount%3D1 GenericArguments%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]))]) ParameterIdentifier%3DcanExecute"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="7d138641-76ef-4179-8f8a-6a59cf9465b3"
+                      LastKnownName="Predicate&lt;Object‎&gt;"
+                      LastKnownLocation="Package2_1337.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="de7ff0a2-12ce-4dae-bfd6-e98393a94e8f"
+            name="CanExecute"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="0fd978ee-3d6c-4d97-8efa-bcc155fa5f51"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3D(Name%3DCanExecute OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="28da8a2d-c5a4-451c-97b2-48bc2e5e722b"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e42b241d-1c5e-4f8e-b306-1ae886a1f53f">
+                    <propertyInstance
+                      Id="c737e33b-8c8f-4b94-b8b0-20e0704c539b"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="ffee04c6-7201-4e97-bfee-0e6c2d1cfb4d">
+                    <propertyInstance
+                      Id="e73fa528-f557-4b26-91c7-20f1c4008e4b"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fab8c38e-c8c1-454c-acae-8fb31d071e32">
+                    <propertyInstance
+                      Id="8685282a-6c3d-4f75-998d-4f710299d86a"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="5bedd810-b052-4fbc-920f-de8a1182e2fd">
+                    <propertyInstance
+                      Id="8df15bf8-e9f9-4d50-990a-1262f76c95c2"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="1be013b5-8868-4dc9-9a3b-9cd7311c06a3">
+                    <propertyInstance
+                      Id="719713f1-f4ae-4f95-bfaa-ee832c4ab2dd"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="cd208867-d983-41c1-9636-0ad9d19dadcd">
+                    <propertyInstance
+                      Id="2d211389-60d1-4c40-90fb-2e366fec084b"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="843bdb8b-40ae-4d69-bd3c-93e9eef09cfa"
+                  direction="Return">
+                  <type_NamedElement>
+                    <primitiveTypeMoniker
+                      Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+                      LastKnownName="Boolean"
+                      LastKnownLocation="ModelingProject1.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1e62b57a-eaa8-4276-93b7-42b8451eee04"
+                  name="parameter"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="dc6dc00d-1b32-4117-806a-1bd680fe444f"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3D(Name%3DCanExecute OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dparameter"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="97fa0097-2ce6-4d8b-840f-0f43d8c1a7c2"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_1337.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="36674def-cac9-4365-9cff-5e363a871b60"
+            name="Execute"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <referencesInternal>
+              <reference
+                Id="dd15a989-d69d-4d9f-b717-95b15828f8fe"
+                handle="viewcode://./CodeSchema_Method?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3D(Name%3DExecute OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)])"
+                tag="ViewCode" />
+            </referencesInternal>
+            <appliedStereotypesInternal>
+              <stereotypeInstance
+                Id="869a56a3-b3df-4407-b5d5-5ee3f3a39462"
+                name="method"
+                profile="CSharpProfile">
+                <propertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="f583b508-a0ba-406c-a66a-7144d5aeefd2">
+                    <propertyInstance
+                      Id="5290d121-e351-45b7-b4c4-ead3422b8629"
+                      name="ClrAttributes" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e27147e1-1af4-4718-b3be-5ae4496b7f79">
+                    <propertyInstance
+                      Id="69a099c8-341c-4eee-b6fc-2c987dbef1be"
+                      name="IsPartial"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="fc86239f-987c-415e-a723-6d1411cd7e73">
+                    <propertyInstance
+                      Id="b98ca1a1-41f7-4389-b2df-8da144fe004d"
+                      name="IsUnsafe"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="67effd08-2ce0-4d8d-be2b-7c79fa3b4ec0">
+                    <propertyInstance
+                      Id="b280132f-c519-460b-a34e-5f8236163466"
+                      name="Inheritance"
+                      value="none" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="e5fe4544-bcd0-42b8-a42c-696fcf679c49">
+                    <propertyInstance
+                      Id="6961bbb0-51ff-41f6-a7b3-08cfa514fa99"
+                      name="PackageVisibility"
+                      value="internal" />
+                  </stereotypeInstanceHasPropertyInstances>
+                  <stereotypeInstanceHasPropertyInstances
+                    Id="17531a06-c914-48f5-9405-7971a87e0685">
+                    <propertyInstance
+                      Id="e1963f61-4ef1-4798-9d3a-a2e408b2a44d"
+                      name="params"
+                      value="false" />
+                  </stereotypeInstanceHasPropertyInstances>
+                </propertyInstances>
+              </stereotypeInstance>
+            </appliedStereotypesInternal>
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="15a35fba-337e-48a5-835c-3ddd879c69c9"
+                  name="parameter"
+                  direction="In">
+                  <referencesInternal>
+                    <reference
+                      Id="f75a0484-7848-4979-8556-fd7db2fab1f3"
+                      handle="viewcode://./CodeSchema_Parameter?Assembly%3D&quot;file:%2F%2F%2FC:%2FUsers%2FAdamk%2FDocuments%2FVisual Studio 2013%2FProjects%2FLicencjatInformatyka(RMSE)%2FLicencjatInformatyka(RMSE)%2Fbin%2FDebug%2FLicencjatInformatyka(RMSE).exe&quot; Namespace%3DLicencjatInformatyka_RMSE_.NewFolder1 Type%3DRelayCommand Member%3D(Name%3DExecute OverloadingParameters%3D[(Assembly%3D&quot;file:%2F%2F%2FC:%2FProgram Files (x86)%2FReference Assemblies%2FMicrosoft%2FFramework%2F.NETFramework%2Fv4.5%2Fmscorlib.dll&quot; Namespace%3DSystem Type%3DObject)]) ParameterIdentifier%3Dparameter"
+                      tag="ViewCode" />
+                  </referencesInternal>
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="97fa0097-2ce6-4d8b-840f-0f43d8c1a7c2"
+                      LastKnownName="Object"
+                      LastKnownLocation="Package2_1337.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

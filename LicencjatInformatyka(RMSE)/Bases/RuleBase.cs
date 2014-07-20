@@ -13,11 +13,12 @@ namespace LicencjatInformatyka_RMSE_.NewFolder4
       
         // reguła(Nr_reguły, "Wniosek",[Lista_warunkow odzielona przecinkami w cudzysłowiu ],semafor)
   
-        private readonly List<Rule> _baseList = new List<Rule>();
+        private  List<Rule> _baseList = new List<Rule>();
 
         public List<Rule> RulesList
         {
             get { return _baseList; }
+            set { _baseList = value; }
             
         }
 

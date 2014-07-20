@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AskConstrainAndRedundancy.xaml.cs">
+      <DependentUpon>AskConstrainAndRedundancy.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Bases\ArgumentBase.cs" />
     <Compile Include="Bases\FactBase.cs" />
     <Compile Include="Command\ActionsOnBase.cs" />
@@ -85,6 +88,10 @@
     <Compile Include="ElementsOfBases\SimpleTree.cs" />
     <Compile Include="Bases\RuleBase.cs" />
     <Compile Include="Bases\SoundBase.cs" />
+    <Page Include="AskConstrainAndRedundancy.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -109,6 +116,7 @@
     <Compile Include="Additional\ILanguageConfig.cs" />
     <Compile Include="Additional\KnowledgeDatabaseAnalyze.cs" />
     <Compile Include="Additional\PolishLanguageConfig.cs" />
+    <Compile Include="OperationsOnBases\Redundancy.cs" />
     <Compile Include="OperationsOnBases\TreeOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

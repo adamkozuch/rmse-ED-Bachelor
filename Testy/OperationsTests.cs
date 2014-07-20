@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
+using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
 using LicencjatInformatyka_RMSE_.NewFolder4;
+using LicencjatInformatyka_RMSE_.NewFolder5;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
 using NUnit.Framework;
 using System.Linq.Expressions;
@@ -31,7 +33,7 @@ namespace Testy
         [Test]
         public void Sprawdzamy_Wnioskowania()
         {
-            
+            GatheredBases bases = new GatheredBases();   
             RuleBase rules = new RuleBase();
             Rule r = new Rule(1,"Wniosek",new List<string>(){"Wniosek1"},true);
             Rule r1 = new Rule(2, "Wniosek1", new List<string>() { "Wniosek2" }, true);
@@ -43,75 +45,15 @@ namespace Testy
             rules.RulesList.Add(r2);
             rules.RulesList.Add(r3);
             rules.RulesList.Add(r22);
-           TreeOperations.ReturnComplexTreeAndDifferences(rules.RulesList, r);
+            bases.RuleBase= rules;
+           TreeOperations.ReturnComplexTreeAndDifferences(bases, r);
             Assert.AreEqual(true, true);
         }
 
 
-        [Test]
-        public void Wczytujemy_Baze()
-        {
-          
-            RuleBase r = new RuleBase();
-            r.ReadRules(@"‪C:\Users\Adamk\Desktop\Test\test.txt");
-
-        
 
 
-            Assert.AreEqual(true, true);
-        }
-
-
-       // [Test]
-        //public void Check_If_One_Condition_Is_Entered_In_DynamicBase()
-        //{
-        //    var factList = new List<Fact>
-        //    {
-        //        new Fact {FactName = "Wniosek", FactValue = true}
-        //    };
-
-
-        //    string nameOfConclusion = "Wniosek";
-
-        //    Fact result = ConclusionOperations.CheckIfStringIsFact(nameOfConclusion, factList);
-        //    Assert.AreEqual(result.FactName, "Wniosek");
-        //}
-
-        //[Test]
-        //public void Check_Three_Rules_With_No_Double_Conclusion_Return_One_Flattered_Rule()
-        //{
-        //    var ruleList = new List<Rule>
-
-        //    {
-        //        new Rule(1, "Wniosek1", new List<string> {"warunek1"}, true),
-        //        new Rule(1, "warunek1", new List<string> {"warunek2"}, true),
-        //        new Rule(1, "warunek2", new List<string> {"warunek3"}, true),
-        //    };
-
-
-        //   int numberOfFlatteredRules = ConclusionOperations.Flatter(ruleList).Count;
-
-        //    Assert.AreEqual(1,numberOfFlatteredRules);
-
-        //}
-
-
-        //public void Check_Three_Rules_With_Two_Same_Conclusion_Return_Two_Flattered_Rule()
-        //{
-        //    var ruleList = new List<Rule>
-
-        //    {
-        //        new Rule(1, "Wniosek1", new List<string> {"warunek1"}, true),
-        //        new Rule(1, "warunek1", new List<string> {"warunekX"}, true),
-        //        new Rule(1, "warunek1", new List<string> {"waruneky"}, true),
-        //    };
-
-
-        //    int numberOfFlatteredRules = ConclusionOperations.Flatter(ruleList).Count;
-
-        //    Assert.AreEqual(2, numberOfFlatteredRules);
-
-        //}
+      
 
 
         [Test]

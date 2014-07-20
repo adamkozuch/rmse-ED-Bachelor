@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
 using LicencjatInformatyka_RMSE_.NewFolder5;
@@ -70,13 +71,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             return false; //else trzeba sprawdzac dalej
         }
 
-
-        /// <summary>
-        ///     masakra z tymi modelami trzeba to jeszcze raz przeanalizowaæ wprowadziæ
-        ///     obliczenia i sprawdziæ logikê oraz uproœciæ
-        /// </summary>
-        /// <param name="conclusion"></param>
-        // t¹ metodê trzeba potraktowaæ jako pocz¹tek w którym jest przetwarzany model relacyjny
         private bool ProcessModel(string conclusion)
         {
             IEnumerable<Model> models = _bases.ModelsBase.ModelList.Where(p => p.Conclusion == conclusion);
@@ -226,6 +220,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             return null;
         }
 
+
+        #region Secondary
         private string ArgumentValue(string argument)
         {
             string argumentValue = CheckInArguments(argument);
@@ -252,7 +248,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             return _bases.ModelsBase.ModelList.Where(model => model.Conclusion == firstModelValue).ToList();
         }
 
-
         private string AskValue( string s)
         {
             MessageBox.Show("HUJ");
@@ -275,7 +270,12 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
         {
             throw new NotImplementedException();
         }
-
+        private bool Ask()
+        {
+            MessageBox.Show("Pytam o bool");
+            return false;
+        }
+        #endregion
         private bool CheckStartCOndition(string startCondition)
         {
             bool value = ConclusionOperations.CheckIfStringIsFact(startCondition, _bases.FactBase.FactList);
@@ -297,10 +297,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             return false;
         }
 
-        private bool Ask()
-        {
-            MessageBox.Show("Pytam o bool");
-            return false;
-        }
+       
     }
 }

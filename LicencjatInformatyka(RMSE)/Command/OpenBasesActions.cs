@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.NewFolder1;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
@@ -32,7 +33,8 @@ namespace LicencjatInformatyka_RMSE_.Command
             {
                 _gatheredBases.RuleBase.ReadRules(fileDialog.FileName);
             }
-            Contradiction.CheckOutsideContradiction(_gatheredBases);
+          AskConstrainAndRedundancy window = new AskConstrainAndRedundancy();
+            window.Show();
         }
 
         public void ReadConstrainBase()
