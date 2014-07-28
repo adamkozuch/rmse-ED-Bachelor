@@ -88,6 +88,9 @@
     <Compile Include="ElementsOfBases\SimpleTree.cs" />
     <Compile Include="Bases\RuleBase.cs" />
     <Compile Include="Bases\SoundBase.cs" />
+    <Compile Include="ConstrainAsk.xaml.cs">
+      <DependentUpon>ConstrainAsk.xaml</DependentUpon>
+    </Compile>
     <Page Include="AskConstrainAndRedundancy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -108,6 +111,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ConstrainAsk.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bases\ModelBase.cs" />

@@ -277,7 +277,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                             select flatteredConditions).Count();
 
                         if (count > 1) // If more than one there is a contradiction
-                            MessageBox.Show("Contradiction z regula" + rule.Conclusion + "i ograniczeniem" +
+                            MessageBox.Show("Sprzeczność pomiędzy regułą " + rule.NumberOfRule + " i ograniczeniem" +
                                             constrain.NumberOfLimit);
                     }
                 }

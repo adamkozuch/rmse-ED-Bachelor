@@ -11,22 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using LicencjatInformatyka_RMSE_.NewFolder1;
 
 namespace LicencjatInformatyka_RMSE_
 {
     /// <summary>
-    /// Interaction logic for AskConstrainAndRedundancy.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class AskConstrainAndRedundancy : Window
+    public partial class Window1 : Window
     {
-        private ViewModel _model;
-        public AskConstrainAndRedundancy()
+        public Window1()
         {
             InitializeComponent();
-
         }
-
-
     }
 }

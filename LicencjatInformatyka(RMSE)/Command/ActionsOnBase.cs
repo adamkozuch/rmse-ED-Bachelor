@@ -2,6 +2,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.NewFolder1;
+using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder5;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
 
@@ -22,7 +23,7 @@ namespace LicencjatInformatyka_RMSE_.Command
 
         public void CheckOutsideContradiction()
         {
-            Contradiction.CheckOutsideContradiction(_bases);
+            Contradiction.ReportAboutContradictionInRules(_bases);
         }
 
         public void CheckContradictionWithConstrains()
@@ -30,17 +31,19 @@ namespace LicencjatInformatyka_RMSE_.Command
             Contradiction.CheckContradictionInConstrains(_bases, _bases.ConstrainBase.ConstrainList);
         }
 
-        public void MetodaWnioskujaca()
+        public void BackwardConcludeAction(Rule rule)
         {
                 // trzeba znalezc metode dopytujaca
             //_openBasesActions(_openBasesActions.bazaOgraniczen); // dopytanie ograniczeñ musi byc na pocz¹tku
-                // Jeœli w sp³aszczonej reule w warunkac dopytywalnych bêd¹ wiecej jak jeden warunkow z ograniczenia to 
-                // mamy sprzecznoœæ. Musimy sprawdzaæ wszystkie sp³aszczone opcje po kolei
+               
+            if (_bases.ConstrainBase.ConstrainList.Count != null)
+            {
+                
+            }
 
-                var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases, _bases.RuleBase.RulesList[0]);
-                var possibleTrees = TreeOperations.ReturnPossibleTrees(tree.Values.First(), tree.Keys.First());
+                
 
-                conclusion.Conclude(possibleTrees);
+                conclusion.BackwardConclude(rule);
 
             }
         

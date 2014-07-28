@@ -1,0 +1,15 @@
+﻿<Window x:Class="LicencjatInformatyka_RMSE_.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:newFolder1="clr-namespace:LicencjatInformatyka_RMSE_.NewFolder1"
+        Title="Window1" Height="300" Width="300"
+        DataContext="{DynamicResource ViewModel}">
+    <Window.Resources>
+        <newFolder1:ViewModel x:Key="ViewModel"/>
+    </Window.Resources>
+    <Grid>
+        <Grid  HorizontalAlignment="Left" Height="259" Margin="-1,0,0,0" VerticalAlignment="Top" Width="233"/>
+        <DataGrid ItemsSource="{Binding Rules}" HorizontalAlignment="Left" Height="188" Margin="32,54,0,0" VerticalAlignment="Top" Width="182"/>
+
+    </Grid>
+</Window>

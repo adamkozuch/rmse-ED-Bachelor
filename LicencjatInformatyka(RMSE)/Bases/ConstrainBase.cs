@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using System.Text.RegularExpressions;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
@@ -17,7 +18,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder4
         }
         public void ReadConstrains(string path)
         {
-            foreach (string line in File.ReadLines(path))
+            foreach (string line in File.ReadLines(path, Encoding.GetEncoding("Windows-1250")))
             {  
                 Match m = Regex.Match(line, "^ograniczenie");
                 if(m.Success)

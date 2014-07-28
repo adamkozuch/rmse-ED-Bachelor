@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
 using LicencjatInformatyka_RMSE_.NewFolder5;
@@ -38,7 +39,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder4
 
         public void ReadModels(string models)
         {
-            foreach (string line in File.ReadLines(models))
+            foreach (string line in File.ReadLines(models, Encoding.GetEncoding("Windows-1250")))
             {
                 RuleChecker(line);
             }

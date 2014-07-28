@@ -9,7 +9,7 @@ using LicencjatInformatyka_RMSE_.NewFolder5;
 
 namespace LicencjatInformatyka_RMSE_.NewFolder1
 {
-    class ViewModel
+   public class ViewModel
     {
         private ILanguageConfig _languageConfig;
         private GatheredBases bases;
@@ -24,8 +24,11 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
             OpenRuleCommand = new RelayCommand(pars => _openBasesActions.ReadRuleBase());
             OpenConstrainCommand = new RelayCommand(pars => _openBasesActions.ReadConstrainBase());
             OpenModelCommand = new RelayCommand(pars => _openBasesActions.ReadModelBase());
-           ConcludeCommand = new RelayCommand(pars =>  _actionsOnBase.MetodaWnioskujaca() );
-            
+            ConcludeCommand = new RelayCommand(pars =>  _actionsOnBase.BackwardConcludeAction(bases.RuleBase.RulesList[0]) );
+            OutsideContradictionCommand = new RelayCommand(pars =>_actionsOnBase.CheckOutsideContradiction());
+            ContradictionWithConstrainsCommand = new RelayCommand(pars => _actionsOnBase.CheckContradictionWithConstrains());
+            OnPropertyChanged("Rules");
+
 
 
         }
@@ -41,6 +44,8 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
         public ICommand OpenConstrainCommand { get; set; }
         public ICommand OpenModelCommand { get; set; }
         public ICommand ConcludeCommand { get; set; }
+        public ICommand OutsideContradictionCommand { get; set; }
+        public ICommand ContradictionWithConstrainsCommand { get; set; }
        
         public ICommand TextCommand { get; set; }
         private string _text ;
@@ -59,6 +64,12 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
                _text = value;
                 OnPropertyChanged("Text");
             }
+        }
+
+        public List<Rule>Rules
+        {
+            get { return bases.RuleBase.RulesList; }
+            
         }
         #endregion
 

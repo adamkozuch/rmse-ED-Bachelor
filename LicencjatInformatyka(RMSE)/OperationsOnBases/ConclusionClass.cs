@@ -10,7 +10,7 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 {
-    internal class ConclusionClass
+    public class ConclusionClass
     {
       
         private readonly GatheredBases _bases;
@@ -20,8 +20,14 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             _bases = bases;
         }
 
-        public bool Conclude(List<List<SimpleTree>> possibleTrees)
+        public bool BackwardConclude( Rule checkedRule)
         {
+
+            var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases, checkedRule);
+
+            var possibleTrees = TreeOperations.ReturnPossibleTrees(tree.Values.First(), tree.Keys.First());
+
+
             foreach (var onePossibility in possibleTrees) //flattering all possible configurations of conditions
             {
                 List<SimpleTree> askableTable = onePossibility.Where(var => var.Dopytywalny).ToList();
@@ -34,6 +40,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                         if (rule.rule.Conclusion == fact.FactName) //set value of asking conditions
                             rule.rule.ConclusionValue = true;
                     }
+
                 }
 
                 bool conclusionValue = CheckConclusionValueOrCountModel(askableTable); // Check if all asking are true
@@ -52,6 +59,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             int i = 0;
             foreach (SimpleTree simpleTree in askingTable)
             {
+                ConstrainAsk(simpleTree);
                 if (simpleTree.rule.Model)
                 {
                     ProcessModel(simpleTree.rule.Conclusion);
@@ -69,6 +77,25 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             if (i == askingTable.Count)
                 return true; // hipoteza jest prawdziwa
             return false; //else trzeba sprawdzac dalej
+        }
+
+        private void ConstrainAsk(SimpleTree simpleTree)
+        {
+            foreach (var constrain in _bases.ConstrainBase.ConstrainList)
+            {
+                foreach (var cons in constrain.ConstrainsList)
+                {
+                    if (cons == simpleTree.rule.Conclusion)
+                    {
+                        AskForCOnstrainValue(constrain);
+                    }
+                }
+            }
+        }
+
+        private void AskForCOnstrainValue(Constrain cons)
+        {
+            MessageBox.Show("Pytam o wartoœæ ograniczenia");
         }
 
         private bool ProcessModel(string conclusion)
@@ -287,16 +314,22 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                 Ask();
             foreach (Rule rule in rules)
             {
-                Dictionary<List<List<Rule>>, SimpleTree> complexTree =
-                    TreeOperations.ReturnComplexTreeAndDifferences(_bases, rule);
+                
                 bool val =
-                    Conclude(TreeOperations.ReturnPossibleTrees(complexTree.Values.First(), complexTree.Keys.First()));
+                    BackwardConclude(rule);
                 if (val)
                     return true;
             }
             return false;
         }
 
+    public void AskForConstrains(GatheredBases bases)
+        {
+        foreach (var constrain in bases.ConstrainBase.ConstrainList)
+        {
+            
+        }
+        }
        
     }
 }
