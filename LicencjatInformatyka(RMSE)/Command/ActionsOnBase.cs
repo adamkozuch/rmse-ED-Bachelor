@@ -33,14 +33,7 @@ namespace LicencjatInformatyka_RMSE_.Command
 
         public void BackwardConcludeAction(Rule rule)
         {
-                // trzeba znalezc metode dopytujaca
-            //_openBasesActions(_openBasesActions.bazaOgraniczen); // dopytanie ograniczeñ musi byc na pocz¹tku
-               
-            if (_bases.ConstrainBase.ConstrainList.Count != null)
-            {
-                
-            }
-
+            
                 
 
                 conclusion.BackwardConclude(rule);

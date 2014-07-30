@@ -87,15 +87,33 @@
     <Compile Include="AskConstrainAndRedundancy.xaml.cs">
       <DependentUpon>AskConstrainAndRedundancy.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AskRuleValue.xaml.cs">
+      <DependentUpon>AskRuleValue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Bases\ArgumentBase.cs" />
     <Compile Include="Bases\FactBase.cs" />
+    <Compile Include="ChooseRule.xaml.cs">
+      <DependentUpon>ChooseRule.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Command\ActionsOnBase.cs" />
     <Compile Include="Command\OpenBasesActions.cs" />
+    <Compile Include="UserControls\ConcludeUserControl.xaml.cs">
+      <DependentUpon>ConcludeUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ConstrainBaseUserControll.xaml.cs">
+      <DependentUpon>ConstrainBaseUserControll.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\GraphicBaseUserControll.xaml.cs">
+      <DependentUpon>GraphicBaseUserControll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ModelBaseUserControll.xaml.cs">
+      <DependentUpon>ModelBaseUserControll.xaml</DependentUpon>
     </Compile>
     <Compile Include="OperationsOnBases\ConclusionClass.cs" />
     <Compile Include="Command\RelayCommand.cs" />
@@ -117,15 +135,32 @@
     <Compile Include="ElementsOfBases\SimpleTree.cs" />
     <Compile Include="Bases\RuleBase.cs" />
     <Compile Include="Bases\SoundBase.cs" />
-    <Compile Include="ConstrainAsk.xaml.cs">
-      <DependentUpon>ConstrainAsk.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RuleBaseControl.xaml.cs">
-      <DependentUpon>RuleBaseControl.xaml</DependentUpon>
+    <Compile Include="UserControls\RuleBaseUserControl.xaml.cs">
+      <DependentUpon>RuleBaseUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="AskConstrainAndRedundancy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AskRuleValue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChooseRule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ConcludeUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\ConstrainBaseUserControll.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserControls\GraphicBaseUserControll.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -143,11 +178,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="ConstrainAsk.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="UserControls\ModelBaseUserControll.xaml">
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
-    <Page Include="RuleBaseControl.xaml">
+    <Page Include="UserControls\RuleBaseUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -72,8 +72,12 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                     i++;
                 else
                 {
-                    MessageBox.Show("Wprowadz wartoœæ warunku" + " " + simpleTree.rule.Conclusion);
-                    simpleTree.rule.ConclusionValue = true;
+                   AskRuleValue window = new AskRuleValue(_viewModel);
+                    window.Show();
+                    
+                    simpleTree.rule.ConclusionValue = _viewModel.CheckedRuleVal;
+                    MessageBox.Show("kkkk");
+                    int c = 0;
                 }
             }
 
@@ -98,9 +102,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
         private void AskForCOnstrainValue(Constrain cons)
         {
-            Window1 constrainWindow = new Window1();
-            constrainWindow.Show();
-            string text = _viewModel.Text;
+          
         }
 
         private bool ProcessModel(string conclusion)

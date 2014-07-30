@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Adamk\documents\visual studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\
 LicencjatInformatyka_RMSE_
 none
 false
 DEBUG;TRACE
-C:\Users\Adamk\documents\visual studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\App.xaml
-3-78822874
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\App.xaml
+9-624342163
 
-45-1477274725
+511151825001
 141012385901
-AskConstrainAndRedundancy.xaml;MainWindow.xaml;ConstrainAsk.xaml;
+AskConstrainAndRedundancy.xaml;AskRuleValue.xaml;ChooseRule.xaml;UserControls\ConcludeUserControl.xaml;UserControls\ConstrainBaseUserControll.xaml;UserControls\GraphicBaseUserControll.xaml;MainWindow.xaml;UserControls\ModelBaseUserControll.xaml;UserControls\RuleBaseUserControl.xaml;
 
 False
 

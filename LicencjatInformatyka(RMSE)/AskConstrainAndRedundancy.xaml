@@ -11,7 +11,7 @@
         <newFolder1:ViewModel x:Key="ViewModel"/>
     </Window.Resources>
     <Grid>
-        <Button Command="{Binding OutsideContradictionCommand}" Content="Test na obecnośc sprzeczności zewnętrznych" HorizontalAlignment="Left" Height="60" Margin="10,52,0,0" VerticalAlignment="Top" Width="272" />
+        <Button  Content="Test na obecnośc sprzeczności zewnętrznych" HorizontalAlignment="Left" Height="60" Margin="10,52,0,0" VerticalAlignment="Top" Width="272" />
         <Button  Content="Test na obecność nadmiarowości" HorizontalAlignment="Left" Height="60" Margin="10,131,0,0" VerticalAlignment="Top" Width="272" />
         <Label Content="Przed przystąpieniem do wnioskowania zaleca się przeprowadzić następujące testy  " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="272" Height="42"/>
         <Button Content="Nie przeprowadzaj testów" HorizontalAlignment="Left" Height="60" Margin="10,209,0,0" VerticalAlignment="Top" Width="272" />

@@ -33,12 +33,8 @@ namespace LicencjatInformatyka_RMSE_.Command
             {
                 _gatheredBases.RuleBase.ReadRules(fileDialog.FileName);
             }
-          AskConstrainAndRedundancy window = new AskConstrainAndRedundancy();
-            window.DataContext = _viewModel;
-            window.Show();
-            Window1 wind = new Window1();
-            wind.DataContext = _viewModel;
-            wind.Show(); // TODO:W tym oknie mo¿na zaznaczyæ tylko jeden warunek dopytywalny
+
+
         }
 
         public void ReadConstrainBase()

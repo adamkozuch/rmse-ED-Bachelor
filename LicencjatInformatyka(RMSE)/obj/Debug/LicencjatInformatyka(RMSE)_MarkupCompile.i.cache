@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\App.xaml
-41272958555
+9-624342163
 
-50-119002989
+55-244006395
 141012385901
-AskConstrainAndRedundancy.xaml;MainWindow.xaml;ConstrainAsk.xaml;RuleBaseControl.xaml;
+AskConstrainAndRedundancy.xaml;AskRuleValue.xaml;ChooseRule.xaml;UserControls\ConcludeUserControl.xaml;UserControls\ConstrainBaseUserControll.xaml;UserControls\GraphicBaseUserControll.xaml;MainWindow.xaml;UserControls\ModelBaseUserControll.xaml;UserControls\RuleBaseUserControl.xaml;
 
 False
 
