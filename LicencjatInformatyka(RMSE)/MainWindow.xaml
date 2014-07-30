@@ -15,22 +15,6 @@
         <Button Content="Załaduj ograniczenia" HorizontalAlignment="Left" Margin="94,50,0,0" VerticalAlignment="Top" Width="112" Command="{Binding OpenConstrainCommand}"  Height="62"/>
         <Button Content="Załaduj modele" HorizontalAlignment="Left" Height="62" Margin="500,50,0,0" VerticalAlignment="Top" Width="136" Command="{Binding OpenModelCommand}" />
         <Button Content="Wnioskuj cos" HorizontalAlignment="Left" Height="66" Margin="551,324,0,0" VerticalAlignment="Top" Width="162" Command="{Binding ConcludeCommand}"  />
-        <Button HorizontalAlignment="Left" Height="66" Margin="563,167,0,0" VerticalAlignment="Top" Width="150" Command="{Binding ConcludeCommand}">
-            <ComboBox Width="120" RenderTransformOrigin="0.5,0.5">
-                <ComboBox.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-5.799"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </ComboBox.RenderTransform>
-            </ComboBox>
-        </Button>
-        <Grid HorizontalAlignment="Left" Height="246" Margin="65,198,0,0" VerticalAlignment="Top" Width="266">
-            <Button Command="{Binding ContradictionWithConstrainsCommand}" Content="Constrain" HorizontalAlignment="Left" Height="27" Margin="33,46,0,0" VerticalAlignment="Top" Width="96"/>
-            <Button Content="Button" HorizontalAlignment="Left" Height="39" Margin="33,114,0,0" VerticalAlignment="Top" Width="142"/>
-        </Grid>
 
     </Grid>
 </Window>

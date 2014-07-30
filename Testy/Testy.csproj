@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="REstudent.BED" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LicencjatInformatyka%28RMSE%29\LicencjatInformatyka%28RMSE%29.csproj">

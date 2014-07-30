@@ -13,6 +13,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
     {
         private ILanguageConfig _languageConfig;
         private GatheredBases bases;
+      
         public ViewModel()
         {
        //     this._languageConfig = languageConfig;
@@ -64,6 +65,17 @@ namespace LicencjatInformatyka_RMSE_.NewFolder1
                _text = value;
                 OnPropertyChanged("Text");
             }
+        }
+
+        public string TrueConstrain
+        {
+            get { return _text; }
+            set
+            {
+                _text = value;
+                OnPropertyChanged("Text");
+            }
+            
         }
 
         public List<Rule>Rules

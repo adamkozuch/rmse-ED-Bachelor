@@ -9,7 +9,7 @@
     </Window.Resources>
     <Grid>
         <Grid  HorizontalAlignment="Left" Height="259" Margin="-1,0,0,0" VerticalAlignment="Top" Width="233"/>
-        <DataGrid ItemsSource="{Binding Rules}" HorizontalAlignment="Left" Height="188" Margin="32,54,0,0" VerticalAlignment="Top" Width="182"/>
+        <DataGrid ItemsSource="{Binding Rules}" SelectedItem="{Binding Text}" HorizontalAlignment="Left" Height="188" Margin="32,54,0,0" VerticalAlignment="Top" Width="182"/>
 
     </Grid>
 </Window>

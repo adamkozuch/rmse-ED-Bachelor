@@ -18,7 +18,7 @@ namespace LicencjatInformatyka_RMSE_.Command
         {
             _viewModel = model;
             _bases = bases;
-          conclusion  = new ConclusionClass(_bases);
+          conclusion  = new ConclusionClass(_bases, _viewModel);
         }
 
         public void CheckOutsideContradiction()

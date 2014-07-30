@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using LicencjatInformatyka_RMSE_.Additional;
+using LicencjatInformatyka_RMSE_.NewFolder1;
 using LicencjatInformatyka_RMSE_.NewFolder2;
 using LicencjatInformatyka_RMSE_.NewFolder3;
 using LicencjatInformatyka_RMSE_.NewFolder5;
@@ -14,10 +15,12 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
     {
       
         private readonly GatheredBases _bases;
+        private readonly ViewModel _viewModel;
 
-        public ConclusionClass(GatheredBases bases)
+        public ConclusionClass(GatheredBases bases, ViewModel viewModel)
         {
             _bases = bases;
+            _viewModel = viewModel;
         }
 
         public bool BackwardConclude( Rule checkedRule)
@@ -95,7 +98,9 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
         private void AskForCOnstrainValue(Constrain cons)
         {
-            MessageBox.Show("Pytam o wartoœæ ograniczenia");
+            Window1 constrainWindow = new Window1();
+            constrainWindow.Show();
+            string text = _viewModel.Text;
         }
 
         private bool ProcessModel(string conclusion)
@@ -104,7 +109,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             foreach (Model model in models)
             {
                 bool start = CheckStartCOndition(model.StartCondition);
-                start = true;
+                start = true;  //TODO: pamiêtaæ ¿eby zmieniæ to przypisanie
                 if (start)
                 {
                     if (model.ModelType == "simple")

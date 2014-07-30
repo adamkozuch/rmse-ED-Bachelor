@@ -106,10 +106,10 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                     {
                         string s = "";
                         SimpleTree r = VARIABLE;
-                        if (VARIABLE.rule.NumberOfRule == rule.NumberOfRule) //TODO:COs nie działa to if
+                        if (VARIABLE.rule.NumberOfRule == rule.NumberOfRule) 
                         {
                             bool boolValue = true;
-                            while (r.Parent.rule != rule) //TODO: Wykminic to raportowanie
+                            while (r.Parent.rule != rule) 
                             {
                                 if (boolValue == false)
                                 {
@@ -167,7 +167,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                             CheckContradictionBetweenRulesAndStartedConditions
                                 (listOfStartedConditions, condition);
                        //     CheckContradictionBetweenModelsAndStartedConditions();
-                         //   CheckContradictionBetweenArithmeticModels();
+                          // CheckContradictionBetweenArithmeticModels();
                         }
                     }
                 }

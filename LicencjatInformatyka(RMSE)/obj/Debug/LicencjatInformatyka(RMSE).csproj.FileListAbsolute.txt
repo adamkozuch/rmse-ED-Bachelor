@@ -18,3 +18,7 @@ C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\AskConstrainAndRedundancy.g.cs
 C:\Users\Adamk\documents\visual studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ConstrainAsk.g.cs
 C:\Users\Adamk\documents\visual studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ConstrainAsk.baml
+C:\Users\Adamk\documents\visual studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\bin\Debug\LicencjatInformatyka(RMSE).exe.manifest
+C:\Users\Adamk\documents\visual studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\bin\Debug\LicencjatInformatyka(RMSE).application
+C:\Users\Adamk\documents\visual studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\LicencjatInformatyka(RMSE).exe.manifest
+C:\Users\Adamk\documents\visual studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\LicencjatInformatyka(RMSE).application
