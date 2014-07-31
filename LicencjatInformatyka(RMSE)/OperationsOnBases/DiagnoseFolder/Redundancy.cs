@@ -11,16 +11,18 @@
 // </copyright>
 // <summary></summary>
 // ***********************************************************************
-using System.Collections.Generic;
-using System.Linq;
-using System.Windows;
+
 /// <summary>
 /// The OperationsOnBases namespace.
 /// </summary>
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
+using LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder;
 
-namespace LicencjatInformatyka_RMSE_.OperationsOnBases
+namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
 {
     /// <summary>
     /// Class Redundancy.

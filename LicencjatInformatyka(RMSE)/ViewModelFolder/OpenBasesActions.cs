@@ -1,11 +1,9 @@
-using System;
-using System.Collections.Generic;
 using LicencjatInformatyka_RMSE_.Bases;
-using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
+using LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder;
 using Microsoft.Win32;
 
-namespace LicencjatInformatyka_RMSE_.ViewModel
+namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 {
     internal class OpenBasesActions
     {
@@ -60,18 +58,8 @@ namespace LicencjatInformatyka_RMSE_.ViewModel
 
        
 
-        private void AskForConstrainValue(List<Constrain> list)
-        {
-            foreach (Constrain constrain in list)
-            {
-                string trueConstrain = FillTrueConstrain(constrain);
-                _gatheredBases.FactBase.FactList.AddRange(ConclusionOperations.LoadConstrainAndReturnFactList(constrain, trueConstrain));
-            }
-        }
+      
 
-        private string FillTrueConstrain(Constrain constrain)
-        {
-            throw new NotImplementedException();  // mechanizm w UI
-        }
+       
     }
 }

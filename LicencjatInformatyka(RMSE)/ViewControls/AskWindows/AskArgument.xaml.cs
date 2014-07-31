@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows
 {
@@ -7,7 +8,7 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows
     /// </summary>
     public partial class AskArgument : Window
     {
-        public AskArgument( ViewModel.ViewModel model)
+        public AskArgument( ViewModel model)
         {
             InitializeComponent();
             DataContext = model;

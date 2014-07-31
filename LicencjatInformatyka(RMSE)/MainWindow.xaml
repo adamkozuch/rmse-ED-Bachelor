@@ -2,13 +2,14 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="clr-namespace:LicencjatInformatyka_RMSE_"
-    xmlns:viewModel="clr-namespace:LicencjatInformatyka_RMSE_.ViewModel"
+    
+    xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
     x:Class="LicencjatInformatyka_RMSE_.MainWindow"
-        Title="MainWindow" Height="600" Width="920.5"
+        Title="Regułowo-modelowy system ekspertowy elementarnie dokładny" Height="600" Width="920.5"
         DataContext="{DynamicResource ViewModel}">
 
     <Window.Resources>
-        <viewModel:ViewModel x:Key="ViewModel"/>
+        <viewModelFolder:ViewModel x:Key="ViewModel"/>
         <ControlTemplate x:Key="UserControlControlTemplate1" TargetType="{x:Type UserControl}">
         	<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
         		<ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
@@ -29,9 +30,9 @@
 		<TabControl Grid.Column="1" HorizontalAlignment="Left" Margin="5,40,0,0" Width="655.641" Background="White" BorderBrush="#FF2C1C1C" Foreground="White" Height="85" VerticalAlignment="Top">
 			<TabItem Header="Bazy">
 				<Grid Background="#FFFBF9F9">
-					<Button  Content="{Binding LanguageConfig.RuleBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
+					<Button  Content="{Binding MainWindowLanguageConfig.RuleBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
 					<Button  Content="Ograniczenia" HorizontalAlignment="Left" Height="32.04" Margin="115,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_2"/>
-					<Button Content="{Binding LanguageConfig.ModelBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="220,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_3"/>
+					<Button Content="{Binding MainWindowLanguageConfig.ModelBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="220,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_3"/>
 					<Button Content="Baza rad" HorizontalAlignment="Left" Height="32.04" Margin="325,10,0,0" VerticalAlignment="Top" Width="100"/>
 					<Button Content="Baza grafiki" HorizontalAlignment="Left" Height="32.04" Margin="430,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_6"/>
 					<Button Content="Baza dzwięków" HorizontalAlignment="Left" Height="32.04" Margin="535,10,-3,0" VerticalAlignment="Top" Width="100"/>

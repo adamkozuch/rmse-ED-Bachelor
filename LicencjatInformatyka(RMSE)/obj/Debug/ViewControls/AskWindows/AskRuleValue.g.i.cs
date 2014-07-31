@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -71,7 +72,7 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows {
             {
             case 1:
             
-            #line 12 "..\..\..\..\ViewControls\AskWindows\AskRuleValue.xaml"
+            #line 13 "..\..\..\..\ViewControls\AskWindows\AskRuleValue.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click_1);
             
             #line default
@@ -79,7 +80,7 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows {
             return;
             case 2:
             
-            #line 13 "..\..\..\..\ViewControls\AskWindows\AskRuleValue.xaml"
+            #line 14 "..\..\..\..\ViewControls\AskWindows\AskRuleValue.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
             
             #line default

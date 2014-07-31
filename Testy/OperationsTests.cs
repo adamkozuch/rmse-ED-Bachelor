@@ -2,6 +2,7 @@
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
+using LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder;
 using NUnit.Framework;
 using System.Linq.Expressions;
 using  System.Linq;

@@ -1,168 +1,32 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection.Emit;
+using System.Windows;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.ViewControls.AskWindows;
-using MessageBox = System.Windows.MessageBox;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
-namespace LicencjatInformatyka_RMSE_.OperationsOnBases
+namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 {
-    public class ConclusionClass
+    public class ModelActions
     {
-      
-        private readonly GatheredBases _bases;
-        private readonly ViewModel.ViewModel _viewModel;
-
-        public ConclusionClass(GatheredBases bases, ViewModel.ViewModel viewModel)
+       private ConclusionClass conclusionClass;
+        private ViewModel viewModel;
+        private GatheredBases bases;
+        public ModelActions
+            (ConclusionClass _conclusionClass, ViewModel _viewModel, GatheredBases _bases)
         {
-            _bases = bases;
-            _viewModel = viewModel;
-            
-        }
-
-    public   void AskedConditions()
-       {
-           List<string> askingConditionList= new List<string>();
-            foreach (var rule in _bases.RuleBase.RulesList)
-            {
-                foreach (var condition in rule.Conditions)
-                {
-                    if (_bases.RuleBase.RulesList.Any(p => p.Conclusion == condition))
-                    {
-                        //TODO:Coœ zjeba³em
-                    }
-                    else
-                    {
-                        if (ConclusionOperations.CheckIfStringIsFact(condition, _bases.FactBase.FactList) == false)
-                            //if()
-                        {
-                            foreach (var element in askingConditionList)
-                            {
-                                if (condition == element)
-                                    goto label;
-                            }
-                            askingConditionList.Add(condition);
-                        label:;
-                        }
-                    }
-                }
-                
-            }
-_viewModel.AskingConditionsList = askingConditionList;
-        }
-
-        public bool BackwardConclude( Rule checkedRule)
-        {
-
-            var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases, checkedRule);
-
-            var possibleTrees = TreeOperations.ReturnPossibleTrees(tree.Values.First(), tree.Keys.First());
-
-
-            foreach (var onePossibility in possibleTrees) //flattering all possible configurations of conditions
-            {
-                List<SimpleTree> askableTable = onePossibility.Where(var => var.Dopytywalny).ToList();
-
-                // sprawdzamy czy jest w bazie faktow
-                foreach (SimpleTree simpleTree in askableTable)
-                {
-                    if (ConclusionOperations.CheckIfStringIsFact(simpleTree.rule.Conclusion, _bases.FactBase.FactList))
-                        simpleTree.rule.ConclusionValue = true;
-                }
-
-                bool conclusionValue = CheckConclusionValueOrCountModel(askableTable); // Check if all asking are true
-
-                if (conclusionValue)
-                {
-                    MessageBox.Show("Hipoteza prawdziwa");
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private bool CheckConclusionValueOrCountModel(List<SimpleTree> askingTable)
-        {
-            int i = 0;
-            foreach (SimpleTree simpleTree in askingTable)
-            {
-                ConstrainAsk(simpleTree);
-                if (simpleTree.rule.Model)
-                {
-                    ProcessModel(simpleTree.rule.Conclusion);
-                }
-
-                if (simpleTree.rule.ConclusionValue)
-                    i++;
-                else
-                {
-                    _viewModel.CheckedRuleName = simpleTree.rule.Conclusion;
-                   AskRuleValue window = new AskRuleValue(_viewModel);
-                   
-                    window.ShowDialog();  // TODO:Mo¿e wystapiæ bug zwi¹zany z zamknieciem okna x w lewym górnym rogu
-                    
-                    simpleTree.rule.ConclusionValue = _viewModel.CheckedRuleVal;
-
-                    if (_viewModel.CheckedRuleVal)
-                        i++;          
-                }
-            }
-
-            if (i == askingTable.Count)
-                return true; // hipoteza jest prawdziwa
-            return false; //else trzeba sprawdzac dalej
-        }
-
-        private void ConstrainAsk(SimpleTree simpleTree)
-        {
-            foreach (var constrain in _bases.ConstrainBase.ConstrainList)
-            {
-                foreach (var constrainCondition in constrain.ConstrainConditions)
-                {
-                    if (constrainCondition == simpleTree.rule.Conclusion)
-                    {
-                        AskForConstrainValue(constrain);
-                    }
-                }
-            }
-        }
-
-        private void AskForConstrainValue(Constrain constrain)
-        {
-            _viewModel.AskedConstrain = constrain;
-           var window = new AskConstrain(_viewModel);
-            window.ShowDialog();
-
-            SetConstrainValue(_viewModel.ValueFromConstrain, _viewModel.AskedConstrain);
+            conclusionClass = _conclusionClass;
+            viewModel = _viewModel;
+            bases = _bases;
 
         }
-
-        private void SetConstrainValue(string valueFromConstrain, Constrain askedConstrain)
+        public bool ProcessModel(string conclusion)
         {
-            if (valueFromConstrain != "")
-            {
-                foreach (var constrain in askedConstrain.ConstrainConditions)
-                {
-                    if (constrain == valueFromConstrain)
-                        _bases.FactBase.FactList.Add(new Fact() {FactName = constrain, FactValue = true});
-                    else
-                    {
-                        _bases.FactBase.FactList.Add(new Fact() {FactName = constrain, FactValue = false});
-                    }
-
-                }
-            }
-            _viewModel.ValueFromConstrain = "";
-        }
-
-        private bool ProcessModel(string conclusion)
-        {
-            IEnumerable<Model> models = _bases.ModelsBase.ModelList.Where(p => p.Conclusion == conclusion);
+            IEnumerable<Model> models = bases.ModelsBase.ModelList.Where(p => p.Conclusion == conclusion);
             foreach (Model model in models)
             {
-                bool start = CheckStartCOndition(model.StartCondition);
+                bool start = CheckStartCondition(model.StartCondition);
                 start = true;  //TODO: pamiêtaæ ¿eby zmieniæ to przypisanie
                 if (start)
                 {
@@ -203,9 +67,9 @@ _viewModel.AskingConditionsList = askingConditionList;
                     }
                 }
             }
-            AskArgument window = new AskArgument(_viewModel);
+            AskArgument window = new AskArgument(viewModel);
             window.ShowDialog();
-            return _viewModel.ValueArgument;
+            return viewModel.ValueArgument;
         }
 
         private string DoArithmetic(Model model)
@@ -262,7 +126,7 @@ _viewModel.AskingConditionsList = askingConditionList;
                         factors.Add(factorValue);
                     else 
                     {
-                      MessageBox.Show("Nieukonkretniony");
+                        MessageBox.Show("Nieukonkretniony");
                         return null;
                     }
                 }
@@ -278,7 +142,7 @@ _viewModel.AskingConditionsList = askingConditionList;
                         return null;
                     }
                 }
-             return   Arithmetic.LinearValue(factors, variablesList);
+                return   Arithmetic.LinearValue(factors, variablesList);
 
             }
             else if (model.ModelType == "polynomial")
@@ -307,8 +171,6 @@ _viewModel.AskingConditionsList = askingConditionList;
             return null;
         }
 
-
-        #region Secondary
         private string ArgumentValue(string argument)
         {
             string argumentValue = CheckInArguments(argument);
@@ -316,7 +178,7 @@ _viewModel.AskingConditionsList = askingConditionList;
             {
                 IEnumerable<Model> models = FindModels(argument);
                 if (!models.Any()) { }
-                //    AskValue(argument); todo: tutaj odkomentowac i oprogramowac
+                    //    AskValue(argument); todo: tutaj odkomentowac i oprogramowac
                 else
                 {
                     foreach (Model model1 in models)
@@ -332,14 +194,13 @@ _viewModel.AskingConditionsList = askingConditionList;
 
         private IEnumerable<Model> FindModels(string firstModelValue)
         {
-            return _bases.ModelsBase.ModelList.Where(model => model.Conclusion == firstModelValue).ToList();
+            return bases.ModelsBase.ModelList.Where(model => model.Conclusion == firstModelValue).ToList();
         }
-
 
         private string CheckInArguments(string firstArg)
         {
             // trzeba zrobic zwracanie null w razie braku odpowiedniego argumentu albo zwrocic zero
-            foreach (Argument argument in _bases.ArgumentBase.argumentList)
+            foreach (Argument argument in bases.ArgumentBase.argumentList)
             {
                 if (firstArg == argument.ArgumentName)
                     return argument.Value;
@@ -347,36 +208,26 @@ _viewModel.AskingConditionsList = askingConditionList;
             return null;
         }
 
-        private void DoRelations(Model model)
+        private bool CheckStartCondition(string startCondition)
         {
-            throw new NotImplementedException();
-        }
-       
-        #endregion
-        private bool CheckStartCOndition(string startCondition)
-        {
-            bool value = ConclusionOperations.CheckIfStringIsFact(startCondition, _bases.FactBase.FactList);
+            bool value = ConclusionOperations.CheckIfStringIsFact(startCondition, bases.FactBase.FactList);
             if (value)
                 return true;
-            List<Rule> rules = ConclusionOperations.FindRulesWithParticularConclusion(startCondition,
-                _bases.RuleBase.RulesList);
+            List<Rule> rules = ConclusionOperations.FindRulesWithParticularConclusion(startCondition, bases.RuleBase.RulesList);
             if (rules.Count == 0)
             {
-                AskRuleValue  askRule = new AskRuleValue(_viewModel);
+                AskRuleValue  askRule = new AskRuleValue(viewModel);
                 askRule.ShowDialog();
 
             }
-                foreach (Rule rule in rules)
+            foreach (Rule rule in rules)
             {
                 
-                bool val =
-                    BackwardConclude(rule);
-                if (val)
+                bool startConditionValue = conclusionClass.BackwardConclude(rule);
+                if (startConditionValue)
                     return true;
             }
             return false;
         }
-
-       
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.ViewControls.BrowseControls
 {
@@ -7,7 +8,7 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.BrowseControls
     /// </summary>
     public partial class BrowseRules : Window
     {
-        public BrowseRules(ViewModel.ViewModel model)
+        public BrowseRules(ViewModel model)
         {
             InitializeComponent();
             DataContext = model;

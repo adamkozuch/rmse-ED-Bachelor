@@ -4,15 +4,54 @@ using System.Windows;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 
-namespace LicencjatInformatyka_RMSE_.OperationsOnBases
+namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
 {
     /// <summary>
     ///     Class Contradiction.
     /// </summary>
     public static class Contradiction
     {
+        public static List<object> MethodForContradiction
+            (GatheredBases bases, Rule ruleForCheck, int o)
+        {
+            var divideList = new List<List<Rule>>();
+
+            var conditionTree = new SimpleTree { rule = ruleForCheck };
+            IEnumerable<SimpleTree> parentWithoutChildren;
+
+            int i = 0;
+            do
+            {
+                parentWithoutChildren = TreeOperations.TreeToEnumerable(conditionTree).Where(p => p.Children.Count == 0).
+                    Where(p => p.Dopytywalny == false);
+
+                foreach (SimpleTree parentWithoutChild in parentWithoutChildren)
+                {
+                    TreeOperations.ExpandBrunchOrMakeAskable(bases, parentWithoutChild, divideList);
+                    i++;
+
+                    if (i == o)
+                    {
 
 
+                        var treeAndDifferences = new List<object>();
+                        treeAndDifferences.Add(conditionTree);
+                        treeAndDifferences.Add(false);
+                        return treeAndDifferences;
+                    }  //TODO: ta pętla nie jest odporna na sprzeczność
+                }
+
+
+
+            } while (parentWithoutChildren.Count() != 0);
+
+
+
+            var treeAndDifferencesDictionary = new List<object>();
+            treeAndDifferencesDictionary.Add(conditionTree);
+            treeAndDifferencesDictionary.Add(true);
+            return treeAndDifferencesDictionary;
+        }
 
         #region OutsideContradiction
         /// <summary>
@@ -29,7 +68,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                 int i = 100;
 
                 RepeatGoto: //if result too long double i value
-                List<object> complexTree = TreeOperations.MethodForContradiction(bases, RuleI, i);
+                List<object> complexTree = MethodForContradiction(bases, RuleI, i);
 
                 if ((bool) complexTree[1] == false)
                 {
@@ -96,7 +135,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                 var listT = new List<Rule>();
                 for (int i = 1; i < 100; i++)
                 {
-                    List<object> tree = TreeOperations.MethodForContradiction(bases, rule, i);
+                    List<object> tree = MethodForContradiction(bases, rule, i);
 
                     IEnumerable<SimpleTree> ListOfTreesElements =
                         TreeOperations.TreeToEnumerable((SimpleTree) tree.First()).Where(p => p.Children.Count == 0);

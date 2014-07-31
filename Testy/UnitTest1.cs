@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
-using LicencjatInformatyka_RMSE_.ViewModel;
+using LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 using NUnit.Framework;
 
 namespace Testy

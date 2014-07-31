@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 using System;
 using System.Diagnostics;
 using System.Windows;

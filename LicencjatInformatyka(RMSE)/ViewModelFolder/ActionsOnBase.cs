@@ -1,8 +1,10 @@
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
+using LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder;
+using LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder;
 
-namespace LicencjatInformatyka_RMSE_.ViewModel
+namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 {
     internal class ActionsOnBase
     {

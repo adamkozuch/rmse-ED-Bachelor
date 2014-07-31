@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.ViewControls.UserControls
 {
@@ -7,7 +8,7 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.UserControls
 	/// </summary>
 	public partial class ConstrainBaseUserControll : UserControl
 	{
-		public ConstrainBaseUserControll(ViewModel.ViewModel model)
+		public ConstrainBaseUserControll(ViewModel model)
 		{
 			this.InitializeComponent();
 		    DataContext = model;

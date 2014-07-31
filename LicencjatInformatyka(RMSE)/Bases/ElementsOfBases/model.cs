@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
+using LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder;
 
 namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
 {

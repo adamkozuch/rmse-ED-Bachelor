@@ -3,6 +3,7 @@ using System.Text;
 using System.Collections.Generic;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
+using LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder;
 using NUnit;
 using NUnit.Framework;
 using LicencjatInformatyka_RMSE_;

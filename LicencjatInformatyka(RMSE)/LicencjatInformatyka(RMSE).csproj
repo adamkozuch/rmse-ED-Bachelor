@@ -105,14 +105,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LanguageConfiguration\PolishChildWindowsLanguageConfig.cs" />
+    <Compile Include="LanguageConfiguration\IChildWindowsLanguageConfig.cs" />
+    <Compile Include="LanguageConfiguration\IElementsNamesLanguageConfig.cs" />
+    <Compile Include="LanguageConfiguration\PolishElementsNamesLanguageConfig.cs" />
+    <Compile Include="OperationsOnBases\ConcludeFolder\ConstrainActions.cs" />
+    <Compile Include="OperationsOnBases\ConcludeFolder\ModelActions.cs" />
     <Compile Include="ViewControls\AskWindows\AskArgument.xaml.cs">
       <DependentUpon>AskArgument.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewControls\AskWindows\AskConstrain.xaml.cs">
       <DependentUpon>AskConstrain.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ViewControls\AskWindows\AskConstrainAndRedundancy.xaml.cs">
-      <DependentUpon>AskConstrainAndRedundancy.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewControls\AskWindows\AskingConditionsWIndow.xaml.cs">
       <DependentUpon>AskingConditionsWIndow.xaml</DependentUpon>
@@ -137,8 +140,8 @@
     <Compile Include="ViewControls\AskWindows\ChooseRule.xaml.cs">
       <DependentUpon>ChooseRule.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\ActionsOnBase.cs" />
-    <Compile Include="ViewModel\OpenBasesActions.cs" />
+    <Compile Include="ViewModelFolder\ActionsOnBase.cs" />
+    <Compile Include="ViewModelFolder\OpenBasesActions.cs" />
     <Compile Include="ViewControls\UserControls\ConcludeUserControl.xaml.cs">
       <DependentUpon>ConcludeUserControl.xaml</DependentUpon>
     </Compile>
@@ -151,9 +154,9 @@
     <Compile Include="ViewControls\UserControls\ModelBaseUserControll.xaml.cs">
       <DependentUpon>ModelBaseUserControll.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OperationsOnBases\ConclusionClass.cs" />
-    <Compile Include="ViewModel\RelayCommand.cs" />
-    <Compile Include="ViewModel\ViewModel.cs" />
+    <Compile Include="OperationsOnBases\ConcludeFolder\ConclusionClass.cs" />
+    <Compile Include="ViewModelFolder\RelayCommand.cs" />
+    <Compile Include="ViewModelFolder\ViewModel.cs" />
     <Compile Include="Bases\ElementsOfBases\Advice.cs" />
     <Compile Include="Bases\ElementsOfBases\Argument.cs" />
     <Compile Include="Bases\ElementsOfBases\constrain.cs" />
@@ -162,12 +165,10 @@
     <Compile Include="Bases\ElementsOfBases\model.cs" />
     <Compile Include="Bases\ElementsOfBases\rule.cs" />
     <Compile Include="Bases\ElementsOfBases\Sound.cs" />
-    <Compile Include="OperationsOnBases\Arithmetic.cs" />
-    <Compile Include="OperationsOnBases\ConclusionOperations.cs" />
-    <Compile Include="OperationsOnBases\Contradiction.cs" />
-    <Compile Include="OperationsOnBases\ForwardChaining.cs" />
+    <Compile Include="OperationsOnBases\ConcludeFolder\Arithmetic.cs" />
+    <Compile Include="OperationsOnBases\DiagnoseFolder\Contradiction.cs" />
+    <Compile Include="OperationsOnBases\ConcludeFolder\ForwardChaining.cs" />
     <Compile Include="OperationsOnBases\OperationsOnString.cs" />
-    <Compile Include="OperationsOnBases\RaportAndDescription.cs" />
     <Compile Include="Bases\ElementsOfBases\SimpleTree.cs" />
     <Compile Include="Bases\RuleBase.cs" />
     <Compile Include="Bases\SoundBase.cs" />
@@ -179,10 +180,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewControls\AskWindows\AskConstrain.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ViewControls\AskWindows\AskConstrainAndRedundancy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -255,10 +252,9 @@
     <Compile Include="Bases\ModelBase.cs" />
     <Compile Include="Bases\GatheredBases.cs" />
     <Compile Include="Bases\IGatheredBases.cs" />
-    <Compile Include="Additional\ILanguageConfig.cs" />
-    <Compile Include="Additional\KnowledgeDatabaseAnalyze.cs" />
-    <Compile Include="Additional\PolishLanguageConfig.cs" />
-    <Compile Include="OperationsOnBases\Redundancy.cs" />
+    <Compile Include="LanguageConfiguration\IMainWindowLanguageConfig.cs" />
+    <Compile Include="LanguageConfiguration\PolishMainWindowLanguageConfig.cs" />
+    <Compile Include="OperationsOnBases\DiagnoseFolder\Redundancy.cs" />
     <Compile Include="OperationsOnBases\TreeOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -305,6 +301,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

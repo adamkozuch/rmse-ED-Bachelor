@@ -1,22 +1,11 @@
 ﻿namespace LicencjatInformatyka_RMSE_.Additional
 {
-   public interface ILanguageConfig
+   public interface IMainWindowLanguageConfig
     {
 
-        #region nameOfModels
-        string SimpleModel { get; }
-        string ExtendedModel { get; }
-        string LinearModel { get; }
-        string PolyModel { get; }
-        string ModelFact{ get; }
-        string Argument{ get; }
-
-
-
-
-        #endregion
+  
      #region RuleBaseButtonsNames    
-       string RuleBaseButton { get; }
+        string RuleBaseButton { get; }
         string OpenRuleBaseText { get; }
         string EditRuleBaseText { get; }
         string LookAtRuleBaseText { get; }

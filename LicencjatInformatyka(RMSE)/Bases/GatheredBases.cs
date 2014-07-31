@@ -13,7 +13,7 @@ namespace LicencjatInformatyka_RMSE_.Bases
       private ArgumentBase _argumentBase;
       
 
-      public GatheredBases(ILanguageConfig config)
+      public GatheredBases(IElementsNamesLanguageConfig config)
       {
      
 

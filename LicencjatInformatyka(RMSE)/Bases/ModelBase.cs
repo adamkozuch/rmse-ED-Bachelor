@@ -10,11 +10,11 @@ namespace LicencjatInformatyka_RMSE_.Bases
 {
     public class ModelBase
     {
-        private readonly ILanguageConfig _config;
+        private readonly IElementsNamesLanguageConfig _config;
         private List<Model> _modelList = new List<Model>();
         private List<Argument> _argumentList = new List<Argument>();
 
-        public ModelBase(ILanguageConfig config)
+        public ModelBase(IElementsNamesLanguageConfig config)
         {
             _config = config;
         }

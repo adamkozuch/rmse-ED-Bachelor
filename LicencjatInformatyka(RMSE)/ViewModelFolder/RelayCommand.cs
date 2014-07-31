@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Input;
 
-namespace LicencjatInformatyka_RMSE_.ViewModel
+namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 {
     class RelayCommand : ICommand
     {

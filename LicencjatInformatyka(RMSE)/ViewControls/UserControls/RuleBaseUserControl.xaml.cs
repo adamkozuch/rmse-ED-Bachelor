@@ -1,5 +1,6 @@
 ﻿using System.Windows.Controls;
 using LicencjatInformatyka_RMSE_.Additional;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.ViewControls.UserControls
 {
@@ -8,8 +9,8 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.UserControls
 	/// </summary>
 	public partial class RuleBaseUserControl : UserControl
 	{
-	    private ILanguageConfig _config;
-		public RuleBaseUserControl(ViewModel.ViewModel model)
+	    private IMainWindowLanguageConfig _config;
+		public RuleBaseUserControl(ViewModel model)
 		{
 			this.InitializeComponent();
 		    DataContext = model;

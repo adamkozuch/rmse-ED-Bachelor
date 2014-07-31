@@ -13,7 +13,7 @@ namespace LicencjatInformatyka_RMSE_.Bases
     {
       
         // reguła(Nr_reguły, "Wniosek",[Lista_warunkow odzielona przecinkami w cudzysłowiu ],semafor)
-        private ILanguageConfig _config;
+        private IElementsNamesLanguageConfig _config;
   
         private  List<Rule> _baseList = new List<Rule>();
 
@@ -24,7 +24,7 @@ namespace LicencjatInformatyka_RMSE_.Bases
             
         }
 
-        public RuleBase(ILanguageConfig config)
+        public RuleBase(IElementsNamesLanguageConfig config)
         {
             _config = config;
         }

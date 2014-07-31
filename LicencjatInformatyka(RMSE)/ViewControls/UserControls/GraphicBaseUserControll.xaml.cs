@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.ViewControls.UserControls
 {
@@ -7,7 +8,7 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.UserControls
 	/// </summary>
 	public partial class GraphicBaseUserControll : UserControl
 	{
-		public GraphicBaseUserControll(ViewModel.ViewModel model)
+		public GraphicBaseUserControll(ViewModel model)
 		{
 			this.InitializeComponent();
 		    DataContext = model;

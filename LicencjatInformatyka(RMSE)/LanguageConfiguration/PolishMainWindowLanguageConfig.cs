@@ -1,6 +1,6 @@
 ﻿namespace LicencjatInformatyka_RMSE_.Additional
 {
-    class PolishLanguageConfig:ILanguageConfig
+    class PolishMainWindowLanguageConfig:IMainWindowLanguageConfig
     {
         #region ModelsNames
 

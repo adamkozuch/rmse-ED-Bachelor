@@ -1,7 +1,7 @@
 ﻿using System;
 using LicencjatInformatyka_RMSE_.Bases;
 
-namespace LicencjatInformatyka_RMSE_.OperationsOnBases
+namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 {
     internal class ForwardChaining
     {

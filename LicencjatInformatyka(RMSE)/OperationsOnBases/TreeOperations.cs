@@ -2,13 +2,14 @@ using System.Collections.Generic;
 using System.Linq;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
+using LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder;
 
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 {
     public static class TreeOperations
     {
         #region MainTree
-        private static List<SimpleTree> ReturnAlternativeBranches(List<Rule> rulesWithSameConclusion,SimpleTree parent)
+        public static List<SimpleTree> ReturnAlternativeBranches(List<Rule> rulesWithSameConclusion,SimpleTree parent)
         {
             return rulesWithSameConclusion.Select(rule => new SimpleTree {rule = rule,Parent = parent}).ToList();
         }
@@ -66,12 +67,12 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
             return returnResult;
         }
-        private static void ExpandBrunchOrMakeAskable
+        public static void ExpandBrunchOrMakeAskable
             (GatheredBases bases, SimpleTree parentWithoutChild, List<List<Rule>> divideList)
         {
             foreach (string condition in parentWithoutChild.rule.Conditions)
             {
-                List<Rule> returnedRules = ConclusionOperations.FindRulesWithParticularConclusion(condition,
+                List<Rule> returnedRules = ConclusionClass.FindRulesWithParticularConclusion(condition,
                     bases.RuleBase.RulesList);
 
                 if (returnedRules.Count == 0)
@@ -94,12 +95,12 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
         }
         #endregion
 
-        private static bool CheckModel(string condition, GatheredBases bases)
+        public static bool CheckModel(string condition, GatheredBases bases)
         {
             return bases.ModelsBase.ModelList.Any(model => model.Conclusion == condition);
         }
 
-        private static List<List<Rule>> ReturnDifferenceBetweenTables(List<List<Rule>> divideList,
+        public static List<List<Rule>> ReturnDifferenceBetweenTables(List<List<Rule>> divideList,
             List<Rule> currentTable)
         {
             var resultList = new List<List<Rule>>();
@@ -186,47 +187,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
         }
 
         #region Contradiction
-        public static List<object> MethodForContradiction
-            (GatheredBases bases, Rule ruleForCheck, int o)
-        {
-            var divideList = new List<List<Rule>>();
-            
-            var conditionTree = new SimpleTree { rule = ruleForCheck };
-            IEnumerable<SimpleTree> parentWithoutChildren;
-           
-            int i = 0;
-            do
-            {
-                parentWithoutChildren = TreeToEnumerable(conditionTree).Where(p => p.Children.Count == 0).
-                    Where(p => p.Dopytywalny == false);
-
-                foreach (SimpleTree parentWithoutChild in parentWithoutChildren)
-                {
-                    ExpandBrunchOrMakeAskable(bases, parentWithoutChild, divideList); 
-                    i++;
-
-                if (i==o)
-                {
-
-
-                    var treeAndDifferences = new List<object>();
-                    treeAndDifferences.Add(conditionTree);
-                    treeAndDifferences.Add(false);
-                    return treeAndDifferences;
-                }  //TODO: ta pêtla nie jest odporna na sprzecznoœæ
-                }
-
-               
-
-            } while (parentWithoutChildren.Count() != 0);
-
-
-
-            var treeAndDifferencesDictionary = new List<object>();
-            treeAndDifferencesDictionary.Add(conditionTree);
-            treeAndDifferencesDictionary.Add(true);
-           return  treeAndDifferencesDictionary;
-        }
+       
         #endregion
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows
 {
@@ -8,7 +9,7 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows
     public partial class ChooseRule : Window
     {
         
-        public ChooseRule(ViewModel.ViewModel model)
+        public ChooseRule(ViewModel model)
         {
             InitializeComponent();
             DataContext = model;

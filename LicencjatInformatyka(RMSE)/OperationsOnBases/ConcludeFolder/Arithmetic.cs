@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 
-namespace LicencjatInformatyka_RMSE_.OperationsOnBases
+namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 {
     class Arithmetic
     {

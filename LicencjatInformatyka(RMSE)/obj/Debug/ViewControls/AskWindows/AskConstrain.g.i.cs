@@ -9,6 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 using System;
 using System.Diagnostics;
 using System.Windows;
@@ -71,7 +72,7 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows {
             {
             case 1:
             
-            #line 10 "..\..\..\..\ViewControls\AskWindows\AskConstrain.xaml"
+            #line 11 "..\..\..\..\ViewControls\AskWindows\AskConstrain.xaml"
             ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
             
             #line default

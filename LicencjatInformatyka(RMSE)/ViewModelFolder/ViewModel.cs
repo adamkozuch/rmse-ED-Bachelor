@@ -8,12 +8,14 @@ using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.ViewControls.AskWindows;
 using LicencjatInformatyka_RMSE_.ViewControls.BrowseControls;
 
-namespace LicencjatInformatyka_RMSE_.ViewModel
+namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 {
    public class ViewModel:INotifyPropertyChanged
     {
       
-        private ILanguageConfig _languageConfig;
+        private IMainWindowLanguageConfig _mainWindowLanguageConfig;
+        private IChildWindowsLanguageConfig _childWindowsLanguageConfig;
+       private IElementsNamesLanguageConfig _elementsNamesLanguageConfig;
        private readonly GatheredBases bases;
         private readonly OpenBasesActions _openBasesActions;
         private readonly ActionsOnBase _actionsOnBase;
@@ -21,8 +23,10 @@ namespace LicencjatInformatyka_RMSE_.ViewModel
         public event PropertyChangedEventHandler PropertyChanged = null;
         public ViewModel()
         {
-            LanguageConfig =new PolishLanguageConfig();
-            bases = new GatheredBases(LanguageConfig);
+            MainWindowLanguageConfig =new PolishMainWindowLanguageConfig();
+            ChildWindowsLanguageConfig = new PolishChildWindowsLanguageConfig();
+            _elementsNamesLanguageConfig = new PolishElementsNamesLanguageConfig();
+            bases = new GatheredBases(_elementsNamesLanguageConfig);
             //Instances of classes responsible for opening and actions on RMSE bases
             _openBasesActions = new OpenBasesActions(this,bases);
             _actionsOnBase = new ActionsOnBase(bases,this);
@@ -212,11 +216,18 @@ namespace LicencjatInformatyka_RMSE_.ViewModel
 
 
 
-       public ILanguageConfig LanguageConfig
+       public IMainWindowLanguageConfig MainWindowLanguageConfig
        {
-           get { return _languageConfig; }
-           set { _languageConfig = value; }
+           get { return _mainWindowLanguageConfig; }
+           set { _mainWindowLanguageConfig = value; }
        }
+
+       public IChildWindowsLanguageConfig ChildWindowsLanguageConfig
+       {
+           get { return _childWindowsLanguageConfig; }
+           set { _childWindowsLanguageConfig = value; }
+       }
+     
 
        #endregion
 
