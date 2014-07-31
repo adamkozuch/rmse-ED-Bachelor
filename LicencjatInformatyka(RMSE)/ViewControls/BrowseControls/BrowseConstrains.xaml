@@ -1,0 +1,16 @@
+﻿<Window x:Class="LicencjatInformatyka_RMSE_.ViewControls.BrowseControls.BrowseConstrains"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="BrowseConstrains" Height="300" Width="300" d:DataContext="{d:DesignInstance newFolder1:ViewModel}">
+    <Grid>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding ConstrainListProp }" SelectedItem="{Binding SelectedRule }" HorizontalAlignment="Left" Height="233" VerticalAlignment="Top" Width="291" Margin="5,5,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Numer ograniczenia" Binding="{Binding NumberOfLimit}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Warunki ograniczenia" Binding="{Binding ConstrainConditions}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

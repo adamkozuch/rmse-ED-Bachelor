@@ -1,5 +1,5 @@
-﻿using LicencjatInformatyka_RMSE_.NewFolder2;
-using LicencjatInformatyka_RMSE_.NewFolder4;
+﻿using LicencjatInformatyka_RMSE_.Bases;
+using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using NUnit.Framework;
 
 namespace Testy

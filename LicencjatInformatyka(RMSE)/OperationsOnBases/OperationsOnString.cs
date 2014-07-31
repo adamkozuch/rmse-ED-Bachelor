@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace LicencjatInformatyka_RMSE_.NewFolder3
+namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 {
     public static class OperationsOnString
     {

@@ -14,13 +14,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using LicencjatInformatyka_RMSE_.Additional;
-using LicencjatInformatyka_RMSE_.NewFolder2;
-using LicencjatInformatyka_RMSE_.NewFolder3;
-
 /// <summary>
 /// The OperationsOnBases namespace.
 /// </summary>
+using LicencjatInformatyka_RMSE_.Bases;
+using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
+
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 {
     /// <summary>
@@ -34,23 +33,23 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
         /// <param name="bases">The bases.</param>
         public static void Invoke(GatheredBases bases)
         {
-            foreach (Rule VARIABLE in bases.RuleBase.RulesList)
+            foreach (Rule ruleForCheck in bases.RuleBase.RulesList)
             {
                 var r = new List<Rule>();
                 r = ConclusionOperations.FindRulesWithParticularConclusion
-                    (VARIABLE.Conclusion, bases.RuleBase.RulesList);
+                    (ruleForCheck.Conclusion, bases.RuleBase.RulesList);
                 var b = new List<List<SimpleTree>>();
                 foreach (Rule VARIABL in r)
                 {
                     Dictionary<List<List<Rule>>, SimpleTree> tree = TreeOperations.ReturnComplexTreeAndDifferences(
-                        bases, VARIABLE);
+                        bases, ruleForCheck);
                     List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree.Values.First(),
                         tree.Keys.First());
                     b.AddRange(possibleTrees);
                 }
                 // nie badam dopytywalnych
                 // trzeba mieć wszystkie reguły z z tą samą nazwą
-                CheckRedunancy(b, VARIABLE);
+                CheckRedunancy(b, ruleForCheck);
             }
         }
 

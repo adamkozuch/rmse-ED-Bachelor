@@ -1,0 +1,15 @@
+﻿<Window x:Class="LicencjatInformatyka_RMSE_.ViewControls.AskWindows.AskArgument"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="AskArgument" Height="300" Width="300" d:DataContext="{d:DesignInstance newFolder1:ViewModel}">
+    <Grid>
+        <Label Content="Wprowadz wartość dla argumentu " HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" VerticalAlignment="Top" Width="201"/>
+        <TextBox Text="{Binding ValueArgument}"  HorizontalAlignment="Left" Height="31" Margin="10,58,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="229"/>
+        <Button Content="Wprowadz" HorizontalAlignment="Left" Height="34" Margin="10,212,0,0" VerticalAlignment="Top" Width="140" Click="Button_Click"/>
+        <Button Content="Wartosc nieznana" HorizontalAlignment="Left" Height="34" Margin="186,212,0,0" VerticalAlignment="Top" Width="77"/>
+
+    </Grid>
+</Window>

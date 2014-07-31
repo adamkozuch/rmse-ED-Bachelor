@@ -1,6 +1,6 @@
 ﻿
 
-namespace LicencjatInformatyka_RMSE_.NewFolder4
+namespace LicencjatInformatyka_RMSE_.Bases
 {
     class AdviceBase
     {

@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using LicencjatInformatyka_RMSE_.NewFolder2;
-using LicencjatInformatyka_RMSE_.NewFolder3;
-using LicencjatInformatyka_RMSE_.NewFolder5;
+using LicencjatInformatyka_RMSE_.Additional;
+using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
+using LicencjatInformatyka_RMSE_.OperationsOnBases;
 
-namespace LicencjatInformatyka_RMSE_.NewFolder4
+namespace LicencjatInformatyka_RMSE_.Bases
 {
     public class ModelBase
     {
@@ -15,9 +14,9 @@ namespace LicencjatInformatyka_RMSE_.NewFolder4
         private List<Model> _modelList = new List<Model>();
         private List<Argument> _argumentList = new List<Argument>();
 
-        public ModelBase()
+        public ModelBase(ILanguageConfig config)
         {
-            
+            _config = config;
         }
 
 

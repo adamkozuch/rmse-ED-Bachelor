@@ -3,15 +3,17 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
-using LicencjatInformatyka_RMSE_.NewFolder2;
-using LicencjatInformatyka_RMSE_.NewFolder3;
+using LicencjatInformatyka_RMSE_.Additional;
+using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
+using LicencjatInformatyka_RMSE_.OperationsOnBases;
 
-namespace LicencjatInformatyka_RMSE_.NewFolder4
+namespace LicencjatInformatyka_RMSE_.Bases
 {
     public class RuleBase
     {
       
         // reguła(Nr_reguły, "Wniosek",[Lista_warunkow odzielona przecinkami w cudzysłowiu ],semafor)
+        private ILanguageConfig _config;
   
         private  List<Rule> _baseList = new List<Rule>();
 
@@ -22,6 +24,10 @@ namespace LicencjatInformatyka_RMSE_.NewFolder4
             
         }
 
+        public RuleBase(ILanguageConfig config)
+        {
+            _config = config;
+        }
      
 
         public void ReadRules(string rules)

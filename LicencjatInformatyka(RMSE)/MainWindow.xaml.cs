@@ -1,5 +1,6 @@
 ﻿using System.Windows;
-using LicencjatInformatyka_RMSE_.NewFolder1;
+using LicencjatInformatyka_RMSE_.ViewControls.UserControls;
+using WpfRichText;
 
 namespace LicencjatInformatyka_RMSE_
 {
@@ -12,7 +13,7 @@ namespace LicencjatInformatyka_RMSE_
         {
          
             InitializeComponent();
-            GeneralControl.Content = new RuleBaseUserControl(DataContext as ViewModel);
+            GeneralControl.Content = new RuleBaseUserControl(DataContext as ViewModel.ViewModel);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -22,7 +23,7 @@ namespace LicencjatInformatyka_RMSE_
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            GeneralControl.Content = new RuleBaseUserControl(DataContext as ViewModel);
+            GeneralControl.Content = new RuleBaseUserControl(DataContext as ViewModel.ViewModel);
             GeneralControl.Visibility = Visibility.Visible;
            
 
@@ -31,13 +32,13 @@ namespace LicencjatInformatyka_RMSE_
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            GeneralControl.Content = new ConstrainBaseUserControll(DataContext as ViewModel);
+            GeneralControl.Content = new ConstrainBaseUserControll(DataContext as ViewModel.ViewModel);
 
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            GeneralControl.Content = new ModelBaseUserControll(DataContext as ViewModel);
+            GeneralControl.Content = new ModelBaseUserControll(DataContext as ViewModel.ViewModel);
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
@@ -47,7 +48,15 @@ namespace LicencjatInformatyka_RMSE_
 
         private void Button_Click_5(object sender, RoutedEventArgs e)
         {
-            GeneralControl.Content = new ConcludeUserControl(DataContext as ViewModel);
+            GeneralControl.Content = new ConcludeUserControl(DataContext as ViewModel.ViewModel);
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            WpfRichText.RichTextEditor r = new RichTextEditor();
+
+            r.Text = "ddddddddddddddddddddddddddddddddddd";
+            
         }
        
     }

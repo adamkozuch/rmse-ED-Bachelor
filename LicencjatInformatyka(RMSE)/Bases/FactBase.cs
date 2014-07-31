@@ -6,8 +6,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
-using LicencjatInformatyka_RMSE_.NewFolder2;
-using LicencjatInformatyka_RMSE_.NewFolder3;
+using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
+using LicencjatInformatyka_RMSE_.OperationsOnBases;
 
 namespace LicencjatInformatyka_RMSE_.Bases
 {

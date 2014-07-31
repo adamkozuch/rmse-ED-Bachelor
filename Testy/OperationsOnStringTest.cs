@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using LicencjatInformatyka_RMSE_.NewFolder3;
+using LicencjatInformatyka_RMSE_.OperationsOnBases;
 using NUnit.Framework;
 
 namespace Testy

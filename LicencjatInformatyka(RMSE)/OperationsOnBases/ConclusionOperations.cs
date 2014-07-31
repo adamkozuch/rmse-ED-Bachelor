@@ -1,12 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Windows.Documents;
-using LicencjatInformatyka_RMSE_.NewFolder2;
+using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 
-namespace LicencjatInformatyka_RMSE_.NewFolder3
+namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 {
     public static class ConclusionOperations
     {
@@ -55,7 +50,7 @@ namespace LicencjatInformatyka_RMSE_.NewFolder3
         public static List<Fact> LoadConstrainAndReturnFactList(Constrain constrain, string trueConstrain)
         {
             var factsList = new List<Fact>();
-            foreach (string constrainItem in constrain.ConstrainsList)
+            foreach (string constrainItem in constrain.ConstrainConditions)
             {
                 if (constrainItem == trueConstrain)
                 {

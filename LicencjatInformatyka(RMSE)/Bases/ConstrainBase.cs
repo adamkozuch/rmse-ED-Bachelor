@@ -2,20 +2,26 @@
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using LicencjatInformatyka_RMSE_.NewFolder2;
-using LicencjatInformatyka_RMSE_.NewFolder3;
+using LicencjatInformatyka_RMSE_.Additional;
+using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
+using LicencjatInformatyka_RMSE_.OperationsOnBases;
 
-namespace LicencjatInformatyka_RMSE_.NewFolder4
+namespace LicencjatInformatyka_RMSE_.Bases
 {
   public  class ConstrainBase
     {
       private  List<Constrain> _constrainList = new List<Constrain>();
-        
+      private ILanguageConfig _config;
         public List<Constrain> ConstrainList
         {
             get { return _constrainList; }
             set { _constrainList = value; }
         }
+
+      public ConstrainBase(ILanguageConfig config)
+      {
+          _config = config;
+      }
         public void ReadConstrains(string path)
         {
             foreach (string line in File.ReadLines(path, Encoding.GetEncoding("Windows-1250")))

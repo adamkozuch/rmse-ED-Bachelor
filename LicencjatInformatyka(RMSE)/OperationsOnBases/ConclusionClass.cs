@@ -1,12 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
-using LicencjatInformatyka_RMSE_.Additional;
-using LicencjatInformatyka_RMSE_.NewFolder1;
-using LicencjatInformatyka_RMSE_.NewFolder2;
-using LicencjatInformatyka_RMSE_.NewFolder3;
-using LicencjatInformatyka_RMSE_.NewFolder5;
+using System.Reflection.Emit;
+using LicencjatInformatyka_RMSE_.Bases;
+using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
+using LicencjatInformatyka_RMSE_.ViewControls.AskWindows;
 using MessageBox = System.Windows.MessageBox;
 
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases
@@ -15,12 +13,44 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
     {
       
         private readonly GatheredBases _bases;
-        private readonly ViewModel _viewModel;
+        private readonly ViewModel.ViewModel _viewModel;
 
-        public ConclusionClass(GatheredBases bases, ViewModel viewModel)
+        public ConclusionClass(GatheredBases bases, ViewModel.ViewModel viewModel)
         {
             _bases = bases;
             _viewModel = viewModel;
+            
+        }
+
+    public   void AskedConditions()
+       {
+           List<string> askingConditionList= new List<string>();
+            foreach (var rule in _bases.RuleBase.RulesList)
+            {
+                foreach (var condition in rule.Conditions)
+                {
+                    if (_bases.RuleBase.RulesList.Any(p => p.Conclusion == condition))
+                    {
+                        //TODO:Coœ zjeba³em
+                    }
+                    else
+                    {
+                        if (ConclusionOperations.CheckIfStringIsFact(condition, _bases.FactBase.FactList) == false)
+                            //if()
+                        {
+                            foreach (var element in askingConditionList)
+                            {
+                                if (condition == element)
+                                    goto label;
+                            }
+                            askingConditionList.Add(condition);
+                        label:;
+                        }
+                    }
+                }
+                
+            }
+_viewModel.AskingConditionsList = askingConditionList;
         }
 
         public bool BackwardConclude( Rule checkedRule)
@@ -36,14 +66,10 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                 List<SimpleTree> askableTable = onePossibility.Where(var => var.Dopytywalny).ToList();
 
                 // sprawdzamy czy jest w bazie faktow
-                foreach (SimpleTree rule in askableTable)
+                foreach (SimpleTree simpleTree in askableTable)
                 {
-                    foreach (Fact fact in _bases.FactBase.FactList)
-                    {
-                        if (rule.rule.Conclusion == fact.FactName) //set value of asking conditions
-                            rule.rule.ConclusionValue = true;
-                    }
-
+                    if (ConclusionOperations.CheckIfStringIsFact(simpleTree.rule.Conclusion, _bases.FactBase.FactList))
+                        simpleTree.rule.ConclusionValue = true;
                 }
 
                 bool conclusionValue = CheckConclusionValueOrCountModel(askableTable); // Check if all asking are true
@@ -72,12 +98,15 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                     i++;
                 else
                 {
+                    _viewModel.CheckedRuleName = simpleTree.rule.Conclusion;
                    AskRuleValue window = new AskRuleValue(_viewModel);
-                    window.Show();
+                   
+                    window.ShowDialog();  // TODO:Mo¿e wystapiæ bug zwi¹zany z zamknieciem okna x w lewym górnym rogu
                     
                     simpleTree.rule.ConclusionValue = _viewModel.CheckedRuleVal;
-                    MessageBox.Show("kkkk");
-                    int c = 0;
+
+                    if (_viewModel.CheckedRuleVal)
+                        i++;          
                 }
             }
 
@@ -90,19 +119,42 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
         {
             foreach (var constrain in _bases.ConstrainBase.ConstrainList)
             {
-                foreach (var cons in constrain.ConstrainsList)
+                foreach (var constrainCondition in constrain.ConstrainConditions)
                 {
-                    if (cons == simpleTree.rule.Conclusion)
+                    if (constrainCondition == simpleTree.rule.Conclusion)
                     {
-                        AskForCOnstrainValue(constrain);
+                        AskForConstrainValue(constrain);
                     }
                 }
             }
         }
 
-        private void AskForCOnstrainValue(Constrain cons)
+        private void AskForConstrainValue(Constrain constrain)
         {
-          
+            _viewModel.AskedConstrain = constrain;
+           var window = new AskConstrain(_viewModel);
+            window.ShowDialog();
+
+            SetConstrainValue(_viewModel.ValueFromConstrain, _viewModel.AskedConstrain);
+
+        }
+
+        private void SetConstrainValue(string valueFromConstrain, Constrain askedConstrain)
+        {
+            if (valueFromConstrain != "")
+            {
+                foreach (var constrain in askedConstrain.ConstrainConditions)
+                {
+                    if (constrain == valueFromConstrain)
+                        _bases.FactBase.FactList.Add(new Fact() {FactName = constrain, FactValue = true});
+                    else
+                    {
+                        _bases.FactBase.FactList.Add(new Fact() {FactName = constrain, FactValue = false});
+                    }
+
+                }
+            }
+            _viewModel.ValueFromConstrain = "";
         }
 
         private bool ProcessModel(string conclusion)
@@ -137,22 +189,23 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
         private string FillArgsTable(string arg)
         {
-            Model model;
-            string r = CheckInArguments(arg);
-            if (r == null)
+            
+            string checkedArgument = CheckInArguments(arg);
+            if (checkedArgument == null)
             {
-                IEnumerable<Model> mod = FindModels(arg);
-                foreach (Model VARIABLE in mod)
+                IEnumerable<Model> models = FindModels(arg);
+                foreach (Model model in models)
                 {
-                    string value = DoArithmetic(VARIABLE);
-                    if (value != null)
+                    string modelValue = DoArithmetic(model);
+                    if (modelValue != null)
                     {
-                        return value;
+                        return modelValue;
                     }
                 }
             }
-            MessageBox.Show("Dopytaj " +arg);
-            return null;
+            AskArgument window = new AskArgument(_viewModel);
+            window.ShowDialog();
+            return _viewModel.ValueArgument;
         }
 
         private string DoArithmetic(Model model)
@@ -262,8 +315,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             if (null == argumentValue)
             {
                 IEnumerable<Model> models = FindModels(argument);
-                if (!models.Any())
-                    AskValue(argument);
+                if (!models.Any()) { }
+                //    AskValue(argument); todo: tutaj odkomentowac i oprogramowac
                 else
                 {
                     foreach (Model model1 in models)
@@ -282,12 +335,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             return _bases.ModelsBase.ModelList.Where(model => model.Conclusion == firstModelValue).ToList();
         }
 
-        private string AskValue( string s)
-        {
-            MessageBox.Show("HUJ");
-   
-            return null;
-        }
 
         private string CheckInArguments(string firstArg)
         {
@@ -304,11 +351,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
         {
             throw new NotImplementedException();
         }
-        private bool Ask()
-        {
-            MessageBox.Show("Pytam o bool");
-            return false;
-        }
+       
         #endregion
         private bool CheckStartCOndition(string startCondition)
         {
@@ -318,8 +361,12 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             List<Rule> rules = ConclusionOperations.FindRulesWithParticularConclusion(startCondition,
                 _bases.RuleBase.RulesList);
             if (rules.Count == 0)
-                Ask();
-            foreach (Rule rule in rules)
+            {
+                AskRuleValue  askRule = new AskRuleValue(_viewModel);
+                askRule.ShowDialog();
+
+            }
+                foreach (Rule rule in rules)
             {
                 
                 bool val =
@@ -330,13 +377,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             return false;
         }
 
-    public void AskForConstrains(GatheredBases bases)
-        {
-        foreach (var constrain in bases.ConstrainBase.ConstrainList)
-        {
-            
-        }
-        }
        
     }
 }

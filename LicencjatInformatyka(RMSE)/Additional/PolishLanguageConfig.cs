@@ -1,8 +1,8 @@
-﻿namespace LicencjatInformatyka_RMSE_.NewFolder5
+﻿namespace LicencjatInformatyka_RMSE_.Additional
 {
     class PolishLanguageConfig:ILanguageConfig
     {
-        #region
+        #region ModelsNames
 
         private string _polyModel = "model_wielomianowy";
         private string _simpleModel = "model";
@@ -13,7 +13,7 @@
 
         #endregion
 
-        
+        #region OpenBaseInterfaceCommands
         private string _ruleBaseButton = "Baza reguł";
         private string _openRuleBaseText = "Otwórz bazę reguł";
         private string _editRuleBaseText ="Edytuj bazę reguł";
@@ -39,7 +39,7 @@
         private string _createModelBaseText = "Stwórz bazę modeli";
         private string _diagnoseContradictionModelBaseText ="Diagnozuj sprzecznośc w  bazę modeli";
         private string _diagnoseRedundancyModelBaseText = "Diagnozuj nadmiarowość w bazie modeli";
-
+        #endregion
 
         public string DiagnoseNadmiarowoscRuleBaseText
         {

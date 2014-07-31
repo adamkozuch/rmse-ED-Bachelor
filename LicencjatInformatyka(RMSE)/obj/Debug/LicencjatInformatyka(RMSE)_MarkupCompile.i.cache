@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\App.xaml
-9-624342163
+16-99501826
 
-55-244006395
-141012385901
-AskConstrainAndRedundancy.xaml;AskRuleValue.xaml;ChooseRule.xaml;UserControls\ConcludeUserControl.xaml;UserControls\ConstrainBaseUserControll.xaml;UserControls\GraphicBaseUserControll.xaml;MainWindow.xaml;UserControls\ModelBaseUserControll.xaml;UserControls\RuleBaseUserControl.xaml;
+59-65394154
+21-1681352210
+ViewControls\AskWindows\AskArgument.xaml;ViewControls\AskWindows\AskConstrain.xaml;ViewControls\AskWindows\AskConstrainAndRedundancy.xaml;ViewControls\AskWindows\AskingConditionsWIndow.xaml;ViewControls\AskWindows\AskRuleValue.xaml;ViewControls\AskWindows\RichTextControll.xaml;ViewControls\BrowseControls\BrowseConstrains.xaml;ViewControls\BrowseControls\BrowseModels.xaml;ViewControls\BrowseControls\BrowseRules.xaml;ViewControls\AskWindows\ChooseRule.xaml;ViewControls\UserControls\ConcludeUserControl.xaml;ViewControls\UserControls\ConstrainBaseUserControll.xaml;ViewControls\UserControls\GraphicBaseUserControll.xaml;MainWindow.xaml;ViewControls\UserControls\ModelBaseUserControll.xaml;ViewControls\UserControls\RuleBaseUserControl.xaml;
 
 False
 

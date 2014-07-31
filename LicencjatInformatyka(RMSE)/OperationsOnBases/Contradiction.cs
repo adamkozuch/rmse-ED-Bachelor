@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
-using LicencjatInformatyka_RMSE_.Additional;
-using LicencjatInformatyka_RMSE_.NewFolder2;
-using LicencjatInformatyka_RMSE_.NewFolder3;
+using LicencjatInformatyka_RMSE_.Bases;
+using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 {
@@ -83,13 +82,13 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
         public static void ReportAboutContradictionInRules(GatheredBases bases)
         {
-            List<Rule> list = CheckOutsideContradiction(bases);
+            List<Rule> listWithContradiction = CheckOutsideContradiction(bases);
 
-            foreach (Rule rule in list)
+            foreach (Rule rule in listWithContradiction)
             {
-                foreach (string VARIABLE in rule.Conditions)
+                foreach (string condition in rule.Conditions)
                 {
-                    if (VARIABLE == rule.Conclusion)
+                    if (condition == rule.Conclusion)
                         MessageBox.Show("Reguła " + rule.NumberOfRule + " jest samosprzeczna");
                     break;
                 }
@@ -99,25 +98,25 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                 {
                     List<object> tree = TreeOperations.MethodForContradiction(bases, rule, i);
 
-                    IEnumerable<SimpleTree> g =
+                    IEnumerable<SimpleTree> ListOfTreesElements =
                         TreeOperations.TreeToEnumerable((SimpleTree) tree.First()).Where(p => p.Children.Count == 0);
 
-                    foreach (SimpleTree VARIABLE in g)
+                    foreach (SimpleTree treeElement in ListOfTreesElements)
                     {
                         string s = "";
-                        SimpleTree r = VARIABLE;
-                        if (VARIABLE.rule.NumberOfRule == rule.NumberOfRule) 
+                        SimpleTree copyOfTree = treeElement;
+                        if (treeElement.rule.NumberOfRule == rule.NumberOfRule) 
                         {
                             bool boolValue = true;
-                            while (r.Parent.rule != rule) 
+                            while (copyOfTree.Parent.rule != rule) 
                             {
                                 if (boolValue == false)
                                 {
-                                    r = r.Parent;
+                                    copyOfTree = copyOfTree.Parent;
                                 }
                                 boolValue = false;
 
-                                s += r.rule.NumberOfRule + "==>";
+                                s += copyOfTree.rule.NumberOfRule + "==>";
                             }
                             MessageBox.Show("Reguła " + rule.NumberOfRule + " jest zewnętrznie sprzeczna" +
                                             "można to wykazać stosując następujące podstawienie" + s);
@@ -271,7 +270,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                     foreach (var flatteredRule in flatteredRules)
                     {
                         int count = (from flatteredConditions in flatteredRule
-                            from constrainCondition in constrain.ConstrainsList
+                            from constrainCondition in constrain.ConstrainConditions
                             where flatteredConditions.Dopytywalny
                             where constrainCondition == flatteredConditions.rule.Conclusion
                             select flatteredConditions).Count();

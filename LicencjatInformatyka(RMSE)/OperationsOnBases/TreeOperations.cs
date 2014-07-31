@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
-using LicencjatInformatyka_RMSE_.Additional;
-using LicencjatInformatyka_RMSE_.NewFolder2;
-using LicencjatInformatyka_RMSE_.NewFolder3;
-using LicencjatInformatyka_RMSE_.NewFolder5;
+using LicencjatInformatyka_RMSE_.Bases;
+using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 {

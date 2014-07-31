@@ -1,7 +1,5 @@
 ﻿using System;
-using LicencjatInformatyka_RMSE_.Additional;
-using LicencjatInformatyka_RMSE_.NewFolder3;
-using LicencjatInformatyka_RMSE_.NewFolder5;
+using LicencjatInformatyka_RMSE_.Bases;
 
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 {

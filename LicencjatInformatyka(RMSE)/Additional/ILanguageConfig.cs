@@ -1,4 +1,4 @@
-﻿namespace LicencjatInformatyka_RMSE_.NewFolder5
+﻿namespace LicencjatInformatyka_RMSE_.Additional
 {
    public interface ILanguageConfig
     {

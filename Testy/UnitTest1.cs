@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using LicencjatInformatyka_RMSE_.Additional;
-using LicencjatInformatyka_RMSE_.NewFolder1;
-using LicencjatInformatyka_RMSE_.NewFolder2;
+using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
+using LicencjatInformatyka_RMSE_.ViewModel;
 using NUnit.Framework;
 
 namespace Testy

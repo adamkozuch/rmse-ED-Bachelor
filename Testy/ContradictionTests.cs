@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
-using LicencjatInformatyka_RMSE_.Additional;
-using LicencjatInformatyka_RMSE_.NewFolder5;
+using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
 using NUnit;
 using NUnit.Framework;

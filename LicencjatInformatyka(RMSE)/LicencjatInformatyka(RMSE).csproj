@@ -78,87 +78,151 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WpfRichText">
+      <HintPath>..\packages\WpfRichText.1.0.16.2\lib\net45\WpfRichText.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.DataGrid">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.DataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.0.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AskConstrainAndRedundancy.xaml.cs">
+    <Compile Include="ViewControls\AskWindows\AskArgument.xaml.cs">
+      <DependentUpon>AskArgument.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\AskWindows\AskConstrain.xaml.cs">
+      <DependentUpon>AskConstrain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\AskWindows\AskConstrainAndRedundancy.xaml.cs">
       <DependentUpon>AskConstrainAndRedundancy.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AskRuleValue.xaml.cs">
+    <Compile Include="ViewControls\AskWindows\AskingConditionsWIndow.xaml.cs">
+      <DependentUpon>AskingConditionsWIndow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\AskWindows\AskRuleValue.xaml.cs">
       <DependentUpon>AskRuleValue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\AskWindows\RichTextControll.xaml.cs">
+      <DependentUpon>RichTextControll.xaml</DependentUpon>
     </Compile>
     <Compile Include="Bases\ArgumentBase.cs" />
     <Compile Include="Bases\FactBase.cs" />
-    <Compile Include="ChooseRule.xaml.cs">
+    <Compile Include="ViewControls\BrowseControls\BrowseConstrains.xaml.cs">
+      <DependentUpon>BrowseConstrains.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\BrowseControls\BrowseModels.xaml.cs">
+      <DependentUpon>BrowseModels.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\BrowseControls\BrowseRules.xaml.cs">
+      <DependentUpon>BrowseRules.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\AskWindows\ChooseRule.xaml.cs">
       <DependentUpon>ChooseRule.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Command\ActionsOnBase.cs" />
-    <Compile Include="Command\OpenBasesActions.cs" />
-    <Compile Include="UserControls\ConcludeUserControl.xaml.cs">
+    <Compile Include="ViewModel\ActionsOnBase.cs" />
+    <Compile Include="ViewModel\OpenBasesActions.cs" />
+    <Compile Include="ViewControls\UserControls\ConcludeUserControl.xaml.cs">
       <DependentUpon>ConcludeUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ConstrainBaseUserControll.xaml.cs">
+    <Compile Include="ViewControls\UserControls\ConstrainBaseUserControll.xaml.cs">
       <DependentUpon>ConstrainBaseUserControll.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\GraphicBaseUserControll.xaml.cs">
+    <Compile Include="ViewControls\UserControls\GraphicBaseUserControll.xaml.cs">
       <DependentUpon>GraphicBaseUserControll.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ModelBaseUserControll.xaml.cs">
+    <Compile Include="ViewControls\UserControls\ModelBaseUserControll.xaml.cs">
       <DependentUpon>ModelBaseUserControll.xaml</DependentUpon>
     </Compile>
     <Compile Include="OperationsOnBases\ConclusionClass.cs" />
-    <Compile Include="Command\RelayCommand.cs" />
-    <Compile Include="Command\ViewModel.cs" />
-    <Compile Include="ElementsOfBases\Advice.cs" />
-    <Compile Include="ElementsOfBases\Argument.cs" />
-    <Compile Include="ElementsOfBases\constrain.cs" />
-    <Compile Include="ElementsOfBases\Fact.cs" />
-    <Compile Include="ElementsOfBases\Graphic.cs" />
-    <Compile Include="ElementsOfBases\model.cs" />
-    <Compile Include="ElementsOfBases\rule.cs" />
-    <Compile Include="ElementsOfBases\Sound.cs" />
+    <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\ViewModel.cs" />
+    <Compile Include="Bases\ElementsOfBases\Advice.cs" />
+    <Compile Include="Bases\ElementsOfBases\Argument.cs" />
+    <Compile Include="Bases\ElementsOfBases\constrain.cs" />
+    <Compile Include="Bases\ElementsOfBases\Fact.cs" />
+    <Compile Include="Bases\ElementsOfBases\Graphic.cs" />
+    <Compile Include="Bases\ElementsOfBases\model.cs" />
+    <Compile Include="Bases\ElementsOfBases\rule.cs" />
+    <Compile Include="Bases\ElementsOfBases\Sound.cs" />
     <Compile Include="OperationsOnBases\Arithmetic.cs" />
     <Compile Include="OperationsOnBases\ConclusionOperations.cs" />
     <Compile Include="OperationsOnBases\Contradiction.cs" />
     <Compile Include="OperationsOnBases\ForwardChaining.cs" />
     <Compile Include="OperationsOnBases\OperationsOnString.cs" />
     <Compile Include="OperationsOnBases\RaportAndDescription.cs" />
-    <Compile Include="ElementsOfBases\SimpleTree.cs" />
+    <Compile Include="Bases\ElementsOfBases\SimpleTree.cs" />
     <Compile Include="Bases\RuleBase.cs" />
     <Compile Include="Bases\SoundBase.cs" />
-    <Compile Include="UserControls\RuleBaseUserControl.xaml.cs">
+    <Compile Include="ViewControls\UserControls\RuleBaseUserControl.xaml.cs">
       <DependentUpon>RuleBaseUserControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="AskConstrainAndRedundancy.xaml">
+    <Page Include="ViewControls\AskWindows\AskArgument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AskRuleValue.xaml">
+    <Page Include="ViewControls\AskWindows\AskConstrain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ChooseRule.xaml">
+    <Page Include="ViewControls\AskWindows\AskConstrainAndRedundancy.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\ConcludeUserControl.xaml">
+    <Page Include="ViewControls\AskWindows\AskingConditionsWIndow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewControls\AskWindows\AskRuleValue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewControls\AskWindows\RichTextControll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewControls\BrowseControls\BrowseConstrains.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewControls\BrowseControls\BrowseModels.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewControls\BrowseControls\BrowseRules.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewControls\AskWindows\ChooseRule.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewControls\UserControls\ConcludeUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\ConstrainBaseUserControll.xaml">
+    <Page Include="ViewControls\UserControls\ConstrainBaseUserControll.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\GraphicBaseUserControll.xaml">
+    <Page Include="ViewControls\UserControls\GraphicBaseUserControll.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -178,19 +242,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControls\ModelBaseUserControll.xaml">
+    <Page Include="ViewControls\UserControls\ModelBaseUserControll.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UserControls\RuleBaseUserControl.xaml">
+    <Page Include="ViewControls\UserControls\RuleBaseUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bases\ModelBase.cs" />
-    <Compile Include="Additional\GatheredBases.cs" />
-    <Compile Include="Additional\IGatheredBases.cs" />
+    <Compile Include="Bases\GatheredBases.cs" />
+    <Compile Include="Bases\IGatheredBases.cs" />
     <Compile Include="Additional\ILanguageConfig.cs" />
     <Compile Include="Additional\KnowledgeDatabaseAnalyze.cs" />
     <Compile Include="Additional\PolishLanguageConfig.cs" />
@@ -209,14 +273,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="LicencjatInformatyka%28RMSE%29_TemporaryKey.pfx" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
