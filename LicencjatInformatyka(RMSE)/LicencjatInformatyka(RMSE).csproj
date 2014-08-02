@@ -105,10 +105,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="LanguageConfiguration\PolishChildWindowsLanguageConfig.cs" />
+    <Compile Include="LanguageConfiguration\English\EnglishChildWindowsLanguageConfig.cs" />
+    <Compile Include="LanguageConfiguration\English\EnglishElementsLanguageConfig.cs" />
+    <Compile Include="LanguageConfiguration\English\EnglishMainWindowLanguageConfig.cs" />
+    <Compile Include="LanguageConfiguration\Polish\PolishChildWindowsLanguageConfig.cs" />
     <Compile Include="LanguageConfiguration\IChildWindowsLanguageConfig.cs" />
     <Compile Include="LanguageConfiguration\IElementsNamesLanguageConfig.cs" />
-    <Compile Include="LanguageConfiguration\PolishElementsNamesLanguageConfig.cs" />
+    <Compile Include="LanguageConfiguration\Polish\PolishElementsNamesLanguageConfig.cs" />
     <Compile Include="OperationsOnBases\ConcludeFolder\ConstrainActions.cs" />
     <Compile Include="OperationsOnBases\ConcludeFolder\ModelActions.cs" />
     <Compile Include="ViewControls\AskWindows\AskArgument.xaml.cs">
@@ -142,6 +145,9 @@
     </Compile>
     <Compile Include="ViewControls\AskWindows\ChooseRule.xaml.cs">
       <DependentUpon>ChooseRule.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\ReportConclusionWindow.xaml.cs">
+      <DependentUpon>ReportConclusionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModelFolder\ActionsOnBase.cs" />
     <Compile Include="ViewModelFolder\OpenBasesActions.cs" />
@@ -218,6 +224,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ViewControls\ReportConclusionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ViewControls\UserControls\ConcludeUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -260,7 +270,7 @@
     <Compile Include="Bases\GatheredBases.cs" />
     <Compile Include="Bases\IGatheredBases.cs" />
     <Compile Include="LanguageConfiguration\IMainWindowLanguageConfig.cs" />
-    <Compile Include="LanguageConfiguration\PolishMainWindowLanguageConfig.cs" />
+    <Compile Include="LanguageConfiguration\Polish\PolishMainWindowLanguageConfig.cs" />
     <Compile Include="OperationsOnBases\DiagnoseFolder\Redundancy.cs" />
     <Compile Include="OperationsOnBases\TreeOperations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

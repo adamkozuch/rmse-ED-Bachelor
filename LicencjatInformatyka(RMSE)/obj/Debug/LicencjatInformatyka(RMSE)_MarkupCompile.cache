@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\App.xaml
-16-1591268799
+17-1704269845
 
-59-2087239140
+63-1227698430
 21-1681352210
-ViewControls\AskWindows\AskArgument.xaml;ViewControls\AskWindows\AskConstrain.xaml;ViewControls\AskWindows\AskingConditionsWIndow.xaml;ViewControls\AskWindows\AskRuleValue.xaml;ViewControls\AskWindows\ChoseRuleForFlatter.xaml;ViewControls\AskWindows\RichTextControll.xaml;ViewControls\BrowseControls\BrowseConstrains.xaml;ViewControls\BrowseControls\BrowseModels.xaml;ViewControls\BrowseControls\BrowseRules.xaml;ViewControls\AskWindows\ChooseRule.xaml;ViewControls\UserControls\ConcludeUserControl.xaml;ViewControls\UserControls\ConstrainBaseUserControll.xaml;ViewControls\UserControls\GraphicBaseUserControll.xaml;MainWindow.xaml;ViewControls\UserControls\ModelBaseUserControll.xaml;ViewControls\UserControls\RuleBaseUserControl.xaml;
+ViewControls\AskWindows\AskArgument.xaml;ViewControls\AskWindows\AskConstrain.xaml;ViewControls\AskWindows\AskingConditionsWIndow.xaml;ViewControls\AskWindows\AskRuleValue.xaml;ViewControls\AskWindows\ChoseRuleForFlatter.xaml;ViewControls\AskWindows\RichTextControll.xaml;ViewControls\BrowseControls\BrowseConstrains.xaml;ViewControls\BrowseControls\BrowseModels.xaml;ViewControls\BrowseControls\BrowseRules.xaml;ViewControls\AskWindows\ChooseRule.xaml;ViewControls\ReportConclusionWindow.xaml;ViewControls\UserControls\ConcludeUserControl.xaml;ViewControls\UserControls\ConstrainBaseUserControll.xaml;ViewControls\UserControls\GraphicBaseUserControll.xaml;MainWindow.xaml;ViewControls\UserControls\ModelBaseUserControll.xaml;ViewControls\UserControls\RuleBaseUserControl.xaml;
 
 False
 

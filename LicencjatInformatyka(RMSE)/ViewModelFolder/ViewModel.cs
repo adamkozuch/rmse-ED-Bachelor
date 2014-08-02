@@ -5,6 +5,7 @@ using System.Windows.Input;
 using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
+using LicencjatInformatyka_RMSE_.LanguageConfiguration;
 using LicencjatInformatyka_RMSE_.ViewControls.AskWindows;
 using LicencjatInformatyka_RMSE_.ViewControls.BrowseControls;
 
@@ -12,24 +13,22 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 {
    public class ViewModel:INotifyPropertyChanged
     {
-      
-        private IMainWindowLanguageConfig _mainWindowLanguageConfig;
-        private IChildWindowsLanguageConfig _childWindowsLanguageConfig;
        private IElementsNamesLanguageConfig _elementsNamesLanguageConfig;
-       private readonly GatheredBases bases;
+        private readonly GatheredBases bases;
         private readonly OpenBasesActions _openBasesActions;
         private readonly ActionsOnBase _actionsOnBase;
                   
         public event PropertyChangedEventHandler PropertyChanged = null;
         public ViewModel()
         {
-            MainWindowLanguageConfig =new PolishMainWindowLanguageConfig();
-            _childWindowsLanguageConfig = new PolishChildWindowsLanguageConfig();
-            _elementsNamesLanguageConfig = new PolishElementsNamesLanguageConfig();
+            
+
             bases = new GatheredBases(_elementsNamesLanguageConfig);
+
             //Instances of classes responsible for opening and actions on RMSE bases
             _openBasesActions = new OpenBasesActions(this,bases);
             _actionsOnBase = new ActionsOnBase(bases,this);
+
 
             #region RuleBaseButtons
             OpenRuleCommand = new RelayCommand(pars => _openBasesActions.ReadRuleBase()); 
@@ -41,7 +40,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
                 ShowWindow(new AskingConditionsWIndow(this));
             });
             DiagnoseOutsideContradictionCommand = new RelayCommand(p => _actionsOnBase.ReportAboutOutsideContradiction());
-            FlatterRuleCommand = new RelayCommand(p => _actionsOnBase.FlatterRule(selectedRule));
+            FlatterRuleCommand = new RelayCommand(p => _actionsOnBase.FlatterRule(_selectedRule));
             #endregion
             #region ConstrainBaseButtons
             OpenConstrainCommand = new RelayCommand(pars => _openBasesActions.ReadConstrainBase());
@@ -55,11 +54,31 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             #endregion
 
             #region ConclusionButtons
-          ConcludeCommand = new RelayCommand(pars =>  _actionsOnBase.BackwardConcludeAction(selectedRule));
+          ConcludeCommand = new RelayCommand(pars =>  _actionsOnBase.BackwardConcludeAction(_selectedRule));
           #endregion
-            ValueTrue = new RelayCommand(p => CheckedRuleVal=true);
-            ValueUnknown = new RelayCommand(p => CheckedRuleVal=false);
-            
+           ValueTrue = new RelayCommand(p => CheckedRuleVal=true);
+           ValueUnknown = new RelayCommand(p => CheckedRuleVal=false);
+           #region LanguageConfiguration
+
+            MainWindowLanguageConfig =new PolishMainWindowLanguageConfig();
+            ChildWindowsLanguageConfig = new PolishChildWindowsLanguageConfig();
+            _elementsNamesLanguageConfig = new PolishElementsNamesLanguageConfig();
+
+            PolishConfigurationCommand = new RelayCommand( p=>
+            {
+                MainWindowLanguageConfig = new PolishMainWindowLanguageConfig();
+                ChildWindowsLanguageConfig = new PolishChildWindowsLanguageConfig();
+                _elementsNamesLanguageConfig = new PolishElementsNamesLanguageConfig();
+            });
+
+            EnglishConfigurationCommand = new RelayCommand(p =>
+            {
+                MainWindowLanguageConfig = new EnglishMainWindowLanguageConfig();
+                ChildWindowsLanguageConfig = new EnglishChildWindowsLanguageConfig();
+                _elementsNamesLanguageConfig = new EnglishElementsLanguageConfig();
+            });
+
+            #endregion
         }
 
        private void ShowWindow(Window wind)
@@ -68,13 +87,14 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
        }
 
        // These fields are used in process of asking unknown values
-        private Rule selectedRule = new Rule();
+        private Rule _selectedRule = new Rule();
         private bool _checkedRuleValue;
         private string _checkedRuleName;
-        private Constrain askedConstrain;
+        private Constrain _askedConstrain;
         private string _mainWindowText;
 
-     
+        public ICommand PolishConfigurationCommand { get; set; }
+        public ICommand EnglishConfigurationCommand { get; set; }
 
 
         #region RuleBaseCommands
@@ -113,22 +133,15 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         public ICommand ValueTrue { get; set; }
         public ICommand ValueUnknown { get; set; }
 
-
-
-   
-        
-
-      
-
-        #endregion
+       #endregion
 
         #region Property
         public Rule SelectedRule
         {
-            get { return selectedRule; }
+            get { return _selectedRule; }
             set
             {
-                selectedRule = value;
+                _selectedRule = value;
                 OnPropertyChanged("SelectedRule");
             }
         }
@@ -155,26 +168,28 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
         public Constrain AskedConstrain
         {
-            get { return askedConstrain; }
+            get { return _askedConstrain; }
             set
             {
-                askedConstrain = value;
+                _askedConstrain = value;
                 OnPropertyChanged("AskedConstrain");
             }
         }
-           string valueFromConstrain;
-       private string argumentValue;
+           string _valueFromConstrain;
+       private string _argumentValue;
        private List<string> _askingConditionsList;
+       private IMainWindowLanguageConfig _mainWindowLanguageConfig;
+       private IChildWindowsLanguageConfig _childWindowsLanguageConfig;
 
        public string ValueFromConstrain
         {
             get
             {  
-                return valueFromConstrain;
+                return _valueFromConstrain;
             }
             set
             {
-                valueFromConstrain = value;
+                _valueFromConstrain = value;
                 OnPropertyChanged("ValueFromConstrain");
             }
         }
@@ -195,11 +210,11 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         {
             get
             {
-                return argumentValue;
+                return _argumentValue;
             }
             set
             {
-                argumentValue = value;
+                _argumentValue = value;
                 OnPropertyChanged("ValueArgument");
             }
         }
@@ -231,11 +246,14 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         }
 
 
-
        public IMainWindowLanguageConfig MainWindowLanguageConfig
        {
            get { return _mainWindowLanguageConfig; }
-           set { _mainWindowLanguageConfig = value; }
+           set
+           {
+               _mainWindowLanguageConfig = value;
+               OnPropertyChanged("MainWindowLanguageConfig");
+           }
        }
 
        public IChildWindowsLanguageConfig ChildWindowsLanguageConfig
@@ -243,7 +261,6 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
            get { return _childWindowsLanguageConfig; }
            set { _childWindowsLanguageConfig = value; }
        }
-     
 
        #endregion
 

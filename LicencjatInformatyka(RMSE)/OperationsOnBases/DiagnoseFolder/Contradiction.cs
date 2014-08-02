@@ -19,7 +19,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             tree = new SimpleTree { rule = ruleForCheck };
             IEnumerable<SimpleTree> parentWithoutChildren;
 
-            int i = 0;
+            int _number = 0;
             do
             {
                 parentWithoutChildren = TreeOperations.TreeToEnumerable(tree).Where(p => p.Children.Count == 0).
@@ -28,11 +28,11 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                 foreach (SimpleTree parentWithoutChild in parentWithoutChildren)
                 {
                     TreeOperations.ExpandBrunchOrMakeAskable(bases, parentWithoutChild, differenceList);
-                    i++;
+                    _number++;
 
-                    if (i == count)
+                    if (_number == count)
                     {          
-                        return false;  // method not finished tree after i iterations
+                        return false;  // method not finished tree after _number iterations
                     }  //TODO: ta pętla nie jest odporna na sprzeczność
                 }
             } while (parentWithoutChildren.Count() != 0);
@@ -82,7 +82,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                                         MessageBox.Show(
                                             "W bazie występuje sprzeczność przejdź do dniagnoz bazy aby poznać szczegóły");
                                         
-                                        reportIncluded = false; //TODO:tymczasowe rozwiązanie trzeba jakoś przerwać metodę
+                                        reportIncluded = false; //TODO : tymczasowe rozwiązanie trzeba jakoś przerwać metodę
                                     }
                                     AddRuleToContradictionTable(contradictedRules, RuleI);
                                     break;
@@ -109,7 +109,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         public static void AddRuleToContradictionTable
             (List<Rule> table, Rule rule)
         {
-            int i = table.Count(VARIABLE => VARIABLE != rule);
+            int i = table.Count(p => p != rule);
 
             if (table.Count == i)
                 table.Add(rule);
@@ -185,7 +185,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         {
             foreach (Rule rule in bases.RuleBase.RulesList)
             {
-                var differenceList = new List<List<Rule>>();
+                List<List<Rule>> differenceList;
                 var tree = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule,out differenceList);
 
              var askingConditions = TreeOperations.TreeToEnumerable
@@ -304,28 +304,33 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             {
                 foreach (var rule in bases.RuleBase.RulesList)
                 {
-                   var differenceTable = new List<List<Rule>>();
+                   List<List<Rule>> differenceTable;
 
                    var tree = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule,out differenceTable);
 
-                    List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,differenceTable);
+                   List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,differenceTable);
 
-
-                    foreach (var flatteredRule in possibleTrees)
-                    {
-                        int count = (from flatteredConditions in flatteredRule
-                            from constrainCondition in constrain.ConstrainConditions
-                            where flatteredConditions.Dopytywalny
-                            where constrainCondition == flatteredConditions.rule.Conclusion
-                            select flatteredConditions).Count();
-
-                        if (count > 1) // If more than one there is a contradiction
-                            MessageBox.Show("Sprzeczność pomiędzy regułą " + rule.NumberOfRule + " i ograniczeniem" +
-                                            constrain.NumberOfLimit);
-                    }
+                    DiagnoseContradictionInPossibleTrees(possibleTrees, constrain, rule);
                 }
             }
         }
+
+        private static void DiagnoseContradictionInPossibleTrees(List<List<SimpleTree>> possibleTrees, Constrain constrain, Rule rule)
+        {
+            foreach (var flatteredRule in possibleTrees)
+            {
+                int count = (from flatteredConditions in flatteredRule
+                    from constrainCondition in constrain.ConstrainConditions
+                    where flatteredConditions.Dopytywalny
+                    where constrainCondition == flatteredConditions.rule.Conclusion
+                    select flatteredConditions).Count();
+
+                if (count > 1) // If more than one there is a contradiction
+                    MessageBox.Show("Sprzeczność pomiędzy regułą " + rule.NumberOfRule + " i ograniczeniem" +
+                                    constrain.NumberOfLimit);
+            }
+        }
+
         #endregion
     }
 }

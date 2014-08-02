@@ -56,5 +56,7 @@
 		</TabControl>
 		<Label Content="Menu" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10,5,0,0" VerticalAlignment="Top" Width="407.141"/>
 		<TextBlock Text="{Binding MainWindowText}"  Grid.Column="1" Grid.Row="1"  TextWrapping="NoWrap" Margin="5,5,18.112,0"/>
+        <Button Command="{Binding PolishConfigurationCommand}" Content="Polski" HorizontalAlignment="Left" Height="37" Margin="63,10,0,0" VerticalAlignment="Top" Width="127"/>
+        <Button Command="{Binding EnglishConfigurationCommand}" Content="Angielski" HorizontalAlignment="Left" Height="37" Margin="63,52,0,0" VerticalAlignment="Top" Width="127"/>
     </Grid>
 </Window>
