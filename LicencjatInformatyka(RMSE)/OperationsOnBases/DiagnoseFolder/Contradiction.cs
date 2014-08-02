@@ -11,46 +11,32 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
     /// </summary>
     public static class Contradiction
     {
-        public static List<object> MethodForContradiction
-            (GatheredBases bases, Rule ruleForCheck, int o)
+        public static bool MethodForContradiction
+            (GatheredBases bases, Rule ruleForCheck, int count, List<List<Rule>> differenceList, SimpleTree tree)
         {
-            var divideList = new List<List<Rule>>();
-
-            var conditionTree = new SimpleTree { rule = ruleForCheck };
+            
+            tree = new SimpleTree { rule = ruleForCheck };
             IEnumerable<SimpleTree> parentWithoutChildren;
 
             int i = 0;
             do
             {
-                parentWithoutChildren = TreeOperations.TreeToEnumerable(conditionTree).Where(p => p.Children.Count == 0).
+                parentWithoutChildren = TreeOperations.TreeToEnumerable(tree).Where(p => p.Children.Count == 0).
                     Where(p => p.Dopytywalny == false);
 
                 foreach (SimpleTree parentWithoutChild in parentWithoutChildren)
                 {
-                    TreeOperations.ExpandBrunchOrMakeAskable(bases, parentWithoutChild, divideList);
+                    TreeOperations.ExpandBrunchOrMakeAskable(bases, parentWithoutChild, differenceList);
                     i++;
 
-                    if (i == o)
-                    {
-
-
-                        var treeAndDifferences = new List<object>();
-                        treeAndDifferences.Add(conditionTree);
-                        treeAndDifferences.Add(false);
-                        return treeAndDifferences;
+                    if (i == count)
+                    {          
+                        return false;  // method not finished tree after i iterations
                     }  //TODO: ta pętla nie jest odporna na sprzeczność
                 }
-
-
-
             } while (parentWithoutChildren.Count() != 0);
 
-
-
-            var treeAndDifferencesDictionary = new List<object>();
-            treeAndDifferencesDictionary.Add(conditionTree);
-            treeAndDifferencesDictionary.Add(true);
-            return treeAndDifferencesDictionary;
+            return true; // method finished tree and there is no contradiction
         }
 
         #region OutsideContradiction
@@ -65,15 +51,17 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             var contradictedRules = new List<Rule>();
             foreach (Rule RuleI in bases.RuleBase.RulesList)
             {
-                int i = 100;
+                int numberForCheck = 100;
 
                 RepeatGoto: //if result too long double i value
-                List<object> complexTree = MethodForContradiction(bases, RuleI, i);
+                var tree = new SimpleTree();
+                var differenceList= new List<List<Rule>>();
+               var complexTree = MethodForContradiction(bases, RuleI, numberForCheck,differenceList, tree);
 
-                if ((bool) complexTree[1] == false)
+                if (complexTree == false)
                 {
                     IEnumerable<SimpleTree> currentEndOfTree =
-                        TreeOperations.TreeToEnumerable((SimpleTree) complexTree[0]).Where(p => p.Children.Count == 0);
+                        TreeOperations.TreeToEnumerable(tree).Where(p => p.Children.Count == 0);
 
                     foreach (SimpleTree currentEnd in currentEndOfTree)
                     {
@@ -94,7 +82,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                     }
                     if (contradictedRules.Count == 0)
                     {
-                        i = i*2;
+                        numberForCheck = numberForCheck*2;
                         goto RepeatGoto;
                         // W razie jakby reguła okazała się barzdo długa powtarzamy operacje ze zwiekszoną wartością
                     }
@@ -135,7 +123,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                 var listT = new List<Rule>();
                 for (int i = 1; i < 100; i++)
                 {
-                    List<object> tree = MethodForContradiction(bases, rule, i);
+                    List<object> tree = MethodForContradiction(bases, rule, i, TODO);
 
                     IEnumerable<SimpleTree> ListOfTreesElements =
                         TreeOperations.TreeToEnumerable((SimpleTree) tree.First()).Where(p => p.Children.Count == 0);
@@ -181,12 +169,13 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         {
             foreach (Rule rule in bases.RuleBase.RulesList)
             {
-                Dictionary<List<List<Rule>>, SimpleTree> r = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule);
+                var differenceList = new List<List<Rule>>();
+                var tree = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule,differenceList);
 
-                IEnumerable<SimpleTree> tree = TreeOperations.TreeToEnumerable
-                    (r.Values.First()).Where(p => p.Dopytywalny);
+             var askingConditions = TreeOperations.TreeToEnumerable
+                    (tree).Where(p => p.Dopytywalny);//TODO:uta niekoniecznie prawidłowo zmieniona logika
 
-                foreach (SimpleTree condition in tree)
+                foreach (SimpleTree condition in askingConditions)
                 {
                     IEnumerable<Model> models =
                         bases.ModelsBase.ModelList.Where(p => p.Conclusion == condition.rule.Conclusion);
@@ -299,14 +288,14 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             {
                 foreach (Rule rule in bases.RuleBase.RulesList)
                 {
-                    Dictionary<List<List<Rule>>, SimpleTree> tree =
-                        TreeOperations.ReturnComplexTreeAndDifferences(bases, rule);
+                   var differenceTable = new List<List<Rule>>();
 
-                    List<List<SimpleTree>> flatteredRules = TreeOperations.ReturnPossibleTrees(tree.Values.First(),
-                        tree.Keys.First());
+                   var tree =       TreeOperations.ReturnComplexTreeAndDifferences(bases, rule, differenceTable);
+
+                    List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,differenceTable);
 
 
-                    foreach (var flatteredRule in flatteredRules)
+                    foreach (var flatteredRule in possibleTrees)
                     {
                         int count = (from flatteredConditions in flatteredRule
                             from constrainCondition in constrain.ConstrainConditions

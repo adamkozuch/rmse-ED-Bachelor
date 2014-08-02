@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
         mc:Ignorable="d"
-        Title="AskRuleValue" Height="300" Width="300" 
+        Title="{Binding ChildWindowsLanguageConfig.AskRuleValueWindowName}" Height="300" Width="300" 
          d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
     <Grid>
-        <Label Content="Wrpowadz"  HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" Width="235"/>
+        <Label Content="{Binding ChildWindowsLanguageConfig.AskRuleValueExplainText}"  HorizontalAlignment="Left" Margin="10,22,0,0" VerticalAlignment="Top" Width="235"/>
         <Label Content="{Binding CheckedRuleName}" HorizontalAlignment="Left" Height="26" Margin="10,53,0,0" VerticalAlignment="Top" Width="235"/>
-        <Button Command="{Binding ValueTrue}" Content="Prawda" HorizontalAlignment="Left" Height="28" Margin="10,212,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_1"/>
-        <Button Command="{Binding ValueUnknown}" Content="Nieznany" HorizontalAlignment="Left" Height="28" Margin="163,212,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
+        <Button Command="{Binding ValueTrue}" Content="{Binding ChildWindowsLanguageConfig.AskRuleValueBtnProcess}" HorizontalAlignment="Left" Height="28" Margin="10,212,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_1"/>
+        <Button Command="{Binding ValueUnknown}" Content="{Binding ChildWindowsLanguageConfig.AskRuleValueBtnUnknown}" HorizontalAlignment="Left" Height="28" Margin="163,212,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click"/>
 
     </Grid>
 </Window>

@@ -57,10 +57,10 @@ _viewModel.AskingConditionsList = askingConditionList;
 
         public bool BackwardConclude( Rule checkedRule)
         {
+            var differenceList = new List<List<Rule>>();
+            var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases, checkedRule,differenceList);
 
-            var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases, checkedRule);
-
-            var possibleTrees = TreeOperations.ReturnPossibleTrees(tree.Values.First(), tree.Keys.First());
+            var possibleTrees = TreeOperations.ReturnPossibleTrees(tree, differenceList);
 
 
             foreach (var onePossibility in possibleTrees) //flattering all possible configurations of conditions

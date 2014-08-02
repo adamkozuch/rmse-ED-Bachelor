@@ -8,39 +8,39 @@ namespace LicencjatInformatyka_RMSE_.Additional
 {
    public class PolishChildWindowsLanguageConfig:IChildWindowsLanguageConfig
     {
-        private string _askArgumentWindowName;
-        private string _askArgumentExplainText;
-        private string _askArgumentBtnProcess;
-        private string _askArgumentBtnUnknown;
-        private string _askConstrainWindowName;
-        private string _askConstrainProcess;
-        private string _askConstrainBtnUnknown;
-        private string _askConstrainExplainText;
-        private string _askConditionsWindowName;
-        private string _askConditionsExplainText;
-        private string _askRuleValueWindowName;
-        private string _askRuleValueExplainText;
-        private string _askRuleValueBtnProcess;
-        private string _askRuleValueBtnUnknown;
-        private string _chooseRuleWindowName;
-        private string _chooseRuleExplainText;
-        private string _chooseRuleBtnProcess;
-        private string _chooseRuleBtnAbort;
-        private string _chooseRuleNumberOfRule;
-        private string _chooseRuleConclusionOfRule;
-        private string _browseConstrainsWindowName;
-        private string _browseConstrainsConstrainNumber;
-        private string _browseConstrainsConditionsName;
-        private string _browseConstrainsExplainText;
-        private string _browseModelsWindowName;
-        private string _browseModelsConstrainNumber;
-        private string _browseModelsConditionsName;
-        private string _browseModelsExplainText;
-        private string _browseRulesWindowName;
-        private string _browseRulesConstrainNumber;
-        private string _browseRulesConditionsName;
-        private string _browseRulesConclusionName;
-        private string _browseRulesExplainText;
+        private string _askArgumentWindowName="Okno wprowadzania argumentów";
+        private string _askArgumentExplainText="Wprowadź wartość dla następującego argumentu";
+        private string _askArgumentBtnProcess="Wprowadź";
+        private string _askArgumentBtnUnknown="Argument nieznany";
+        private string _askConstrainWindowName="Okno wprowadzania wartości ograniczenia";
+        private string _askConstrainProcess = "Wprowadź";
+        private string _askConstrainBtnUnknown="Wartość nieznana";
+        private string _askConstrainExplainText="Wybierz prawdziwy warunek";
+        private string _askConditionsWindowName="Okno wartości warunku";
+        private string _askConditionsExplainText="Wprowadź wartośc nastepującego warunku";
+        private string _askRuleValueWindowName="Okno wartości warunku dopytywalnego";
+        private string _askRuleValueExplainText="Wprowadź wartośc warunku dopytywalnego";
+        private string _askRuleValueBtnProcess="Wprowadź";
+        private string _askRuleValueBtnUnknown="WWartość nieznana";
+        private string _chooseRuleWindowName="Wnioskowanie wstecz";
+        private string _chooseRuleExplainText="Wybierz regułę dla której chcesz przeprowadzić wnioskowanie";
+        private string _chooseRuleBtnProcess="Wnioskuj";
+        private string _chooseRuleBtnAbort="Przerwij";
+        private string _chooseRuleNumberOfRule="Numer reguły";
+        private string _chooseRuleConclusionOfRule="Wniosek reguły";
+        private string _browseConstrainsWindowName="Przegląd reguł";
+        private string _browseConstrainsConstrainNumber="Numer ograniczenia";
+        private string _browseConstrainsConditionsName="Warunki";
+        private string _browseConstrainsExplainText="W bazie są następujące ograniczenia";
+        private string _browseModelsWindowName="Przegląd modeli";
+        private string _browseModelsConstrainNumber="Numer modelu";
+        private string _browseModelsConditionsName="";
+        private string _browseModelsExplainText="W bazie znajdują się następujące modele";
+        private string _browseRulesWindowName="Przegląd reguł";
+        private string _browseRulesRuleNumber="Numer reguły";
+        private string _browseRulesConditionsName="Warunki reguły";
+        private string _browseRulesConclusionName="Wniosek reguły";
+        private string _browseRulesExplainText="W bazie znajdują się następujące reguły";
 
         public string AskArgumentWindowName
         {
@@ -187,9 +187,9 @@ namespace LicencjatInformatyka_RMSE_.Additional
             get { return _browseRulesWindowName; }
         }
 
-        public string BrowseRulesConstrainNumber
+        public string BrowseRulesRuleNumber
         {
-            get { return _browseRulesConstrainNumber; }
+            get { return _browseRulesRuleNumber; }
         }
 
         public string BrowseRulesConditionsName

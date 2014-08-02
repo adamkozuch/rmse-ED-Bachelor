@@ -14,11 +14,12 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             return rulesWithSameConclusion.Select(rule => new SimpleTree {rule = rule,Parent = parent}).ToList();
         }
 
-        // Najgorzej wygl¹daj¹ca metoda
-        public static Dictionary<List<List<Rule>>, SimpleTree> ReturnComplexTreeAndDifferences
-            (GatheredBases bases, Rule ruleForCheck)
+        
+        public static SimpleTree ReturnComplexTreeAndDifferences
+            (GatheredBases bases, Rule ruleForCheck, List<List<Rule>>differencesList  )
         {
-            var divideList = new List<List<Rule>>();
+
+             differencesList = new List<List<Rule>>();
 
             var conditionTree = new SimpleTree {rule = ruleForCheck};
             IEnumerable<SimpleTree> parentWithoutChildren;
@@ -31,20 +32,24 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
                 foreach (SimpleTree parentWithoutChild in parentWithoutChildren)
                 {
-                    ExpandBrunchOrMakeAskable(bases, parentWithoutChild, divideList);
+                    ExpandBrunchOrMakeAskable(bases, parentWithoutChild, differencesList);
                 }
             } while (parentWithoutChildren.Count() != 0);
             
-
-
-            var treeAndDifferencesDictionary = new Dictionary<List<List<Rule>>, SimpleTree>
-            {
-                {divideList, conditionTree}
-            };
-            return treeAndDifferencesDictionary;
+            return conditionTree;
         }
- public static List<List<SimpleTree>> ReturnPossibleTrees(SimpleTree tree, List<List<Rule>> divideList)
+
+
+
+
+
+
+
+
+      public static List<List<SimpleTree>> ReturnPossibleTrees(SimpleTree tree, List<List<Rule>> divideList)
         {
+          
+          
             IEnumerable<IEnumerable<Rule>> cartesianProducts = CartesianProduct(divideList);
 
 
@@ -54,19 +59,23 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                 IEnumerable<Rule> differenceList =
                     ReturnDifferenceBetweenTables(divideList, particularConfig.ToList()).SelectMany(m => m);
 
-                IEnumerable<SimpleTree> oneSolutionTree = ReturnTreeEllementsWithoutDifferences(tree,
+                IEnumerable<SimpleTree> oneSolution = ReturnTreeEllementsWithoutDifferences(tree,
                     differenceList.ToList());
 
-                SimpleTree[] treeToList = oneSolutionTree.ToArray();
-                bool isDouble = IsDouble(returnResult, treeToList);
+                SimpleTree[] treeToList = oneSolution.ToArray();
+                bool isDouble = RemoveDoubles(returnResult, treeToList);
 
 
                 if (isDouble)
-                    returnResult.Add(oneSolutionTree.ToList());
+                    returnResult.Add(oneSolution.ToList());
             }
 
             return returnResult;
         }
+
+
+
+
         public static void ExpandBrunchOrMakeAskable
             (GatheredBases bases, SimpleTree parentWithoutChild, List<List<Rule>> divideList)
         {
@@ -77,8 +86,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
                 if (returnedRules.Count == 0)
                 {
-                    bool model =   CheckModel(condition, bases);
-                    var endRule = new Rule {Conclusion = condition, Model = model , NumberOfRule = 100};
+                    bool isModel = CheckIfModel(condition, bases);
+                    var endRule = new Rule {Conclusion = condition, Model = isModel , NumberOfRule = bases.RuleBase.RulesList.Count+1000};
                     parentWithoutChild.Children.Add(new SimpleTree {Dopytywalny = true, rule = endRule,Parent = parentWithoutChild});
                 }
                 else
@@ -95,7 +104,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
         }
         #endregion
 
-        public static bool CheckModel(string condition, GatheredBases bases)
+        public static bool CheckIfModel(string condition, GatheredBases bases)
         {
             return bases.ModelsBase.ModelList.Any(model => model.Conclusion == condition);
         }
@@ -118,7 +127,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
        
         #region secondary
-        private static bool IsDouble(List<List<SimpleTree>> returnResult, SimpleTree[] treeToList)
+        private static bool RemoveDoubles(List<List<SimpleTree>> returnResult, SimpleTree[] treeToList)
         {
             foreach (var treeResult in returnResult) // usowanie dubluu¹cych rezultatow
             {
@@ -186,8 +195,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             }
         }
 
-        #region Contradiction
-       
-        #endregion
+   
     }
 }

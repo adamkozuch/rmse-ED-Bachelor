@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
         mc:Ignorable="d"
-        Title="AskConstrain" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel  }">
+        Title="{Binding ChildWindowsLanguageConfig.AskConstrainWindowName}" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel  }">
     <Grid>
         <ListBox  ItemsSource="{Binding AskedConstrain.ConstrainConditions}" SelectedItem="{Binding ValueFromConstrain}" HorizontalAlignment="Left" Height="259" VerticalAlignment="Top" Width="156"/>
-        <Button Content="Zatwierdz" HorizontalAlignment="Left" Height="55" Margin="187,204,0,0" VerticalAlignment="Top" Width="95" Click="Button_Click"/>
+        <Button Content="{Binding ChildWindowsLanguageConfig.AskRuleValueBtnProcess}" HorizontalAlignment="Left" Height="55" Margin="187,204,0,0" VerticalAlignment="Top" Width="95" Click="Button_Click"/>
 
     </Grid>
 </Window>

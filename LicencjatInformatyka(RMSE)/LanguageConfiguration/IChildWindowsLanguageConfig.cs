@@ -56,7 +56,7 @@ namespace LicencjatInformatyka_RMSE_.Additional
         #endregion
         #region BrowseRules
         string BrowseRulesWindowName { get; }
-        string BrowseRulesConstrainNumber { get; }
+        string BrowseRulesRuleNumber { get; }
         string BrowseRulesConditionsName { get; }
         string BrowseRulesConclusionName { get; }
         string BrowseRulesExplainText { get; }

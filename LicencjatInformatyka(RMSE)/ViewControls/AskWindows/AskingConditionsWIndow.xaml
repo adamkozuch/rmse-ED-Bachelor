@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
         mc:Ignorable="d"
-        Title="AskingConditionsWIndow" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel  }">
+        Title="{Binding ChildWindowsLanguageConfig.AskConditionsWindowName}" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel  }">
     <Grid>
         <ListBox ItemsSource="{Binding AskingConditionsList}" HorizontalAlignment="Left" Height="259" VerticalAlignment="Top" Width="184"/>
 

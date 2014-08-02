@@ -5,13 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
         mc:Ignorable="d"
-        Title="BrowseRules" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
+        Title="{Binding ChildWindowsLanguageConfig.BrowseRulesWindowName}" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RuleListProp }" SelectedItem="{Binding SelectedRule }" HorizontalAlignment="Left" Height="233" VerticalAlignment="Top" Width="291" Margin="5,5,0,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Numer ograniczenia" Binding="{Binding NumberOfRule}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Warunki ograniczenia" Binding="{Binding Conclusion}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Warunki ograniczenia" Binding="{Binding Conditions}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.BrowseRulesRuleNumber}" Binding="{Binding NumberOfRule}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.BrowseRulesConclusionName}" Binding="{Binding Conclusion}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.BrowseRulesConditionsName}" Binding="{Binding Conclusion}"></DataGridTextColumn>
+
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

@@ -29,6 +29,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
     /// </summary>
     internal class Redundancy
     {
+        
+
         /// <summary>
         /// Invokes the specified bases.
         /// </summary>
@@ -37,16 +39,17 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         {
             foreach (Rule ruleForCheck in bases.RuleBase.RulesList)
             {
-                var r = new List<Rule>();
-                r = ConclusionOperations.FindRulesWithParticularConclusion
+                var ruleList = new List<Rule>();
+                ruleList = ConclusionClass.FindRulesWithParticularConclusion
                     (ruleForCheck.Conclusion, bases.RuleBase.RulesList);
                 var b = new List<List<SimpleTree>>();
-                foreach (Rule VARIABL in r)
+                foreach (Rule VARIABL in ruleList)
                 {
-                    Dictionary<List<List<Rule>>, SimpleTree> tree = TreeOperations.ReturnComplexTreeAndDifferences(
-                        bases, ruleForCheck);
-                    List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree.Values.First(),
-                        tree.Keys.First());
+                    var differencesList = new List<List<Rule>>();
+                    var tree = TreeOperations.ReturnComplexTreeAndDifferences(
+                        bases, ruleForCheck,differencesList);
+                    List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,
+                        differencesList);
                     b.AddRange(possibleTrees);
                 }
                 // nie badam dopytywalnych

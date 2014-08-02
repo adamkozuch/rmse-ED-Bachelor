@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
         mc:Ignorable="d"
-        Title="AskArgument" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
+        Title="{Binding ChildWindowsLanguageConfig.AskArgumentWindowName}" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
     <Grid>
-        <Label Content="Wprowadz wartość dla argumentu " HorizontalAlignment="Left" Height="27" Margin="5,5,0,0" VerticalAlignment="Top" Width="201"/>
+        <Label Content="{Binding ChildWindowsLanguageConfig.AskArgumentExplainText}" HorizontalAlignment="Left" Height="27" Margin="5,5,0,0" VerticalAlignment="Top" Width="201"/>
         <TextBox Text="{Binding ValueArgument}"  HorizontalAlignment="Left" Height="31" Margin="5,111,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="229"/>
-        <Button Content="Wprowadz" HorizontalAlignment="Left" Height="34" Margin="5,230,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
-        <Button Content="Wprowadz" HorizontalAlignment="Left" Height="34" Margin="162,230,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
+        <Button Content="{Binding ChildWindowsLanguageConfig.AskArgumentBtnProcess}" HorizontalAlignment="Left" Height="34" Margin="5,230,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
+        <Button Content="{Binding ChildWindowsLanguageConfig.AskArgumentBtnUnknown}" HorizontalAlignment="Left" Height="34" Margin="162,230,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click"/>
         <Label Content="Label" HorizontalAlignment="Left" Height="25" Margin="5,37,0,0" VerticalAlignment="Top" Width="229"/>
 
     </Grid>

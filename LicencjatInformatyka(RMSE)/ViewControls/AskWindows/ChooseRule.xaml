@@ -5,19 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
         mc:Ignorable="d"
-        Title="ChooseRule" Height="325" Width="309" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
+        Title="{Binding ChildWindowsLanguageConfig.ChooseRuleWindowName}" Height="325" Width="309" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
     <!--<Window.Resources>
         <newFolder1:ViewModel x:Key="ViewModel"/>
     </Window.Resources>-->
     <Grid >
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RuleListProp }" SelectedItem="{Binding SelectedRule }" HorizontalAlignment="Left" Height="233" VerticalAlignment="Top" Width="291" Margin="5,5,0,0">
          <DataGrid.Columns>
-                <DataGridTextColumn Header="Numer reguły" Binding="{Binding NumberOfRule}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Wniosek reguły" Binding="{Binding Conclusion}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.ChooseRuleNumberOfRule}" Binding="{Binding NumberOfRule}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.ChooseRuleConclusionOfRule}" Binding="{Binding Conclusion}"></DataGridTextColumn>
          </DataGrid.Columns>
          </DataGrid>
-        <Button Command="{Binding ConcludeCommand}" Content="Button" HorizontalAlignment="Left" Height="33" Margin="5,256,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click"/>
-        <Button Command="{Binding ConcludeCommand}" Content="Button" HorizontalAlignment="Left" Height="33" Margin="168,256,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click"/>
+        <Button Command="{Binding ConcludeCommand}" Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnProcess}" HorizontalAlignment="Left" Height="33" Margin="5,256,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click"/>
+        <Button Command="{Binding ConcludeCommand}" Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnAbort}" HorizontalAlignment="Left" Height="33" Margin="168,256,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click"/>
 
     </Grid>
 </Window>

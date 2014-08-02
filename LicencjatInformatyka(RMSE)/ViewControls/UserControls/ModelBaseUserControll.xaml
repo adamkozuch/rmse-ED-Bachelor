@@ -4,17 +4,18 @@
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	xmlns:local="clr-namespace:LicencjatInformatyka_RMSE_"
-    mc:Ignorable="d"
+	xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
+	mc:Ignorable="d"
 	x:Class="LicencjatInformatyka_RMSE_.ViewControls.UserControls.ModelBaseUserControll"
 	x:Name="UserControl"
-	d:DesignWidth="188" d:DesignHeight="449" d:DataContext="{d:DesignInstance newFolder1:ViewModel}">
+	d:DesignWidth="188" d:DesignHeight="449" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
     
 	<Grid x:Name="LayoutRoot">
-		<Button Command="{Binding OpenModelCommand}" Content="{Binding LanguageConfig.OpenModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,10,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button Command="{Binding LookAtBaseModelCommand}" Content="{Binding LanguageConfig.LookAtModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,50.144,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button Content="{Binding LanguageConfig.EditModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,90.288,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button Content="{Binding LanguageConfig.CreateModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,130.432,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button Command="{Binding }" Content="{Binding LanguageConfig.DiagnoseContradictionModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,170.576,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button Content="{Binding LanguageConfig.DiagnoseRedundancyModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,210.72,0,0" VerticalAlignment="Top" Width="168"/>
+		<Button Command="{Binding OpenModelCommand}" Content="{Binding MainWindowLanguageConfig.OpenModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,10,0,0" VerticalAlignment="Top" Width="168"/>
+        <Button Command="{Binding LookAtBaseModelCommand}" Content="{Binding MainWindowLanguageConfig.LookAtModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,50.144,0,0" VerticalAlignment="Top" Width="168"/>
+        <Button Content="{Binding MainWindowLanguageConfig.EditModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,90.288,0,0" VerticalAlignment="Top" Width="168"/>
+        <Button Content="{Binding MainWindowLanguageConfig.CreateModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,130.432,0,0" VerticalAlignment="Top" Width="168"/>
+        <Button Command="{Binding }" Content="{Binding MainWindowLanguageConfig.DiagnoseContradictionModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,170.576,0,0" VerticalAlignment="Top" Width="168"/>
+        <Button Content="{Binding MainWindowLanguageConfig.DiagnoseRedundancyModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,210.72,0,0" VerticalAlignment="Top" Width="168"/>
 	</Grid>
 </UserControl>

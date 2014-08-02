@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
         mc:Ignorable="d"
-        Title="BrowseConstrains" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
+        Title="{Binding ChildWindowsLanguageConfig.BrowseConstrainsWindowName}" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding ConstrainListProp }" SelectedItem="{Binding SelectedRule }" HorizontalAlignment="Left" Height="233" VerticalAlignment="Top" Width="291" Margin="5,5,0,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Numer ograniczenia" Binding="{Binding NumberOfLimit}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Warunki ograniczenia" Binding="{Binding ConstrainConditions}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.BrowseConstrainsConstrainNumber}" Binding="{Binding NumberOfLimit}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.BrowseConstrainsConditionsName}" Binding="{Binding ConstrainConditions}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

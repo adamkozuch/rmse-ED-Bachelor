@@ -210,10 +210,10 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 
         private bool CheckStartCondition(string startCondition)
         {
-            bool value = ConclusionOperations.CheckIfStringIsFact(startCondition, bases.FactBase.FactList);
+            bool value = ConclusionClass.CheckIfStringIsFact(startCondition, bases.FactBase.FactList);
             if (value)
                 return true;
-            List<Rule> rules = ConclusionOperations.FindRulesWithParticularConclusion(startCondition, bases.RuleBase.RulesList);
+            List<Rule> rules = ConclusionClass.FindRulesWithParticularConclusion(startCondition, bases.RuleBase.RulesList);
             if (rules.Count == 0)
             {
                 AskRuleValue  askRule = new AskRuleValue(viewModel);
