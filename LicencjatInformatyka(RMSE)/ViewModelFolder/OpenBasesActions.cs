@@ -7,7 +7,7 @@ using Microsoft.Win32;
 
 namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 {
-    internal class OpenBasesActions
+    public class OpenBasesActions
     {
         
         

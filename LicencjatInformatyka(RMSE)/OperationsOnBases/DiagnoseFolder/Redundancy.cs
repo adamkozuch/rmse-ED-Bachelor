@@ -39,13 +39,12 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         {
             foreach (Rule ruleForCheck in bases.RuleBase.RulesList)
             {
-                var ruleList = new List<Rule>();
-                ruleList = ConclusionClass.FindRulesWithParticularConclusion
+                List<Rule> ruleList = ConclusionClass.FindRulesWithParticularConclusion
                     (ruleForCheck.Conclusion, bases.RuleBase.RulesList);
                 var b = new List<List<SimpleTree>>();
                 foreach (Rule VARIABL in ruleList)
                 {
-                    var differencesList = new List<List<Rule>>();
+                    List<List<Rule>> differencesList;
                     var tree = TreeOperations.ReturnComplexTreeAndDifferences(
                         bases, ruleForCheck,out differencesList);
                     List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,
@@ -81,7 +80,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                             IEnumerable<SimpleTree> f = list.Where(p => p.Parent == null);
                             MessageBox.Show(rule.Conclusion + " " + rule.NumberOfRule + " " +
                                             o.First().rule.NumberOfRule + " " + f.First().rule.NumberOfRule);
-                            goto lab;
+                            goto lab; //TODO: Redundancja jeszcze do zrobienia
                         }
                     }
                 }

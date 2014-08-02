@@ -11,11 +11,11 @@
 	d:DesignWidth="188" d:DesignHeight="449" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
     
     <Grid x:Name="LayoutRoot">
-        <Button Command="{Binding OpenConstrainCommand}" Content="{Binding MainWindowLanguageConfig.OpenConstrainBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,10,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button Command="{Binding LookAtBaseConstrainsCommand}"  Content="{Binding MainWindowLanguageConfig.LookAtConstrainBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,50.144,0,0" VerticalAlignment="Top" Width="168"/>
+        <Button Command="{Binding BasesCommandsProperty.OpenConstrainCommand}" Content="{Binding MainWindowLanguageConfig.OpenConstrainBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,10,0,0" VerticalAlignment="Top" Width="168"/>
+        <Button Command="{Binding BasesCommandsProperty.LookAtBaseConstrainsCommand}"  Content="{Binding MainWindowLanguageConfig.LookAtConstrainBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,50.144,0,0" VerticalAlignment="Top" Width="168"/>
         <Button Content="{Binding MainWindowLanguageConfig.EditCOnstrainBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,90.288,0,0" VerticalAlignment="Top" Width="168"/>
         <Button Content="{Binding MainWindowLanguageConfig.CreateConstrainBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,130.432,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button Command="{Binding ContradictionWithConstrainsCommand}"  Content="{Binding MainWindowLanguageConfig.DiagnoseContradictionBetweenRulesAndConstrains}" HorizontalAlignment="Left" Height="35" Margin="10,171,0,0" VerticalAlignment="Top" Width="168"/>
+        <Button Command="{Binding BasesCommandsProperty.ContradictionWithConstrainsCommand}"  Content="{Binding MainWindowLanguageConfig.DiagnoseContradictionBetweenRulesAndConstrains}" HorizontalAlignment="Left" Height="35" Margin="10,171,0,0" VerticalAlignment="Top" Width="168"/>
         <Button Content="{Binding MainWindowLanguageConfig.DiagnoseNadmiarowosc}" HorizontalAlignment="Left" Height="35" Margin="10,211,0,0" VerticalAlignment="Top" Width="168"/>
 
     </Grid>

@@ -26,19 +26,19 @@
 			<ColumnDefinition Width="73*"/>
 		</Grid.ColumnDefinitions>
 		<Rectangle Grid.Column="1" Grid.Row="1" Stroke="Black" Margin="5,5,18.112,5"/>
-		<UserControl Name="GeneralControl" Margin="5" Grid.Row="1"/>
+		<local:ReportAndDescriptionUserControl Margin="5" Grid.Row="1"/>
 		<TabControl Grid.Column="1" HorizontalAlignment="Left" Margin="5,40,0,0" Width="655.641" Background="White" BorderBrush="#FF2C1C1C" Foreground="White" Height="85" VerticalAlignment="Top">
-			<TabItem Header="Bazy">
+            <TabItem Header="{Binding MainWindowLanguageConfig.Bases}">
 				<Grid Background="#FFFBF9F9">
 					<Button  Content="{Binding MainWindowLanguageConfig.RuleBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
-					<Button  Content="Ograniczenia" HorizontalAlignment="Left" Height="32.04" Margin="115,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_2"/>
+                    <Button  Content="{Binding MainWindowLanguageConfig.ConstrainBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="115,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_2"/>
 					<Button Content="{Binding MainWindowLanguageConfig.ModelBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="220,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_3"/>
 					<Button Content="Baza rad" HorizontalAlignment="Left" Height="32.04" Margin="325,10,0,0" VerticalAlignment="Top" Width="100"/>
 					<Button Content="Baza grafiki" HorizontalAlignment="Left" Height="32.04" Margin="430,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_6"/>
 					<Button Content="Baza dzwięków" HorizontalAlignment="Left" Height="32.04" Margin="535,10,-3,0" VerticalAlignment="Top" Width="100"/>
 				</Grid>
 			</TabItem>
-			<TabItem Header="Operacje">
+            <TabItem Header="{Binding MainWindowLanguageConfig.Operations}">
 				<Grid Background="White" Margin="0,0,0,-1.5">
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="13*"/>

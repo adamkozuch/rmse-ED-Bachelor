@@ -105,6 +105,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewControls\UserControls\AdviceUserControl.xaml.cs">
+      <DependentUpon>AdviceUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AskingUserControl.xaml.cs">
+      <DependentUpon>AskingUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LanguageConfiguration\English\EnglishChildWindowsLanguageConfig.cs" />
     <Compile Include="LanguageConfiguration\English\EnglishElementsLanguageConfig.cs" />
     <Compile Include="LanguageConfiguration\English\EnglishMainWindowLanguageConfig.cs" />
@@ -114,6 +120,12 @@
     <Compile Include="LanguageConfiguration\Polish\PolishElementsNamesLanguageConfig.cs" />
     <Compile Include="OperationsOnBases\ConcludeFolder\ConstrainActions.cs" />
     <Compile Include="OperationsOnBases\ConcludeFolder\ModelActions.cs" />
+    <Compile Include="ViewControls\UserControls\ReportAndDescriptionUserControl.xaml.cs">
+      <DependentUpon>ReportAndDescriptionUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\UserControls\SoundUserControl.xaml.cs">
+      <DependentUpon>SoundUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewControls\AskWindows\AskArgument.xaml.cs">
       <DependentUpon>AskArgument.xaml</DependentUpon>
     </Compile>
@@ -150,6 +162,7 @@
       <DependentUpon>ReportConclusionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModelFolder\ActionsOnBase.cs" />
+    <Compile Include="ViewModelFolder\BasesCommands.cs" />
     <Compile Include="ViewModelFolder\OpenBasesActions.cs" />
     <Compile Include="ViewControls\UserControls\ConcludeUserControl.xaml.cs">
       <DependentUpon>ConcludeUserControl.xaml</DependentUpon>
@@ -184,6 +197,22 @@
     <Compile Include="ViewControls\UserControls\RuleBaseUserControl.xaml.cs">
       <DependentUpon>RuleBaseUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="ViewControls\UserControls\AdviceUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="AskingUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewControls\UserControls\ReportAndDescriptionUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ViewControls\UserControls\SoundUserControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ViewControls\AskWindows\AskArgument.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

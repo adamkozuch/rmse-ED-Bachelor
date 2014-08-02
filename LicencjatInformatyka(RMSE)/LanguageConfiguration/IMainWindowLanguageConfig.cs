@@ -1,11 +1,15 @@
 ﻿namespace LicencjatInformatyka_RMSE_.Additional
 {
    public interface IMainWindowLanguageConfig
-    {
+   {
+       #region FrontMenu
+       string Bases { get; }
+       string Operations { get; }
 
-  
-     #region RuleBaseButtonsNames    
-        string RuleBaseButton { get; }
+       #endregion
+
+       #region RuleBaseButtonsNames
+       string RuleBaseButton { get; }
         string OpenRuleBaseText { get; }
         string EditRuleBaseText { get; }
         string LookAtRuleBaseText { get; }
@@ -29,6 +33,7 @@
         #endregion
 
         #region   ConstrainBaseButtonsNames
+        string ConstrainBaseButton { get; }
         string OpenConstrainBaseText { get; }
         string LookAtConstrainBaseText { get; }
         string EditCOnstrainBaseText { get; }

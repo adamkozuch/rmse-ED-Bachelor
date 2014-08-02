@@ -55,10 +55,8 @@ namespace LicencjatInformatyka_RMSE_
 
         private void Button_Click_6(object sender, RoutedEventArgs e)
         {
-            WpfRichText.RichTextEditor r = new RichTextEditor();
+            GeneralControl.Content = new GraphicBaseUserControll(DataContext as ViewModel);
 
-            r.Text = "ddddddddddddddddddddddddddddddddddd";
-            
         }
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
