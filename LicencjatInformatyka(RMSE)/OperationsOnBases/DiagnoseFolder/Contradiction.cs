@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
 {
@@ -12,7 +13,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
     public static class Contradiction
     {
         public static bool MethodForContradiction
-            (GatheredBases bases, Rule ruleForCheck, int count, List<List<Rule>> differenceList, SimpleTree tree)
+            (GatheredBases bases, Rule ruleForCheck, int count, List<List<Rule>> differenceList,out SimpleTree tree)
         {
             
             tree = new SimpleTree { rule = ruleForCheck };
@@ -46,47 +47,60 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         ///     natomiast żeby diagnozowac kolejne reguły trzeba bedzie wymyślić coś innego
         /// </summary>
         /// <param name="bases">The bases.</param>
-        public static List<Rule> CheckOutsideContradiction(GatheredBases bases)
+        public static List<Rule> CheckOutsideContradiction(GatheredBases bases, bool reportIncluded)
         {
             var contradictedRules = new List<Rule>();
             foreach (Rule RuleI in bases.RuleBase.RulesList)
             {
+                
+                var differenceList = new List<List<Rule>>();
                 int numberForCheck = 100;
-
-                RepeatGoto: //if result too long double i value
-                var tree = new SimpleTree();
-                var differenceList= new List<List<Rule>>();
-               var complexTree = MethodForContradiction(bases, RuleI, numberForCheck,differenceList, tree);
-
-                if (complexTree == false)
+                do
                 {
-                    IEnumerable<SimpleTree> currentEndOfTree =
-                        TreeOperations.TreeToEnumerable(tree).Where(p => p.Children.Count == 0);
+                    var tree = new SimpleTree();
+                    var complexTreeValue = MethodForContradiction(bases, RuleI, numberForCheck, differenceList,out tree);
 
-                    foreach (SimpleTree currentEnd in currentEndOfTree)
+                    if (complexTreeValue == false)
                     {
-                        //TODO: metoda nie sprawdza wszystkich regul albo i sprawdza
-                        SimpleTree node = currentEnd;
-                        SimpleTree checkedValue = currentEnd;
-                        string s = "";
-                        while (node.Parent != null)
+                        IEnumerable<SimpleTree> currentEndOfTree =
+                            TreeOperations.TreeToEnumerable(tree).Where(p => p.Children.Count == 0);
+
+                        foreach (SimpleTree currentEnd in currentEndOfTree)
                         {
-                            s += " " + node.rule.NumberOfRule;
-                            node.rule = node.Parent.rule;
-                            if (checkedValue == node)
+                            //TODO: metoda nie sprawdza wszystkich regul albo i sprawdza
+                            SimpleTree node = currentEnd;
+                            SimpleTree checkedValue = currentEnd;
+
+                            while (node.Parent != null)
                             {
-                                AddRuleToContradictionTable(contradictedRules, RuleI);
-                                break;
+
+                                node.rule = node.Parent.rule;
+                                if (checkedValue == node)
+                                {
+                                    if (reportIncluded)
+                                    {
+                                        MessageBox.Show(
+                                            "W bazie występuje sprzeczność przejdź do dniagnoz bazy aby poznać szczegóły");
+                                        
+                                        reportIncluded = false; //TODO:tymczasowe rozwiązanie trzeba jakoś przerwać metodę
+                                    }
+                                    AddRuleToContradictionTable(contradictedRules, RuleI);
+                                    break;
+                                }
                             }
                         }
-                    }
-                    if (contradictedRules.Count == 0)
-                    {
+
                         numberForCheck = numberForCheck*2;
-                        goto RepeatGoto;
-                        // W razie jakby reguła okazała się barzdo długa powtarzamy operacje ze zwiekszoną wartością
+                        // in case that there is no contradiction but 
+                        // also tree is not finished number is double
+
                     }
-                }
+                    else
+                    {
+                        break;
+                    }
+                } while (contradictedRules.Count == 0);
+
             }
             return contradictedRules;
         }
@@ -95,38 +109,30 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         public static void AddRuleToContradictionTable
             (List<Rule> table, Rule rule)
         {
-            int i = 0;
-            foreach (Rule VARIABLE in table)
-            {
-                if (VARIABLE != rule)
-                    i++;
-            }
+            int i = table.Count(VARIABLE => VARIABLE != rule);
 
             if (table.Count == i)
                 table.Add(rule);
         }
 
 
-        public static void ReportAboutContradictionInRules(GatheredBases bases)
+        public static void ReportAboutContradictionInRules(GatheredBases bases, ViewModel _viewModel)
         {
-            List<Rule> listWithContradiction = CheckOutsideContradiction(bases);
+            List<Rule> listWithContradiction = CheckOutsideContradiction(bases,false);
 
             foreach (Rule rule in listWithContradiction)
             {
-                foreach (string condition in rule.Conditions)
-                {
-                    if (condition == rule.Conclusion)
-                        MessageBox.Show("Reguła " + rule.NumberOfRule + " jest samosprzeczna");
-                    break;
-                }
+                CheckSelfContradiction(rule);
 
-                var listT = new List<Rule>();
-                for (int i = 1; i < 100; i++)
+              
+                for (int count = 1; count < 100; count++)  //TODO:nie powinno być stałej w pętli for
                 {
-                    List<object> tree = MethodForContradiction(bases, rule, i, TODO);
+                     var tree = new SimpleTree();
+                     var differenceList = new List<List<Rule>>();
+                     MethodForContradiction(bases, rule, count,differenceList,out tree);
 
                     IEnumerable<SimpleTree> ListOfTreesElements =
-                        TreeOperations.TreeToEnumerable((SimpleTree) tree.First()).Where(p => p.Children.Count == 0);
+                        TreeOperations.TreeToEnumerable(tree).Where(p => p.Children.Count == 0);
 
                     foreach (SimpleTree treeElement in ListOfTreesElements)
                     {
@@ -144,19 +150,29 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                                 boolValue = false;
 
                                 s += copyOfTree.rule.NumberOfRule + "==>";
+                                
                             }
-                            MessageBox.Show("Reguła " + rule.NumberOfRule + " jest zewnętrznie sprzeczna" +
-                                            "można to wykazać stosując następujące podstawienie" + s);
-
+                          //TODO:Tutaj okienko raportujące
+                            _viewModel.MainWindowText +="Poprzez podstawienie następujących reguł otrzymasz sprzeczność zewnetrzną :"+ s + "\n";
                             goto Res;
                         }
                     }
                 }
 
-                Res:
-                ;
+                Res:;
             }
         }
+
+        private static void CheckSelfContradiction(Rule rule)
+        {
+            foreach (string condition in rule.Conditions)
+            {
+                if (condition == rule.Conclusion)
+                    MessageBox.Show("Reguła " + rule.NumberOfRule + " jest samosprzeczna");
+                break;
+            }
+        }
+
         #endregion
         /// <summary>
         ///     Checks the contradiction w ith models and rulebase.
@@ -170,7 +186,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             foreach (Rule rule in bases.RuleBase.RulesList)
             {
                 var differenceList = new List<List<Rule>>();
-                var tree = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule,differenceList);
+                var tree = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule,out differenceList);
 
              var askingConditions = TreeOperations.TreeToEnumerable
                     (tree).Where(p => p.Dopytywalny);//TODO:uta niekoniecznie prawidłowo zmieniona logika
@@ -231,7 +247,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             return true;
         }
 
-        // metoda do przepracowania
+    
         /// <summary>
         ///     Gathers the start conditions.
         /// </summary>
@@ -284,13 +300,13 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         public static void CheckContradictionInConstrains
             (GatheredBases bases, List<Constrain> constrainsList)
         {
-            foreach (Constrain constrain in constrainsList)
+            foreach (var constrain in constrainsList)
             {
-                foreach (Rule rule in bases.RuleBase.RulesList)
+                foreach (var rule in bases.RuleBase.RulesList)
                 {
                    var differenceTable = new List<List<Rule>>();
 
-                   var tree =       TreeOperations.ReturnComplexTreeAndDifferences(bases, rule, differenceTable);
+                   var tree = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule,out differenceTable);
 
                     List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,differenceTable);
 

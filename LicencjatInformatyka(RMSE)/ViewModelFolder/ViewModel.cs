@@ -24,7 +24,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         public ViewModel()
         {
             MainWindowLanguageConfig =new PolishMainWindowLanguageConfig();
-            ChildWindowsLanguageConfig = new PolishChildWindowsLanguageConfig();
+            _childWindowsLanguageConfig = new PolishChildWindowsLanguageConfig();
             _elementsNamesLanguageConfig = new PolishElementsNamesLanguageConfig();
             bases = new GatheredBases(_elementsNamesLanguageConfig);
             //Instances of classes responsible for opening and actions on RMSE bases
@@ -33,13 +33,15 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
             #region RuleBaseButtons
             OpenRuleCommand = new RelayCommand(pars => _openBasesActions.ReadRuleBase()); 
-            OutsideContradictionCommand = new RelayCommand(pars =>_actionsOnBase.CheckOutsideContradiction());
+            DiagnoseOutsideContradictionCommand = new RelayCommand(pars =>_actionsOnBase.CheckOutsideContradiction());
             LookRuleCommand = new RelayCommand(p => ShowWindow(new BrowseRules(this)) );
             LookAskingConditionsCommand = new RelayCommand(p =>
             {
                 _actionsOnBase.FillAskingConditionsTable();
                 ShowWindow(new AskingConditionsWIndow(this));
             });
+            DiagnoseOutsideContradictionCommand = new RelayCommand(p => _actionsOnBase.ReportAboutOutsideContradiction());
+            FlatterRuleCommand = new RelayCommand(p => _actionsOnBase.FlatterRule(selectedRule));
             #endregion
             #region ConstrainBaseButtons
             OpenConstrainCommand = new RelayCommand(pars => _openBasesActions.ReadConstrainBase());
@@ -70,18 +72,20 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         private bool _checkedRuleValue;
         private string _checkedRuleName;
         private Constrain askedConstrain;
+        private string _mainWindowText;
 
      
 
 
         #region RuleBaseCommands
         public ICommand OpenRuleCommand { get; set; }
-        public ICommand OutsideContradictionCommand { get; set; }
+        public ICommand DiagnoseOutsideContradictionCommand { get; set; }
         public ICommand LookRuleCommand { get; set; }
         public ICommand EditRuleBaseCommand { get; set; }
         public ICommand LookAskingConditionsCommand { get; set; } //TOdo:Niezaimplemoentowane
         public ICommand CreateRuleBaseCommand { get; set; } //TODO: Niezaimplementowane
-        public ICommand DiagnoseRedundanciesCommand { get; set; } //TODO:Niezaimplementowane
+        public ICommand DiagnoseRuleRedundanciesCommand { get; set; } //TODO:Niezaimplementowane
+        public ICommand FlatterRuleCommand { get; set; } //TODO:Niezaimplementowane
 
         #endregion
         #region ConstrainBaseCommands
@@ -108,6 +112,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
         public ICommand ValueTrue { get; set; }
         public ICommand ValueUnknown { get; set; }
+
 
 
    
@@ -137,6 +142,17 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
                 OnPropertyChanged("CheckedRuleVal");
             }
         }
+
+        public string MainWindowText
+        {
+            get { return _mainWindowText ; }
+            set
+            {
+                _mainWindowText = value;
+                OnPropertyChanged("MainWindowText");
+            }
+        }
+
         public Constrain AskedConstrain
         {
             get { return askedConstrain; }

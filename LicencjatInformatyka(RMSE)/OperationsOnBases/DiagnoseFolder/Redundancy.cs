@@ -47,7 +47,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                 {
                     var differencesList = new List<List<Rule>>();
                     var tree = TreeOperations.ReturnComplexTreeAndDifferences(
-                        bases, ruleForCheck,differencesList);
+                        bases, ruleForCheck,out differencesList);
                     List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,
                         differencesList);
                     b.AddRange(possibleTrees);

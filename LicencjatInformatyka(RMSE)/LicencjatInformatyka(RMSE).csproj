@@ -123,6 +123,9 @@
     <Compile Include="ViewControls\AskWindows\AskRuleValue.xaml.cs">
       <DependentUpon>AskRuleValue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewControls\AskWindows\ChoseRuleForFlatter.xaml.cs">
+      <DependentUpon>ChoseRuleForFlatter.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewControls\AskWindows\RichTextControll.xaml.cs">
       <DependentUpon>RichTextControll.xaml</DependentUpon>
     </Compile>
@@ -188,6 +191,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ViewControls\AskWindows\AskRuleValue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewControls\AskWindows\ChoseRuleForFlatter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

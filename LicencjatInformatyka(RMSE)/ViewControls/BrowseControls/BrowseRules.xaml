@@ -7,12 +7,31 @@
         mc:Ignorable="d"
         Title="{Binding ChildWindowsLanguageConfig.BrowseRulesWindowName}" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RuleListProp }" SelectedItem="{Binding SelectedRule }" HorizontalAlignment="Left" Height="233" VerticalAlignment="Top" Width="291" Margin="5,5,0,0">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RuleListProp }" SelectedItem="{Binding SelectedRule }" HorizontalAlignment="Left" Height="254" VerticalAlignment="Top" Width="291" Margin="5,5,-4,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.BrowseRulesRuleNumber}" Binding="{Binding NumberOfRule}"></DataGridTextColumn>
-                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.BrowseRulesConclusionName}" Binding="{Binding Conclusion}"></DataGridTextColumn>
-                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.BrowseRulesConditionsName}" Binding="{Binding Conclusion}"></DataGridTextColumn>
-
+                <DataGridTextColumn   Binding="{Binding NumberOfRule}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{Binding DataContext.ChildWindowsLanguageConfig.BrowseRulesRuleNumber,
+                      RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn  Binding="{Binding Conclusion}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="{Binding DataContext.ChildWindowsLanguageConfig.BrowseRulesConclusionName,
+                      RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridComboBoxColumn    >
+                    <DataGridComboBoxColumn.Header>
+                        <TextBlock Text="{Binding DataContext.ChildWindowsLanguageConfig.BrowseRulesConditionsName,
+                      RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
+                    </DataGridComboBoxColumn.Header>
+                    <DataGridComboBoxColumn.EditingElementStyle>
+                        <Style TargetType="ComboBox">
+                            <Setter Property="ItemsSource" Value="{Binding  }"/>
+                        </Style>
+                    </DataGridComboBoxColumn.EditingElementStyle>
+                </DataGridComboBoxColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

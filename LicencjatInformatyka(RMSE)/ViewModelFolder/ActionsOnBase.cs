@@ -21,7 +21,18 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
         public void CheckOutsideContradiction()
         {
-            Contradiction.ReportAboutContradictionInRules(_bases);
+
+            Contradiction.CheckOutsideContradiction(_bases,true);
+        }
+
+        public void FlatterRule(Rule rule)
+        {
+           conclusion.FlatterRule(rule);
+        }
+
+        public void ReportAboutOutsideContradiction()
+        {
+            Contradiction.ReportAboutContradictionInRules(_bases,_viewModel);
         }
         public void CheckContradictionBetweenModelsAndRulebase()
         {

@@ -10,7 +10,7 @@
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding ModelListProp }" SelectedItem="{Binding SelectedRule }" HorizontalAlignment="Left" Height="233" VerticalAlignment="Top" Width="291" Margin="5,5,0,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Numer modelu" Binding="{Binding ModelNumber }"></DataGridTextColumn>
-                <DataGridTextColumn Header="Warunki ograniczenia" Binding="{Binding StartCondition}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Warunki modelu" Binding="{Binding StartCondition}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

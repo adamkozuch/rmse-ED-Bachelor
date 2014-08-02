@@ -16,7 +16,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
         
         public static SimpleTree ReturnComplexTreeAndDifferences
-            (GatheredBases bases, Rule ruleForCheck, List<List<Rule>>differencesList  )
+            (GatheredBases bases, Rule ruleForCheck, out List<List<Rule>>differencesList  )
         {
 
              differencesList = new List<List<Rule>>();
@@ -48,8 +48,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
       public static List<List<SimpleTree>> ReturnPossibleTrees(SimpleTree tree, List<List<Rule>> divideList)
         {
-          
-          
+     
             IEnumerable<IEnumerable<Rule>> cartesianProducts = CartesianProduct(divideList);
 
 

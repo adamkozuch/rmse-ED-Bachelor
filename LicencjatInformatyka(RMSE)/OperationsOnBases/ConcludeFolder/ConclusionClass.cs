@@ -55,10 +55,40 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 _viewModel.AskingConditionsList = askingConditionList;
         }
 
+        public void FlatterRule(Rule flatteredRule)
+        {
+            var differenceList= new List<List<Rule>>();
+            var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases, flatteredRule,out differenceList);
+            var possibleTrees = TreeOperations.ReturnPossibleTrees(tree, differenceList);
+
+            foreach (var possibleTree in possibleTrees)
+            {
+                var flatter = possibleTree.Where(p => p.Dopytywalny == true);
+                foreach (var simpleTree in flatter)
+                {
+                    _viewModel.MainWindowText += simpleTree.rule.Conclusion+" ";
+                }
+                 flatter = possibleTree.Where(p => p.Dopytywalny == false);
+                 _viewModel.MainWindowText += "\n"; //TODO: Wszystkie warunki dopytywalne coœ nie tak
+                foreach (var simpleTree in flatter)
+                {
+                    _viewModel.MainWindowText +=  simpleTree.rule.NumberOfRule +" ";
+                }
+                _viewModel.MainWindowText +="\n";
+
+            }
+
+
+        }
+
+
+
+
+
         public bool BackwardConclude( Rule checkedRule)
         {
             var differenceList = new List<List<Rule>>();
-            var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases, checkedRule,differenceList);
+            var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases, checkedRule,out differenceList);
 
             var possibleTrees = TreeOperations.ReturnPossibleTrees(tree, differenceList);
 

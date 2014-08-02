@@ -1,0 +1,20 @@
+﻿<Window x:Class="LicencjatInformatyka_RMSE_.ViewControls.AskWindows.ChoseRuleForFlatter"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
+        mc:Ignorable="d"
+        Title="ChoseRuleForFlatter" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
+    <Grid >
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RuleListProp }" SelectedItem="{Binding SelectedRule }" HorizontalAlignment="Left" Height="233" VerticalAlignment="Top" Width="291" Margin="5,5,0,0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.ChooseRuleNumberOfRule}" Binding="{Binding NumberOfRule}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.ChooseRuleConclusionOfRule}" Binding="{Binding Conclusion}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Command="{Binding FlatterRuleCommand}" Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnProcess}" HorizontalAlignment="Left" Height="33" Margin="5,256,0,0" VerticalAlignment="Top" Width="128" />
+        <Button Command="{Binding ConcludeCommand}" Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnAbort}" HorizontalAlignment="Left" Height="33" Margin="168,256,0,0" VerticalAlignment="Top" Width="128" />
+
+    </Grid>
+</Window>

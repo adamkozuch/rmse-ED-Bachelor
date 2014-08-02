@@ -13,7 +13,7 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
       }
 
       public SimpleTree _parent { get; set; }
-    List<SimpleTree> _children = new List<SimpleTree>();
+      List<SimpleTree> _children = new List<SimpleTree>();
       private bool _dopytywalny=false;
 
       public List<SimpleTree> Children {

@@ -47,7 +47,7 @@
 					</Grid.ColumnDefinitions>
 					<Button Content="Analiza bazy wiedzy" HorizontalAlignment="Left" Height="32.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="3"/>
 					<Button Content="Opis i raporty" HorizontalAlignment="Left" Height="32.04" Margin="49.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
-					<Button Content="Dopytywalne" HorizontalAlignment="Left" Height="32.04" Margin="154.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
+					<Button Content="Dopytywalne" HorizontalAlignment="Left" Height="32.04" Margin="154.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" Click="Button_Click_7"/>
 					<Button Content="Wnioskowanie" HorizontalAlignment="Left" Height="32.04" Margin="259.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" Click="Button_Click_5"/>
 					<Button Content="Button" HorizontalAlignment="Left" Height="32.04" Margin="364.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
 					<Button Content="Button" HorizontalAlignment="Left" Height="32.04" Margin="469.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" />
@@ -55,6 +55,6 @@
 			</TabItem>
 		</TabControl>
 		<Label Content="Menu" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10,5,0,0" VerticalAlignment="Top" Width="407.141"/>
-		<TextBlock  Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" Margin="5,5,18.112,0"/>
+		<TextBlock Text="{Binding MainWindowText}"  Grid.Column="1" Grid.Row="1"  TextWrapping="NoWrap" Margin="5,5,18.112,0"/>
     </Grid>
 </Window>

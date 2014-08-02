@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using LicencjatInformatyka_RMSE_.ViewControls.AskWindows;
 using LicencjatInformatyka_RMSE_.ViewControls.UserControls;
 using LicencjatInformatyka_RMSE_.ViewModelFolder;
 using WpfRichText;
@@ -58,6 +59,12 @@ namespace LicencjatInformatyka_RMSE_
 
             r.Text = "ddddddddddddddddddddddddddddddddddd";
             
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            ChoseRuleForFlatter flatter = new ChoseRuleForFlatter(DataContext as ViewModel);
+            flatter.ShowDialog();
         }
        
     }
