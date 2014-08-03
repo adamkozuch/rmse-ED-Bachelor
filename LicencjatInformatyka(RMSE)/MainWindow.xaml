@@ -26,7 +26,7 @@
 			<ColumnDefinition Width="73*"/>
 		</Grid.ColumnDefinitions>
 		<Rectangle Grid.Column="1" Grid.Row="1" Stroke="Black" Margin="5,5,18.112,5"/>
-		<local:ReportAndDescriptionUserControl Margin="5" Grid.Row="1"/>
+		<UserControl Name="GeneralControl" Margin="5" Grid.Row="1"/>
 		<TabControl Grid.Column="1" HorizontalAlignment="Left" Margin="5,40,0,0" Width="655.641" Background="White" BorderBrush="#FF2C1C1C" Foreground="White" Height="85" VerticalAlignment="Top">
             <TabItem Header="{Binding MainWindowLanguageConfig.Bases}">
 				<Grid Background="#FFFBF9F9">

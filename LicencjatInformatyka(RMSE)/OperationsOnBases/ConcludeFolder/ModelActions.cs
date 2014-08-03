@@ -27,22 +27,22 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             foreach (Model model in models)
             {
                 bool start = CheckStartCondition(model.StartCondition);
-                start = true;  //TODO: pamiêtaæ ¿eby zmieniæ to przypisanie
+                //TODO: pamiêtaæ ¿eby zmieniæ to przypisanie
                 if (start)
                 {
                     if (model.ModelType == "simple")
                     {
                         var concreteArgs = new List<string>();
-                        string str1 = FillArgsTable(model.FirstArg);
-                        string str2 = FillArgsTable(model.SecoundArg);
+                        string str1 = ArgumentValue(model.FirstArg);
+                        string str2 = ArgumentValue(model.SecoundArg);//TODO:argument mo¿e byæ odrazu liczb¹
 
                         return Arithmetic.RelationalOperation(model.Operation, str1, str2);
                     }
                     if (model.ModelType == "extended")
                     {
-                        string str1 = FillArgsTable(model.ArgumentsList[0]);
-                        string str2 = FillArgsTable(model.ArgumentsList[1]);
-                        string str3 = FillArgsTable(model.ArgumentsList[2]); // trzeba sprawdziæ czy s¹ nulami
+                        string str1 = ArgumentValue(model.ArgumentsList[0]);
+                        string str2 = ArgumentValue(model.ArgumentsList[1]);
+                        string str3 = ArgumentValue(model.ArgumentsList[2]); // trzeba sprawdziæ czy s¹ nulami
                         return Arithmetic.ExtendedRelationalModel(model.Operation, str1, str2, str3);
                     }
                 }
@@ -51,27 +51,60 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             return false; // ni
         }
 
-        private string FillArgsTable(string arg)
-        {
+        //private string FillArgsTable(string arg)
+        //{
             
-            string checkedArgument = CheckInArguments(arg);
-            if (checkedArgument == null)
+        //    string checkedArgument = CheckInArguments(arg);
+        //    if (checkedArgument == null)
+        //    {
+        //        IEnumerable<Model> models = FindModels(arg);
+        //        foreach (Model model in models)
+        //        {
+        //            string modelValue = DoArithmetic(model);
+        //            if (modelValue != null)
+        //            {
+        //                return modelValue;
+        //            }
+        //        }
+        //    }
+        //    AskArgument window = new AskArgument(viewModel);
+        //    window.ShowDialog();
+        //    return viewModel.ValueArgument;
+        //}
+   
+        private string ArgumentValue(string argument)
+        {
+            string argumentValue = CheckInArguments(argument);
+            float t;
+            if (float.TryParse(argument, out t))
             {
-                IEnumerable<Model> models = FindModels(arg);
-                foreach (Model model in models)
+                return argument;
+
+            }else
+
+            if (null == argumentValue)
+            {
+                IEnumerable<Model> models = FindModels(argument);
+                if (!models.Any())
                 {
-                    string modelValue = DoArithmetic(model);
-                    if (modelValue != null)
+                    viewModel.AskingArgumentName = argument;
+                    AskArgument window = new AskArgument(viewModel);
+                    window.ShowDialog();
+                    return viewModel.ValueArgument;
+                   
+                }
+                else
+                {
+                    foreach (Model model1 in models)
                     {
-                        return modelValue;
+                        argumentValue = DoArithmetic(model1);
+                        if (argumentValue != null)
+                            break;
                     }
                 }
             }
-            AskArgument window = new AskArgument(viewModel);
-            window.ShowDialog();
-            return viewModel.ValueArgument;
+            return argumentValue;
         }
-
         private string DoArithmetic(Model model)
         {
             if (model.ModelType == "simple")
@@ -171,26 +204,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             return null;
         }
 
-        private string ArgumentValue(string argument)
-        {
-            string argumentValue = CheckInArguments(argument);
-            if (null == argumentValue)
-            {
-                IEnumerable<Model> models = FindModels(argument);
-                if (!models.Any()) { }
-                    //    AskValue(argument); todo: tutaj odkomentowac i oprogramowac
-                else
-                {
-                    foreach (Model model1 in models)
-                    {
-                        argumentValue = DoArithmetic(model1);
-                        if (argumentValue != null)
-                            break;
-                    }
-                }
-            }
-            return argumentValue;
-        }
+    
 
         private IEnumerable<Model> FindModels(string firstModelValue)
         {
@@ -210,24 +224,30 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 
         private bool CheckStartCondition(string startCondition)
         {
-            bool value = ConclusionClass.CheckIfStringIsFact(startCondition, bases.FactBase.FactList);
-            if (value)
-                return true;
-            List<Rule> rules = ConclusionClass.FindRulesWithParticularConclusion(startCondition, bases.RuleBase.RulesList);
-            if (rules.Count == 0)
-            {
-                AskRuleValue  askRule = new AskRuleValue(viewModel);
-                askRule.ShowDialog();
 
-            }
-            foreach (Rule rule in rules)
+            if (startCondition != "bez warunku")
             {
-                
-                bool startConditionValue = conclusionClass.BackwardConclude(rule);
-                if (startConditionValue)
+                bool value = ConclusionClass.CheckIfStringIsFact(startCondition, bases.FactBase.FactList);
+                if (value)
                     return true;
+                List<Rule> rules = ConclusionClass.FindRulesWithParticularConclusion(startCondition,
+                    bases.RuleBase.RulesList);
+                if (rules.Count == 0)
+                {
+                    AskRuleValue askRule = new AskRuleValue(viewModel);
+                    askRule.ShowDialog();
+
+                }
+                foreach (Rule rule in rules)
+                {
+
+                    bool startConditionValue = conclusionClass.BackwardConclude(rule);
+                    if (startConditionValue)
+                        return true;
+                }
+                return false;
             }
-            return false;
+            return true;
         }
     }
 }

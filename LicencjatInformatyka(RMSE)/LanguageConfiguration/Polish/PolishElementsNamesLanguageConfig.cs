@@ -8,12 +8,12 @@ namespace LicencjatInformatyka_RMSE_.Additional
 {
     class PolishElementsNamesLanguageConfig:IElementsNamesLanguageConfig
     {
-        private string _simpleModel;
+        private string _simpleModel="model";
         private string _extendedModel;
         private string _linearModel;
         private string _polyModel;
         private string _modelFact;
-        private string _argument;
+        private string _argument="argument_znany";
 
         public string SimpleModel
         {

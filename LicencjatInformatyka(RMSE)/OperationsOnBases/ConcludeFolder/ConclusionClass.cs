@@ -123,9 +123,13 @@ _viewModel.AskingConditionsList = askingConditionList;
                 _constrainActions.ConstrainAsk(simpleTree);
                 if (simpleTree.rule.Model)
                 {
-                    _modelActions.ProcessModel(simpleTree.rule.Conclusion);
+                  simpleTree.rule.ConclusionValue=  _modelActions.ProcessModel(simpleTree.rule.Conclusion);
+                    if (simpleTree.rule.ConclusionValue)
+                    {
+                        i++;
+                    }
                 }
-
+                else
                 if (simpleTree.rule.ConclusionValue)
                     i++;
                 else

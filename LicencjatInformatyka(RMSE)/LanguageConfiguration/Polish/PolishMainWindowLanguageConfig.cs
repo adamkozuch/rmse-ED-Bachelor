@@ -39,6 +39,10 @@
         private string _createModelBaseText = "Stwórz bazę modeli";
         private string _diagnoseContradictionModelBaseText ="Diagnozuj sprzecznośc w  bazę modeli";
         private string _diagnoseRedundancyModelBaseText = "Diagnozuj nadmiarowość w bazie modeli";
+        private string _bases;
+        private string _operations;
+        private string _constrainBaseButton;
+
         #endregion
 
         public string DiagnoseNadmiarowoscRuleBaseText
@@ -86,6 +90,11 @@
         public string DiagnoseRedundancyModelBaseText
         {
             get { return _diagnoseRedundancyModelBaseText; }
+        }
+
+        public string ConstrainBaseButton
+        {
+            get { return _constrainBaseButton; }
         }
 
         public string OpenConstrainBaseText
@@ -147,6 +156,16 @@
         public string Argument
         {
             get { return _argument; }
+        }
+
+        public string Bases
+        {
+            get { return _bases; }
+        }
+
+        public string Operations
+        {
+            get { return _operations; }
         }
 
         public string RuleBaseButton

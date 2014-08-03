@@ -22,19 +22,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         public ViewModel()
         {
             
-
-            bases = new GatheredBases(_elementsNamesLanguageConfig);
-
-            //Instances of classes responsible for opening and actions on RMSE bases
-            _openBasesActions = new OpenBasesActions(this,bases);
-            _actionsOnBase = new ActionsOnBase(bases,this);
-
-            #region ConclusionButtons
-          ConcludeCommand = new RelayCommand(pars =>  _actionsOnBase.BackwardConcludeAction(_selectedRule));
-          #endregion
-           ValueTrue = new RelayCommand(p => CheckedRuleVal=true);
-           ValueUnknown = new RelayCommand(p => CheckedRuleVal=false);
-           #region LanguageConfiguration
+ #region LanguageConfiguration
 
             MainWindowLanguageConfig =new PolishMainWindowLanguageConfig();
             ChildWindowsLanguageConfig = new PolishChildWindowsLanguageConfig();
@@ -58,6 +46,19 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             _basesCommands = new BasesCommands(this);
 
             #endregion
+
+            bases = new GatheredBases(_elementsNamesLanguageConfig);
+
+            //Instances of classes responsible for opening and actions on RMSE bases
+            _openBasesActions = new OpenBasesActions(this,bases);
+            _actionsOnBase = new ActionsOnBase(bases,this);
+
+            #region ConclusionButtons
+          ConcludeCommand = new RelayCommand(pars =>  _actionsOnBase.BackwardConcludeAction(_selectedRule));
+          #endregion
+           ValueTrue = new RelayCommand(p => CheckedRuleVal=true);
+           ValueUnknown = new RelayCommand(p => CheckedRuleVal=false);
+          
         }
 
 
@@ -72,6 +73,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         private string _checkedRuleName;
         private Constrain _askedConstrain;
         private string _mainWindowText;
+        private string _askingArgumentName;
 
         public ICommand PolishConfigurationCommand { get; set; }
         public ICommand EnglishConfigurationCommand { get; set; }
@@ -86,7 +88,21 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
        #endregion
 
         #region Property
-        public Rule SelectedRule
+
+       public string AskingArgumentName
+       {
+           get { return _askingArgumentName; }
+           set
+           {
+               _askingArgumentName = value;
+               OnPropertyChanged("AskingArgumentName");
+           }
+       }
+       
+       
+       
+       
+       public Rule SelectedRule
         {
             get { return _selectedRule; }
             set

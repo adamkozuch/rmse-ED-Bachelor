@@ -66,3 +66,11 @@ C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\AskWindows\ChoseRuleForFlatter.baml
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\ReportConclusionWindow.baml
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\ReportConclusionWindow.g.cs
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\UserControls\AdviceUserControl.baml
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\UserControls\ReportAndDescriptionUserControl.baml
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\UserControls\SoundUserControl.baml
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\UserControls\AdviceUserControl.g.cs
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\AskingUserControl.g.cs
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\UserControls\ReportAndDescriptionUserControl.g.cs
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\UserControls\SoundUserControl.g.cs
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\AskingUserControl.baml
