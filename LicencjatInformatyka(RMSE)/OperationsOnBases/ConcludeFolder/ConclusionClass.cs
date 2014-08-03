@@ -120,13 +120,24 @@ _viewModel.AskingConditionsList = askingConditionList;
             int i = 0;
             foreach (SimpleTree simpleTree in askingTable)
             {
+              
                 _constrainActions.ConstrainAsk(simpleTree);
                 if (simpleTree.rule.Model)
                 {
-                  simpleTree.rule.ConclusionValue=  _modelActions.ProcessModel(simpleTree.rule.Conclusion);
-                    if (simpleTree.rule.ConclusionValue)
+                 var checker=   CheckIfStringIsFact(simpleTree.rule.Conclusion, _bases.FactBase.FactList);
+                    if (checker==false) //TODO:zamiesza³em
                     {
-                        i++;
+                        simpleTree.rule.ConclusionValue = _modelActions.ProcessModel(simpleTree.rule.Conclusion);
+                        if (simpleTree.rule.ConclusionValue)
+                        {
+                            _bases.FactBase.FactList.Add(new Fact()
+                            {
+                                FactName = simpleTree.rule.Conclusion,
+                                FactValue = simpleTree.rule.ConclusionValue
+                            });
+                            i++;
+                            //TODO: trzeba sprawdziæ czy warunek jest faktem
+                        }
                     }
                 }
                 else

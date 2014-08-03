@@ -11,24 +11,26 @@ using LicencjatInformatyka_RMSE_.ViewControls.BrowseControls;
 
 namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 {
-   public class ViewModel:INotifyPropertyChanged
+    public class ViewModel : INotifyPropertyChanged
     {
-       private IElementsNamesLanguageConfig _elementsNamesLanguageConfig;
+        private IElementsNamesLanguageConfig _elementsNamesLanguageConfig;
+        private IMainWindowLanguageConfig _mainWindowLanguageConfig;
+        private IChildWindowsLanguageConfig _childWindowsLanguageConfig;
         private readonly GatheredBases bases;
-       public readonly OpenBasesActions _openBasesActions;
-       public readonly ActionsOnBase _actionsOnBase;
-                  
+        public readonly OpenBasesActions _openBasesActions;
+        public readonly ActionsOnBase _actionsOnBase;
+
         public event PropertyChangedEventHandler PropertyChanged = null;
+
         public ViewModel()
         {
-            
- #region LanguageConfiguration
+            #region LanguageConfiguration
 
-            MainWindowLanguageConfig =new PolishMainWindowLanguageConfig();
+            MainWindowLanguageConfig = new PolishMainWindowLanguageConfig();
             ChildWindowsLanguageConfig = new PolishChildWindowsLanguageConfig();
             _elementsNamesLanguageConfig = new PolishElementsNamesLanguageConfig();
 
-            PolishConfigurationCommand = new RelayCommand( p=>
+            PolishConfigurationCommand = new RelayCommand(p =>
             {
                 MainWindowLanguageConfig = new PolishMainWindowLanguageConfig();
                 ChildWindowsLanguageConfig = new PolishChildWindowsLanguageConfig();
@@ -50,24 +52,29 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             bases = new GatheredBases(_elementsNamesLanguageConfig);
 
             //Instances of classes responsible for opening and actions on RMSE bases
-            _openBasesActions = new OpenBasesActions(this,bases);
-            _actionsOnBase = new ActionsOnBase(bases,this);
+            _openBasesActions = new OpenBasesActions(this, bases);
+            _actionsOnBase = new ActionsOnBase(bases, this);
 
             #region ConclusionButtons
-          ConcludeCommand = new RelayCommand(pars =>  _actionsOnBase.BackwardConcludeAction(_selectedRule));
-          #endregion
-           ValueTrue = new RelayCommand(p => CheckedRuleVal=true);
-           ValueUnknown = new RelayCommand(p => CheckedRuleVal=false);
-          
+
+            ConcludeCommand = new RelayCommand(pars => _actionsOnBase.BackwardConcludeAction(_selectedRule));
+
+            #endregion
+
+            ValueTrue = new RelayCommand(p => CheckedRuleVal = true);
+            ValueUnknown = new RelayCommand(p => CheckedRuleVal = false);
+
+            StartConditionValueTrue = new RelayCommand(p=> StartConditionValue=true);
+            StartConditionValueUnknown =  new RelayCommand(p => StartConditionValue=false);
         }
 
 
-       public void ShowWindow(Window wind)
-       {
-           wind.Show();
-       }
+        public void ShowWindow(Window wind)
+        {
+            wind.Show();
+        }
 
-       // These fields are used in process of asking unknown values
+        // These fields are used in process of asking unknown values
         private Rule _selectedRule = new Rule();
         private bool _checkedRuleValue;
         private string _checkedRuleName;
@@ -78,31 +85,64 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         public ICommand PolishConfigurationCommand { get; set; }
         public ICommand EnglishConfigurationCommand { get; set; }
 
-  
         #region AnotherCommands
+
         public ICommand ConcludeCommand { get; set; }
 
         public ICommand ValueTrue { get; set; }
         public ICommand ValueUnknown { get; set; }
+        public ICommand StartConditionValueTrue { get; set; }
+        public ICommand StartConditionValueUnknown { get; set; }
 
-       #endregion
+        #endregion
+
+
+        private string _valueFromConstrain;
+        private string _argumentValue;
+        private List<string> _askingConditionsList;
+        private readonly BasesCommands _basesCommands;
+        private string _startConditionName;
+        private bool _startConditionValue;
+
+
+
+
 
         #region Property
 
-       public string AskingArgumentName
-       {
-           get { return _askingArgumentName; }
-           set
-           {
-               _askingArgumentName = value;
-               OnPropertyChanged("AskingArgumentName");
-           }
-       }
-       
-       
-       
-       
-       public Rule SelectedRule
+        public string StartConditionName
+        {
+            get { return _startConditionName; }
+            set
+            {
+                _startConditionName = value;
+                OnPropertyChanged("StartConditionName");
+            }
+        }
+
+        public bool StartConditionValue
+        {
+            get { return _startConditionValue; }
+            set
+            {
+                _startConditionValue = value;
+                OnPropertyChanged("StartConditionValue");
+            }
+        }
+
+
+        public string AskingArgumentName
+        {
+            get { return _askingArgumentName; }
+            set
+            {
+                _askingArgumentName = value;
+                OnPropertyChanged("AskingArgumentName");
+            }
+        }
+
+
+        public Rule SelectedRule
         {
             get { return _selectedRule; }
             set
@@ -124,7 +164,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
         public string MainWindowText
         {
-            get { return _mainWindowText ; }
+            get { return _mainWindowText; }
             set
             {
                 _mainWindowText = value;
@@ -141,19 +181,12 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
                 OnPropertyChanged("AskedConstrain");
             }
         }
-           string _valueFromConstrain;
-       private string _argumentValue;
-       private List<string> _askingConditionsList;
-       private IMainWindowLanguageConfig _mainWindowLanguageConfig;
-       private IChildWindowsLanguageConfig _childWindowsLanguageConfig;
-       private readonly BasesCommands _basesCommands;
 
-       public string ValueFromConstrain
+   
+
+        public string ValueFromConstrain
         {
-            get
-            {  
-                return _valueFromConstrain;
-            }
+            get { return _valueFromConstrain; }
             set
             {
                 _valueFromConstrain = value;
@@ -161,24 +194,19 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             }
         }
 
-       public List<string> AskingConditionsList
-       {
-           get
-           {
-               return _askingConditionsList;
-           }
-           set
-           {
-               _askingConditionsList = value;
-               OnPropertyChanged("AskingConditionsList");
-           }
-       }
+        public List<string> AskingConditionsList
+        {
+            get { return _askingConditionsList; }
+            set
+            {
+                _askingConditionsList = value;
+                OnPropertyChanged("AskingConditionsList");
+            }
+        }
+
         public string ValueArgument
         {
-            get
-            {
-                return _argumentValue;
-            }
+            get { return _argumentValue; }
             set
             {
                 _argumentValue = value;
@@ -199,52 +227,50 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         public List<Rule> RuleListProp
         {
             get { return bases.RuleBase.RulesList; }
-         
         }
+
         public List<Constrain> ConstrainListProp
         {
             get { return bases.ConstrainBase.ConstrainList; }
-
         }
+
         public List<Model> ModelListProp
         {
             get { return bases.ModelsBase.ModelList; }
-
         }
 
 
-       public IMainWindowLanguageConfig MainWindowLanguageConfig
-       {
-           get { return _mainWindowLanguageConfig; }
-           set
-           {
-               _mainWindowLanguageConfig = value;
-               OnPropertyChanged("MainWindowLanguageConfig");
-           }
-       }
+        public IMainWindowLanguageConfig MainWindowLanguageConfig
+        {
+            get { return _mainWindowLanguageConfig; }
+            set
+            {
+                _mainWindowLanguageConfig = value;
+                OnPropertyChanged("MainWindowLanguageConfig");
+            }
+        }
 
-       public IChildWindowsLanguageConfig ChildWindowsLanguageConfig
-       {
-           get { return _childWindowsLanguageConfig; }
-           set { _childWindowsLanguageConfig = value; }
-       }
+        public IChildWindowsLanguageConfig ChildWindowsLanguageConfig
+        {
+            get { return _childWindowsLanguageConfig; }
+            set { _childWindowsLanguageConfig = value; }
+        }
 
-       public BasesCommands BasesCommandsProperty
-       {
-           get { return _basesCommands; }
-       }
+        public BasesCommands BasesCommandsProperty
+        {
+            get { return _basesCommands; }
+        }
 
-       #endregion
-
+        #endregion
 
         #region Method
 
-     
-      virtual protected void OnPropertyChanged(string propName)
-      {
-          if (PropertyChanged != null)
-              PropertyChanged(this, new PropertyChangedEventArgs(propName));
-      }
+        protected virtual void OnPropertyChanged(string propName)
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
+
         #endregion
     }
 }

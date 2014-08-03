@@ -105,6 +105,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewControls\AskWindows\AskStartCondition.xaml.cs">
+      <DependentUpon>AskStartCondition.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewControls\UserControls\AdviceUserControl.xaml.cs">
       <DependentUpon>AdviceUserControl.xaml</DependentUpon>
     </Compile>
@@ -197,6 +200,10 @@
     <Compile Include="ViewControls\UserControls\RuleBaseUserControl.xaml.cs">
       <DependentUpon>RuleBaseUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="ViewControls\AskWindows\AskStartCondition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ViewControls\UserControls\AdviceUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

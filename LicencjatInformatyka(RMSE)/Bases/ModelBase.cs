@@ -13,6 +13,7 @@ namespace LicencjatInformatyka_RMSE_.Bases
         private readonly IElementsNamesLanguageConfig _config;
         private List<Model> _modelList = new List<Model>();
         private List<Argument> _argumentList = new List<Argument>();
+        private  List<Fact>  _modelFactsList = new List<Fact>();
 
         public ModelBase(IElementsNamesLanguageConfig config)
         {
@@ -24,6 +25,13 @@ namespace LicencjatInformatyka_RMSE_.Bases
         {
             get { return _modelList; }
             set { _modelList = value; }
+        }
+
+
+        public List<Fact> ModelFactList
+        {
+            get { return _modelFactsList; }
+            set { _modelFactsList = value; }
         }
 
         public List<Argument> ArgumentList
@@ -57,7 +65,7 @@ namespace LicencjatInformatyka_RMSE_.Bases
             }
             else if (TypeOfModel == _config.ExtendedModel)
             {
-                ModelList.Add(ExtendenModel(line));
+                ModelList.Add(ExtendedModel(line));
             }
             else if (TypeOfModel == _config.LinearModel)
             {
@@ -69,11 +77,15 @@ namespace LicencjatInformatyka_RMSE_.Bases
             }
             else if (TypeOfModel == _config.Argument)
             {
-                //ArgumentList.Add(ReturnArgument(line));
-            } //else if (TypeOfModel == _config.ModelFact) 
-
-            {
+                ArgumentList.Add(ReturnArgument(line));
             }
+            else if (TypeOfModel == _config.ModelFact)
+            {
+                _modelFactsList.Add(ModelFact(line));
+            }
+
+            
+            
         }
 
         public Model SimpleModel(string line)
@@ -89,17 +101,17 @@ namespace LicencjatInformatyka_RMSE_.Bases
                 result[4], result[5], semaphorValue);
         }
 
-        private Model ExtendenModel(string line)
+        private Model ExtendedModel(string line)
         {
             line = OperationsOnString.RemoveBeggining(line);
             string[] tableStrings = OperationsOnString.SplitRuleToTwoPartsConditionsAndAnother(line);
             List<string> result = OperationsOnString.SplitArguments(tableStrings[0]);
             List<string> argumentsList = OperationsOnString.SplitArguments(tableStrings[1]);
 
-            int semaphorNumber = int.Parse(result.Last());
-            bool semaphorValue = semaphorNumber == 1;
+            int semaphoreNumber = int.Parse(result.Last());
+            bool semaphoreValue = semaphoreNumber == 1;
 
-            return new Model(int.Parse(result[0]), result[1], result[2], result[3], argumentsList, semaphorValue);
+            return new Model(int.Parse(result[0]), result[1], result[2], result[3], argumentsList, semaphoreValue);
         }
 
         private Model LinearModel(string line)
@@ -144,27 +156,26 @@ namespace LicencjatInformatyka_RMSE_.Bases
         }
 
 
-        //private Model Fact(string line)
-        //{
-        //    line = OperationsOnString.RemoveBeggining(line);
-        //    List<string> list = OperationsOnString.SplitArguments(line);
-        //    return new Fact(lis)
+        private Fact ModelFact(string line)
+        {
+            line = OperationsOnString.RemoveBeggining(line);
+            List<string> list = OperationsOnString.SplitArguments(line);
+            return new Fact(){FactName = list[0],FactValue = true};
+        }
 
-        //}
-
-        //private Argument ReturnArgument(string line)
-        //{
-        //    line = OperationsOnString.RemoveBeggining(line);
-        //    List<string> list = OperationsOnString.SplitArguments(line);
-        //    return new Argument(list[0], list[1]);
-        //}
+        private Argument ReturnArgument(string line)
+        {
+            line = OperationsOnString.RemoveBeggining(line);
+            List<string> list = OperationsOnString.SplitArguments(line);
+            return new Argument(list[0], list[1]);
+        }
 
 
         public void EditBase()
         {
         }
 
-        public void BrowskingBase()
+        public void BrowsingBase()
         {
         }
 

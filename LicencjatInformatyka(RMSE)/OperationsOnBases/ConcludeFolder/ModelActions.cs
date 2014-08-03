@@ -90,6 +90,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                     viewModel.AskingArgumentName = argument;
                     AskArgument window = new AskArgument(viewModel);
                     window.ShowDialog();
+                    bases.ModelsBase.ArgumentList.Add(new Argument(){ArgumentName = viewModel.AskingArgumentName, Value = viewModel.ValueArgument});
                     return viewModel.ValueArgument;
                    
                 }
@@ -227,16 +228,20 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 
             if (startCondition != "bez warunku")
             {
-                bool value = ConclusionClass.CheckIfStringIsFact(startCondition, bases.FactBase.FactList);
+                bool value = ConclusionClass.CheckIfStringIsFact(startCondition, bases.ModelsBase.ModelFactList);
                 if (value)
                     return true;
                 List<Rule> rules = ConclusionClass.FindRulesWithParticularConclusion(startCondition,
                     bases.RuleBase.RulesList);
                 if (rules.Count == 0)
                 {
-                    AskRuleValue askRule = new AskRuleValue(viewModel);
-                    askRule.ShowDialog();
-
+                   viewModel.StartConditionName = startCondition;
+                   var window =new AskStartCondition(viewModel);
+                    
+                    window.ShowDialog();
+                    
+                    bases.ModelsBase.ModelFactList.Add( new Fact(){FactName = viewModel.StartConditionName,FactValue = viewModel.StartConditionValue});//TODO:Imiê sie nie dodaje
+                    return viewModel.StartConditionValue;
                 }
                 foreach (Rule rule in rules)
                 {

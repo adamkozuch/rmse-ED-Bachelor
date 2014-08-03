@@ -74,3 +74,5 @@ C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\UserControls\ReportAndDescriptionUserControl.g.cs
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\UserControls\SoundUserControl.g.cs
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\AskingUserControl.baml
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\AskWindows\AskStartCondition.g.cs
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\AskWindows\AskStartCondition.baml
