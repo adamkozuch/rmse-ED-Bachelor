@@ -8,14 +8,34 @@ using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 {
+    /// <summary>
+    /// Class ConclusionClass.
+    /// </summary>
     public class ConclusionClass
     {
-      
+
+        /// <summary>
+        /// The _bases
+        /// </summary>
         private readonly GatheredBases _bases;
+        /// <summary>
+        /// The _view model
+        /// </summary>
         private readonly ViewModel _viewModel;
+        /// <summary>
+        /// The _constrain actions
+        /// </summary>
         private readonly ConstrainActions _constrainActions;
+        /// <summary>
+        /// The _model actions
+        /// </summary>
         private readonly ModelActions _modelActions;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConclusionClass"/> class.
+        /// </summary>
+        /// <param name="bases">The bases.</param>
+        /// <param name="viewModel">The view model.</param>
         public ConclusionClass(GatheredBases bases, ViewModel viewModel)
         {
             _bases = bases;
@@ -24,6 +44,9 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             _modelActions = new ModelActions(this,_viewModel,bases);
         }
 
+        /// <summary>
+        /// Askeds the conditions.
+        /// </summary>
          public   void AskedConditions()
        {
            var askingConditionList= new List<string>();
@@ -55,6 +78,10 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 _viewModel.AskingConditionsList = askingConditionList;
         }
 
+         /// <summary>
+         /// Flatters the rule.
+         /// </summary>
+         /// <param name="flatteredRule">The flattered rule.</param>
         public void FlatterRule(Rule flatteredRule)
         {
             var differenceList= new List<List<Rule>>();
@@ -63,18 +90,18 @@ _viewModel.AskingConditionsList = askingConditionList;
 
             foreach (var possibleTree in possibleTrees)
             {
-                var flatter = possibleTree.Where(p => p.Dopytywalny == true);
+                var flatter = possibleTree.Where(p => p.Askable == true);
                 foreach (var simpleTree in flatter)
                 {
-                    _viewModel.MainWindowText += simpleTree.rule.Conclusion+" ";
+                    _viewModel.MainWindowText1 += simpleTree.rule.Conclusion+" ";
                 }
-                 flatter = possibleTree.Where(p => p.Dopytywalny == false);
-                 _viewModel.MainWindowText += "\n"; //TODO: Wszystkie warunki dopytywalne coœ nie tak
+                 flatter = possibleTree.Where(p => p.Askable == false);
+                 _viewModel.MainWindowText1 += "\n"; //TODO: Wszystkie warunki dopytywalne coœ nie tak
                 foreach (var simpleTree in flatter)
                 {
-                    _viewModel.MainWindowText +=  simpleTree.rule.NumberOfRule +" ";
+                    _viewModel.MainWindowText1 +=  simpleTree.rule.NumberOfRule +" ";
                 }
-                _viewModel.MainWindowText +="\n";
+                _viewModel.MainWindowText1 +="\n";
 
             }
 
@@ -85,6 +112,11 @@ _viewModel.AskingConditionsList = askingConditionList;
 
 
 
+        /// <summary>
+        /// Backwards the conclude.
+        /// </summary>
+        /// <param name="checkedRule">The checked rule.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool BackwardConclude( Rule checkedRule)
         {
             var differenceList = new List<List<Rule>>();
@@ -95,7 +127,7 @@ _viewModel.AskingConditionsList = askingConditionList;
 
             foreach (var onePossibility in possibleTrees) //flattering all possible configurations of conditions
             {
-                List<SimpleTree> askableTable = onePossibility.Where(var => var.Dopytywalny).ToList();
+                List<SimpleTree> askableTable = onePossibility.Where(var => var.Askable).ToList(); //If askable simple tree can be a model,condition of rule or condition of constrain
 
                 // sprawdzamy czy jest w bazie faktow
                 foreach (SimpleTree simpleTree in askableTable)
@@ -108,13 +140,23 @@ _viewModel.AskingConditionsList = askingConditionList;
 
                 if (conclusionValue)
                 {
+
                     MessageBox.Show("Hipoteza prawdziwa");
+
+                    //TODO : trzeba wyzerowaæ bazy
                     return true;
                 }
             }
+            MessageBox.Show("Hipoteza niepotwierdzona brak informacji");
             return false;
+            //TODO : trzeba wyzerowaæ bazy
         }
 
+        /// <summary>
+        /// Checks the conclusion value or count model.
+        /// </summary>
+        /// <param name="askingTable">The asking table.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private bool CheckConclusionValueOrCountModel(List<SimpleTree> askingTable)
         {
             int i = 0;
@@ -122,21 +164,43 @@ _viewModel.AskingConditionsList = askingConditionList;
             {
               
                 _constrainActions.ConstrainAsk(simpleTree);
-                if (simpleTree.rule.Model)
+                if (simpleTree.Model)
                 {
-                 var checker=   CheckIfStringIsFact(simpleTree.rule.Conclusion, _bases.FactBase.FactList);
-                    if (checker==false) //TODO:zamiesza³em
+                    var checker=   CheckIfStringIsFact(simpleTree.rule.Conclusion, _bases.FactBase.FactList);
+
+                    if (checker==false) 
                     {
-                        simpleTree.rule.ConclusionValue = _modelActions.ProcessModel(simpleTree.rule.Conclusion);
-                        if (simpleTree.rule.ConclusionValue)
+                        var value  = _modelActions.ProcessModel(simpleTree.rule.Conclusion);
+
+                        if (value == null)
+                        {
+                            MessageBox.Show("Brak danych do ukonkretnienia modelu " + simpleTree.rule.Conclusion);
+                            _bases.FactBase.FactList.Add(new Fact()
+                            {
+                                FactName = simpleTree.rule.Conclusion,
+                                FactValue = false
+                            });
+
+                        }
+                        else
                         {
                             _bases.FactBase.FactList.Add(new Fact()
                             {
                                 FactName = simpleTree.rule.Conclusion,
-                                FactValue = simpleTree.rule.ConclusionValue
+                                FactValue = (bool)value
                             });
-                            i++;
+                            if ((bool) value)
+                            {
+                                i++;
+                                IfParentTrueWrite(simpleTree);
+                            }
+                            else
+                            {
+                                break;
+                            }
                             //TODO: trzeba sprawdziæ czy warunek jest faktem
+                            simpleTree.rule.ConclusionValue = (bool)value;
+                            
                         }
                     }
                 }
@@ -145,15 +209,14 @@ _viewModel.AskingConditionsList = askingConditionList;
                     i++;
                 else
                 {
-                    _viewModel.CheckedRuleName = simpleTree.rule.Conclusion;
-                   AskRuleValue window = new AskRuleValue(_viewModel);
-                   
-                    window.ShowDialog();  // TODO:Mo¿e wystapiæ bug zwi¹zany z zamknieciem okna x w lewym górnym rogu
-                    
-                    simpleTree.rule.ConclusionValue = _viewModel.CheckedRuleVal;
+                    _viewModel.AskingRuleValueMethod(simpleTree);
 
                     if (_viewModel.CheckedRuleVal)
-                        i++;          
+                    {
+                        i++;
+                        IfParentTrueWrite(simpleTree);
+                            //todo: i tutaj trzeba sprawdziæ czy jakaœ regu³a siê nie odblokowa³a
+                    }
                 }
             }
 
@@ -162,8 +225,39 @@ _viewModel.AskingConditionsList = askingConditionList;
             return false; //else trzeba sprawdzac dalej
         }
 
-     
+        private void IfParentTrueWrite(SimpleTree simpleTree)
+        {
+            if (simpleTree.Askable)
+            {
+                _viewModel.MainWindowText1 += simpleTree.rule.Conclusion + " Fakt \n";
 
+            }
+            int i = 0;
+            if (simpleTree.Parent != null)
+            {
+                foreach (var simple in simpleTree.Parent.Children)
+                {
+                    if (simple.rule.ConclusionValue)
+                        i++;
+                }
+
+                if (i == simpleTree.Parent.Children.Count)
+                {
+                    _viewModel.MainWindowText2 += simpleTree.Parent.rule.Conclusion + " Wynik \n";
+                    IfParentTrueWrite(simpleTree.Parent);
+                }
+            }
+
+            
+        }
+
+
+        /// <summary>
+        /// Finds the conditions or return null.
+        /// </summary>
+        /// <param name="checkedCondition">The checked condition.</param>
+        /// <param name="baseList">The base list.</param>
+        /// <returns>List&lt;System.String&gt;.</returns>
         public static
             List<string> FindConditionsOrReturnNull
             (string checkedCondition, List<Rule> baseList)
@@ -185,6 +279,12 @@ _viewModel.AskingConditionsList = askingConditionList;
         }
 
 
+        /// <summary>
+        /// Finds the rules with particular conclusion.
+        /// </summary>
+        /// <param name="NameOfCondition">The name of condition.</param>
+        /// <param name="baseList">The base list.</param>
+        /// <returns>List&lt;Rule&gt;.</returns>
         public static List<Rule> FindRulesWithParticularConclusion
             (string NameOfCondition, List<Rule> baseList)
         {
@@ -202,8 +302,14 @@ _viewModel.AskingConditionsList = askingConditionList;
         }
 
 
- 
 
+
+        /// <summary>
+        /// Checks if string is fact.
+        /// </summary>
+        /// <param name="nameOfConclusion">The name of conclusion.</param>
+        /// <param name="listOfFacts">The list of facts.</param>
+        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public static bool CheckIfStringIsFact(string nameOfConclusion, List<Fact> listOfFacts)
         {
             foreach (Fact factItem in listOfFacts)

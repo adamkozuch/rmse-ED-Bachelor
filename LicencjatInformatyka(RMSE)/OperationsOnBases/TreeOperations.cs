@@ -27,7 +27,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             do
             {
                 parentWithoutChildren = TreeToEnumerable(conditionTree).Where(p => p.Children.Count == 0).
-                    Where(p => p.Dopytywalny == false);
+                    Where(p => p.Askable == false);
 
                 foreach (SimpleTree parentWithoutChild in parentWithoutChildren)
                 {
@@ -79,14 +79,15 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
                     var endRule = new Rule
                     {
                         Conclusion = condition,
-                        Model = isModel,
+                        
                         NumberOfRule = bases.RuleBase.RulesList.Count + 1000
                     };
                     parentWithoutChild.Children.Add(new SimpleTree
-                    {
-                        Dopytywalny = true,
+                    {  
+                        Model = isModel,
+                        Askable = true,
                         rule = endRule,
-                        Parent = parentWithoutChild
+                        Parent = parentWithoutChild  //todo:nie wiem czy nie lepiej bêdzie jak dopyt i model bêd¹ w endRule
                     });
                 }
                 else

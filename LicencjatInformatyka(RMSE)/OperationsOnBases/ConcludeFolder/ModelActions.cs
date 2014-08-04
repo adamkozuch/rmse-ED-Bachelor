@@ -21,7 +21,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             bases = _bases;
 
         }
-        public bool ProcessModel(string conclusion)
+        public bool? ProcessModel(string conclusion)
         {
             IEnumerable<Model> models = bases.ModelsBase.ModelList.Where(p => p.Conclusion == conclusion);
             foreach (Model model in models)
@@ -32,10 +32,19 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                 {
                     if (model.ModelType == "simple")
                     {
-                        var concreteArgs = new List<string>();
+                        MessageBox.Show("Obliczam model " + model.Conclusion);
                         string str1 = ArgumentValue(model.FirstArg);
                         string str2 = ArgumentValue(model.SecoundArg);//TODO:argument mo¿e byæ odrazu liczb¹
-
+                        if (str1 == null)
+                        {
+                            MessageBox.Show("Brak argumentu 1");
+                            return null;
+                        }
+                        if (str2 == null)
+                        {
+                            MessageBox.Show("Brak argumentu 2");
+                            return null;
+                        }
                         return Arithmetic.RelationalOperation(model.Operation, str1, str2);
                     }
                     if (model.ModelType == "extended")
@@ -51,26 +60,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             return false; // ni
         }
 
-        //private string FillArgsTable(string arg)
-        //{
-            
-        //    string checkedArgument = CheckInArguments(arg);
-        //    if (checkedArgument == null)
-        //    {
-        //        IEnumerable<Model> models = FindModels(arg);
-        //        foreach (Model model in models)
-        //        {
-        //            string modelValue = DoArithmetic(model);
-        //            if (modelValue != null)
-        //            {
-        //                return modelValue;
-        //            }
-        //        }
-        //    }
-        //    AskArgument window = new AskArgument(viewModel);
-        //    window.ShowDialog();
-        //    return viewModel.ValueArgument;
-        //}
+  
    
         private string ArgumentValue(string argument)
         {
@@ -87,12 +77,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                 IEnumerable<Model> models = FindModels(argument);
                 if (!models.Any())
                 {
-                    viewModel.AskingArgumentName = argument;
-                    AskArgument window = new AskArgument(viewModel);
-                    window.ShowDialog();
-                    bases.ModelsBase.ArgumentList.Add(new Argument(){ArgumentName = viewModel.AskingArgumentName, Value = viewModel.ValueArgument});
-                    return viewModel.ValueArgument;
-                   
+                    return viewModel.AskingArgumentValueMethod(argument);
                 }
                 else
                 {
@@ -106,6 +91,9 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             }
             return argumentValue;
         }
+
+       
+
         private string DoArithmetic(Model model)
         {
             if (model.ModelType == "simple")
@@ -114,11 +102,11 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                 string secoundModelValue = CheckInArguments(model.SecoundArg);
                 if (firstModelValue == null)
                 {
-                    firstModelValue = ArgumentValue(firstModelValue);
+                    firstModelValue = ArgumentValue(model.FirstArg);
                 }
                 if (secoundModelValue == null)
                 {
-                    secoundModelValue = ArgumentValue(secoundModelValue);
+                    secoundModelValue = ArgumentValue(model.SecoundArg);
                 }
                 if (firstModelValue == null)
                     return null;
@@ -233,15 +221,10 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                     return true;
                 List<Rule> rules = ConclusionClass.FindRulesWithParticularConclusion(startCondition,
                     bases.RuleBase.RulesList);
+                //todo:trzeba sprawdzic jeszcze modele relacyjne
                 if (rules.Count == 0)
                 {
-                   viewModel.StartConditionName = startCondition;
-                   var window =new AskStartCondition(viewModel);
-                    
-                    window.ShowDialog();
-                    
-                    bases.ModelsBase.ModelFactList.Add( new Fact(){FactName = viewModel.StartConditionName,FactValue = viewModel.StartConditionValue});//TODO:Imiê sie nie dodaje
-                    return viewModel.StartConditionValue;
+                   return viewModel.AskingStartConditionValue(startCondition);
                 }
                 foreach (Rule rule in rules)
                 {
@@ -254,5 +237,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             }
             return true;
         }
+
+       
     }
 }

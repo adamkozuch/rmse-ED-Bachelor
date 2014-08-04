@@ -79,7 +79,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         private bool _checkedRuleValue;
         private string _checkedRuleName;
         private Constrain _askedConstrain;
-        private string _mainWindowText;
+        private string _mainWindowText1;
         private string _askingArgumentName;
 
         public ICommand PolishConfigurationCommand { get; set; }
@@ -103,10 +103,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         private readonly BasesCommands _basesCommands;
         private string _startConditionName;
         private bool _startConditionValue;
-
-
-
-
+        private string _mainWindowText2;
 
         #region Property
 
@@ -162,13 +159,23 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             }
         }
 
-        public string MainWindowText
+        public string MainWindowText1
         {
-            get { return _mainWindowText; }
+            get { return _mainWindowText1; }
             set
             {
-                _mainWindowText = value;
-                OnPropertyChanged("MainWindowText");
+                _mainWindowText1 = value;
+                OnPropertyChanged("MainWindowText1");
+            }
+        }
+
+        public string MainWindowText2
+        {
+            get { return _mainWindowText2; }
+            set
+            {
+                _mainWindowText2 = value;
+                OnPropertyChanged("MainWindowText2");
             }
         }
 
@@ -269,6 +276,44 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         {
             if (PropertyChanged != null)
                 PropertyChanged(this, new PropertyChangedEventArgs(propName));
+        }
+
+        public void AskingRuleValueMethod(SimpleTree simpleTree)
+        {
+            CheckedRuleName = simpleTree.rule.Conclusion;
+            AskRuleValue window = new AskRuleValue(this);
+
+            window.ShowDialog(); // TODO:Może wystapić bug związany z zamknieciem okna x w lewym górnym rogu
+
+            simpleTree.rule.ConclusionValue = CheckedRuleVal;
+        }
+
+        public string AskingArgumentValueMethod(string argument)
+        {
+            AskingArgumentName = argument;
+            AskArgument window = new AskArgument(this);
+            window.ShowDialog();
+            bases.ModelsBase.ArgumentList.Add(new Argument()
+            {
+                ArgumentName = AskingArgumentName,
+                Value = ValueArgument
+            });
+            return ValueArgument;
+        }
+
+        public bool AskingStartConditionValue(string startCondition)
+        {
+            StartConditionName = startCondition;
+            var window = new AskStartCondition(this);
+
+            window.ShowDialog();
+
+            bases.ModelsBase.ModelFactList.Add(new Fact()
+            {
+                FactName = StartConditionName,
+                FactValue = StartConditionValue
+            }); //TODO:Imię sie nie dodaje
+            return StartConditionValue;
         }
 
         #endregion

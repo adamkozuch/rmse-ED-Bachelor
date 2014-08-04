@@ -9,7 +9,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
     {
 
         // zrobić ją statyczna
-        public static double OperationForBasicModel(string znak, string variable1,string variable2)
+        public static double? OperationForBasicModel(string znak, string variable1,string variable2)
         {
 
             float var1 = float.Parse(variable1);
@@ -118,14 +118,16 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 
                 #endregion 
             }
-            return 1;
+            return null;
 
         }
 
 
         public static bool RelationalOperation(string znak, string variable1, string variable2)
         {
-            double var1 = double.Parse(variable1);
+          znak=  znak.Replace(" ", "");
+
+            double var1 = double.Parse(variable1);  // Todo: trzeba obsłużyć program w razie przerwania wnioskowania
             double var2 = double.Parse(variable2);
 
             if (znak == ">")
@@ -140,11 +142,11 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             {
                 return var1 < var2;
             }
-            else if (znak == ">=")
+            else if (znak.Equals(">="))
             {
                 return var1 >= var2;
             }
-            else if (znak == "<=")
+            else if (znak.Equals("<="))
             {
                 return var1 <= var2;
             }
@@ -177,6 +179,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 
         public static string ExtendedArithmeticModel(List<string> argumentList,  string znak)
         {
+            znak = znak.Replace(" ", "");
             var numbers = new List<double>();
             foreach (var VARIABLE in argumentList)
             {

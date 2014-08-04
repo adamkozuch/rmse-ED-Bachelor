@@ -11,52 +11,53 @@
     <Window.Resources>
         <viewModelFolder:ViewModel x:Key="ViewModel"/>
         <ControlTemplate x:Key="UserControlControlTemplate1" TargetType="{x:Type UserControl}">
-        	<Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
-        		<ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
-        	</Border>
+            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                <ContentPresenter ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+            </Border>
         </ControlTemplate>
     </Window.Resources>
-	<Grid Margin="0,0,-8,0">
-		<Grid.RowDefinitions>
-			<RowDefinition Height="125*"/>
-			<RowDefinition Height="444*"/>
-		</Grid.RowDefinitions>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="26*"/>
-			<ColumnDefinition Width="73*"/>
-		</Grid.ColumnDefinitions>
-		<Rectangle Grid.Column="1" Grid.Row="1" Stroke="Black" Margin="5,5,18.112,5"/>
-		<UserControl Name="GeneralControl" Margin="5" Grid.Row="1"/>
-		<TabControl Grid.Column="1" HorizontalAlignment="Left" Margin="5,40,0,0" Width="655.641" Background="White" BorderBrush="#FF2C1C1C" Foreground="White" Height="85" VerticalAlignment="Top">
+    <Grid Margin="0,0,-8,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125*"/>
+            <RowDefinition Height="444*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="26*"/>
+            <ColumnDefinition Width="73*"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Column="1" Grid.Row="1" Stroke="Black" Margin="5,5,18.112,5"/>
+        <UserControl Name="GeneralControl" Margin="5" Grid.Row="1"/>
+        <TabControl Grid.Column="1" HorizontalAlignment="Left" Margin="5,40,0,0" Width="655.641" Background="White" BorderBrush="#FF2C1C1C" Foreground="White" Height="85" VerticalAlignment="Top">
             <TabItem Header="{Binding MainWindowLanguageConfig.Bases}">
-				<Grid Background="#FFFBF9F9">
-					<Button  Content="{Binding MainWindowLanguageConfig.RuleBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
+                <Grid Background="#FFFBF9F9">
+                    <Button  Content="{Binding MainWindowLanguageConfig.RuleBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
                     <Button  Content="{Binding MainWindowLanguageConfig.ConstrainBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="115,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_2"/>
-					<Button Content="{Binding MainWindowLanguageConfig.ModelBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="220,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_3"/>
-					<Button Content="Baza rad" HorizontalAlignment="Left" Height="32.04" Margin="325,10,0,0" VerticalAlignment="Top" Width="100"/>
-					<Button Content="Baza grafiki" HorizontalAlignment="Left" Height="32.04" Margin="430,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_6"/>
-					<Button Content="Baza dzwięków" HorizontalAlignment="Left" Height="32.04" Margin="535,10,-3,0" VerticalAlignment="Top" Width="100"/>
-				</Grid>
-			</TabItem>
+                    <Button Content="{Binding MainWindowLanguageConfig.ModelBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="220,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_3"/>
+                    <Button Content="Baza rad" HorizontalAlignment="Left" Height="32.04" Margin="325,10,0,0" VerticalAlignment="Top" Width="100"/>
+                    <Button Content="Baza grafiki" HorizontalAlignment="Left" Height="32.04" Margin="430,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_6"/>
+                    <Button Content="Baza dzwięków" HorizontalAlignment="Left" Height="32.04" Margin="535,10,-3,0" VerticalAlignment="Top" Width="100"/>
+                </Grid>
+            </TabItem>
             <TabItem Header="{Binding MainWindowLanguageConfig.Operations}">
-				<Grid Background="White" Margin="0,0,0,-1.5">
-					<Grid.ColumnDefinitions>
-						<ColumnDefinition Width="13*"/>
-						<ColumnDefinition Width="54*"/>
-						<ColumnDefinition Width="582*"/>
-					</Grid.ColumnDefinitions>
-					<Button Content="Analiza bazy wiedzy" HorizontalAlignment="Left" Height="32.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="3"/>
-					<Button Content="Opis i raporty" HorizontalAlignment="Left" Height="32.04" Margin="49.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
-					<Button Content="Dopytywalne" HorizontalAlignment="Left" Height="32.04" Margin="154.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" Click="Button_Click_7"/>
-					<Button Content="Wnioskowanie" HorizontalAlignment="Left" Height="32.04" Margin="259.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" Click="Button_Click_5"/>
-					<Button Content="Button" HorizontalAlignment="Left" Height="32.04" Margin="364.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
-					<Button Content="Button" HorizontalAlignment="Left" Height="32.04" Margin="469.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" />
-				</Grid>
-			</TabItem>
-		</TabControl>
-		<Label Content="Menu" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10,5,0,0" VerticalAlignment="Top" Width="407.141"/>
-		<TextBlock Text="{Binding MainWindowText}"  Grid.Column="1" Grid.Row="1"  TextWrapping="NoWrap" Margin="5,5,18.112,0"/>
+                <Grid Background="White" Margin="0,0,0,-1.5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="13*"/>
+                        <ColumnDefinition Width="54*"/>
+                        <ColumnDefinition Width="582*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Analiza bazy wiedzy" HorizontalAlignment="Left" Height="32.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="3"/>
+                    <Button Content="Opis i raporty" HorizontalAlignment="Left" Height="32.04" Margin="49.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
+                    <Button Content="Dopytywalne" HorizontalAlignment="Left" Height="32.04" Margin="154.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" Click="Button_Click_7"/>
+                    <Button Content="Wnioskowanie" HorizontalAlignment="Left" Height="32.04" Margin="259.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" Click="Button_Click_5"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Height="32.04" Margin="364.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
+                    <Button Content="Button" HorizontalAlignment="Left" Height="32.04" Margin="469.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" />
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Label Content="Menu" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10,5,0,0" VerticalAlignment="Top" Width="407.141"/>
+        <TextBlock Text="{Binding MainWindowText1}"  Grid.Column="1" Grid.Row="1"  TextWrapping="NoWrap" Margin="10,10,360.5,-5"/>
         <Button Command="{Binding PolishConfigurationCommand}" Content="Polski" HorizontalAlignment="Left" Height="37" Margin="63,10,0,0" VerticalAlignment="Top" Width="127"/>
         <Button Command="{Binding EnglishConfigurationCommand}" Content="Angielski" HorizontalAlignment="Left" Height="37" Margin="63,52,0,0" VerticalAlignment="Top" Width="127"/>
+        <TextBlock Text="{Binding MainWindowText2}"  Grid.Column="1" Grid.Row="1"  TextWrapping="NoWrap" Margin="338.5,10,32,-5" OpacityMask="Black"/>
     </Grid>
 </Window>

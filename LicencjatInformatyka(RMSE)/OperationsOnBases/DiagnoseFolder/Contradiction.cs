@@ -23,7 +23,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             do
             {
                 parentWithoutChildren = TreeOperations.TreeToEnumerable(tree).Where(p => p.Children.Count == 0).
-                    Where(p => p.Dopytywalny == false);
+                    Where(p => p.Askable == false);
 
                 foreach (SimpleTree parentWithoutChild in parentWithoutChildren)
                 {
@@ -153,7 +153,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                                 
                             }
                           //TODO:Tutaj okienko raportujące
-                            _viewModel.MainWindowText +="Poprzez podstawienie następujących reguł otrzymasz sprzeczność zewnetrzną :"+ s + "\n";
+                            _viewModel.MainWindowText1 +="Poprzez podstawienie następujących reguł otrzymasz sprzeczność zewnetrzną :"+ s + "\n";
                             goto Res;
                         }
                     }
@@ -189,7 +189,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                 var tree = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule,out differenceList);
 
              var askingConditions = TreeOperations.TreeToEnumerable
-                    (tree).Where(p => p.Dopytywalny);//TODO:uta niekoniecznie prawidłowo zmieniona logika
+                    (tree).Where(p => p.Askable);//TODO:uta niekoniecznie prawidłowo zmieniona logika
 
                 foreach (SimpleTree condition in askingConditions)
                 {
@@ -321,7 +321,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             {
                 int count = (from flatteredConditions in flatteredRule
                     from constrainCondition in constrain.ConstrainConditions
-                    where flatteredConditions.Dopytywalny
+                    where flatteredConditions.Askable
                     where constrainCondition == flatteredConditions.rule.Conclusion
                     select flatteredConditions).Count();
 

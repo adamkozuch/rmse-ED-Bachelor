@@ -43,6 +43,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
             if (fileDialog.FileName != "")
             {
+                _gatheredBases.ConstrainBase.ConstrainList = new List<Constrain>();
                 _gatheredBases.ConstrainBase.ReadConstrains(fileDialog.FileName);
             }
         }
@@ -54,6 +55,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
             if (fileDialog.FileName != "")
             {
+                _gatheredBases.ModelsBase.ModelList= new List<Model>();
                 _gatheredBases.ModelsBase.ReadModels(fileDialog.FileName);
             }
             Contradiction.CheckContradictionWIthModelsAndRulebase(_gatheredBases);

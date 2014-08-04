@@ -6,9 +6,13 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
     [Serializable()]
   public  class Rule
     {
-      private bool _dopytywalne=true;
+      private bool _dopytywalne;
       private bool _conclusionValue;
-        public bool Model { get; set; }
+       
+        private int _numberOfRule;
+        private string _conclusion;
+        private List<string> _conditions;
+        
 
 
         public   Rule()
@@ -23,17 +27,25 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
         }
   
         
-        public bool Dopytywalne
+        //public bool Dopytywalne
+        //{
+        //    get { return _dopytywalne; }
+        //    set { _dopytywalne = value; }
+        //}
+
+
+        public int NumberOfRule
         {
-            get { return _dopytywalne; }
-            set { _dopytywalne = value; }
+            get { return _numberOfRule; }
+            set { _numberOfRule = value; }
         }
 
 
-      public int NumberOfRule { get; set; }
-
-
-      public string Conclusion { get; set; }
+        public string Conclusion
+        {
+            get { return _conclusion; }
+            set { _conclusion = value; }
+        }
 
         public bool ConclusionValue
         {
@@ -41,8 +53,12 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
             set { _conclusionValue = value; }
         }
 
-        public List<string> Conditions { get; set; }
+        public List<string> Conditions
+        {
+            get { return _conditions; }
+            set { _conditions = value; }
+        }
 
-      public bool Semaphor { get; set; }
+        public bool Semaphor { get; set; }
     }
 }

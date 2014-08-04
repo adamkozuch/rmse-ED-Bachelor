@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LicencjatInformatyka(RMSE).exe" size="145920">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="LicencjatInformatyka(RMSE).exe" size="147456">
       <assemblyIdentity name="LicencjatInformatyka(RMSE)" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MVwUDjo63hYGi0sDjD7faa72q3wTXwpOjJ7Lrf+2raU=</dsig:DigestValue>
+        <dsig:DigestValue>zN4DzhL8irCbbcPpwRyjpGG2Aiuiif9bX8t2wv4oifs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

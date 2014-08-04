@@ -70,8 +70,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                 {
                     if (VARIABLE != list)
                     {
-                        List<SimpleTree> t = VARIABLE.Where(p => p.Dopytywalny).ToList();
-                        List<SimpleTree> h = list.Where(p => p.Dopytywalny).ToList();
+                        List<SimpleTree> t = VARIABLE.Where(p => p.Askable).ToList();
+                        List<SimpleTree> h = list.Where(p => p.Askable).ToList();
 
                         bool value = CompareRules(h, t);
                         if (value == false)

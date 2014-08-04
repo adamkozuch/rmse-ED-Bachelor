@@ -6,15 +6,21 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
     {
       public  Rule rule { get; set; }
 
-      public bool Dopytywalny
+      public bool Askable
       {
-          get { return _dopytywalny; }
-          set { _dopytywalny = value; }
+          get { return _askable; }
+          set { _askable = value; }
       }
 
+      private bool _model;
+      public bool Model
+      {
+          get { return _model; }
+          set { _model = value; }
+      }
       public SimpleTree _parent { get; set; }
       List<SimpleTree> _children = new List<SimpleTree>();
-      private bool _dopytywalny=false;
+      private bool _askable=false;
 
       public List<SimpleTree> Children {
         get { return _children; }
