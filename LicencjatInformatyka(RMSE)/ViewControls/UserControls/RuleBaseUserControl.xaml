@@ -16,7 +16,7 @@
         <Button Content="{Binding MainWindowLanguageConfig.EditRuleBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,90.288,0,0" VerticalAlignment="Top" Width="168"/>
         <Button Command="{Binding BasesCommandsProperty.LookAskingConditionsCommand}" Content="{Binding MainWindowLanguageConfig.LookAtAskingConditions}" HorizontalAlignment="Left" Height="35.144" Margin="10,130.432,0,0" VerticalAlignment="Top" Width="168"/>
         <Button Command="{Binding BasesCommandsProperty.DiagnoseOutsideContradictionCommand}" Content="{Binding MainWindowLanguageConfig.DiagnoseContradictionRuleBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,170.576,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button Command="{Binding BasesCommandsProperty.DiagnoseOutsideContradictionCommand}" Content="{Binding MainWindowLanguageConfig.DiagnoseNadmiarowoscRuleBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,210.72,0,0" VerticalAlignment="Top" Width="168"/>
+        <Button Command="{Binding BasesCommandsProperty.DiagnoseRuleRedundanciesCommand}" Content="{Binding MainWindowLanguageConfig.DiagnoseNadmiarowoscRuleBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,210.72,0,0" VerticalAlignment="Top" Width="168"/>
         <Button Content="{Binding MainWindowLanguageConfig.CreateRuleBaseText}" HorizontalAlignment="Left" Height="35" Margin="10,251,0,0" VerticalAlignment="Top" Width="168"/>
     </Grid>
 </UserControl>

@@ -133,7 +133,7 @@ _viewModel.AskingConditionsList = askingConditionList;
                 foreach (SimpleTree simpleTree in askableTable)
                 {
                     if (CheckIfStringIsFact(simpleTree.rule.Conclusion, _bases.FactBase.FactList))
-                        simpleTree.rule.ConclusionValue = true;
+                        simpleTree.ConclusionValue = true;
                 }
 
                 bool conclusionValue = CheckConclusionValueOrCountModel(askableTable); // Check if all asking are true
@@ -199,13 +199,13 @@ _viewModel.AskingConditionsList = askingConditionList;
                                 break;
                             }
                             //TODO: trzeba sprawdziæ czy warunek jest faktem
-                            simpleTree.rule.ConclusionValue = (bool)value;
+                            simpleTree.ConclusionValue = (bool)value;
                             
                         }
                     }
                 }
                 else
-                if (simpleTree.rule.ConclusionValue)
+                if (simpleTree.ConclusionValue)
                     i++;
                 else
                 {
@@ -237,7 +237,7 @@ _viewModel.AskingConditionsList = askingConditionList;
             {
                 foreach (var simple in simpleTree.Parent.Children)
                 {
-                    if (simple.rule.ConclusionValue)
+                    if (simple.ConclusionValue)
                         i++;
                 }
 

@@ -7,7 +7,7 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
   public  class Rule
     {
       private bool _dopytywalne;
-      private bool _conclusionValue;
+   
        
         private int _numberOfRule;
         private string _conclusion;
@@ -47,11 +47,7 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
             set { _conclusion = value; }
         }
 
-        public bool ConclusionValue
-        {
-            get { return  _conclusionValue; }
-            set { _conclusionValue = value; }
-        }
+        
 
         public List<string> Conditions
         {

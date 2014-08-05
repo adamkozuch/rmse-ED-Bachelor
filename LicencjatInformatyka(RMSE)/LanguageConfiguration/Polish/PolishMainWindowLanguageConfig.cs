@@ -29,7 +29,7 @@
         private string _editCOnstrainBaseText="Edytuj bazę ograniczeń";
         private string _createConstrainBaseText="Stwórz bazę ograniczeń";
         private string _diagnoseContradictionBetweenRulesAndConstrains= "DIagnozuj sprzeczność łączną bazy reguł i ograniczeń";
-        private string _diagnoseNadmiarowosc = "Diagnozuj nadmiarowośc łączną bazy reguł i ograniczeń";
+        private string _diagnoseRedundancy = "Diagnozuj nadmiarowośc łączną bazy reguł i ograniczeń";
        
         
         private string _modelBaseButton ="Baza modeli";
@@ -122,9 +122,9 @@
             get { return _diagnoseContradictionBetweenRulesAndConstrains; }
         }
 
-        public string DiagnoseNadmiarowosc
+        public string DiagnoseRedundancy
         {
-            get { return _diagnoseNadmiarowosc; }
+            get { return _diagnoseRedundancy; }
         }
 
 

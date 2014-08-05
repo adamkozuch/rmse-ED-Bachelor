@@ -17,6 +17,12 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             _bases = bases;
           conclusion  = new ConclusionClass(_bases, _viewModel);
         }
+        public void CheckRedundancyInRules()
+        {
+
+Redundancy.Invoke(_bases);       
+        }
+        
 
         public void CheckOutsideContradiction()
         {

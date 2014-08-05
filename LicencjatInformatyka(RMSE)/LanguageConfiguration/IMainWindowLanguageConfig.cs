@@ -39,7 +39,7 @@
         string EditCOnstrainBaseText { get; }
         string CreateConstrainBaseText { get; }
         string DiagnoseContradictionBetweenRulesAndConstrains  { get; }
-        string DiagnoseNadmiarowosc { get; } // TODO:ZMienić nazwę nadmiarowość
+        string DiagnoseRedundancy { get; } 
 
         #endregion
 

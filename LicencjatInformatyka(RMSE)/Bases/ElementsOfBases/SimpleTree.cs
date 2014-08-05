@@ -5,7 +5,7 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
   public  class SimpleTree
     {
       public  Rule rule { get; set; }
-
+      public bool ConclusionValue { get; set; }
       public bool Askable
       {
           get { return _askable; }

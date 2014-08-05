@@ -41,6 +41,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
             OpenRuleCommand = new RelayCommand(pars => _viewModel._openBasesActions.ReadRuleBase());
             DiagnoseOutsideContradictionCommand = new RelayCommand(pars => _viewModel._actionsOnBase.CheckOutsideContradiction());
+            DiagnoseRuleRedundanciesCommand = new RelayCommand(p => _viewModel._actionsOnBase.CheckRedundancyInRules());
             LookRuleCommand = new RelayCommand(p => _viewModel.ShowWindow(new BrowseRules(_viewModel)));
             LookAskingConditionsCommand = new RelayCommand(p =>
             {

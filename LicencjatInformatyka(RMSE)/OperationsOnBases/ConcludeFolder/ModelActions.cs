@@ -27,14 +27,14 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             foreach (Model model in models)
             {
                 bool start = CheckStartCondition(model.StartCondition);
-                //TODO: pamiêtaæ ¿eby zmieniæ to przypisanie
+              
                 if (start)
                 {
                     if (model.ModelType == "simple")
                     {
                         MessageBox.Show("Obliczam model " + model.Conclusion);
                         string str1 = ArgumentValue(model.FirstArg);
-                        string str2 = ArgumentValue(model.SecoundArg);//TODO:argument mo¿e byæ odrazu liczb¹
+                        string str2 = ArgumentValue(model.SecoundArg);
                         if (str1 == null)
                         {
                             MessageBox.Show("Brak argumentu 1");
@@ -219,19 +219,35 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                 bool value = ConclusionClass.CheckIfStringIsFact(startCondition, bases.ModelsBase.ModelFactList);
                 if (value)
                     return true;
-                List<Rule> rules = ConclusionClass.FindRulesWithParticularConclusion(startCondition,
+                var rules = ConclusionClass.FindRulesWithParticularConclusion(startCondition,
                     bases.RuleBase.RulesList);
+                var models = FindModels(startCondition); 
                 //todo:trzeba sprawdzic jeszcze modele relacyjne
                 if (rules.Count == 0)
                 {
-                   return viewModel.AskingStartConditionValue(startCondition);
+                    if(!models.Any())
+                    {
+                        return viewModel.AskingStartConditionValue(startCondition);
+                    }
                 }
-                foreach (Rule rule in rules)
+                if (!rules.Any())
+                {
+                    foreach (var rule in rules)
+                    {
+
+                        bool startConditionValue = conclusionClass.BackwardConclude(rule);
+                        if (startConditionValue)
+                            return true;
+                    }
+                }
+                if (!models.Any())
                 {
 
-                    bool startConditionValue = conclusionClass.BackwardConclude(rule);
-                    if (startConditionValue)
-                        return true;
+                    bool startConditionValue =(bool) ProcessModel(startCondition);
+                        if (startConditionValue)
+                            return true;
+                    
+
                 }
                 return false;
             }

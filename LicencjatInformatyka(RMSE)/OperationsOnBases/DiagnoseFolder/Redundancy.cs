@@ -37,23 +37,22 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         /// <param name="bases">The bases.</param>
         public static void Invoke(GatheredBases bases)
         {
+            //TODO: Przy redundancji trzeba uwzględnic to że reguła nie jest jedynie redundantna w przypadku spłaszczenia jedne wybranej reguły na wszystkie sposoby ale również w takich samych reguł ale nie powiązanych
             foreach (Rule ruleForCheck in bases.RuleBase.RulesList)
             {
                 List<Rule> ruleList = ConclusionClass.FindRulesWithParticularConclusion
                     (ruleForCheck.Conclusion, bases.RuleBase.RulesList);
-                var b = new List<List<SimpleTree>>();
-                foreach (Rule VARIABL in ruleList)
-                {
+              
                     List<List<Rule>> differencesList;
                     var tree = TreeOperations.ReturnComplexTreeAndDifferences(
                         bases, ruleForCheck,out differencesList);
                     List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,
                         differencesList);
-                    b.AddRange(possibleTrees);
-                }
+              
+                
                 // nie badam dopytywalnych
                 // trzeba mieć wszystkie reguły z z tą samą nazwą
-                CheckRedunancy(b, ruleForCheck);
+                CheckRedundancy(possibleTrees, ruleForCheck);
             }
         }
 
@@ -62,7 +61,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         /// </summary>
         /// <param name="possibleTrees">The possible trees.</param>
         /// <param name="rule">The rule.</param>
-        private static void CheckRedunancy(List<List<SimpleTree>> possibleTrees, Rule rule)
+        private static void CheckRedundancy(List<List<SimpleTree>> possibleTrees, Rule rule)
         {
             foreach (var VARIABLE in possibleTrees)
             {
@@ -76,10 +75,9 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                         bool value = CompareRules(h, t);
                         if (value == false)
                         {
-                            IEnumerable<SimpleTree> o = VARIABLE.Where(p => p.Parent == null);
-                            IEnumerable<SimpleTree> f = list.Where(p => p.Parent == null);
-                            MessageBox.Show(rule.Conclusion + " " + rule.NumberOfRule + " " +
-                                            o.First().rule.NumberOfRule + " " + f.First().rule.NumberOfRule);
+                            //IEnumerable<SimpleTree> o = VARIABLE.Where(p => p.Parent == null);
+                            //IEnumerable<SimpleTree> f = list.Where(p => p.Parent == null);
+                            MessageBox.Show("Mamy nadmiarowość ");
                             goto lab; //TODO: Redundancja jeszcze do zrobienia
                         }
                     }
@@ -91,27 +89,29 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
 
 
         /// <summary>
-        /// Compares the rules.
+        /// Compares the secoundList.
         /// </summary>
-        /// <param name="list">The list.</param>
-        /// <param name="rules">The rules.</param>
+        /// <param name="firstList">The firstList.</param>
+        /// <param name="secoundList">The secoundList.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
-        private static bool CompareRules(List<SimpleTree> list, List<SimpleTree> rules)
+        private static bool CompareRules(List<SimpleTree> firstList, List<SimpleTree> secoundList)
         {
-            //Sprawdzamy czy lista zawiera się w rules
+            //Sprawdzamy czy firstList zawiera się w secoundList
             int i = 0;
             int n = 0;
-            int c = 0;
-            foreach (SimpleTree VARIABLE in rules)
+      
+            if(firstList.Count<=secoundList.Count)
+            { 
+            foreach (SimpleTree VARIABLE in firstList)
             {
-                if (VARIABLE.rule.Conclusion == list[i].rule.Conclusion)
-                    n++;
-                c++;
+                if (VARIABLE.rule.Conclusion == secoundList[i].rule.Conclusion)
+                    n++; 
                 i++;
             }
-            if (n == list.Count)
+            if (n == firstList.Count)
             {
                 return false;
+            }
             }
             return true;
         }

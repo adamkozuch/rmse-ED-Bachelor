@@ -285,7 +285,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
             window.ShowDialog(); // TODO:Może wystapić bug związany z zamknieciem okna x w lewym górnym rogu
 
-            simpleTree.rule.ConclusionValue = CheckedRuleVal;
+            simpleTree.ConclusionValue = CheckedRuleVal;
         }
 
         public string AskingArgumentValueMethod(string argument)
@@ -312,7 +312,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             {
                 FactName = StartConditionName,
                 FactValue = StartConditionValue
-            }); //TODO:Imię sie nie dodaje
+            }); 
             return StartConditionValue;
         }
 

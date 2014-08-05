@@ -29,7 +29,7 @@ namespace LicencjatInformatyka_RMSE_.LanguageConfiguration
         private string _editCOnstrainBaseText;
         private string _createConstrainBaseText;
         private string _diagnoseContradictionBetweenRulesAndConstrains;
-        private string _diagnoseNadmiarowosc;
+        private string _diagnoseRedundancy;
         private string _bases;
         private string _operations;
         private string _constrainBaseButton;
@@ -149,9 +149,9 @@ namespace LicencjatInformatyka_RMSE_.LanguageConfiguration
             get { return _diagnoseContradictionBetweenRulesAndConstrains; }
         }
 
-        public string DiagnoseNadmiarowosc
+        public string DiagnoseRedundancy
         {
-            get { return _diagnoseNadmiarowosc; }
+            get { return _diagnoseRedundancy; }
         }
     }
 }
