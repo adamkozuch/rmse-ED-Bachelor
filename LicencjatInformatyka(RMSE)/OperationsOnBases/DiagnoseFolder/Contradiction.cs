@@ -208,7 +208,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                             //TODO:Z tego co się orientuję nie ma tu sprawdzenia warunkow startowych
                             // z modelami relacyjnymi oraz modeli arytmetycznych z modelami arytmetycznymi 
                             CheckContradictionBetweenRulesAndStartedConditions
-                                (listOfStartedConditions, condition);
+                                (listOfStartedConditions, condition,model);
                        //     CheckContradictionBetweenModelsAndStartedConditions();
                           // CheckContradictionBetweenArithmeticModels();
                         }
@@ -216,7 +216,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                 }
             }
 
-            MessageBox.Show("Modele i reguly ok");
+          
         }
 
         // metode mozna wykozystac do modeli relacyjnych jako warunki startowe
@@ -227,7 +227,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         /// <param name="ruleForCheck">The rule for check.</param>
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         private static bool CheckContradictionBetweenRulesAndStartedConditions
-            (List<string> listOfStartedConditions, SimpleTree ruleForCheck)
+            (List<string> listOfStartedConditions, SimpleTree ruleForCheck, Model model)
         {
             int i = 0;
             while (ruleForCheck.Parent != null)
@@ -238,7 +238,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                 {
                     if (startedCondition == ruleForCheck.rule.Conclusion)
                     {
-                        MessageBox.Show("Konflikt pomiędzy modelami i regułami" + startedCondition);
+                        MessageBox.Show("Konflikt pomiędzy modelami i regułami Warunek startowy " + startedCondition + "w modelu "+ 
+                            model.ModelNumber + " " + model.Conclusion + " a regułą" +ruleForCheck.rule.NumberOfRule+" "+ ruleForCheck.rule.Conclusion );
                         return false;
                     }
                 }
@@ -297,37 +298,34 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         /// <param name="constrainsList">The constrains list.</param>
 
         #region ConstrainContradiction
-        public static void CheckContradictionInConstrains
-            (GatheredBases bases, List<Constrain> constrainsList)
+        public static void CheckContradictionWithConstrains
+             (List<List<SimpleTree>> allFlatteredRules, GatheredBases bases)
         {
-            foreach (var constrain in constrainsList)
+            // todo : tutaj też warto posortowac listy zeby uniknac błędu 
+
+            foreach (var constrain in bases.ConstrainBase.ConstrainList)
             {
-                foreach (var rule in bases.RuleBase.RulesList)
+                foreach (var ruleFlattered in allFlatteredRules)
                 {
-                   List<List<Rule>> differenceTable;
-
-                   var tree = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule,out differenceTable);
-
-                   List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,differenceTable);
-
-                    DiagnoseContradictionInPossibleTrees(possibleTrees, constrain, rule);
+                    List<SimpleTree> askable = ruleFlattered.Where(p => p.Askable).ToList();
+                    int i = 0;
+                    foreach (var simpleTree in askable)
+                    {
+                        foreach (var condition in constrain.ConstrainConditions)
+                        //TODO:tutaj jest rozwiązanie na sprzeczność jeżeli w jednym spłaszczeniu są dwie reguły sprzeczna
+                        {
+                            if (simpleTree.rule.Conclusion == condition)
+                                i++;
+                        }
+                    }
+                    if (i > 1)
+                    {
+                        IEnumerable<SimpleTree> firstParent = ruleFlattered.Where(p => p.Parent == null);
+                        MessageBox.Show("Jest sprzeczność z bazą ograniczeń pomiędzy regułą " +
+                                        firstParent.First().rule.Conclusion + " a"
+                                        + "ograniczeniem nr" + constrain.NumberOfConstrain);
+                    }
                 }
-            }
-        }
-
-        private static void DiagnoseContradictionInPossibleTrees(List<List<SimpleTree>> possibleTrees, Constrain constrain, Rule rule)
-        {
-            foreach (var flatteredRule in possibleTrees)
-            {
-                int count = (from flatteredConditions in flatteredRule
-                    from constrainCondition in constrain.ConstrainConditions
-                    where flatteredConditions.Askable
-                    where constrainCondition == flatteredConditions.rule.Conclusion
-                    select flatteredConditions).Count();
-
-                if (count > 1) // If more than one there is a contradiction
-                    MessageBox.Show("Sprzeczność pomiędzy regułą " + rule.NumberOfRule + " i ograniczeniem" +
-                                    constrain.NumberOfLimit);
             }
         }
 

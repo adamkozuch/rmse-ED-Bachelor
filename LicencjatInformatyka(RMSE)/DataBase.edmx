@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="DataBase.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
+        <EntityContainer Name="DataBaseTargetContainer" >
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataBase" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="DataBaseContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RuleDataSetSet" EntityType="DataBase.RuleDataSet" />
+          <EntitySet Name="RulesSet" EntityType="DataBase.Rules" />
+          <AssociationSet Name="RuleDataSetRules" Association="DataBase.RuleDataSetRules">
+            <End Role="RuleDataSet" EntitySet="RuleDataSetSet" />
+            <End Role="Rules" EntitySet="RulesSet" />
+          </AssociationSet>
+          <EntitySet Name="ConditionSet" EntityType="DataBase.Condition" />
+          <AssociationSet Name="RulesCondition" Association="DataBase.RulesCondition">
+            <End Role="Rules" EntitySet="RulesSet" />
+            <End Role="Condition" EntitySet="ConditionSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RuleDataSet">
+          <Key>
+            <PropertyRef Name="RuleDatasetID" />
+          </Key>
+          <Property Name="RuleDatasetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Rules" Relationship="DataBase.RuleDataSetRules" FromRole="RuleDataSet" ToRole="Rules" />
+          <Property Name="RuleDataSetName" Type="String" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rules">
+          <Key>
+            <PropertyRef Name="NumberOfRule" />
+          </Key>
+          <Property Name="NumberOfRule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="RuleDataSet" Relationship="DataBase.RuleDataSetRules" FromRole="Rules" ToRole="RuleDataSet" />
+          <Property Name="Conclusion" Type="String" Nullable="false" />
+          <NavigationProperty Name="Condition" Relationship="DataBase.RulesCondition" FromRole="Rules" ToRole="Condition" />
+        </EntityType>
+        <Association Name="RuleDataSetRules">
+          <End Type="DataBase.RuleDataSet" Role="RuleDataSet" Multiplicity="1" />
+          <End Type="DataBase.Rules" Role="Rules" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Condition">
+          <Key>
+            <PropertyRef Name="Name" />
+          </Key>
+          <Property Name="Name" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Rules" Relationship="DataBase.RulesCondition" FromRole="Condition" ToRole="Rules" />
+        </EntityType>
+        <Association Name="RulesCondition">
+          <End Type="DataBase.Rules" Role="Rules" Multiplicity="1" />
+          <End Type="DataBase.Condition" Role="Condition" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="DataBase" />
+        <Alias Key="Target" Value="DataBase.Store" />
+        <EntityContainerMapping CdmEntityContainer="DataBaseContainer" StorageEntityContainer="DataBaseTargetContainer">
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

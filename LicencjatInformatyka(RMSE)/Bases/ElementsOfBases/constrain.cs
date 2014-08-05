@@ -4,20 +4,20 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
 {
   public  class Constrain
     {
-        private int _numberOfLimit;
+        private int _numberOfConstrain;
         private List<string> _constrainConditions;
 
-        public Constrain( List<string> constrainConditions, int numberOfLimit)
+        public Constrain( List<string> constrainConditions, int numberOfConstrain)
         {
-            _numberOfLimit = numberOfLimit;
+            _numberOfConstrain = numberOfConstrain;
             ConstrainConditions = constrainConditions;
 
         }
 
-        public int NumberOfLimit
+        public int NumberOfConstrain
         {
-            get { return _numberOfLimit; }
-            set { _numberOfLimit = value; }
+            get { return _numberOfConstrain; }
+            set { _numberOfConstrain = value; }
         }
 
       public List<string> ConstrainConditions

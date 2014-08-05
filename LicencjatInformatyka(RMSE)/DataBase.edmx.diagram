@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0fa1a97de5644cb29f61475b7251295f" Name="Diagram1" >
+        <EntityTypeShape EntityType="DataBase.RuleDataSet" Width="1.5" PointX="2.25" PointY="1" />
+        <EntityTypeShape EntityType="DataBase.Rules" Width="1.5" PointX="5.25" PointY="1" />
+        <AssociationConnector Association="DataBase.RuleDataSetRules" />
+        <EntityTypeShape EntityType="DataBase.Condition" Width="1.5" PointX="7.75" PointY="1" />
+        <AssociationConnector Association="DataBase.RulesCondition" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -91,14 +91,26 @@ _viewModel.AskingConditionsList = askingConditionList;
             foreach (var possibleTree in possibleTrees)
             {
                 var flatter = possibleTree.Where(p => p.Askable == true);
+                int i = 0;
                 foreach (var simpleTree in flatter)
                 {
+                    if (i==0)
+                    {
+                        _viewModel.MainWindowText1 += "Sp³aszczenie dla regu³y :" + flatteredRule.Conclusion + "\n";
+                        i++;
+                    }
+                   
                     _viewModel.MainWindowText1 += simpleTree.rule.Conclusion+" ";
                 }
                  flatter = possibleTree.Where(p => p.Askable == false);
-                 _viewModel.MainWindowText1 += "\n"; //TODO: Wszystkie warunki dopytywalne coœ nie tak
+                 _viewModel.MainWindowText1 += "\n"; 
                 foreach (var simpleTree in flatter)
                 {
+                    if (simpleTree.rule.NumberOfRule == flatteredRule.NumberOfRule)
+                    {
+                        _viewModel.MainWindowText1 += "U¿yte zosta³y nastêpuj¹ce regu³y " + "\n";
+                    }
+                    else
                     _viewModel.MainWindowText1 +=  simpleTree.rule.NumberOfRule +" ";
                 }
                 _viewModel.MainWindowText1 +="\n";

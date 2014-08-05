@@ -13,8 +13,8 @@
                 <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.ChooseRuleConclusionOfRule}" Binding="{Binding Conclusion}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Command="{Binding FlatterRuleCommand}" Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnProcess}" HorizontalAlignment="Left" Height="33" Margin="5,256,0,0" VerticalAlignment="Top" Width="128" />
-        <Button Command="{Binding ConcludeCommand}" Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnAbort}" HorizontalAlignment="Left" Height="33" Margin="168,256,0,0" VerticalAlignment="Top" Width="128" />
+        <Button Command="{Binding BasesCommandsProperty.FlatterRuleCommand}" Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnProcess}" HorizontalAlignment="Left" Height="33" Margin="5,256,0,0" VerticalAlignment="Top" Width="128" />
+        <Button Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnAbort}" HorizontalAlignment="Left" Height="33" Margin="168,256,0,0" VerticalAlignment="Top" Width="128" />
 
     </Grid>
 </Window>

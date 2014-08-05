@@ -9,7 +9,7 @@
     <Grid>
         <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding ConstrainListProp }" SelectedItem="{Binding SelectedRule }" HorizontalAlignment="Left" Height="233" VerticalAlignment="Top" Width="291" Margin="5,5,0,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.BrowseConstrainsConstrainNumber}" Binding="{Binding NumberOfLimit}"></DataGridTextColumn>
+                <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.BrowseConstrainsConstrainNumber}" Binding="{Binding NumberOfConstrain}"></DataGridTextColumn>
                 <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.BrowseConstrainsConditionsName}" Binding="{Binding ConstrainConditions}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
