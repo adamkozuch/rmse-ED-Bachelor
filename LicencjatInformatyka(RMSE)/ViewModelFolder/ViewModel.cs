@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
@@ -69,8 +70,13 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
             StartConditionValueTrue = new RelayCommand(p=> StartConditionValue=true);
             StartConditionValueUnknown =  new RelayCommand(p => StartConditionValue=false);
+            BreakButtonCommand= new RelayCommand(p=> ExceptionValue=true);
+            ClearConsoleCommand = new RelayCommand(p=> MainWindowText1="");
             
         }
+
+
+        private bool exc;
 
 
         public void ShowWindow(Window wind)
@@ -95,12 +101,13 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         #region AnotherCommands
 
         public ICommand ConcludeCommand { get; set; }
+        public ICommand ClearConsoleCommand { get; set; }
 
         public ICommand ValueTrue { get; set; }
         public ICommand ValueUnknown { get; set; }
         public ICommand StartConditionValueTrue { get; set; }
         public ICommand StartConditionValueUnknown { get; set; }
-
+        public ICommand BreakButtonCommand { get; set; }
         #endregion
 
 
@@ -286,6 +293,12 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             get { return _basesCommands; }
         }
 
+        public bool ExceptionValue
+        {
+            get { return exc; }
+            set { exc = value; }
+        }
+
         #endregion
 
         #region Method
@@ -301,7 +314,9 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             CheckedRuleName = simpleTree.rule.Conclusion;
             AskRuleValue window = new AskRuleValue(this);
 
-            window.ShowDialog(); // TODO:Może wystapić bug związany z zamkniciem okna x w lewym górnym rogu
+            window.ShowDialog();
+             if(exc)
+                 throw new Exception();// TODO:Może wystapić bug związany z zamkniciem okna x w lewym górnym rogu
 
             simpleTree.ConclusionValue = CheckedRuleVal;
         }
@@ -311,6 +326,8 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             AskingArgumentName = argument;
             AskArgument window = new AskArgument(this);
             window.ShowDialog();
+            if(exc)
+                throw new Exception();
             bases.ModelsBase.ArgumentList.Add(new Argument()
             {
                 ArgumentName = AskingArgumentName,

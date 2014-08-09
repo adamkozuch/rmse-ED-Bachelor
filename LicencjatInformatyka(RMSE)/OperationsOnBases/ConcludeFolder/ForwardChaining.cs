@@ -25,7 +25,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
         }
 
 
-        private static bool allConcrete = false;
+        private static bool allConcrete;
 
         public void Forward()
         {
@@ -33,7 +33,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             {
                 _constrainActions.AskForConstrainValue(constrain);
             }
-
+            allConcrete = false;
 
             while (allConcrete == false)
             {
@@ -49,20 +49,16 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                         foreach (var condition in rule.Conditions)
                         {
                             i = CheckCondition(condition, i);
-
-                            
                         }
                          if (i == rule.Conditions.Count)
                             {
                                 InputResult(rule);
                                 break;
                             }
-
-
                         
                     }
                 }
-                if (_conclusion.AskedConditions() == _bases.FactBase.FactList.Count)
+                if (AskedConditions() == _bases.FactBase.FactList.Count)
                     allConcrete = true;
             }
         }
@@ -132,6 +128,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                     s += fact.FactName + "\n";
             }
 
+            s += "\n";
             foreach (var fact in _bases.FactBase.FactList)
             {
                 if (fact.FactValue==false)
@@ -149,6 +146,40 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                     return true;
             }
             return false;
+        }
+
+
+
+        public int AskedConditions()
+        {
+            int i = 0;
+            var askingConditionList = new List<string>();
+            foreach (var rule in _bases.RuleBase.RulesList)
+            {
+                foreach (var condition in rule.Conditions)
+                {
+                    if (_bases.RuleBase.RulesList.Any(p => p.Conclusion == condition))
+                    {
+                        i++;
+                    }
+                    else
+                    {
+                        
+                            foreach (var element in askingConditionList)
+                            {
+                                if (condition == element)
+                                    goto label;
+                            }
+                            askingConditionList.Add(condition);
+                        label: ;
+                        }
+                    
+                }
+
+            }
+           
+            return askingConditionList.Count+i;
+
         }
     }
 }

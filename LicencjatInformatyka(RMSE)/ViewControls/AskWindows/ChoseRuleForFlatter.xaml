@@ -5,16 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
         mc:Ignorable="d"
-        Title="ChoseRuleForFlatter" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
+        Title="{Binding ChildWindowsLanguageConfig.FlatternWindowName}" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
     <Grid >
-        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RuleListProp }" SelectedItem="{Binding SelectedRule }" HorizontalAlignment="Left" Height="233" VerticalAlignment="Top" Width="291" Margin="5,5,0,0">
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding RuleListProp }" SelectedItem="{Binding SelectedRule }" HorizontalAlignment="Left" Height="194" VerticalAlignment="Top" Width="291" Margin="5,5,-4,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.ChooseRuleNumberOfRule}" Binding="{Binding NumberOfRule}"></DataGridTextColumn>
                 <DataGridTextColumn Header="{Binding ChildWindowsLanguageConfig.ChooseRuleConclusionOfRule}" Binding="{Binding Conclusion}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Command="{Binding BasesCommandsProperty.FlatterRuleCommand}" Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnProcess}" HorizontalAlignment="Left" Height="33" Margin="5,256,0,0" VerticalAlignment="Top" Width="128" />
-        <Button Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnAbort}" HorizontalAlignment="Left" Height="33" Margin="168,256,0,0" VerticalAlignment="Top" Width="128" />
+        <Button Command="{Binding BasesCommandsProperty.FlatterRuleCommand}" Content="{Binding ChildWindowsLanguageConfig.FlatternButtonText}" HorizontalAlignment="Left" Height="33" Margin="10,226,0,0" VerticalAlignment="Top" Width="128" />
+        <Button Content="{Binding ChildWindowsLanguageConfig.NotFlattern}" HorizontalAlignment="Left" Height="33" Margin="154,226,0,0" VerticalAlignment="Top" Width="128" />
 
     </Grid>
 </Window>

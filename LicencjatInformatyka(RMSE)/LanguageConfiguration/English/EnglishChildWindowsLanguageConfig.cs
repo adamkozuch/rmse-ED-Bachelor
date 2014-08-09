@@ -42,6 +42,12 @@ namespace LicencjatInformatyka_RMSE_.LanguageConfiguration
         private string _browseRulesConditionsName;
         private string _browseRulesConclusionName;
         private string _browseRulesExplainText;
+        private string _flatternmainButton;
+        private string _flatternWindowName;
+        private string _flatternAllRulesText;
+        private string _flatternOneRuleText;
+        private string _flatternButtonText;
+        private string _notFlattern;
 
         public string AskArgumentWindowName
         {
@@ -206,6 +212,36 @@ namespace LicencjatInformatyka_RMSE_.LanguageConfiguration
         public string BrowseRulesExplainText
         {
             get { return _browseRulesExplainText; }
+        }
+
+        public string FlatternmainButton
+        {
+            get { return _flatternmainButton; }
+        }
+
+        public string FlatternWindowName
+        {
+            get { return _flatternWindowName; }
+        }
+
+        public string FlatternAllRulesText
+        {
+            get { return _flatternAllRulesText; }
+        }
+
+        public string FlatternOneRuleText
+        {
+            get { return _flatternOneRuleText; }
+        }
+
+        public string FlatternButtonText
+        {
+            get { return _flatternButtonText; }
+        }
+
+        public string NotFlattern
+        {
+            get { return _notFlattern; }
         }
     }
 }

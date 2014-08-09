@@ -61,8 +61,7 @@ namespace LicencjatInformatyka_RMSE_
 
         private void Button_Click_7(object sender, RoutedEventArgs e)
         {
-            ChoseRuleForFlatter flatter = new ChoseRuleForFlatter(DataContext as ViewModel);
-            flatter.ShowDialog();
+            GeneralControl.Content = new FlatterUserControll();
         }
        
     }

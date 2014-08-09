@@ -34,6 +34,8 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         public ICommand EditModelCommand { get; set; }
         public ICommand CreateModelCommand { get; set; }
         public ICommand RedundancyModelCommand { get; set; }
+        public ICommand OpenFlatterWindow { get; set; }
+        public ICommand FlatterAllRules { get; set; }
 
         private void BasesCommandsMethod()
         {
@@ -50,6 +52,8 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             });
             DiagnoseOutsideContradictionCommand = new RelayCommand(p => _viewModel._actionsOnBase.ReportAboutOutsideContradiction());
             FlatterRuleCommand = new RelayCommand(p => _viewModel._actionsOnBase.FlatterRule(_viewModel.SelectedRule));
+            OpenFlatterWindow = new RelayCommand(p => _viewModel.ShowWindow(new ChoseRuleForFlatter(_viewModel)));
+            FlatterAllRules =  new RelayCommand(p=> _viewModel._actionsOnBase.FlatterAllRule());
 
             #endregion
 
@@ -58,6 +62,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             OpenConstrainCommand = new RelayCommand(pars => _viewModel._openBasesActions.ReadConstrainBase());
             ContradictionWithConstrainsCommand = new RelayCommand(pars => _viewModel._actionsOnBase.CheckContradictionWithConstrains());
             LookAtBaseConstrainsCommand = new RelayCommand(p => _viewModel.ShowWindow(new BrowseConstrains(_viewModel)));
+
 
             #endregion
 

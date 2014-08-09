@@ -15,8 +15,11 @@
         <Button IsEnabled="{Binding ButtonsLogic.ConstrainBaseOpened}" Command="{Binding BasesCommandsProperty.LookAtBaseConstrainsCommand}"  Content="{Binding MainWindowLanguageConfig.LookAtConstrainBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,50.144,0,0" VerticalAlignment="Top" Width="168"/>
         <Button IsEnabled="{Binding ButtonsLogic.ConstrainBaseOpened}" Content="{Binding MainWindowLanguageConfig.EditCOnstrainBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,90.288,0,0" VerticalAlignment="Top" Width="168"/>
         <Button IsEnabled="{Binding ButtonsLogic.ConstrainBaseOpened}" Content="{Binding MainWindowLanguageConfig.CreateConstrainBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,130.432,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button IsEnabled="{Binding ButtonsLogic.ConstrainBaseOpened}" Command="{Binding BasesCommandsProperty.ContradictionWithConstrainsCommand}"  Content="{Binding MainWindowLanguageConfig.DiagnoseContradictionBetweenRulesAndConstrains}" HorizontalAlignment="Left" Height="35" Margin="10,171,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button IsEnabled="{Binding ButtonsLogic.ConstrainBaseOpened}" Content="{Binding MainWindowLanguageConfig.DiagnoseRedundancy}" HorizontalAlignment="Left" Height="35" Margin="10,211,0,0" VerticalAlignment="Top" Width="168"/>
-
+        <Button IsEnabled="{Binding ButtonsLogic.ConstrainBaseOpened}" Command="{Binding BasesCommandsProperty.ContradictionWithConstrainsCommand}"   HorizontalAlignment="Left" Height="35" Margin="10,171,0,0" VerticalAlignment="Top" Width="168">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text ="{Binding MainWindowLanguageConfig.DiagnoseContradictionBetweenRulesAndConstrains}" />
+        </Button >
+        <Button IsEnabled="{Binding ButtonsLogic.ConstrainBaseOpened}"  HorizontalAlignment="Left" Height="35" Margin="10,211,0,0" VerticalAlignment="Top" Width="168">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text ="{Binding MainWindowLanguageConfig.DiagnoseRedundancy}" />
+        </Button >
     </Grid>
 </UserControl>

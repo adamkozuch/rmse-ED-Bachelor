@@ -15,7 +15,11 @@
         <Button IsEnabled="{Binding ButtonsLogic.ModelBaseOpened}" Command="{Binding BasesCommandsProperty.LookAtBaseModelCommand}" Content="{Binding MainWindowLanguageConfig.LookAtModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,50.144,0,0" VerticalAlignment="Top" Width="168"/>
         <Button IsEnabled="{Binding ButtonsLogic.ModelBaseOpened}" Content="{Binding MainWindowLanguageConfig.EditModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,90.288,0,0" VerticalAlignment="Top" Width="168"/>
         <Button IsEnabled="{Binding ButtonsLogic.ModelBaseOpened}" Content="{Binding MainWindowLanguageConfig.CreateModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,130.432,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button IsEnabled="{Binding ButtonsLogic.ModelBaseOpened}" Command="{Binding BasesCommandsProperty.ContradictionWithModelsCommand }" Content="{Binding MainWindowLanguageConfig.DiagnoseContradictionModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,170.576,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button IsEnabled="{Binding ButtonsLogic.ModelBaseOpened}" Content="{Binding MainWindowLanguageConfig.DiagnoseRedundancyModelBaseText}" HorizontalAlignment="Left" Height="35.144" Margin="10,210.72,0,0" VerticalAlignment="Top" Width="168"/>
+        <Button IsEnabled="{Binding ButtonsLogic.ModelBaseOpened}" Command="{Binding BasesCommandsProperty.ContradictionWithModelsCommand }"  HorizontalAlignment="Left" Height="35.144" Margin="10,170.576,0,0" VerticalAlignment="Top" Width="168">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap"  Text="{Binding MainWindowLanguageConfig.DiagnoseContradictionModelBaseText}" />
+        </Button >
+        <Button IsEnabled="{Binding ButtonsLogic.ModelBaseOpened}"  HorizontalAlignment="Left" Height="35.144" Margin="10,210.72,0,0" VerticalAlignment="Top" Width="168">
+            <TextBlock TextAlignment="Center" TextWrapping="Wrap" Text ="{Binding MainWindowLanguageConfig.DiagnoseRedundancyModelBaseText}" />
+        </Button >
 	</Grid>
 </UserControl>

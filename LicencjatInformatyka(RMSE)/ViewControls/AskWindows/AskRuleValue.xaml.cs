@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows
@@ -20,6 +21,16 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             Close();
         }

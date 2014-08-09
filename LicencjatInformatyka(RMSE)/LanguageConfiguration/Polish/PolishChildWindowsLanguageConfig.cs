@@ -41,8 +41,14 @@ namespace LicencjatInformatyka_RMSE_.Additional
         private string _browseRulesConditionsName="Warunki reguły";
         private string _browseRulesConclusionName="Wniosek reguły";
         private string _browseRulesExplainText="W bazie znajdują się następujące reguły";
+       private string _flatternmainButton="Spłaszczanie reguł";
+       private string _flatternWindowName="Okno wyboru reguły";
+       private string _flatternAllRulesText="Spłaszcz wszystkie reguły";
+       private string _flatternOneRuleText="Spłaszcz wybraną regułę";
+       private string _flatternButtonText="Spłaszcz";
+       private string _notFlattern="Przerwij";
 
-        public string AskArgumentWindowName
+       public string AskArgumentWindowName
         {
             get { return _askArgumentWindowName; }
         }
@@ -206,5 +212,35 @@ namespace LicencjatInformatyka_RMSE_.Additional
         {
             get { return _browseRulesExplainText; }
         }
+
+       public string FlatternmainButton
+       {
+           get { return _flatternmainButton; }
+       }
+
+       public string FlatternWindowName
+       {
+           get { return _flatternWindowName; }
+       }
+
+       public string FlatternAllRulesText
+       {
+           get { return _flatternAllRulesText; }
+       }
+
+       public string FlatternOneRuleText
+       {
+           get { return _flatternOneRuleText; }
+       }
+
+       public string FlatternButtonText
+       {
+           get { return _flatternButtonText; }
+       }
+
+       public string NotFlattern
+       {
+           get { return _notFlattern; }
+       }
     }
 }

@@ -61,6 +61,14 @@ namespace LicencjatInformatyka_RMSE_.Additional
         string BrowseRulesConclusionName { get; }
         string BrowseRulesExplainText { get; }
         #endregion
+        #region Flattern
+        string FlatternmainButton { get; }
+        string FlatternWindowName { get; }
+        string FlatternAllRulesText { get; }
+        string FlatternOneRuleText { get; }
+        string FlatternButtonText { get; }
+        string NotFlattern { get; }
+        #endregion
 
 
 

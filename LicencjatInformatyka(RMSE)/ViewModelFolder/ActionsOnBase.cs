@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Windows;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder;
@@ -27,10 +28,18 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
        
         public void FlatterRule(Rule rule)
         {
-           conclusion.FlatterRule(rule);
+        _viewModel.MainWindowText1+=   conclusion.FlatterRule(rule);
         }
 
-       
+        public void FlatterAllRule()
+        {
+            string s = "";
+            foreach (var rule in _bases.RuleBase.RulesList )
+            {
+             s+= conclusion.FlatterRule(rule);  
+            }
+            _viewModel.MainWindowText1 += s;
+        }
 
        
 

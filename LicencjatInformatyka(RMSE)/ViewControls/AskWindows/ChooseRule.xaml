@@ -17,7 +17,7 @@
          </DataGrid.Columns>
          </DataGrid>
         <Button Command="{Binding ConcludeCommand}" Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnProcess}" HorizontalAlignment="Left" Height="33" Margin="5,256,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click"/>
-        <Button Command="{Binding ConcludeCommand}" Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnAbort}" HorizontalAlignment="Left" Height="33" Margin="168,256,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click"/>
+        <Button Content="{Binding ChildWindowsLanguageConfig.ChooseRuleBtnAbort}" HorizontalAlignment="Left" Height="33" Margin="168,256,0,0" VerticalAlignment="Top" Width="128" Click="Button_Click"/>
 
     </Grid>
 </Window>

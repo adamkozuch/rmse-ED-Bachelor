@@ -17,7 +17,7 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Close();
         }
     }
 }

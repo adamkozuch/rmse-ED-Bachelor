@@ -75,5 +75,6 @@ C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\AskingUserControl.baml
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\AskWindows\AskStartCondition.g.cs
 C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\AskWindows\AskStartCondition.baml
-C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\bin\Debug\LicencjatInformatyka(RMSE).exe.CodeAnalysisLog.xml
-C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\bin\Debug\LicencjatInformatyka(RMSE).exe.lastcodeanalysissucceeded
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\UserControls\FlatterUserControll.g.cs
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\ViewControls\UserControls\FlatterUserControll.baml
+C:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\obj\Debug\LicencjatInformatyka(RMSE).csprojResolveAssemblyReference.cache

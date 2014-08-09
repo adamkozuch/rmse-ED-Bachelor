@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -84,17 +85,20 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
          /// Flatters the rule.
          /// </summary>
          /// <param name="flatteredRule">The flattered rule.</param>
-        public void FlatterRule(Rule flatteredRule)
+        public string FlatterRule(Rule flatteredRule)
         {
             var differenceList= new List<List<Rule>>();
             var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases, flatteredRule,out differenceList);
             var possibleTrees = TreeOperations.ReturnPossibleTrees(tree, differenceList);
-
+             int i = 0;
+             string s = "";
             foreach (var possibleTree in possibleTrees)
             {
-              _viewModel.MainWindowText1+=  GetFlatteredRuleDescription(possibleTree);
+             // _viewModel.MainWindowText1+=  
+                s+=  GetFlatteredRuleDescription(possibleTree);
+                i++;
             }
-
+             return s;
 
         }
 
@@ -144,32 +148,41 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 
             var possibleTrees = TreeOperations.ReturnPossibleTrees(tree, differenceList);
 
-
-            foreach (var onePossibility in possibleTrees) //flattering all possible configurations of conditions
+            try
             {
-                List<SimpleTree> askableTable = onePossibility.Where(var => var.Askable).ToList(); //If askable simple tree can be a model,condition of rule or condition of constrain
-
-                // sprawdzamy czy jest w bazie faktow
-                foreach (SimpleTree simpleTree in askableTable)
+                foreach (var onePossibility in possibleTrees) //flattering all possible configurations of conditions
                 {
-                    if (CheckIfStringIsFact(simpleTree.rule.Conclusion, _bases.FactBase.FactList))
-                        simpleTree.ConclusionValue = true;
+                    List<SimpleTree> askableTable = onePossibility.Where(var => var.Askable).ToList();
+                    //If askable simple tree can be a model,condition of rule or condition of constrain
+
+                    // sprawdzamy czy jest w bazie faktow
+                    foreach (SimpleTree simpleTree in askableTable)
+                    {
+                        if (CheckIfStringIsFact(simpleTree.rule.Conclusion, _bases.FactBase.FactList))
+                            simpleTree.ConclusionValue = true;
+                    }
+
+                    bool conclusionValue = CheckConclusionValueOrCountModel(askableTable);
+                   
+
+                    if (conclusionValue)
+                    {
+
+                        MessageBox.Show("Hipoteza prawdziwa");
+
+                        //TODO : trzeba wyzerowaæ bazy
+                        return true;
+                    }
                 }
-
-                bool conclusionValue = CheckConclusionValueOrCountModel(askableTable); // Check if all asking are true
-
-                if (conclusionValue)
-                {
-
-                    MessageBox.Show("Hipoteza prawdziwa");
-
-                    //TODO : trzeba wyzerowaæ bazy
-                    return true;
-                }
+                MessageBox.Show("Hipoteza niepotwierdzona brak informacji");
+                return false;
+                //TODO : trzeba wyzerowaæ bazy
             }
-            MessageBox.Show("Hipoteza niepotwierdzona brak informacji");
+            catch (Exception ex)
+            {
+                MessageBox.Show("Wnioskowanie przerwane");
+            }
             return false;
-            //TODO : trzeba wyzerowaæ bazy
         }
 
         /// <summary>
@@ -230,6 +243,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                 else
                 {
                     _viewModel.AskingRuleValueMethod(simpleTree);
+                   
 
                     if (_viewModel.CheckedRuleVal)
                     {
