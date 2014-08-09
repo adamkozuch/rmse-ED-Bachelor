@@ -14,7 +14,12 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
 
         }
 
-        public int NumberOfConstrain
+      public Constrain()
+      {
+         
+      }
+
+      public int NumberOfConstrain
         {
             get { return _numberOfConstrain; }
             set { _numberOfConstrain = value; }

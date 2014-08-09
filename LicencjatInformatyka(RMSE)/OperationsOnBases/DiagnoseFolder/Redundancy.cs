@@ -12,116 +12,57 @@
 // <summary></summary>
 // ***********************************************************************
 
-/// <summary>
-/// The OperationsOnBases namespace.
-/// </summary>
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows;
+using System.Windows.Forms;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder;
+using MessageBox = System.Windows.MessageBox;
 
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
 {
-    /// <summary>
-    /// Class Redundancy.
-    /// </summary>
+    public delegate void RedundancyMethod(List<List<SimpleTree>> possibleTree, GatheredBases bases);
+
     internal class Redundancy
     {
-        /// <summary>
-        /// Invokes the specified bases.
-        /// </summary>
-        /// <param name="bases">The bases.</param>
-        public static void Invoke(GatheredBases bases)
+        #region redundancyWithRules
+
+        public static void GeneralCheckRedundancyMethod(GatheredBases bases, RedundancyMethod typeOfRedundancy)
         {
-            //TODO: Przy redundancji trzeba uwzględnic to że reguła nie jest jedynie redundantna w przypadku spłaszczenia jedne wybranej reguły na wszystkie sposoby ale również w takich samych reguł ale nie powiązanych
-
-
-            //foreach (Rule ruleForCheck in bases.RuleBase.RulesList)
-            //{
-            //    List<List<Rule>> differencesList;
-            //    var tree = TreeOperations.ReturnComplexTreeAndDifferences(
-            //          bases, ruleForCheck, out differencesList);
-            //    List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,
-            //        differencesList);
-            //    allFlatteredRules.AddRange(possibleTrees);
-
-            //}
-            //CheckRedundancy(allFlatteredRules);
-
             var alreadyChecked = new List<string>();
+                // program checks all rule with same conclusion. That table exist to avoid double checking
             foreach (Rule ruleForCheck in bases.RuleBase.RulesList)
             {
                 if (alreadyChecked.Contains(ruleForCheck.Conclusion) == false)
                 {
-                    List<List<SimpleTree>> allFlatteredRules = new List<List<SimpleTree>>();
-                    List<Rule> ruleList = ConclusionClass.FindRulesWithParticularConclusion
-                        (ruleForCheck.Conclusion, bases.RuleBase.RulesList);
-
-                    foreach (var r in ruleList)
-                    {
-                        List<List<Rule>> differencesList;
-                        var tree = TreeOperations.ReturnComplexTreeAndDifferences(
-                            bases, r, out differencesList);
-                        List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,
-                            differencesList);
-                        allFlatteredRules.AddRange(possibleTrees);
-                    }
-
-                    // nie badam dopytywalnych
-                    // trzeba mieć wszystkie reguły z z tą samą nazwą
-                    CheckRedundancy(allFlatteredRules); // TODO: błąd bo program nie uwzglądnia tego że czasem część reguł jest podobna i wyznacza nadmiarowośc i tak CBA i DBA
-                    Contradiction.CheckContradictionWithConstrains(allFlatteredRules, bases);
+                    var allFlatteredRules = AllFlatteredRules(bases, ruleForCheck);
+                    typeOfRedundancy(allFlatteredRules, bases);
                     alreadyChecked.Add(ruleForCheck.Conclusion);
                 }
             }
         }
 
-       
-
-        /// <summary>
-        /// Checks the redunancy.
-        /// </summary>
-        /// <param name="possibleTrees">The possible trees.</param>
-        /// <param name="rule">The rule.</param>
-        private static void CheckRedundancy(List<List<SimpleTree>> possibleTrees)
+        public static void CheckRedundancyWithRules(List<List<SimpleTree>> possibleTrees, GatheredBases bases)
         {
-            foreach (var VARIABLE in possibleTrees)
+            foreach (var firstSimpleTree in possibleTrees)
             {
-                foreach (var list in possibleTrees)
+                foreach (var secoundSimpleTree in possibleTrees)
                 {
-                    if (VARIABLE != list)
+                    if (firstSimpleTree != secoundSimpleTree)
                     {
-                        List<SimpleTree> firstList = VARIABLE.Where(p => p.Askable).ToList();
-                        List<SimpleTree> secoundList = list.Where(p => p.Askable).ToList();
+                        var firstList = firstSimpleTree.Where(p => p.Askable).ToList();
+                        var secoundList = secoundSimpleTree.Where(p => p.Askable).ToList();
 
-                        bool value = CompareRules(firstList,secoundList);
+                        bool value = CompareRules(firstList, secoundList);
+
+                        CompareRulesForConstrainRedundancy(firstList, secoundList, bases);
                         if (value == false)
                         {
-                            IEnumerable<SimpleTree> firstParent = VARIABLE.Where(p => p.Parent == null);
-                            IEnumerable<SimpleTree> secoundParent = list.Where(p => p.Parent == null);
-
-                            IEnumerable<SimpleTree> firstFlattern = VARIABLE.Where(p => p.Askable);
-                            IEnumerable<SimpleTree> secoundFlattern = list.Where(p => p.Askable);
-
-
-                            string firtsRule = "";
-                            string secoundRule = "";
-                            foreach (var tree in firstFlattern)
-                            {
-                                firtsRule += " " + tree.rule.Conclusion;
-                            }
-                            foreach (var tree in secoundFlattern)
-                            {
-                                secoundRule += " " + tree.rule.Conclusion;
-                            }
-
-                            MessageBox.Show("Mamy nadmiarowość " + firstParent.First().rule.NumberOfRule +
-                                            "po spłaszczeniu " + firtsRule + "   oraz" +
-                                            secoundParent.First().rule.NumberOfRule + "po spłaszczeniu " + secoundRule);
-                            goto lab; //TODO: Redundancja jeszcze do zrobienia
+                            ReportRedundancyInRules(firstSimpleTree, secoundSimpleTree);
+                            goto lab;
                         }
                     }
                 }
@@ -130,88 +71,157 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             ;
         }
 
-        private static void CheckRedundancyWithConstrains(List<List<SimpleTree>> allFlatteredRules, GatheredBases bases)
+        public static void CheckRedundancyWithConstrain(List<List<SimpleTree>> possibleTrees,
+            GatheredBases bases)
         {
-            foreach (var constrain in bases.ConstrainBase.ConstrainList)//TODO:NIe czje
+            foreach (var first in possibleTrees)
             {
-                foreach (var ruleFlattered in allFlatteredRules)
+                foreach (var secound in possibleTrees)
                 {
-                    List<SimpleTree> askable = ruleFlattered.Where(p => p.Askable).ToList();
-                    int i = 0;
-                    foreach (var simpleTree in askable)
+                    //todo : nie wiem jak zrobić żeby były pary tylko raz bez wzgledu na kolejność 
+                    //todo : tutaj można szukać rozwiązania http://msdn.microsoft.com/en-us/magazine/cc163957.aspx
+                    if (first != secound)
                     {
-                        foreach (var condition in constrain.ConstrainConditions)
-                        //
+                        List<SimpleTree> firstList = first.Where(p => p.Askable).ToList();
+                        List<SimpleTree> secoundList = secound.Where(p => p.Askable).ToList();
+
+
+                        var value = CompareRulesForConstrainRedundancy(firstList, secoundList, bases);
+                        if (value.ConstrainConditions.Count!=0)
                         {
-                            if (simpleTree.rule.Conclusion == condition)
-                                i++;
+                            ReportRedundancyInConstrains(first, secound,value);
+                            
+                            goto lab;
                         }
                     }
-               
-                        IEnumerable<SimpleTree> firstParent = ruleFlattered.Where(p => p.Parent == null);
-                        MessageBox.Show("Jest sprzeczność z bazą ograniczeń pomiędzy regułą " +
-                                        firstParent.First().rule.Conclusion + " a"
-                                        + "ograniczeniem nr" + constrain.NumberOfConstrain);
-                    
                 }
             }
+            lab:
+            ;
         }
 
-        /// <summary>
-        /// Compares the secoundList.
-        /// </summary>
-        /// <param name="firstList">The firstList.</param>
-        /// <param name="secoundList">The secoundList.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+        private static void ReportRedundancyInRules(List<SimpleTree> firstSimpleTree, List<SimpleTree> secoundSimpleTree)
+        {
+        
+            var firstRuleDescription = ConclusionClass.GetFlatteredRuleDescription(firstSimpleTree);
+            var secoundRuleDescription = ConclusionClass.GetFlatteredRuleDescription(secoundSimpleTree);
+
+            MessageBox.Show("Mamy nadmiarowość " + firstRuleDescription + secoundRuleDescription);
+        }
+
+        #endregion
+
+        public static List<List<SimpleTree>> AllFlatteredRules(GatheredBases bases, Rule ruleForCheck)
+        {
+            List<List<SimpleTree>> allFlatteredRules = new List<List<SimpleTree>>();
+            List<Rule> ruleList = ConclusionClass.FindRulesWithParticularConclusion
+                (ruleForCheck.Conclusion, bases.RuleBase.RulesList);
+
+            foreach (var r in ruleList)
+            {
+                List<List<Rule>> differencesList;
+                var tree = TreeOperations.ReturnComplexTreeAndDifferences(
+                    bases, r, out differencesList);
+                List<List<SimpleTree>> possibleTrees = TreeOperations.ReturnPossibleTrees(tree,
+                    differencesList);
+                allFlatteredRules.AddRange(possibleTrees);
+            }
+            return allFlatteredRules;
+        }
+
+        #region redundancyWithConstrains
+
+        private static void ReportRedundancyInConstrains(List<SimpleTree> firstSimpleTree, List<SimpleTree> secoundSimpleTree, Constrain value)
+        {
+            var firstRuleDescription = ConclusionClass.GetFlatteredRuleDescription(firstSimpleTree);
+            var secoundRuleDescription = ConclusionClass.GetFlatteredRuleDescription(secoundSimpleTree);
+
+            MessageBox.Show("Mamy nadmiarowość z ograniczeniem " + firstRuleDescription + secoundRuleDescription + "z ograniczeniem numer"+value.NumberOfConstrain);
+        }
+
+        private static Constrain CompareRulesForConstrainRedundancy
+            (List<SimpleTree> firstList, List<SimpleTree> secoundList, GatheredBases bases)
+        {
+            //Function check if firstList is a part of secoundList
+
+            int count = 0;
+            var returnedConstrain = new Constrain();
+
+            //TODO: pomysleć z sortowaniem żeby była pewność
+            if (firstList.Count == secoundList.Count)
+            {
+                var newFirstList = firstList.OrderBy(p => p.rule.Conclusion);
+                var newSecoundList = secoundList.OrderBy(tree => tree.rule.Conclusion);
+
+                var secoundListAdd = newSecoundList.ToList();
+                var firstListAdd = newFirstList.ToList();
+
+                var firstElement = new SimpleTree();
+                var secoundElement = new SimpleTree();
+
+                for (int i = 0; i < firstList.Count; i++)
+                {
+                    if (secoundListAdd[i].rule.Conclusion != firstListAdd[i].rule.Conclusion)
+                    {
+                        firstElement = firstListAdd[i];
+                        secoundElement = secoundListAdd[i];
+                        count++;
+                    }
+                }
+
+              
+                if (count == 1) 
+                {
+                    foreach (var constrain in bases.ConstrainBase.ConstrainList)
+                    {
+                        int licz = 0;
+                        foreach (var condition in constrain.ConstrainConditions)
+                        {
+                            if (firstElement.rule.Conclusion == condition)
+                                licz++;
+                            if (secoundElement.rule.Conclusion == condition)
+                                licz++;
+                        }
+                        if (licz == 2)
+                        {
+                            returnedConstrain = constrain;
+                            MessageBox.Show("tak mamy nadmiarowosc pomiedzy regułami a ograniczeniami");
+                        } //TODO:jeszcze trzeba zwrócić ograniczenie żeby było wiadomo w raporcie co się nie zgadza
+                    }
+                    return returnedConstrain;
+                }
+            }
+
+            return returnedConstrain;
+        }
+
+
+
+        #endregion
+
         private static bool CompareRules(List<SimpleTree> firstList, List<SimpleTree> secoundList)
         {
             //Sprawdzamy czy firstList zawiera się w secoundList
-         
             int count = 0;
-          // teraz jeszcze czy układ elementów jest taki sam
+            if (firstList.Count <= secoundList.Count)
+            {
+                var newFirstList = firstList.OrderBy(p => p.rule.Conclusion);
+                var newSecoundList = secoundList.OrderBy(tree => tree.rule.Conclusion);
 
-            
-             //TODO: pomysleć z sortowaniem żeby była pewność
-                if (firstList.Count <= secoundList.Count)
+                var secoundListAdd = newSecoundList.ToList();
+                var firstListAdd = newFirstList.ToList();
+
+                for (int i = 0; i < firstList.Count; i++)
                 {
-                    //foreach (SimpleTree secoundListElement in secoundList)
-                    //{
-                    //    if (secoundListElement.rule.Conclusion == firstList[i].rule.Conclusion)
-                    //        count++;
-                    //    i++;
-                    //}
-                    var newFirstList = firstList.OrderBy(p => p.rule.Conclusion);
-               var  newSecoundList = secoundList.OrderBy(tree => tree.rule.Conclusion);
-                    var firstListAdd=new List<SimpleTree>();;
-                    var secoundListAdd=new List<SimpleTree>();
-                    foreach (var simpleTree in newSecoundList)
-                    {
-                        secoundListAdd.Add(simpleTree);
-                    }
-
-                    foreach (var simpleTree in newFirstList)
-                    {
-                        firstListAdd.Add(simpleTree);
-                    }
-
-
-                    
-                    
-                    
-                    
-                    for (int i = 0; i < firstList.Count; i++)
-                    {
-                         if (secoundListAdd[i].rule.Conclusion == firstListAdd[i].rule.Conclusion)
-                             count++;
-                    }
-                  
-
-                    if (count == firstList.Count)//wszystkie elementy z listy jeden muszą sie zawierać w liście2
-                    {
-                        return false;
-                    }
+                    if (secoundListAdd[i].rule.Conclusion == firstListAdd[i].rule.Conclusion)
+                        count++;
                 }
-            
+
+                if (count == firstList.Count) //wszystkie elementy z listy jeden muszą sie zawierać w liście2
+                {
+                    return false;
+                }
+            }
             return true;
         }
     }

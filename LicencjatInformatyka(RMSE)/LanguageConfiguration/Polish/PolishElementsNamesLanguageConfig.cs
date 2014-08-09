@@ -9,9 +9,9 @@ namespace LicencjatInformatyka_RMSE_.Additional
     class PolishElementsNamesLanguageConfig:IElementsNamesLanguageConfig
     {
         private string _simpleModel="model";
-        private string _extendedModel;
-        private string _linearModel;
-        private string _polyModel;
+        private string _extendedModel="model_r";
+        private string _linearModel="model_liniowy";
+        private string _polyModel="model_wielomianowy";
         private string _modelFact="m_fakt";
         private string _argument="argument_znany";
 

@@ -11,7 +11,7 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.UserControls
 	public partial class ConcludeUserControl : UserControl
 	{
 		public ConcludeUserControl(ViewModel model)
-		{
+		{ 
 			this.InitializeComponent();
 		    DataContext = model;
 		}

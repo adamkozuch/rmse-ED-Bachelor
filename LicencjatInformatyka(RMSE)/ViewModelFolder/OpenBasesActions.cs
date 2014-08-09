@@ -31,6 +31,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             {
                 _gatheredBases.RuleBase.RulesList= new List<Rule>();//When opening new base previous base must be empty.
                 _gatheredBases.RuleBase.ReadRules(fileDialog.FileName);
+                _viewModel.ButtonsLogic.RuleBaseOpened = true;
             }
 
 
@@ -45,6 +46,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             {
                 _gatheredBases.ConstrainBase.ConstrainList = new List<Constrain>();
                 _gatheredBases.ConstrainBase.ReadConstrains(fileDialog.FileName);
+                _viewModel.ButtonsLogic.ConstrainBaseOpened = true;
             }
         }
 
@@ -57,6 +59,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             {
                 _gatheredBases.ModelsBase.ModelList= new List<Model>();
                 _gatheredBases.ModelsBase.ReadModels(fileDialog.FileName);
+                _viewModel.ButtonsLogic.ModelBaseOpened = true;
             }
             Contradiction.CheckContradictionWIthModelsAndRulebase(_gatheredBases);
             

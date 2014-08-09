@@ -19,7 +19,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         private readonly GatheredBases bases;
         public readonly OpenBasesActions _openBasesActions;
         public readonly ActionsOnBase _actionsOnBase;
-
+        private ButtonsLogic _buttonsLogic;
         public event PropertyChangedEventHandler PropertyChanged = null;
 
         public ViewModel()
@@ -46,6 +46,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
 
             _basesCommands = new BasesCommands(this);
+            _buttonsLogic = new ButtonsLogic(this);
 
             #endregion
 
@@ -58,6 +59,8 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             #region ConclusionButtons
 
             ConcludeCommand = new RelayCommand(pars => _actionsOnBase.BackwardConcludeAction(_selectedRule));
+            OpenBackwardConcludeWindowCommand = new RelayCommand(p=>ShowWindow(new ChooseRule(this)));
+            ForwardConcludeCommand = new RelayCommand(p=> _actionsOnBase.ForwardConcludeAction());
 
             #endregion
 
@@ -66,6 +69,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
             StartConditionValueTrue = new RelayCommand(p=> StartConditionValue=true);
             StartConditionValueUnknown =  new RelayCommand(p => StartConditionValue=false);
+            
         }
 
 
@@ -85,6 +89,9 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         public ICommand PolishConfigurationCommand { get; set; }
         public ICommand EnglishConfigurationCommand { get; set; }
 
+        public ICommand OpenBackwardConcludeWindowCommand { get; set; }
+        public ICommand ForwardConcludeCommand { get; set; }
+
         #region AnotherCommands
 
         public ICommand ConcludeCommand { get; set; }
@@ -101,6 +108,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         private string _argumentValue;
         private List<string> _askingConditionsList;
         private readonly BasesCommands _basesCommands;
+        
         private string _startConditionName;
         private bool _startConditionValue;
         private string _mainWindowText2;
@@ -124,6 +132,16 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             {
                 _startConditionValue = value;
                 OnPropertyChanged("StartConditionValue");
+            }
+        }
+
+        public ButtonsLogic ButtonsLogic
+        {
+            get { return _buttonsLogic; }
+            set
+            {
+                _buttonsLogic = value;
+                OnPropertyChanged("ButtonsLogic");
             }
         }
 
@@ -283,7 +301,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             CheckedRuleName = simpleTree.rule.Conclusion;
             AskRuleValue window = new AskRuleValue(this);
 
-            window.ShowDialog(); // TODO:Może wystapić bug związany z zamknieciem okna x w lewym górnym rogu
+            window.ShowDialog(); // TODO:Może wystapić bug związany z zamkniciem okna x w lewym górnym rogu
 
             simpleTree.ConclusionValue = CheckedRuleVal;
         }
@@ -315,6 +333,28 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             }); 
             return StartConditionValue;
         }
+
+
+        public void AskingForwardRuleValueMethod(string conclusion)
+        {
+            CheckedRuleName = conclusion;
+            AskRuleValue window = new AskRuleValue(this);
+
+            window.ShowDialog(); // TODO:Może wystapić bug związany z zamkniciem okna x w lewym górnym rogu
+
+            bases.FactBase.FactList.Add(new Fact(){FactName = CheckedRuleName, FactValue = CheckedRuleVal}); 
+        }
+
+        public void AskingConstrainValueMethod(Constrain conclusion)
+        {
+            
+            var window = new AskConstrain(this);
+
+            window.ShowDialog(); // TODO:Może wystapić bug związany z zamkniciem okna x w lewym górnym rogu
+
+            bases.FactBase.FactList.Add(new Fact() { FactName = CheckedRuleName, FactValue = CheckedRuleVal });
+        }
+
 
         #endregion
     }

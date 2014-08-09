@@ -2,16 +2,7 @@
 {
     class PolishMainWindowLanguageConfig:IMainWindowLanguageConfig
     {
-        #region ModelsNames
 
-        private string _polyModel = "model_wielomianowy";
-        private string _simpleModel = "model";
-        private string _extendedModel = "model_r";
-        private string _modelFact = "m_fakt";
-        private string _argument = "argument_znany";
-        private string _linearModel = "model_liniowy";
-
-        #endregion
 
         #region OpenBaseInterfaceCommands
         private string _ruleBaseButton = "Baza reguł";
@@ -39,9 +30,9 @@
         private string _createModelBaseText = "Stwórz bazę modeli";
         private string _diagnoseContradictionModelBaseText ="Diagnozuj sprzecznośc w  bazę modeli";
         private string _diagnoseRedundancyModelBaseText = "Diagnozuj nadmiarowość w bazie modeli";
-        private string _bases;
-        private string _operations;
-        private string _constrainBaseButton;
+        private string _bases="Obsługa baz";
+        private string _operations="Obsługa operacji na bazach";
+        private string _constrainBaseButton="Baza ograniczeń";
 
         #endregion
 
@@ -128,35 +119,7 @@
         }
 
 
-        public string SimpleModel
-        {
-            get { return _simpleModel; }
-        }
-
-        public string ExtendedModel
-        {
-            get { return _extendedModel; }
-        }
-
-        public string LinearModel
-        {
-            get { return _linearModel; }
-        }
-
-        public string PolyModel
-        {
-            get { return _polyModel; }
-        }
-
-        public string ModelFact
-        {
-            get { return _modelFact ; }
-        }
-
-        public string Argument
-        {
-            get { return _argument; }
-        }
+       
 
         public string Bases
         {

@@ -47,7 +47,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
         /// <summary>
         /// Askeds the conditions.
         /// </summary>
-         public   void AskedConditions()
+         public   int AskedConditions()
        {
            var askingConditionList= new List<string>();
             foreach (var rule in _bases.RuleBase.RulesList)
@@ -75,8 +75,10 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                 }
                 
             }
-_viewModel.AskingConditionsList = askingConditionList;
-        }
+                 _viewModel.AskingConditionsList = askingConditionList;
+            return askingConditionList.Count;
+
+       }
 
          /// <summary>
          /// Flatters the rule.
@@ -90,38 +92,44 @@ _viewModel.AskingConditionsList = askingConditionList;
 
             foreach (var possibleTree in possibleTrees)
             {
-                var flatter = possibleTree.Where(p => p.Askable == true);
-                int i = 0;
-                foreach (var simpleTree in flatter)
-                {
-                    if (i==0)
-                    {
-                        _viewModel.MainWindowText1 += "Sp豉szczenie dla regu造 :" + flatteredRule.Conclusion + "\n";
-                        i++;
-                    }
-                   
-                    _viewModel.MainWindowText1 += simpleTree.rule.Conclusion+" ";
-                }
-                 flatter = possibleTree.Where(p => p.Askable == false);
-                 _viewModel.MainWindowText1 += "\n"; 
-                foreach (var simpleTree in flatter)
-                {
-                    if (simpleTree.rule.NumberOfRule == flatteredRule.NumberOfRule)
-                    {
-                        _viewModel.MainWindowText1 += "U篡te zosta造 nast瘼uj鉍e regu造 " + "\n";
-                    }
-                    else
-                    _viewModel.MainWindowText1 +=  simpleTree.rule.NumberOfRule +" ";
-                }
-                _viewModel.MainWindowText1 +="\n";
-
+              _viewModel.MainWindowText1+=  GetFlatteredRuleDescription(possibleTree);
             }
 
 
         }
 
+        public static string GetFlatteredRuleDescription(List<SimpleTree> possibleTree)
+        {
+            var flatter = possibleTree.Where(p => p.Askable == true);
+            var root = possibleTree.Where(p => p.Parent == null);
+            int i = 0;
+            string descriptionString="";
+            foreach (var simpleTree in flatter)
+            {
+                if (i == 0)
+                {
+                    descriptionString += "Sp豉szczenie dla regu造 :" + root.First().rule.Conclusion + "\n";
+                    i++;
+                }
 
+                descriptionString += simpleTree.rule.Conclusion + " ";
+            }
+            flatter = possibleTree.Where(p => p.Askable == false);
+            descriptionString += "\n";
+          
+            foreach (var simpleTree in flatter)
+            {
+                if (simpleTree.rule.NumberOfRule == root.First().rule.NumberOfRule)
+                {
+                    descriptionString += "U篡te zosta造 nast瘼uj鉍e regu造 " + "\n";
+                }
+                else
+                    descriptionString += simpleTree.rule.NumberOfRule + " ";
+            }
+            descriptionString += "\n";
 
+            return descriptionString;
+        }
 
 
         /// <summary>

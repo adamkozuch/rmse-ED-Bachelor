@@ -33,7 +33,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             }
         }
 
-        private void AskForConstrainValue(Constrain constrain)
+        public void AskForConstrainValue(Constrain constrain)
         {
             viewModel.AskedConstrain = constrain;
             var window = new AskConstrain(viewModel);

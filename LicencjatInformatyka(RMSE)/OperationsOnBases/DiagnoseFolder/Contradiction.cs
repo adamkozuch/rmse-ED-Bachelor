@@ -12,7 +12,10 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
     /// </summary>
     public static class Contradiction
     {
-        public static bool MethodForContradiction
+        
+
+        #region OutsideContradiction
+     public static bool MethodForContradiction
             (GatheredBases bases, Rule ruleForCheck, int count, List<List<Rule>> differenceList,out SimpleTree tree)
         {
             
@@ -40,13 +43,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             return true; // method finished tree and there is no contradiction
         }
 
-        #region OutsideContradiction
-        /// <summary>
-        ///     Checks the outside contradiction.
-        ///     Ta metoda będzie slużyła jedynie do stwierdzenia że sprzeczność występuje
-        ///     natomiast żeby diagnozowac kolejne reguły trzeba bedzie wymyślić coś innego
-        /// </summary>
-        /// <param name="bases">The bases.</param>
         public static List<Rule> CheckOutsideContradiction(GatheredBases bases, bool reportIncluded)
         {
             var contradictedRules = new List<Rule>();
@@ -67,7 +63,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
 
                         foreach (SimpleTree currentEnd in currentEndOfTree)
                         {
-                            //TODO: metoda nie sprawdza wszystkich regul albo i sprawdza
                             SimpleTree node = currentEnd;
                             SimpleTree checkedValue = currentEnd;
 
@@ -125,7 +120,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                 CheckSelfContradiction(rule);
 
               
-                for (int count = 1; count < 100; count++)  //TODO:nie powinno być stałej w pętli for
+                for (int count = 1; count < 1000; count++)  //TODO:nie powinno być stałej w pętli for
                 {
                      var tree = new SimpleTree();
                      var differenceList = new List<List<Rule>>();
@@ -174,12 +169,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         }
 
         #endregion
-        /// <summary>
-        ///     Checks the contradiction w ith models and rulebase.
-        /// </summary>
-        /// <param name="bases">The bases.</param>
-        /// 
-        ///
+      
         #region ModelContradiction
         public static void CheckContradictionWIthModelsAndRulebase(GatheredBases bases)
         {
@@ -219,13 +209,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
           
         }
 
-        // metode mozna wykozystac do modeli relacyjnych jako warunki startowe
-        /// <summary>
-        ///     Checks the contradiction between rules and started conditions.
-        /// </summary>
-        /// <param name="listOfStartedConditions">The list of started conditions.</param>
-        /// <param name="ruleForCheck">The rule for check.</param>
-        /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
+       
+        
         private static bool CheckContradictionBetweenRulesAndStartedConditions
             (List<string> listOfStartedConditions, SimpleTree ruleForCheck, Model model)
         {
@@ -249,13 +234,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         }
 
     
-        /// <summary>
-        ///     Gathers the start conditions.
-        /// </summary>
-        /// <param name="model">The model.</param>
-        /// <param name="bases">The bases.</param>
-        /// <param name="r">The r.</param>
-        /// <returns>List&lt;System.String&gt;.</returns>
+    
         private static List<string> GatherStartConditions(Model model, GatheredBases bases, List<string> r)
         {
             if (model.StartCondition != "bez warunku")
@@ -291,11 +270,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             return r;
         }
         #endregion
-        /// <summary>
-        ///     Checks the contradiction in constrains.
-        /// </summary>
-        /// <param name="bases">The bases.</param>
-        /// <param name="constrainsList">The constrains list.</param>
+   
 
         #region ConstrainContradiction
         public static void CheckContradictionWithConstrains
@@ -325,6 +300,20 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                                         firstParent.First().rule.Conclusion + " a"
                                         + "ograniczeniem nr" + constrain.NumberOfConstrain);
                     }
+                }
+            }
+        }
+
+        public static void CheckContradictionWithConstarinsMethod(GatheredBases bases)
+        {
+            var alreadyChecked = new List<string>();
+            foreach (Rule ruleForCheck in bases.RuleBase.RulesList)
+            {
+                if (alreadyChecked.Contains(ruleForCheck.Conclusion) == false)
+                {
+                    var allFlatteredRules = Redundancy.AllFlatteredRules(bases, ruleForCheck);
+                    Contradiction.CheckContradictionWithConstrains(allFlatteredRules, bases);
+                    alreadyChecked.Add(ruleForCheck.Conclusion);
                 }
             }
         }

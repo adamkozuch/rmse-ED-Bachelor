@@ -9,8 +9,8 @@ namespace LicencjatInformatyka_RMSE_.LanguageConfiguration
 {
     class EnglishChildWindowsLanguageConfig: IChildWindowsLanguageConfig
     {
-        private string _askArgumentWindowName ="";
-        private string _askArgumentExplainText;
+        private string _askArgumentWindowName ="Value of argument";
+        private string _askArgumentExplainText = "";
         private string _askArgumentBtnProcess;
         private string _askArgumentBtnUnknown;
         private string _askConstrainWindowName;
