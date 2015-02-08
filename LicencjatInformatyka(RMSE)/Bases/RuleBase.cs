@@ -6,14 +6,16 @@ using System.Text.RegularExpressions;
 using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.Bases
 {
     public class RuleBase
     {
-      
+        private readonly ViewModel _model;
+
         // reguła(Nr_reguły, "Wniosek",[Lista_warunkow odzielona przecinkami w cudzysłowiu ],semafor)
-        private IElementsNamesLanguageConfig _config;
+    //    private IElementsNamesLanguageConfig _config { get; set; }
   
         private  List<Rule> _baseList = new List<Rule>();
 
@@ -24,17 +26,17 @@ namespace LicencjatInformatyka_RMSE_.Bases
             
         }
 
-        public RuleBase(IElementsNamesLanguageConfig config)
+        public RuleBase(ViewModel model)
         {
-            _config = config;
+            _model = model;
         }
-     
+
 
         public void ReadRules(string rules)
         {
             foreach (string line in File.ReadLines(rules, Encoding.GetEncoding("Windows-1250")))
             {
-                Match m = Regex.Match(line, "^reguła");
+                Match m = Regex.Match(line,_model._elementsNamesLanguageConfig.Rule);
                 if(m.Success)
               _baseList.Add(CreateRule(line));
             }

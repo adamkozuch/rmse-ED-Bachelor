@@ -63,6 +63,22 @@ namespace LicencjatInformatyka_RMSE_
         {
             GeneralControl.Content = new FlatterUserControll();
         }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            GeneralControl.Content = new AdviceUserControl(DataContext as ViewModel);
+
+        }
+
+        private void Button_Click_9(object sender, RoutedEventArgs e)
+        {
+            GeneralControl.Content = new SoundUserControl();
+        }
+
+        private void Button_Click_10(object sender, RoutedEventArgs e)
+        {
+            GeneralControl.Content = new LanguageUserControl(DataContext as ViewModel);
+        }
        
     }
 }

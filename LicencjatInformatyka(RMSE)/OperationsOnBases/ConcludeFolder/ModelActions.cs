@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.ViewControls.AskWindows;
@@ -13,12 +14,15 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
        private ConclusionClass conclusionClass;
         private ViewModel viewModel;
         private GatheredBases bases;
+        private readonly IElementsNamesLanguageConfig _config;
+
         public ModelActions
-            (ConclusionClass _conclusionClass, ViewModel _viewModel, GatheredBases _bases)
+            (ConclusionClass _conclusionClass, ViewModel _viewModel, GatheredBases _bases, IElementsNamesLanguageConfig config)
         {
             conclusionClass = _conclusionClass;
             viewModel = _viewModel;
             bases = _bases;
+            _config = config;
 
         }
         public bool? ProcessModel(string conclusion)
@@ -56,7 +60,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                     }
                 }
             }
-            MessageBox.Show("Nieukonkretniono modleu");
+            MessageBox.Show("Nieukonkretniono modelu");
             return false; // ni
         }
 
@@ -64,28 +68,37 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
    
         private string ArgumentValue(string argument)
         {
+         
             string argumentValue = CheckInArguments(argument);
             float t;
             if (float.TryParse(argument, out t))
             {
                 return argument;
 
-            }else
+            }
+
+
 
             if (null == argumentValue)
             {
+                
                 IEnumerable<Model> models = FindModels(argument);
+
                 if (!models.Any())
                 {
+                 
                     return viewModel.AskingArgumentValueMethod(argument);
                 }
                 else
                 {
                     foreach (Model model1 in models)
                     {
-                        argumentValue = DoArithmetic(model1);
-                        if (argumentValue != null)
-                            break;
+                        if (CheckStartCondition(model1.StartCondition))
+                        {
+                            argumentValue = DoArithmetic(model1);
+                            if (argumentValue != null)
+                                break;
+                        }
                     }
                 }
             }
@@ -153,11 +166,11 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                     }
                 }
 
-                foreach (var variable in model.VariablesList)
+                foreach (var variable in model.VariablesList)  // todo :cos nie tak
                 {
                     var variableValue = ArgumentValue(variable);
                     if (variableValue != null)
-                        factors.Add(variableValue);
+                        variablesList.Add(variableValue);
                     else
                     {
                         MessageBox.Show("Nieukonkretniony");
@@ -203,7 +216,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
         private string CheckInArguments(string firstArg)
         {
             // trzeba zrobic zwracanie null w razie braku odpowiedniego argumentu albo zwrocic zero
-            foreach (Argument argument in bases.ArgumentBase.argumentList)
+            foreach (Argument argument in bases.ModelsBase.ArgumentList)
             {
                 if (firstArg == argument.ArgumentName)
                     return argument.Value;
@@ -214,7 +227,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
         private bool CheckStartCondition(string startCondition)
         {
 
-            if (startCondition != "bez warunku")
+            if (startCondition !=_config.NoConditionInModel)
             {
                 bool value = ConclusionClass.CheckIfStringIsFact(startCondition, bases.ModelsBase.ModelFactList);
                 if (value)

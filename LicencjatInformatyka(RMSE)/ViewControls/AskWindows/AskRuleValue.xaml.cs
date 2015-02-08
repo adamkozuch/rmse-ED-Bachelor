@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Windows;
 using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
@@ -9,6 +10,7 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows
     /// </summary>
     public partial class AskRuleValue : Window
     {
+        
         public AskRuleValue(ViewModel model)
         {
             InitializeComponent();
@@ -32,7 +34,8 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            Close();
+           Close();
         }
+
     }
 }

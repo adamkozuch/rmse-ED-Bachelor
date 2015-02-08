@@ -25,7 +25,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -63,7 +63,14 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
@@ -107,14 +114,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataBase.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataBase.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="ViewControls\AdviceWindow.xaml.cs">
+      <DependentUpon>AdviceWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewControls\AskWindows\AskStartCondition.xaml.cs">
       <DependentUpon>AskStartCondition.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\GraphicWindow.xaml.cs">
+      <DependentUpon>GraphicWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\SoundWindow.xaml.cs">
+      <DependentUpon>SoundWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewControls\UserControls\AdviceUserControl.xaml.cs">
       <DependentUpon>AdviceUserControl.xaml</DependentUpon>
@@ -133,6 +144,9 @@
     <Compile Include="OperationsOnBases\ConcludeFolder\ModelActions.cs" />
     <Compile Include="ViewControls\UserControls\FlatterUserControll.xaml.cs">
       <DependentUpon>FlatterUserControll.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControls\UserControls\LanguageUserControl.xaml.cs">
+      <DependentUpon>LanguageUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewControls\UserControls\ReportAndDescriptionUserControl.xaml.cs">
       <DependentUpon>ReportAndDescriptionUserControl.xaml</DependentUpon>
@@ -212,7 +226,19 @@
     <Compile Include="ViewControls\UserControls\RuleBaseUserControl.xaml.cs">
       <DependentUpon>RuleBaseUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="ViewControls\AdviceWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ViewControls\AskWindows\AskStartCondition.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewControls\GraphicWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewControls\SoundWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -225,6 +251,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ViewControls\UserControls\FlatterUserControll.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ViewControls\UserControls\LanguageUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -301,7 +331,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Bases\ConfigInterface.cs" />
     <Compile Include="Bases\ConstrainBase.cs" />
     <Compile Include="Bases\GraphicBase.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -342,13 +371,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="DataBase.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataBase.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="DataBase.edmx.diagram">
-      <DependentUpon>DataBase.edmx</DependentUpon>
-    </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="LicencjatInformatyka%28RMSE%29_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -376,6 +399,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

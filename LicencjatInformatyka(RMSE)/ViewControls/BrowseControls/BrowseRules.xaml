@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
+        xmlns:browseControls="clr-namespace:LicencjatInformatyka_RMSE_.ViewControls.BrowseControls"
         mc:Ignorable="d"
         Title="{Binding ChildWindowsLanguageConfig.BrowseRulesWindowName}" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
     <Grid>
@@ -23,7 +24,8 @@
                 </DataGridTextColumn>
                 <DataGridComboBoxColumn    >
                     <DataGridComboBoxColumn.Header>
-                        <TextBlock Text="{Binding DataContext.ChildWindowsLanguageConfig.BrowseRulesConditionsName,
+
+                        <TextBlock  Text ="{Binding DataContext.ChildWindowsLanguageConfig.BrowseRulesConditionsName,
                       RelativeSource={RelativeSource AncestorType=DataGrid}}"/>
                     </DataGridComboBoxColumn.Header>
                     <DataGridComboBoxColumn.EditingElementStyle>

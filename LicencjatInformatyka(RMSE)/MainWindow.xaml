@@ -5,7 +5,7 @@
     
     xmlns:viewModelFolder="clr-namespace:LicencjatInformatyka_RMSE_.ViewModelFolder"
     x:Class="LicencjatInformatyka_RMSE_.MainWindow"
-        Title="Regułowo-modelowy system ekspertowy elementarnie dokładny" Height="600" Width="920.5"
+        Title="{Binding MainWindowLanguageConfig.MainWindowName}" Height="600" Width="920.5"
         DataContext="{DynamicResource ViewModel}" ResizeMode="NoResize">
 
     <Window.Resources>
@@ -25,44 +25,36 @@
             <ColumnDefinition Width="26*"/>
             <ColumnDefinition Width="73*"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Grid.Column="1" Grid.Row="1" Stroke="Black" Margin="5,5,18.112,5"/>
-        <Button Content="Wyczysc konsole" Command="{Binding ClearConsoleCommand}" HorizontalAlignment="Left" Height="33" Margin="15,408,0,0" VerticalAlignment="Top" Width="222" Grid.Row="1"/>
+        <Rectangle Grid.Column="1" Grid.Row="1"  Margin="5,5,18.112,5"/>
+        <Button Content="{Binding MainWindowLanguageConfig.CleanConsole}" Command="{Binding ClearConsoleCommand}" HorizontalAlignment="Left" Height="33" Margin="25,399,0,0" VerticalAlignment="Top" Width="222" Grid.Row="1" Grid.ColumnSpan="2"/>
         <UserControl Name="GeneralControl" Margin="5,5,5,47" Grid.Row="1">
 
         </UserControl>
-        <TabControl Name="TabControl"  Grid.Column="1" HorizontalAlignment="Left" Margin="5,40,0,0" Width="655.641" Background="White" BorderBrush="#FF2C1C1C" Foreground="White" Height="85" VerticalAlignment="Top">
-            <TabItem Header="{Binding MainWindowLanguageConfig.Bases}" HorizontalAlignment="Right" Width="82">
-                <Grid Background="#FFFBF9F9">
-                    <Button  Content="{Binding MainWindowLanguageConfig.RuleBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
-                    <Button  Content="{Binding MainWindowLanguageConfig.ConstrainBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="115,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_2"/>
-                    <Button Content="{Binding MainWindowLanguageConfig.ModelBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="220,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_3"/>
-                    <Button Content="Baza rad" HorizontalAlignment="Left" Height="32.04" Margin="325,10,0,0" VerticalAlignment="Top" Width="100"/>
-                    <Button Content="Baza grafiki" HorizontalAlignment="Left" Height="32.04" Margin="430,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_6"/>
-                    <Button Content="Baza dzwięków" HorizontalAlignment="Left" Height="32.04" Margin="535,10,-3,0" VerticalAlignment="Top" Width="100"/>
-                </Grid>
-            </TabItem>
-            <TabItem Header="{Binding MainWindowLanguageConfig.Operations}">
-                <Grid Background="White" Margin="0,0,0,-1.5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="13*"/>
-                        <ColumnDefinition Width="54*"/>
-                        <ColumnDefinition Width="582*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Content="Analiza bazy wiedzy" HorizontalAlignment="Left" Height="32.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Grid.ColumnSpan="3"/>
-                    <Button Content="Opis i raporty" HorizontalAlignment="Left" Height="32.04" Margin="49.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
-                    <Button Content="{Binding ChildWindowsLanguageConfig.FlatternmainButton}" HorizontalAlignment="Left" Height="32.04" Margin="154.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" Click="Button_Click_7"/>
-                    <Button Content="Wnioskowanie" HorizontalAlignment="Left" Height="32.04" Margin="259.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" Click="Button_Click_5"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Height="32.04" Margin="364.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2"/>
-                    <Button Content="Button" HorizontalAlignment="Left" Height="32.04" Margin="469.708,10,0,0" VerticalAlignment="Top" Width="100" Grid.Column="2" />
-                </Grid>
-            </TabItem>
-        </TabControl>
-        <Label Content="Menu" Grid.Column="1" HorizontalAlignment="Left" Height="30" Margin="10,5,0,0" VerticalAlignment="Top" Width="407.141"/>
+        <TabControl Name="TabControl"  Grid.Column="1" HorizontalAlignment="Left" Margin="10,2,0,0" Width="656" Background="White"  Foreground="White" Height="131" VerticalAlignment="Top" Grid.RowSpan="2">
 
-        <ScrollViewer Name="Viewer" Grid.Column="1" Grid.Row="1" Margin="0,10,19.586,10" >
-            <TextBlock  LineHeight="Auto"   IsEnabled="False"  Text="{Binding MainWindowText1}"    TextWrapping="Wrap"  Width="612.975"/>
-        </ScrollViewer>
-        <Button Command="{Binding PolishConfigurationCommand}" Content="Polski" HorizontalAlignment="Left" Height="37" Margin="63,10,0,0" VerticalAlignment="Top" Width="127"/>
-        <Button Command="{Binding EnglishConfigurationCommand}" Content="Angielski" HorizontalAlignment="Left" Height="37" Margin="63,52,0,0" VerticalAlignment="Top" Width="127"/>
+            <Grid Background="#FFFBF9F9" Margin="6,7,-6,-2">
+                <Button  Content="{Binding MainWindowLanguageConfig.RuleBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="10,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_1"/>
+                <Button  Content="{Binding MainWindowLanguageConfig.ConstrainBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="115,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_2"/>
+                <Button Content="{Binding MainWindowLanguageConfig.ModelBaseButton}" HorizontalAlignment="Left" Height="32.04" Margin="220,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_3"/>
+                <Button Content="{Binding MainWindowLanguageConfig.AdvicesBaseName}" HorizontalAlignment="Left" Height="32.04" Margin="325,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_8"/>
+                <Button Content="{Binding MainWindowLanguageConfig.GraphicsBaseName}" HorizontalAlignment="Left" Height="32.04" Margin="430,10,0,0" VerticalAlignment="Top" Width="100" Click="Button_Click_6"/>
+                <Button Content="{Binding MainWindowLanguageConfig.SoundsBaseName}" HorizontalAlignment="Left" Height="32.04" Margin="535,10,-3,0" VerticalAlignment="Top" Width="100" Click="Button_Click_9"/>
+                <Button Content="{Binding MainWindowLanguageConfig.AbstractsAndReports}" HorizontalAlignment="Left" Height="32" Margin="10,56,0,0" VerticalAlignment="Top" Width="125"/>
+                <Button Content="{Binding MainWindowLanguageConfig.KnowledgeBaseAnalysisName}" HorizontalAlignment="Left" Height="32" Margin="140,56,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_7"/>
+                <Button Content="{Binding MainWindowLanguageConfig.ChainingName}" HorizontalAlignment="Left" Height="32" Margin="270,56,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_5"/>
+                <Button Content="{Binding MainWindowLanguageConfig.LanguageVersion}" HorizontalAlignment="Left" Height="32" Margin="400,56,0,0" VerticalAlignment="Top" Width="125" Click="Button_Click_10" />
+            </Grid>
+
+        </TabControl>
+        <!--<StackPanel Orientation="Vertical" Grid.Column="1" Margin="10,13,0,0" Grid.Row="1" >-->
+
+
+            <ScrollViewer HorizontalScrollBarVisibility="Visible" Name="Viewer"  Margin="10,41,10,14" Grid.Column="1" Grid.Row="1"  >
+                <Border BorderThickness="1" BorderBrush="Black">
+                    <TextBlock   LineHeight="Auto"   IsEnabled="False"  Text="{Binding MainWindowText1}"    TextWrapping="Wrap"  Width="637" Height="4960" RenderTransformOrigin="1.022,0.825" />
+                </Border>
+            </ScrollViewer>
+        <!--</StackPanel>-->
+        <Label Content="{Binding MainWindowLanguageConfig.ConsoleName}" Grid.Column="1" HorizontalAlignment="Left" Height="31" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="160"/>
     </Grid>
 </Window>

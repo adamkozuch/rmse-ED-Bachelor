@@ -1,22 +1,7 @@
-﻿// ***********************************************************************
-// Assembly         : LicencjatInformatyka(RMSE)
-// Author           : Adamk
-// Created          : 07-20-2014
-//
-// Last Modified By : Adamk
-// Last Modified On : 07-20-2014
-// ***********************************************************************
-// <copyright file="Redundancy.cs" company="">
-//     Copyright (c) . All rights reserved.
-// </copyright>
-// <summary></summary>
-// ***********************************************************************
+﻿
 
-
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Windows.Forms;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder;
@@ -24,7 +9,7 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
 {
-    public delegate void RedundancyMethod(List<List<SimpleTree>> possibleTree, GatheredBases bases);
+    public delegate int RedundancyMethod(List<List<SimpleTree>> possibleTree, GatheredBases bases);
 
     internal class Redundancy
     {
@@ -33,20 +18,47 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
         public static void GeneralCheckRedundancyMethod(GatheredBases bases, RedundancyMethod typeOfRedundancy)
         {
             var alreadyChecked = new List<string>();
-                // program checks all rule with same conclusion. That table exist to avoid double checking
+            bool withRules = false;
+            bool withConstrains = false;
+            bool typeRules = false;
+
+
+            // program checks all rule with same conclusion. That table exist to avoid double checking
             foreach (Rule ruleForCheck in bases.RuleBase.RulesList)
             {
                 if (alreadyChecked.Contains(ruleForCheck.Conclusion) == false)
                 {
                     var allFlatteredRules = AllFlatteredRules(bases, ruleForCheck);
-                    typeOfRedundancy(allFlatteredRules, bases);
+                    var i = typeOfRedundancy(allFlatteredRules, bases);
+                        // delegate CheckRedundancyWithRules or another method
                     alreadyChecked.Add(ruleForCheck.Conclusion);
+
+                    if (1 == i || 2 == i)
+                        typeRules = true;
+
+                    if (i == 2)
+                    {
+                        withRules = true;
+                    }
+
+                    if (i == 32)
+                    {
+                        withConstrains = true;
+                    }
                 }
             }
+            if (typeRules)
+                if (withRules == false)
+                    MessageBox.Show("Nie wykryto nadmiarowości w bazie reguł");
+            if (typeRules == false)
+                if (withConstrains == false)
+                    MessageBox.Show("Nie wykryto nadmiarowości lącznych w bazie reguł i ograniczeń");
         }
 
-        public static void CheckRedundancyWithRules(List<List<SimpleTree>> possibleTrees, GatheredBases bases)
+        public static int CheckRedundancyWithRules
+            (List<List<SimpleTree>> possibleTrees, GatheredBases bases)
         {
+            int i = 0;
             foreach (var firstSimpleTree in possibleTrees)
             {
                 foreach (var secoundSimpleTree in possibleTrees)
@@ -61,6 +73,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                         CompareRulesForConstrainRedundancy(firstList, secoundList, bases);
                         if (value == false)
                         {
+                            i++;
                             ReportRedundancyInRules(firstSimpleTree, secoundSimpleTree);
                             goto lab;
                         }
@@ -68,41 +81,59 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                 }
             }
             lab:
-            ;
+            
+            if (i == 0)
+                return 1;
+            return 2;
         }
 
-        public static void CheckRedundancyWithConstrain(List<List<SimpleTree>> possibleTrees,
+        public static int CheckRedundancyWithConstrain(List<List<SimpleTree>> possibleTrees,
             GatheredBases bases)
         {
+            int i = 0;
+            List<List<SimpleTree>[]> checkedList = new List<List<SimpleTree>[]>();
             foreach (var first in possibleTrees)
             {
                 foreach (var secound in possibleTrees)
                 {
-                    //todo : nie wiem jak zrobić żeby były pary tylko raz bez wzgledu na kolejność 
-                    //todo : tutaj można szukać rozwiązania http://msdn.microsoft.com/en-us/magazine/cc163957.aspx
-                    if (first != secound)
+                    List<SimpleTree>[] list = new List<SimpleTree>[2] {first, secound};
+                    var groupedList = list.GroupBy(p => p.First().rule.Conclusion).ToList();
+                    foreach (IGrouping<string, List<SimpleTree>> grouping in groupedList)
                     {
-                        List<SimpleTree> firstList = first.Where(p => p.Askable).ToList();
-                        List<SimpleTree> secoundList = secound.Where(p => p.Askable).ToList();
+                    }
 
 
-                        var value = CompareRulesForConstrainRedundancy(firstList, secoundList, bases);
-                        if (value.ConstrainConditions.Count!=0)
+                    list = new List<SimpleTree>[2];
+
+                    {
+                        
+
+                        if (first != secound)
                         {
-                            ReportRedundancyInConstrains(first, secound,value);
-                            
-                            goto lab;
+                            List<SimpleTree> firstList = first.Where(p => p.Askable).ToList();
+                            List<SimpleTree> secoundList = secound.Where(p => p.Askable).ToList();
+
+
+                            var value = CompareRulesForConstrainRedundancy(firstList, secoundList, bases);
+                            if (value.ConstrainConditions.Count != 0)
+                            {
+                                ReportRedundancyInConstrains(first, secound, value);
+                                i++;
+                                goto lab;
+                            }
                         }
                     }
                 }
             }
             lab:
             ;
+            if (i == 0)
+                return 21;
+            return 32;
         }
 
         private static void ReportRedundancyInRules(List<SimpleTree> firstSimpleTree, List<SimpleTree> secoundSimpleTree)
         {
-        
             var firstRuleDescription = ConclusionClass.GetFlatteredRuleDescription(firstSimpleTree);
             var secoundRuleDescription = ConclusionClass.GetFlatteredRuleDescription(secoundSimpleTree);
 
@@ -131,12 +162,14 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
 
         #region redundancyWithConstrains
 
-        private static void ReportRedundancyInConstrains(List<SimpleTree> firstSimpleTree, List<SimpleTree> secoundSimpleTree, Constrain value)
+        private static void ReportRedundancyInConstrains
+            (List<SimpleTree> firstSimpleTree, List<SimpleTree> secoundSimpleTree, Constrain value)
         {
             var firstRuleDescription = ConclusionClass.GetFlatteredRuleDescription(firstSimpleTree);
             var secoundRuleDescription = ConclusionClass.GetFlatteredRuleDescription(secoundSimpleTree);
 
-            MessageBox.Show("Mamy nadmiarowość z ograniczeniem " + firstRuleDescription + secoundRuleDescription + "z ograniczeniem numer"+value.NumberOfConstrain);
+            MessageBox.Show("Mamy nadmiarowość z ograniczeniem \n" + firstRuleDescription + secoundRuleDescription +
+                            "z ograniczeniem numer" + value.NumberOfConstrain);
         }
 
         private static Constrain CompareRulesForConstrainRedundancy
@@ -147,7 +180,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
             int count = 0;
             var returnedConstrain = new Constrain();
 
-            //TODO: pomysleć z sortowaniem żeby była pewność
+
             if (firstList.Count == secoundList.Count)
             {
                 var newFirstList = firstList.OrderBy(p => p.rule.Conclusion);
@@ -169,8 +202,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                     }
                 }
 
-              
-                if (count == 1) 
+
+                if (count == 1)
                 {
                     foreach (var constrain in bases.ConstrainBase.ConstrainList)
                     {
@@ -185,8 +218,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                         if (licz == 2)
                         {
                             returnedConstrain = constrain;
-                            MessageBox.Show("tak mamy nadmiarowosc pomiedzy regułami a ograniczeniami");
-                        } //TODO:jeszcze trzeba zwrócić ograniczenie żeby było wiadomo w raporcie co się nie zgadza
+                        }
                     }
                     return returnedConstrain;
                 }
@@ -194,8 +226,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
 
             return returnedConstrain;
         }
-
-
 
         #endregion
 
@@ -216,11 +246,11 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                     if (secoundListAdd[i].rule.Conclusion == firstListAdd[i].rule.Conclusion)
                         count++;
                 }
-
-                if (count == firstList.Count) //wszystkie elementy z listy jeden muszą sie zawierać w liście2
-                {
-                    return false;
-                }
+                if (count > 0)
+                    if (count == firstList.Count) //wszystkie elementy z listy jeden muszą sie zawierać w liście2
+                    {
+                        return false;
+                    }
             }
             return true;
         }

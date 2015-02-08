@@ -10,7 +10,7 @@
 	d:DesignWidth="188" d:DesignHeight="449" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel}">
    
 	<Grid x:Name="LayoutRoot">
-        <Button IsEnabled="{Binding ButtonsLogic.ConclusionEnabled}" Command="{Binding ForwardConcludeCommand}" Content="Wnioskowanie w przód" HorizontalAlignment="Left" Height="35.144" Margin="10,10,0,0" VerticalAlignment="Top" Width="168"/>
-        <Button IsEnabled="{Binding ButtonsLogic.ConclusionEnabled}" Command="{Binding OpenBackwardConcludeWindowCommand}"  Content="Wnioskowanie wstecz" HorizontalAlignment="Left" Height="35.144" Margin="10,50.144,0,0" VerticalAlignment="Top" Width="168" />
+        <Button IsEnabled="{Binding ButtonsLogic.ConclusionEnabled}" Command="{Binding ForwardConcludeCommand}" Content="{Binding MainWindowLanguageConfig.ForwardChaining}" HorizontalAlignment="Left" Height="35.144" Margin="10,10,0,0" VerticalAlignment="Top" Width="168"/>
+        <Button IsEnabled="{Binding ButtonsLogic.ConclusionEnabled}" Command="{Binding OpenBackwardConcludeWindowCommand}"  Content="{Binding MainWindowLanguageConfig.BackwardChaining}" HorizontalAlignment="Left" Height="35.144" Margin="10,50.144,0,0" VerticalAlignment="Top" Width="168" />
 	</Grid>
 </UserControl>

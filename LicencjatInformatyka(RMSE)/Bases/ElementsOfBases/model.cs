@@ -29,8 +29,8 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
         }
 
 
-        public Model(int modelNumber, string startCondition,string operation,
-            string conclusion, List<string> argumentsList , bool semaphor)
+        public Model(int modelNumber, string startCondition,
+            string conclusion,string operation, List<string> argumentsList , bool semaphor)
         {
             ModelNumber = modelNumber;
             StartCondition = startCondition;
@@ -38,6 +38,7 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
             ArgumentsList = argumentsList;
             Semaphor = semaphor;
             ModelType = "extended";
+            Operation = operation;
             //ModelValue = ar.ExtendedArithmeticModel(argumentsList, operation);
         }
 

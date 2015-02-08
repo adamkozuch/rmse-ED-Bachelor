@@ -24,6 +24,62 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         private bool _modelBaseOpened;
         private bool _constrainBaseOpened;
         private bool _conclusionEnabled=true; //todo :pamiętać zeby to zmienic
+        private bool _outsideContradictionIsTrue;
+
+        private bool _forwardButtonEnabled;
+        private bool _backwardButtonEnabled;
+        private bool _flatternAllButtonEnabled;
+        private bool _flatternOneButtonEnabled;
+
+        public void OutsideContradictionDetectedorNoBase(bool value)
+        {
+            ForwardButtonEnabled = value;
+            BackwardButtonEnabled = value;
+            FlatterAllEnabled = value;
+            FlatterOneEnabled = value;
+
+        }
+
+
+
+        #region InCaseContradiction
+        public bool ForwardButtonEnabled
+        {
+            get { return _forwardButtonEnabled; }
+            set
+            {
+                _forwardButtonEnabled = value;
+                OnPropertyChanged("ForwardButtonEnabled");
+            }
+        }
+        public bool BackwardButtonEnabled
+        {
+            get { return _backwardButtonEnabled; }
+            set
+            {
+                _backwardButtonEnabled = value;
+                OnPropertyChanged("BackwardButtonEnabled");
+            }
+        }
+        public bool FlatterAllEnabled
+        {
+            get { return _flatternAllButtonEnabled; }
+            set
+            {
+                _flatternAllButtonEnabled = value;
+                OnPropertyChanged("FlatterAllEnabled");
+            }
+        }
+        public bool FlatterOneEnabled
+        {
+            get { return _flatternOneButtonEnabled; }
+            set
+            {
+                _flatternOneButtonEnabled = value;
+                OnPropertyChanged("FlatterOneEnabled");
+            }
+        }
+        #endregion
 
 
         public bool RuleBaseOpened

@@ -9,7 +9,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
     {
         public static List<string> SplitArguments(string input)
         {
-            Regex csvSplit = new Regex("(?:^|,)(\"(?:[^\"]+|\"\")*\"|[^,]*)", RegexOptions.Compiled);
+           Regex csvSplit = new Regex("(?:^|,)(\"(?:[^\"]+|\"\")*\"|[^,]*)", RegexOptions.Compiled);// todo: zrobic split
+           
             List<string> list = new List<string>();
             foreach (Match match in csvSplit.Matches(input))
             {
@@ -21,6 +22,23 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
             list[list.Count - 1] = list.Last().Replace(")", "");
             return list;
         }
+
+        public static List<string> SplitArgumentsForModel(string input)
+        {
+            Regex csvSplit = new Regex("(?:^|,)(\"(?:[^\"]+|\"\")*\"|[^,]*)", RegexOptions.Compiled);// todo: zrobic split
+
+            List<string> list = new List<string>();
+            foreach (Match match in csvSplit.Matches(input))
+            {
+                string s = match.Value.TrimStart(',');
+                s = s.Replace("\"", "");
+                list.Add(s);
+                Console.WriteLine(match.Value.TrimStart(','));
+            }
+           
+            return list;
+        }
+
 
         public static string[] SplitRuleToTwoPartsConditionsAndAnother(string rule)
         {

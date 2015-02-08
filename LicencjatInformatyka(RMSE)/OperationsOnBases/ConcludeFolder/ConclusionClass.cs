@@ -1,9 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
+using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
+using LicencjatInformatyka_RMSE_.ViewControls;
 using LicencjatInformatyka_RMSE_.ViewControls.AskWindows;
 using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
@@ -23,6 +28,9 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
         /// The _view model
         /// </summary>
         private readonly ViewModel _viewModel;
+
+        private readonly IElementsNamesLanguageConfig _config;
+
         /// <summary>
         /// The _constrain actions
         /// </summary>
@@ -37,12 +45,13 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
         /// </summary>
         /// <param name="bases">The bases.</param>
         /// <param name="viewModel">The view model.</param>
-        public ConclusionClass(GatheredBases bases, ViewModel viewModel)
+        public ConclusionClass(GatheredBases bases, ViewModel viewModel, IElementsNamesLanguageConfig config)
         {
             _bases = bases;
             _viewModel = viewModel;
+            _config = config;
             _constrainActions = new ConstrainActions(this, _viewModel, bases);
-            _modelActions = new ModelActions(this,_viewModel,bases);
+            _modelActions = new ModelActions(this,_viewModel,bases,config);
         }
 
         /// <summary>
@@ -130,7 +139,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                 else
                     descriptionString += simpleTree.rule.NumberOfRule + " ";
             }
-            descriptionString += "\n";
+            descriptionString += "\n\n\n";
 
             return descriptionString;
         }
@@ -143,6 +152,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool BackwardConclude( Rule checkedRule)
         {
+            //FindHelpfulAssets(checkedRule);
             var differenceList = new List<List<Rule>>();
             var tree = TreeOperations.ReturnComplexTreeAndDifferences(_bases, checkedRule,out differenceList);
 
@@ -168,21 +178,133 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                     if (conclusionValue)
                     {
 
-                        MessageBox.Show("Hipoteza prawdziwa");
-
+                        MessageBox.Show("Hipoteza :"+checkedRule.Conclusion+" prawdziwa");
+                        ShowAdviceGraphicOrSound(checkedRule);
+                        CleanBase();
                         //TODO : trzeba wyzerowaæ bazy
                         return true;
                     }
                 }
-                MessageBox.Show("Hipoteza niepotwierdzona brak informacji");
+                MessageBox.Show("Nie uda³o siê potwierdziæ wniosku regu³y "+checkedRule.NumberOfRule.ToString()+"\n"+ 
+                    "Ze wzglêdu na za³o¿enie otwatrego œwiata hipoteza niepotwierdzona");
+                CleanBase();
                 return false;
                 //TODO : trzeba wyzerowaæ bazy
             }
-            catch (Exception ex)
+            catch (ApplicationException  ex)
             {
+               CleanBase();
                 MessageBox.Show("Wnioskowanie przerwane");
+                _viewModel.ExceptionValue = false;
             }
             return false;
+        }
+
+        private void CleanBase()
+        {
+            _bases.FactBase.FactList = new List<Fact>();
+            _bases.ModelsBase.ModelFactList = new List<Fact>();
+            _bases.ArgumentBase.argumentList = new List<Argument>();
+        }
+
+        private void ShowAdviceGraphicOrSound(Rule checkedRule)
+        {
+            int number = checkedRule.NumberOfRule;
+            foreach (var advice in _bases.AdviceBase.AdviceList)
+            {
+                if (advice.adviceNumber == number)
+                {
+                    AskShowAdvice(advice);
+                }
+            }
+
+                foreach (var graphic in _bases.GraphicBase.GraphicList)
+            {
+                if (graphic.graphicNumber == number)
+                {
+                    AskShowGraphic(graphic);
+                }
+            }
+
+                    foreach (var sound in _bases.SoundBase.SoundList)
+            {
+                if (sound.soundNumber == number)
+                {
+                    AskShowSound(sound);
+                }
+            }
+
+
+        }
+
+        private void AskShowSound(Sound sound)
+        {
+            
+        }
+
+        private void AskShowGraphic(Graphic graphic)
+        {
+            if (MessageBox.Show("Rada", "Do wniosku za³¹czona jest grafika czy chcesz j¹ zobaczyæ?",
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                _viewModel.GraphicPath = _viewModel._currentGraphicFolderPath + "\\" + graphic.graphicPath;
+                GraphicWindow window = new GraphicWindow(_viewModel);
+                window.Show();
+            }
+        }
+
+        private void AskShowAdvice(Advice advice)
+        {
+            if (MessageBox.Show("Rada", "Do wniosku za³¹czona jest rada czy chcesz j¹ zobaczyæ?", 
+                MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+               
+                _viewModel.advicePath = _viewModel._currentAdviceFolderPath + "\\" + advice.advicePath;
+
+            foreach (string line in File.ReadLines(_viewModel.advicePath, Encoding.GetEncoding("Windows-1250")))
+            {
+
+                _viewModel.adviceText += line + "\n";
+
+            }
+
+            AdviceWindow window = new AdviceWindow(_viewModel);
+            window.Show();
+            }
+           
+           
+        }
+
+        public void FindHelpfulAssets(Rule checkedRule)
+        {
+            List<Graphic> findedGraphics = _bases.GraphicBase.GraphicList.Where(p => p.graphicNumber == checkedRule.NumberOfRule).ToList();
+
+            FindAdvice(checkedRule.NumberOfRule);
+            if(findedGraphics.Count!=0)
+            FindGraphic(checkedRule.NumberOfRule);
+            FindSound(checkedRule.NumberOfRule);
+
+        }
+
+        private void FindSound(int numberOfRule)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void FindGraphic(int numberOfRule)
+        {
+            List<Graphic> findedGraphics = _bases.GraphicBase.GraphicList.Where(p => p.graphicNumber == numberOfRule).ToList();
+            if(findedGraphics.Count!=0)
+                AskShowGraphic(findedGraphics.First());
+
+        }
+
+        private void FindAdvice(int numberOfRule)
+        {
+            List<Advice> findedGraphics =
+                _bases.AdviceBase.AdviceList.Where(p => p.adviceNumber == numberOfRule).ToList();
+            if (findedGraphics.Count != 0)
+                AskShowAdvice(findedGraphics.First());
         }
 
         /// <summary>
@@ -238,18 +360,25 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                     }
                 }
                 else
-                if (simpleTree.ConclusionValue)
-                    i++;
-                else
                 {
-                    _viewModel.AskingRuleValueMethod(simpleTree);
-                   
-
-                    if (_viewModel.CheckedRuleVal)
+                    if (CheckIfStringIsFact(simpleTree.rule.Conclusion, _bases.FactBase.FactList))
                     {
                         i++;
+                        simpleTree.ConclusionValue = true;
                         IfParentTrueWrite(simpleTree);
-                            //todo: i tutaj trzeba sprawdziæ czy jakaœ regu³a siê nie odblokowa³a
+                    }
+
+                    else
+                    {
+                        _viewModel.AskingRuleValueMethod(simpleTree);
+
+
+                        if (_viewModel.CheckedRuleVal)
+                        {
+                            i++;
+                            IfParentTrueWrite(simpleTree); // Check if parent changed value to concrete
+
+                        }
                     }
                 }
             }

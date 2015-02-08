@@ -175,7 +175,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases
 
                 yield return family;
                 foreach (SimpleTree child in family.Children)
-
                     stack.Push(child);
             }
         }

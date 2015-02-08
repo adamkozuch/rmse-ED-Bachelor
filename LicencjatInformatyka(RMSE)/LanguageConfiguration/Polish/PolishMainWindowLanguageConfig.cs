@@ -34,6 +34,30 @@
         private string _operations="Obsługa operacji na bazach";
         private string _constrainBaseButton="Baza ograniczeń";
 
+
+        private string _knowledgeBaseAnalysisName="Analiza bazy wiedzy";
+        private string _flatteringChoosenRule="Wybierz regułę do spłaszczenia";
+        private string _flatteringAllRules="Spłaszcz wszyystkie reguły";
+        private string _chainingName="Wnioskowanie";
+        private string _forwardChaining="Wnioskowanie w przód";
+        private string _backwardChaining="Wnioskowanie wstecz";
+        private string _abstractsAndReports="Opisy i raporty";
+        private string _graphicsBaseName="Baza grafiki";
+        private string _advicesBaseName="Baza rad";
+        private string _soundsBaseName="Baza dźwięków";
+        private string _openAdviceBase="Otwórz bazę rad";
+        private string _loadFolderWithAdvices="Załaduj pliki rad";
+        private string _openGraphicsBase="Otwórz bazę grafiki";
+        private string _loadFolderWithGraphics="Załaduj folder grafiki";
+        private string _openSoundBase="Otwórz bazę dźwięków";
+        private string _loadFolderWithSounds="Załaduj folder dźwięków";
+        private string _languageVersion = "Wersja językowa";
+        private string _versionPolish ="Polska";
+        private string _versionEnglish="Angielska";
+        private string _mainWindowName="regułowo- modelowy system ekspertowy Elementarnie Dokładny";
+        private string _consoleName="Konsola";
+        private string _cleanConsole="Wyczyść konsole";
+
         #endregion
 
         public string DiagnoseNadmiarowoscRuleBaseText
@@ -118,8 +142,116 @@
             get { return _diagnoseRedundancy; }
         }
 
+        public string KnowledgeBaseAnalysisName
+        {
+            get { return _knowledgeBaseAnalysisName; }
+        }
 
-       
+        public string FlatteringChoosenRule
+        {
+            get { return _flatteringChoosenRule; }
+        }
+
+        public string FlatteringAllRules
+        {
+            get { return _flatteringAllRules; }
+        }
+
+        public string ChainingName
+        {
+            get { return _chainingName; }
+        }
+
+        public string ForwardChaining
+        {
+            get { return _forwardChaining; }
+        }
+
+        public string BackwardChaining
+        {
+            get { return _backwardChaining; }
+        }
+
+        public string AbstractsAndReports
+        {
+            get { return _abstractsAndReports; }
+        }
+
+        public string GraphicsBaseName
+        {
+            get { return _graphicsBaseName; }
+        }
+
+        public string AdvicesBaseName
+        {
+            get { return _advicesBaseName; }
+        }
+
+        public string SoundsBaseName
+        {
+            get { return _soundsBaseName; }
+        }
+
+        public string OpenAdviceBase
+        {
+            get { return _openAdviceBase; }
+        }
+
+        public string LoadFolderWithAdvices
+        {
+            get { return _loadFolderWithAdvices; }
+        }
+
+        public string OpenGraphicsBase
+        {
+            get { return _openGraphicsBase; }
+        }
+
+        public string LoadFolderWithGraphics
+        {
+            get { return _loadFolderWithGraphics; }
+        }
+
+        public string OpenSoundBase
+        {
+            get { return _openSoundBase; }
+        }
+
+        public string LoadFolderWithSounds
+        {
+            get { return _loadFolderWithSounds; }
+        }
+
+        public string LanguageVersion
+        {
+            get { return _languageVersion; }
+        }
+
+        public string VersionPolish
+        {
+            get { return _versionPolish; }
+        }
+
+        public string VersionEnglish
+        {
+            get { return _versionEnglish; }
+        }
+
+        public string MainWindowName
+        {
+            get { return _mainWindowName; }
+        }
+
+        public string ConsoleName
+        {
+            get { return _consoleName; }
+        }
+
+        public string CleanConsole
+        {
+            get { return _cleanConsole; }
+        }
+
 
         public string Bases
         {

@@ -14,6 +14,19 @@ namespace LicencjatInformatyka_RMSE_.Additional
         string PolyModel { get; }
         string ModelFact { get; }
         string Argument { get; }
+        string Rule{ get; }
+        string Fact { get; }
+        string Constrain { get; }
+        string NoConditionInModel { get; }
+
+
+
+        string graphic { get; }
+        string advice { get; }
+        string sound { get; }
+
+
+
 
     }
 }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows;
+using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder;
@@ -11,15 +12,17 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
     public class ActionsOnBase
     {
         private ViewModel _viewModel;
+        private readonly IElementsNamesLanguageConfig _config;
         private GatheredBases _bases;
         private ConclusionClass conclusion;
         private ConstrainActions _constrainActions;
 
-        public ActionsOnBase(GatheredBases bases, ViewModel model)
+        public ActionsOnBase(GatheredBases bases, ViewModel model, IElementsNamesLanguageConfig config)
         {
             _viewModel = model;
+            _config = config;
             _bases = bases;
-          conclusion  = new ConclusionClass(_bases, _viewModel);
+          conclusion  = new ConclusionClass(_bases, _viewModel, config);
           _constrainActions = new ConstrainActions(conclusion, _viewModel, _bases);
         }
        
@@ -91,7 +94,14 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
         public void BackwardConcludeAction(Rule rule)
         {
+
+            _bases.FactBase = _bases.OrginalFactBase;
+            _bases.ArgumentBase = _bases.OrginalArgumentBase;
+
+
+
                 conclusion.BackwardConclude(rule);
+            
         }
 
         public void ForwardConcludeAction()

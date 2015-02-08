@@ -9,9 +9,12 @@
     </AssociationSet>
     <EntitySet Name="ConditionSet" EntityType="DataBase.Condition" />
     <AssociationSet Name="RulesCondition" Association="DataBase.RulesCondition">
-      <End Role="Rules" EntitySet="RulesSet" />
-      <End Role="Condition" EntitySet="ConditionSet" />
+      <End EntitySet="RulesSet" Role="Rules" />
+      <End EntitySet="ConditionSet" Role="Condition" />
     </AssociationSet>
+    <EntitySet Name="FactSet" EntityType="DataBase.Fact" />
+    <EntitySet Name="Model_FSet" EntityType="DataBase.Model_F" />
+    <EntitySet Name="ArgumentsSet" EntityType="DataBase.Arguments" />
   </EntityContainer>
   <EntityType Name="RuleDataSet">
     <Key>
@@ -36,13 +39,36 @@
   </Association>
   <EntityType Name="Condition">
     <Key>
-      <PropertyRef Name="Name" />
+      <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Name" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
     <NavigationProperty Name="Rules" Relationship="DataBase.RulesCondition" FromRole="Condition" ToRole="Rules" />
+    <Property Name="Name" Type="String" Nullable="false" />
   </EntityType>
   <Association Name="RulesCondition">
-    <End Type="DataBase.Rules" Role="Rules" Multiplicity="1" />
-    <End Type="DataBase.Condition" Role="Condition" Multiplicity="*" />
+    <End Type="DataBase.Rules" Multiplicity="1" Role="Rules" />
+    <End Type="DataBase.Condition" Multiplicity="*" Role="Condition" />
   </Association>
+  <EntityType Name="Fact">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <Property Name="Name" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Model_F">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Arguments">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" />
+  </EntityType>
 </Schema>

@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 using System.Windows;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.Bases
 {
    public class FactBase
     {
+       private readonly ViewModel _model;
        private List<Fact> _factList = new List<Fact>();
 
        public List<Fact> FactList
@@ -21,13 +23,18 @@ namespace LicencjatInformatyka_RMSE_.Bases
            set { _factList = value; }
        }
 
+       public FactBase(ViewModel model)
+       {
+           _model = model;
+       }
+
 
        public void ReadFacts(string path)
        {
            foreach (string line in File.ReadLines(path, Encoding.GetEncoding("Windows-1250")))
            {
             
-               Match m = Regex.Match(line, "^fakt");
+               Match m = Regex.Match(line, _model._elementsNamesLanguageConfig.Fact);
                if (m.Success)
                {
 
@@ -45,19 +52,19 @@ namespace LicencjatInformatyka_RMSE_.Bases
        {
           var fact =  OperationsOnString.RemoveBeggining(line);
          var  factConverted = OperationsOnString.SplitArguments(fact);
-           if(CheckIfAskable(factConverted)==false)
+           //if(CheckIfAskable(factConverted)==false)
                return new Fact(){FactName = factConverted[0],FactValue = true};
-           else
-           {
-               MessageBox.Show("Fakt " + factConverted + "nie jest dopytywalny");
-               return null;
-           }
+           //else
+           //{
+           //    MessageBox.Show("Fakt " + factConverted + "nie jest dopytywalny");
+           //    return null;
+           //}
 
        }
 
-       private bool CheckIfAskable(List<string> factConverted)
-       {
-           throw new NotImplementedException();
-       }
+       //private bool CheckIfAskable(List<string> factConverted)
+       //{
+       //    throw new NotImplementedException();
+       //}
     }
 }

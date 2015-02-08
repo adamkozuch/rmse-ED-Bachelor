@@ -43,6 +43,45 @@
 
         #endregion
 
+       #region FlatternAndConclusion
 
-    }
+        string KnowledgeBaseAnalysisName { get; }
+        string FlatteringChoosenRule { get; }
+        string FlatteringAllRules { get; }
+
+        string ChainingName { get; }
+        string ForwardChaining { get; }
+        string BackwardChaining { get; }
+
+        string AbstractsAndReports { get; }
+        
+
+       #endregion
+
+
+       #region 
+        string GraphicsBaseName { get; }
+        string AdvicesBaseName { get; }
+        string SoundsBaseName { get; }
+
+        string OpenAdviceBase { get; }
+        string LoadFolderWithAdvices { get; }
+        string OpenGraphicsBase { get; }
+        string LoadFolderWithGraphics { get; }
+        string OpenSoundBase { get; }
+        string LoadFolderWithSounds { get; }
+       #endregion
+
+
+        string LanguageVersion { get; }
+        string VersionPolish { get; }
+        string VersionEnglish { get; }
+        string MainWindowName { get; }
+
+        string ConsoleName { get; }
+        string CleanConsole { get; }
+       
+
+
+   }
 }

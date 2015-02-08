@@ -127,7 +127,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
         {
           znak=  znak.Replace(" ", "");
 
-            double var1 = double.Parse(variable1);  // Todo: trzeba obsłużyć program w razie przerwania wnioskowania
+            double var1 = double.Parse(variable1);  
             double var2 = double.Parse(variable2);
 
             if (znak == ">")

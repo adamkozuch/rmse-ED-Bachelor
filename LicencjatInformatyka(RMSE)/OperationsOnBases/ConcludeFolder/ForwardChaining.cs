@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 using System.Windows.Documents;
 using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
@@ -14,6 +15,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
         private readonly ConclusionClass _conclusion;
         private readonly ViewModel _viewModel;
         private readonly ConstrainActions _constrainActions;
+        private readonly ModelActions _modelActions;
 
         public ForwardChaining(GatheredBases bases, ConclusionClass conclusion, ViewModel viewModel,
             ConstrainActions constrainActions)
@@ -22,6 +24,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
             _conclusion = conclusion;
             _viewModel = viewModel;
             _constrainActions = constrainActions;
+            _modelActions = new ModelActions(_conclusion, _viewModel, bases, viewModel._elementsNamesLanguageConfig);
         }
 
 
@@ -29,37 +32,50 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 
         public void Forward()
         {
-            foreach (var constrain in  _bases.ConstrainBase.ConstrainList)
+            _bases.FactBase.FactList = new List<Fact>();
+            _bases.FactBase.ReadFacts(_viewModel.CurrentRuleBasePath);   //todo: powinno zaladować fakty
+            try
             {
-                _constrainActions.AskForConstrainValue(constrain);
-            }
-            allConcrete = false;
-
-            while (allConcrete == false)
-            {
-                ReportConclusionResult();
-
-                foreach (var rule in _bases.RuleBase.RulesList)
+                foreach (var constrain in  _bases.ConstrainBase.ConstrainList)
                 {
-                    bool isFact = ConclusionClass.CheckIfStringIsFact(rule.Conclusion, _bases.FactBase.FactList);
+                    _constrainActions.AskForConstrainValue(constrain);
+                }
+                allConcrete = false;
 
-                    if (isFact == false)
+                while (allConcrete == false)
+                {
+                    ReportConclusionResult();
+
+                    foreach (var rule in _bases.RuleBase.RulesList)
                     {
-                        int i = 0;
-                        foreach (var condition in rule.Conditions)
+                        // _conclusion.FindHelpfulAssets(rule);
+                        bool isFact = ConclusionClass.CheckIfStringIsFact(rule.Conclusion, _bases.FactBase.FactList);
+
+                        if (isFact == false)
                         {
-                            i = CheckCondition(condition, i);
-                        }
-                         if (i == rule.Conditions.Count)
+                            int i = 0;
+                            foreach (var condition in rule.Conditions)
+                            {
+                                i = CheckCondition(condition, i);
+                            }
+                            if (i == rule.Conditions.Count)
                             {
                                 InputResult(rule);
                                 break;
                             }
-                        
+
+                        }
                     }
+                    if (AskedConditions() == _bases.FactBase.FactList.Count)
+                        allConcrete = true;
                 }
-                if (AskedConditions() == _bases.FactBase.FactList.Count)
-                    allConcrete = true;
+
+                MessageBox.Show("Koniec wnioskowania wprzód na \n konsoli znajdują się jego rezultaty");
+            }
+            catch (ApplicationException ex)
+            {
+                MessageBox.Show("Wnioskowanie przerwane");
+                _viewModel.ExceptionValue = false;
             }
         }
 
@@ -113,6 +129,8 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
                     }
                     else
                     {
+                        if ((bool) _modelActions.ProcessModel(condition))//todo: może byc jakiś problem
+                            i++;
                         //todo:jeszcze trzeba będzie przelecieć przez 
                     }
             }
@@ -178,7 +196,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.ConcludeFolder
 
             }
            
-            return askingConditionList.Count+i;
+            return askingConditionList.Count;
 
         }
     }

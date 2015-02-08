@@ -2,5 +2,7 @@
 {
   public  class Sound
     {
+        public int soundNumber { get; set; }
+        public string soundPath { get; set; }
     }
 }

@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_
 {
@@ -18,9 +19,10 @@ namespace LicencjatInformatyka_RMSE_
 	/// </summary>
 	public partial class AdviceUserControl : UserControl
 	{
-		public AdviceUserControl()
+		public AdviceUserControl(ViewModel model)
 		{
 			this.InitializeComponent();
+            DataContext = model;
 		}
 	}
 }

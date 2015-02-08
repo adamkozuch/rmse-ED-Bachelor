@@ -34,6 +34,29 @@ namespace LicencjatInformatyka_RMSE_.LanguageConfiguration
         private string _bases="Bases";
         private string _operations="Operations on bases";
         private string _constrainBaseButton="Constrains base";
+        private string _knowledgeBaseAnalysisName ="Knowledge base analysis";
+        private string _flatteringChoosenRule="Flattering a choosen rule";
+        private string _flatteringAllRules="Flattering all rules";
+        private string _chainingName="Chaining";
+        private string _forwardChaining="Forward chaining";
+        private string _backwardChaining="Backward chaining";
+        private string _abstractsAndReports="Abstracts and report";
+        private string _graphicsBaseName="Grapics base";
+        private string _advicesBaseName="Advices base";
+        private string _soundsBaseName="Sounds base";
+        private string _openAdviceBase="Open advice base";
+        private string _loadFolderWithAdvices="Folder with advices";
+        private string _openGraphicsBase="Open graphics base";
+        private string _loadFolderWithGraphics="Open folder with graphics";
+        private string _openSoundBase="Open sound base";
+        private string _loadFolderWithSounds="Open folder with sounds";
+        private string _languageVersion="Language Version";
+        private string _versionPolish="Polish";
+        private string _versionEnglish="English";
+        private string _mainWindowName="Rule- and Model-Based Expert System Elementary Exact";
+        private string _consoleName="Console";
+        private string _cleanConsole="Remove console text";
+
 
         public string Bases
         {
@@ -153,6 +176,116 @@ namespace LicencjatInformatyka_RMSE_.LanguageConfiguration
         public string DiagnoseRedundancy
         {
             get { return _diagnoseRedundancy; }
+        }
+
+        public string KnowledgeBaseAnalysisName
+        {
+            get { return _knowledgeBaseAnalysisName; }
+        }
+
+        public string FlatteringChoosenRule
+        {
+            get { return _flatteringChoosenRule; }
+        }
+
+        public string FlatteringAllRules
+        {
+            get { return _flatteringAllRules; }
+        }
+
+        public string ChainingName
+        {
+            get { return _chainingName; }
+        }
+
+        public string ForwardChaining
+        {
+            get { return _forwardChaining; }
+        }
+
+        public string BackwardChaining
+        {
+            get { return _backwardChaining; }
+        }
+
+        public string AbstractsAndReports
+        {
+            get { return _abstractsAndReports; }
+        }
+
+        public string GraphicsBaseName
+        {
+            get { return _graphicsBaseName; }
+        }
+
+        public string AdvicesBaseName
+        {
+            get { return _advicesBaseName; }
+        }
+
+        public string SoundsBaseName
+        {
+            get { return _soundsBaseName; }
+        }
+
+        public string OpenAdviceBase
+        {
+            get { return _openAdviceBase; }
+        }
+
+        public string LoadFolderWithAdvices
+        {
+            get { return _loadFolderWithAdvices; }
+        }
+
+        public string OpenGraphicsBase
+        {
+            get { return _openGraphicsBase; }
+        }
+
+        public string LoadFolderWithGraphics
+        {
+            get { return _loadFolderWithGraphics; }
+        }
+
+        public string OpenSoundBase
+        {
+            get { return _openSoundBase; }
+        }
+
+        public string LoadFolderWithSounds
+        {
+            get { return _loadFolderWithSounds; }
+        }
+
+        public string LanguageVersion
+        {
+            get { return _languageVersion; }
+        }
+
+        public string VersionPolish
+        {
+            get { return _versionPolish; }
+        }
+
+        public string VersionEnglish
+        {
+            get { return _versionEnglish; }
+        }
+
+        public string MainWindowName
+        {
+            get { return _mainWindowName; }
+        }
+
+        public string ConsoleName
+        {
+            get { return _consoleName; }
+        }
+
+        public string CleanConsole
+        {
+            get { return _cleanConsole; }
         }
     }
 }

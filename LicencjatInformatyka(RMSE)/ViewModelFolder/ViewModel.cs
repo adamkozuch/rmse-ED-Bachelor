@@ -8,13 +8,12 @@ using LicencjatInformatyka_RMSE_.Bases;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.LanguageConfiguration;
 using LicencjatInformatyka_RMSE_.ViewControls.AskWindows;
-using LicencjatInformatyka_RMSE_.ViewControls.BrowseControls;
 
 namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 {
     public class ViewModel : INotifyPropertyChanged
     {
-        private IElementsNamesLanguageConfig _elementsNamesLanguageConfig;
+        public IElementsNamesLanguageConfig _elementsNamesLanguageConfig { get; set; }
         private IMainWindowLanguageConfig _mainWindowLanguageConfig;
         private IChildWindowsLanguageConfig _childWindowsLanguageConfig;
         private readonly GatheredBases bases;
@@ -51,11 +50,11 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
             #endregion
 
-            bases = new GatheredBases(_elementsNamesLanguageConfig);
+            bases = new GatheredBases(this);
 
             //Instances of classes responsible for opening and actions on RMSE bases
             _openBasesActions = new OpenBasesActions(this, bases);
-            _actionsOnBase = new ActionsOnBase(bases, this);
+            _actionsOnBase = new ActionsOnBase(bases, this, _elementsNamesLanguageConfig);
 
             #region ConclusionButtons
 
@@ -72,17 +71,22 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             StartConditionValueUnknown =  new RelayCommand(p => StartConditionValue=false);
             BreakButtonCommand= new RelayCommand(p=> ExceptionValue=true);
             ClearConsoleCommand = new RelayCommand(p=> MainWindowText1="");
+            ArgumentNullCommand = new RelayCommand(p=> ArgumentNullMethod());
             
         }
 
 
         private bool exc;
 
+        private string _currentRuleBasePath;
 
         public void ShowWindow(Window wind)
         {
             wind.Show();
         }
+
+
+        public ICommand ArgumentNullCommand { get; set; }
 
         // These fields are used in process of asking unknown values
         private Rule _selectedRule = new Rule();
@@ -120,6 +124,26 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         private bool _startConditionValue;
         private string _mainWindowText2;
 
+        private string _graphicPath;
+
+       
+        public string _currentModelBasePath { get; set; }
+        public string _currentConstrainBasePath { get; set; }
+        public string _currentGraphicBasePath { get; set; }
+        public string _currentAdviceBasePath { get; set; }
+        public string _currentSoundBasePath { get; set; }
+
+
+        public string _currentGraphicFolderPath { get; set; }
+        public string _currentAdviceFolderPath { get; set; }
+        public string _currentSoundFolderPath { get; set; }
+
+        public string advicePath { get; set; }
+        public string soundPath { get; set; }
+
+        public string adviceText { get; set; }
+
+
         #region Property
 
         public string StartConditionName
@@ -131,6 +155,28 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
                 OnPropertyChanged("StartConditionName");
             }
         }
+
+        public string GraphicPath
+        {
+            get { return _graphicPath; }
+            set
+            {
+                _graphicPath = value;
+                OnPropertyChanged("GraphicPath");
+            }
+        }
+
+        public string CurrentRuleBasePath
+        {
+            get { return _currentRuleBasePath; }
+            set
+            {
+                _currentRuleBasePath = value;
+             
+            }
+        }
+
+
 
         public bool StartConditionValue
         {
@@ -316,7 +362,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
 
             window.ShowDialog();
              if(exc)
-                 throw new Exception();// TODO:Może wystapić bug związany z zamkniciem okna x w lewym górnym rogu
+                 throw new ApplicationException();// TODO:Może wystapić bug związany z zamkniciem okna x w lewym górnym rogu
 
             simpleTree.ConclusionValue = CheckedRuleVal;
         }
@@ -324,17 +370,28 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         public string AskingArgumentValueMethod(string argument)
         {
             AskingArgumentName = argument;
+            ValueArgument = "";
             AskArgument window = new AskArgument(this);
             window.ShowDialog();
             if(exc)
-                throw new Exception();
+                throw new ApplicationException();
+            if(ValueArgument!=null)
+            { 
             bases.ModelsBase.ArgumentList.Add(new Argument()
             {
                 ArgumentName = AskingArgumentName,
                 Value = ValueArgument
             });
+             }
             return ValueArgument;
         }
+
+
+        public void ArgumentNullMethod()
+        {
+            ValueArgument = null;
+        }
+
 
         public bool AskingStartConditionValue(string startCondition)
         {
@@ -358,9 +415,14 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             AskRuleValue window = new AskRuleValue(this);
 
             window.ShowDialog(); // TODO:Może wystapić bug związany z zamkniciem okna x w lewym górnym rogu
-
-            bases.FactBase.FactList.Add(new Fact(){FactName = CheckedRuleName, FactValue = CheckedRuleVal}); 
+            if (exc)
+                throw new ApplicationException();
+           
+               bases.FactBase.FactList.Add(new Fact(){FactName = CheckedRuleName, FactValue = CheckedRuleVal});  
+            // TODO:Może wystapić bug związany z zamkniciem okna x w lewym górnym rogu
+            
         }
+
 
         public void AskingConstrainValueMethod(Constrain conclusion)
         {

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="{Binding ChildWindowsLanguageConfig.AskConditionsWindowName}" Height="300" Width="300" d:DataContext="{d:DesignInstance viewModelFolder:ViewModel  }">
     <Grid>
-        <ListBox ItemsSource="{Binding AskingConditionsList}" HorizontalAlignment="Left" Height="259" VerticalAlignment="Top" Width="184"/>
+        <ListBox ItemsSource="{Binding AskingConditionsList}" HorizontalAlignment="Left" Height="259" VerticalAlignment="Top" Width="272" Margin="10,0,0,0"/>
 
     </Grid>
 </Window>

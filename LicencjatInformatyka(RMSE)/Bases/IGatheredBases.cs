@@ -9,8 +9,8 @@ namespace LicencjatInformatyka_RMSE_.Bases
         RuleBase RuleBase { get; set; }
         ConstrainBase ConstrainBase { get; set; }
         ModelBase ModelsBase { get; set; }
-        List<Advice> AdvicesList { get; set; }
-        List<Sound> SoundsList { get; set; }
-        List<Graphic> GraphicsList { get; set; } 
+        AdviceBase AdviceBase { get; set; }
+        SoundBase SoundBase { get; set; }
+        GraphicBase GraphicBase { get; set; } 
     }
 }

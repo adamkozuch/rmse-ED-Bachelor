@@ -1,21 +1,23 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using LicencjatInformatyka_RMSE_.Additional;
 using LicencjatInformatyka_RMSE_.Bases.ElementsOfBases;
 using LicencjatInformatyka_RMSE_.OperationsOnBases;
+using LicencjatInformatyka_RMSE_.ViewModelFolder;
 
 namespace LicencjatInformatyka_RMSE_.Bases
 {
     public class ModelBase
     {
-        private readonly IElementsNamesLanguageConfig _config;
+        private readonly ViewModel _config;
         private List<Model> _modelList = new List<Model>();
         private List<Argument> _argumentList = new List<Argument>();
         private  List<Fact>  _modelFactsList = new List<Fact>();
 
-        public ModelBase(IElementsNamesLanguageConfig config)
+        public ModelBase(ViewModel config)
         {
             _config = config;
         }
@@ -40,9 +42,7 @@ namespace LicencjatInformatyka_RMSE_.Bases
             set { _argumentList = value; }
         }
 
-        public void ReadRules()
-        {
-        }
+ 
 
         public void ReadModels(string models)
         {
@@ -59,27 +59,27 @@ namespace LicencjatInformatyka_RMSE_.Bases
 
             //browsking apriopriate model
             // Trzeba się zastanowic nad leszym sposobem na identyfikację mało uniwersalny
-            if (TypeOfModel == "model")
+            if (TypeOfModel == _config._elementsNamesLanguageConfig.SimpleModel)
             {
                 ModelList.Add(SimpleModel(line));
             }
-            else if (TypeOfModel == _config.ExtendedModel)
+            else if (TypeOfModel == _config._elementsNamesLanguageConfig.ExtendedModel)
             {
                 ModelList.Add(ExtendedModel(line));
             }
-            else if (TypeOfModel == _config.LinearModel)
+            else if (TypeOfModel == _config._elementsNamesLanguageConfig.LinearModel)
             {
                 ModelList.Add(LinearModel(line));
             }
-            else if (TypeOfModel == _config.PolyModel)
+            else if (TypeOfModel == _config._elementsNamesLanguageConfig.PolyModel)
             {
                 ModelList.Add(PolyModel(line));
             }
-            else if (TypeOfModel == _config.Argument)
+            else if (TypeOfModel == _config._elementsNamesLanguageConfig.Argument)
             {
                 ArgumentList.Add(ReturnArgument(line));
             }
-            else if (TypeOfModel == _config.ModelFact)
+            else if (TypeOfModel == _config._elementsNamesLanguageConfig.ModelFact)
             {
                 _modelFactsList.Add(ModelFact(line));
             }
@@ -107,23 +107,36 @@ namespace LicencjatInformatyka_RMSE_.Bases
             string[] tableStrings = OperationsOnString.SplitRuleToTwoPartsConditionsAndAnother(line);
             List<string> result = OperationsOnString.SplitArguments(tableStrings[0]);
             List<string> argumentsList = OperationsOnString.SplitArguments(tableStrings[1]);
-
+            string sign="";
             int semaphoreNumber = int.Parse(result.Last());
             bool semaphoreValue = semaphoreNumber == 1;
-
-            return new Model(int.Parse(result[0]), result[1], result[2], result[3], argumentsList, semaphoreValue);
+            if (result[3].ToLowerInvariant().Contains('>') || result[3].ToLowerInvariant().Contains('<'))  //todo:rozwiązanie działa ale do poprawienia
+            {
+                if (result[3].Count() < 3)
+                {
+                    sign = result[3] + "," + result[4];
+                }
+                else
+                    sign = result[3];
+            }
+            else
+            {
+                sign = result[3];
+            }
+            // nie cały znak
+            return new Model(int.Parse(result[0]), result[1], result[2], sign, argumentsList, semaphoreValue);
         }
 
         private Model LinearModel(string line)
         {
             line = OperationsOnString.RemoveBeggining(line);
             string[] table1 = OperationsOnString.SplitRuleToTwoPartsConditionsAndAnother(line);
-            string[] table2 = OperationsOnString.SplitRuleToTwoPartsConditionsAndAnother(line);
+            string[] table2 = OperationsOnString.SplitRuleToTwoPartsConditionsAndAnother(table1[0]);
 
 
             List<string> factorsList = OperationsOnString.SplitArguments(table1[1]);
             List<string> result = OperationsOnString.SplitArguments(table2[0]);
-            List<string> variablesList = OperationsOnString.SplitArguments(table2[1]);
+            List<string> variablesList = OperationsOnString.SplitArgumentsForModel(table2[1]);
 
             int semaphorNumber = int.Parse(result.Last());
             bool semaphorValue = semaphorNumber == 1;
@@ -171,20 +184,6 @@ namespace LicencjatInformatyka_RMSE_.Bases
         }
 
 
-        public void EditBase()
-        {
-        }
-
-        public void BrowsingBase()
-        {
-        }
-
-        public void CreateBase()
-        {
-        }
-
-        public void DeleteBase()
-        {
-        }
+     
     }
 }

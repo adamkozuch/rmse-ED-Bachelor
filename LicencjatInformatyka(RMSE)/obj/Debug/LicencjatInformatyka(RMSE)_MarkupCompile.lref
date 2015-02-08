@@ -1,21 +1,26 @@
 ﻿
 
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\AskStartCondition.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\AskingUserControl.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\UserControls\FlatterUserControll.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\AskArgument.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\AskConstrain.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\AskingConditionsWIndow.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\AskRuleValue.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\ChoseRuleForFlatter.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\BrowseControls\BrowseConstrains.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\BrowseControls\BrowseModels.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\BrowseControls\BrowseRules.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\ChooseRule.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\UserControls\ConcludeUserControl.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\UserControls\ConstrainBaseUserControll.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\UserControls\GraphicBaseUserControll.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\MainWindow.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\UserControls\ModelBaseUserControll.xaml;;
-FC:\Users\Adamk\Documents\Visual Studio 2013\Projects\LicencjatInformatyka(RMSE)\LicencjatInformatyka(RMSE)\ViewControls\UserControls\RuleBaseUserControl.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\AdviceWindow.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\AskStartCondition.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\GraphicWindow.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\UserControls\AdviceUserControl.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\AskingUserControl.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\UserControls\FlatterUserControll.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\UserControls\LanguageUserControl.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\UserControls\SoundUserControl.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\AskArgument.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\AskConstrain.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\AskingConditionsWIndow.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\AskRuleValue.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\ChoseRuleForFlatter.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\BrowseControls\BrowseConstrains.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\BrowseControls\BrowseModels.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\BrowseControls\BrowseRules.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\AskWindows\ChooseRule.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\UserControls\ConcludeUserControl.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\UserControls\ConstrainBaseUserControll.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\UserControls\GraphicBaseUserControll.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\MainWindow.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\UserControls\ModelBaseUserControll.xaml;;
+FC:\Users\Adamk\Desktop\Praca text i projekt\rmse ED-projekt Visual Studio\LicencjatInformatyka(RMSE)\ViewControls\UserControls\RuleBaseUserControl.xaml;;
 

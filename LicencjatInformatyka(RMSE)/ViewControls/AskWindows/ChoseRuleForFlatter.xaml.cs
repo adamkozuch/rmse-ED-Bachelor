@@ -25,5 +25,10 @@ namespace LicencjatInformatyka_RMSE_.ViewControls.AskWindows
             InitializeComponent();
             DataContext = model;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

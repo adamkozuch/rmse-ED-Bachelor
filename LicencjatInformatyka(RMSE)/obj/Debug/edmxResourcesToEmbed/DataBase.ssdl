@@ -1,4 +1,88 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Namespace="DataBase.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-  <EntityContainer Name="DataBaseTargetContainer" />
+<Schema Namespace="DataBase.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DataBaseStoreContainer">
+    <EntitySet Name="RuleDataSetSet" EntityType="DataBase.Store.RuleDataSetSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="RulesSet" EntityType="DataBase.Store.RulesSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ConditionSet" EntityType="DataBase.Store.ConditionSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="FactSet" EntityType="DataBase.Store.FactSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Model_FSet" EntityType="DataBase.Store.Model_FSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArgumentsSet" EntityType="DataBase.Store.ArgumentsSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="RuleDataSetRules" Association="DataBase.Store.RuleDataSetRules">
+      <End Role="RuleDataSet" EntitySet="RuleDataSetSet" />
+      <End Role="Rules" EntitySet="RulesSet" />
+    </AssociationSet>
+    <AssociationSet Name="RulesCondition" Association="DataBase.Store.RulesCondition">
+      <End Role="Rules" EntitySet="RulesSet" />
+      <End Role="Condition" EntitySet="ConditionSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="RuleDataSetSet">
+    <Key>
+      <PropertyRef Name="RuleDatasetID" />
+    </Key>
+    <Property Name="RuleDatasetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RuleDataSetName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RulesSet">
+    <Key>
+      <PropertyRef Name="NumberOfRule" />
+    </Key>
+    <Property Name="NumberOfRule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Conclusion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="RuleDataSet_RuleDatasetID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConditionSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Rules_NumberOfRule" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FactSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Model_FSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArgumentsSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Value" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="RuleDataSetRules">
+    <End Role="RuleDataSet" Type="DataBase.Store.RuleDataSetSet" Multiplicity="1" />
+    <End Role="Rules" Type="DataBase.Store.RulesSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RuleDataSet">
+        <PropertyRef Name="RuleDatasetID" />
+      </Principal>
+      <Dependent Role="Rules">
+        <PropertyRef Name="RuleDataSet_RuleDatasetID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RulesCondition">
+    <End Role="Rules" Type="DataBase.Store.RulesSet" Multiplicity="1" />
+    <End Role="Condition" Type="DataBase.Store.ConditionSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rules">
+        <PropertyRef Name="NumberOfRule" />
+      </Principal>
+      <Dependent Role="Condition">
+        <PropertyRef Name="Rules_NumberOfRule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

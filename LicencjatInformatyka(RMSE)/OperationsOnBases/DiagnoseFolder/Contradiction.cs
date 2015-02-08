@@ -13,7 +13,6 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
     public static class Contradiction
     {
         
-
         #region OutsideContradiction
      public static bool MethodForContradiction
             (GatheredBases bases, Rule ruleForCheck, int count, List<List<Rule>> differenceList,out SimpleTree tree)
@@ -72,6 +71,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                                 node.rule = node.Parent.rule;
                                 if (checkedValue == node)
                                 {
+                                    
                                     if (reportIncluded)
                                     {
                                         MessageBox.Show(
@@ -80,6 +80,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                                         reportIncluded = false; //TODO : tymczasowe rozwiązanie trzeba jakoś przerwać metodę
                                     }
                                     AddRuleToContradictionTable(contradictedRules, RuleI);
+                                    
                                     break;
                                 }
                             }
@@ -113,11 +114,12 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
 
         public static void ReportAboutContradictionInRules(GatheredBases bases, ViewModel _viewModel)
         {
+            int i = 0;
             List<Rule> listWithContradiction = CheckOutsideContradiction(bases,false);
 
             foreach (Rule rule in listWithContradiction)
             {
-                CheckSelfContradiction(rule);
+              i+=  CheckSelfContradiction(rule);
 
               
                 for (int count = 1; count < 1000; count++)  //TODO:nie powinno być stałej w pętli for
@@ -133,8 +135,9 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                     {
                         string s = "";
                         SimpleTree copyOfTree = treeElement;
-                        if (treeElement.rule.NumberOfRule == rule.NumberOfRule) 
+                        if (treeElement.rule.NumberOfRule == rule.NumberOfRule)
                         {
+                            i++;
                             bool boolValue = true;
                             while (copyOfTree.Parent.rule != rule) 
                             {
@@ -147,8 +150,9 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                                 s += copyOfTree.rule.NumberOfRule + "==>";
                                 
                             }
-                          //TODO:Tutaj okienko raportujące
-                            _viewModel.MainWindowText1 +="Poprzez podstawienie następujących reguł otrzymasz sprzeczność zewnetrzną :"+ s + "\n";
+                          //TODO: Report aboyt contradiction
+                            MessageBox.Show("Poprzez podstawienie następujących reguł otrzymasz sprzeczność zewnetrzną :"+ s + "\n");
+                            _viewModel.ButtonsLogic.ConclusionEnabled = false;
                             goto Res;
                         }
                     }
@@ -156,16 +160,25 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
 
                 Res:;
             }
+            if (i == 0)
+            {
+                MessageBox.Show("Nie wykryto sprzeczności w bazie reguł");
+                _viewModel.ButtonsLogic.ConclusionEnabled = true;
+            }
         }
 
-        private static void CheckSelfContradiction(Rule rule)
+        private static int CheckSelfContradiction(Rule rule)
         {
             foreach (string condition in rule.Conditions)
             {
                 if (condition == rule.Conclusion)
+                {
                     MessageBox.Show("Reguła " + rule.NumberOfRule + " jest samosprzeczna");
+                    return 1;
+                }
                 break;
             }
+            return 0;
         }
 
         #endregion
@@ -179,7 +192,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                 var tree = TreeOperations.ReturnComplexTreeAndDifferences(bases, rule,out differenceList);
 
              var askingConditions = TreeOperations.TreeToEnumerable
-                    (tree).Where(p => p.Askable);//TODO:uta niekoniecznie prawidłowo zmieniona logika
+                    (tree).Where(p => p.Askable);
 
                 foreach (SimpleTree condition in askingConditions)
                 {
@@ -195,11 +208,11 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                             var list = new List<string>();
                             List<string> listOfStartedConditions = GatherStartConditions
                                 (model, bases, list);
-                            //TODO:Z tego co się orientuję nie ma tu sprawdzenia warunkow startowych
+                            //TODO:METODA sprzeczności w modelach
                             // z modelami relacyjnymi oraz modeli arytmetycznych z modelami arytmetycznymi 
                             CheckContradictionBetweenRulesAndStartedConditions
                                 (listOfStartedConditions, condition,model);
-                       //     CheckContradictionBetweenModelsAndStartedConditions();
+                         //  CheckContradictionBetweenModelsAndStartedConditions();
                           // CheckContradictionBetweenArithmeticModels();
                         }
                     }
@@ -252,8 +265,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                 {
                     r.AddRange(GatherStartConditions(model1, bases, r)); //
                 }
-            }
-            if (model.ModelType == "extended")
+            }else if (model.ModelType == "extended")
             {
                 foreach (string argument in model.ArgumentsList)
                 {
@@ -267,15 +279,20 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                     }
                 }
             }
+            else
+            {
+                r.Add(model.StartCondition);
+            }
             return r;
         }
         #endregion
    
 
         #region ConstrainContradiction
-        public static void CheckContradictionWithConstrains
+        public static int CheckContradictionWithConstrains
              (List<List<SimpleTree>> allFlatteredRules, GatheredBases bases)
         {
+            int contradictionNumber = 0;
             // todo : tutaj też warto posortowac listy zeby uniknac błędu 
 
             foreach (var constrain in bases.ConstrainBase.ConstrainList)
@@ -295,6 +312,7 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                     }
                     if (i > 1)
                     {
+                        contradictionNumber++;
                         IEnumerable<SimpleTree> firstParent = ruleFlattered.Where(p => p.Parent == null);
                         MessageBox.Show("Jest sprzeczność z bazą ograniczeń pomiędzy regułą " +
                                         firstParent.First().rule.Conclusion + " a"
@@ -302,20 +320,25 @@ namespace LicencjatInformatyka_RMSE_.OperationsOnBases.DiagnoseFolder
                     }
                 }
             }
+            return contradictionNumber;
         }
 
         public static void CheckContradictionWithConstarinsMethod(GatheredBases bases)
         {
+            int contradictionNumber=0;
             var alreadyChecked = new List<string>();
             foreach (Rule ruleForCheck in bases.RuleBase.RulesList)
             {
                 if (alreadyChecked.Contains(ruleForCheck.Conclusion) == false)
                 {
+
                     var allFlatteredRules = Redundancy.AllFlatteredRules(bases, ruleForCheck);
-                    Contradiction.CheckContradictionWithConstrains(allFlatteredRules, bases);
+                  contradictionNumber +=  Contradiction.CheckContradictionWithConstrains(allFlatteredRules, bases);
                     alreadyChecked.Add(ruleForCheck.Conclusion);
                 }
             }
+            if (contradictionNumber == 0)
+                MessageBox.Show("Nie wykryto sprzeczności łącznych pomiędzy bazą reguł a bazą ograniczeń");
         }
 
         #endregion

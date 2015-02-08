@@ -9,12 +9,19 @@ namespace LicencjatInformatyka_RMSE_.LanguageConfiguration
 {
     class EnglishElementsLanguageConfig:IElementsNamesLanguageConfig
     {
-        private string _simpleModel;
-        private string _extendedModel;
-        private string _linearModel;
-        private string _polyModel;
-        private string _modelFact;
-        private string _argument;
+        private string _simpleModel="^model_b";
+        private string _extendedModel = "^model_e";
+        private string _linearModel = "^model_lin";
+        private string _polyModel = "^model_poly";
+        private string _modelFact="^m_fact";
+        private string _argument = "^argument_known";
+        private string _rule="^rule";
+        private string _fact="^fact";
+        private string _constrain="^constraint";
+        private string _noConditionInModel="No condition";
+        private string _graphic="^graphics";
+        private string _advice="^advice";
+        private string _sound="^sounds";
 
         public string SimpleModel
         {
@@ -44,6 +51,41 @@ namespace LicencjatInformatyka_RMSE_.LanguageConfiguration
         public string Argument
         {
             get { return _argument; }
+        }
+
+        public string Rule
+        {
+            get { return _rule; }
+        }
+
+        public string Fact
+        {
+            get { return _fact; }
+        }
+
+        public string Constrain
+        {
+            get { return _constrain; }
+        }
+
+        public string NoConditionInModel
+        {
+            get { return _noConditionInModel; }
+        }
+
+        public string graphic
+        {
+            get { return _graphic; }
+        }
+
+        public string advice
+        {
+            get { return _advice; }
+        }
+
+        public string sound
+        {
+            get { return _sound; }
         }
     }
 }

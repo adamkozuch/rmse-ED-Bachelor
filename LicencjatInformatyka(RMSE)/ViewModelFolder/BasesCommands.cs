@@ -37,6 +37,16 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
         public ICommand OpenFlatterWindow { get; set; }
         public ICommand FlatterAllRules { get; set; }
 
+
+
+        public ICommand OpenGraphicBaseCommand { get; set; }
+        public ICommand OpenAdviceBaseCommand { get; set; }
+        public ICommand OpenSoundBaseCommand { get; set; }
+
+        public ICommand OpenGraphicFolderCommand { get; set; }
+        public ICommand OpenAdviceFolderCommand { get; set; }
+        public ICommand OpenSoundFolderCommand { get; set; }
+
         private void BasesCommandsMethod()
         {
             #region RuleBaseButtons
@@ -62,7 +72,7 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             OpenConstrainCommand = new RelayCommand(pars => _viewModel._openBasesActions.ReadConstrainBase());
             ContradictionWithConstrainsCommand = new RelayCommand(pars => _viewModel._actionsOnBase.CheckContradictionWithConstrains());
             LookAtBaseConstrainsCommand = new RelayCommand(p => _viewModel.ShowWindow(new BrowseConstrains(_viewModel)));
-
+            RedundancyConstrainCommand = new RelayCommand(p=>_viewModel._actionsOnBase.CheckConstrainsRedundancy());
 
             #endregion
 
@@ -74,6 +84,16 @@ namespace LicencjatInformatyka_RMSE_.ViewModelFolder
             LookAtBaseModelCommand = new RelayCommand(p => _viewModel.ShowWindow(new BrowseModels(_viewModel)));
 
             #endregion
+
+
+            OpenGraphicBaseCommand = new RelayCommand(pars => _viewModel._openBasesActions.ReadGraphicBase());
+            OpenAdviceBaseCommand= new RelayCommand(pars => _viewModel._openBasesActions.ReadAdviceBase());
+            OpenSoundBaseCommand = new RelayCommand(pars => _viewModel._openBasesActions.ReadSoundBase());
+
+            OpenGraphicFolderCommand = new RelayCommand(pars => _viewModel._openBasesActions.ReadGraphicFolder());
+            OpenAdviceFolderCommand = new RelayCommand(pars => _viewModel._openBasesActions.ReadAdviceFolder());
+            OpenSoundFolderCommand = new RelayCommand(pars => _viewModel._openBasesActions.ReadSoundFolder());
+               
         }
     }
 }

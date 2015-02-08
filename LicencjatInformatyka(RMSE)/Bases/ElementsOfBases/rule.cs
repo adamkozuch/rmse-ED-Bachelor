@@ -5,34 +5,23 @@ namespace LicencjatInformatyka_RMSE_.Bases.ElementsOfBases
 {
     [Serializable()]
   public  class Rule
-    {
-      private bool _dopytywalne;
-   
-       
+    { 
+     
         private int _numberOfRule;
         private string _conclusion;
         private List<string> _conditions;
         
-
-
         public   Rule()
         {}
 
       public  Rule(int number, string conclusion, List<string>  conditions, bool semaphor)
         {
-            Conclusion = conclusion;           //_conclusionValue = conclusionValue;
+            Conclusion = conclusion;           
             NumberOfRule = number;
             Conditions = conditions;
             Semaphor = semaphor;
         }
   
-        
-        //public bool Dopytywalne
-        //{
-        //    get { return _dopytywalne; }
-        //    set { _dopytywalne = value; }
-        //}
-
 
         public int NumberOfRule
         {

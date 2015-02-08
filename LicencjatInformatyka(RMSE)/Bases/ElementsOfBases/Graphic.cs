@@ -2,5 +2,7 @@
 {
    public class Graphic
     {
+       public int graphicNumber { get; set; }
+       public string graphicPath { get; set; }
     }
 }

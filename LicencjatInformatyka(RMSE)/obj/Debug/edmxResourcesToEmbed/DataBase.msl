@@ -1,6 +1,70 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
-  <Alias Key="Model" Value="DataBase" />
-  <Alias Key="Target" Value="DataBase.Store" />
-  <EntityContainerMapping CdmEntityContainer="DataBaseContainer" StorageEntityContainer="DataBaseTargetContainer" />
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DataBaseStoreContainer" CdmEntityContainer="DataBaseContainer">
+    <EntitySetMapping Name="RuleDataSetSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataBase.RuleDataSet)">
+        <MappingFragment StoreEntitySet="RuleDataSetSet">
+          <ScalarProperty Name="RuleDatasetID" ColumnName="RuleDatasetID" />
+          <ScalarProperty Name="RuleDataSetName" ColumnName="RuleDataSetName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RulesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataBase.Rules)">
+        <MappingFragment StoreEntitySet="RulesSet">
+          <ScalarProperty Name="NumberOfRule" ColumnName="NumberOfRule" />
+          <ScalarProperty Name="Conclusion" ColumnName="Conclusion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConditionSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataBase.Condition)">
+        <MappingFragment StoreEntitySet="ConditionSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FactSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataBase.Fact)">
+        <MappingFragment StoreEntitySet="FactSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Model_FSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataBase.Model_F)">
+        <MappingFragment StoreEntitySet="Model_FSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ArgumentsSet">
+      <EntityTypeMapping TypeName="IsTypeOf(DataBase.Arguments)">
+        <MappingFragment StoreEntitySet="ArgumentsSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="RuleDataSetRules" TypeName="DataBase.RuleDataSetRules" StoreEntitySet="RulesSet">
+      <EndProperty Name="RuleDataSet">
+        <ScalarProperty Name="RuleDatasetID" ColumnName="RuleDataSet_RuleDatasetID" />
+      </EndProperty>
+      <EndProperty Name="Rules">
+        <ScalarProperty Name="NumberOfRule" ColumnName="NumberOfRule" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="RulesCondition" TypeName="DataBase.RulesCondition" StoreEntitySet="ConditionSet">
+      <EndProperty Name="Rules">
+        <ScalarProperty Name="NumberOfRule" ColumnName="Rules_NumberOfRule" />
+      </EndProperty>
+      <EndProperty Name="Condition">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
 </Mapping>

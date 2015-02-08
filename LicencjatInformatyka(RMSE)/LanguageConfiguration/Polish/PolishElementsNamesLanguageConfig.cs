@@ -14,6 +14,13 @@ namespace LicencjatInformatyka_RMSE_.Additional
         private string _polyModel="model_wielomianowy";
         private string _modelFact="m_fakt";
         private string _argument="argument_znany";
+        private string _rule="^reguła";
+        private string _fact="^fakt";
+        private string _constrain="^ograniczenie";
+        private string _noConditionInModel="bez warunku";
+        private string _graphic="^grafika";
+        private string _advice="^rada";
+        private string _sound="^dźwięk";
 
         public string SimpleModel
         {
@@ -43,6 +50,41 @@ namespace LicencjatInformatyka_RMSE_.Additional
         public string Argument
         {
             get { return _argument; }
+        }
+
+        public string Rule
+        {
+            get { return _rule; }
+        }
+
+        public string Fact
+        {
+            get { return _fact; }
+        }
+
+        public string Constrain
+        {
+            get { return _constrain; }
+        }
+
+        public string NoConditionInModel
+        {
+            get { return _noConditionInModel; }
+        }
+
+        public string graphic
+        {
+            get { return _graphic; }
+        }
+
+        public string advice
+        {
+            get { return _advice; }
+        }
+
+        public string sound
+        {
+            get { return _sound; }
         }
     }
 }

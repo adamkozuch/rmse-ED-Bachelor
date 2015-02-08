@@ -15,13 +15,13 @@ namespace LicencjatInformatyka_RMSE_.Additional
         private string _askConstrainWindowName="Okno wprowadzania wartości ograniczenia";
         private string _askConstrainProcess = "Wprowadź";
         private string _askConstrainBtnUnknown="Wartość nieznana";
-        private string _askConstrainExplainText="Wybierz prawdziwy warunek";
+        private string _askConstrainExplainText="Wybierz prawdziwy warunek dopytywalny";
         private string _askConditionsWindowName="Okno wartości warunku";
         private string _askConditionsExplainText="Wprowadź wartośc nastepującego warunku";
         private string _askRuleValueWindowName="Okno wartości warunku dopytywalnego";
         private string _askRuleValueExplainText="Wprowadź wartośc warunku dopytywalnego";
         private string _askRuleValueBtnProcess="Wprowadź";
-        private string _askRuleValueBtnUnknown="WWartość nieznana";
+        private string _askRuleValueBtnUnknown="Wartość nieznana";
         private string _chooseRuleWindowName="Wnioskowanie wstecz";
         private string _chooseRuleExplainText="Wybierz regułę dla której chcesz przeprowadzić wnioskowanie";
         private string _chooseRuleBtnProcess="Wnioskuj";
@@ -41,7 +41,7 @@ namespace LicencjatInformatyka_RMSE_.Additional
         private string _browseRulesConditionsName="Warunki reguły";
         private string _browseRulesConclusionName="Wniosek reguły";
         private string _browseRulesExplainText="W bazie znajdują się następujące reguły";
-       private string _flatternmainButton="Spłaszczanie reguł";
+       private string _flatternmainButton="Analiza bazy reguł";
        private string _flatternWindowName="Okno wyboru reguły";
        private string _flatternAllRulesText="Spłaszcz wszystkie reguły";
        private string _flatternOneRuleText="Spłaszcz wybraną regułę";
