@@ -1,1 +1,1 @@
-My bachelor project. Soon I would like to describe how I resolved problem of backward chaining in object orientet language c#. Orginal system was written in prolog and had completly different architecture.
+My bachelor project. I resolved problem of backward chaining in object orientet language c#. Orginal system was written in prolog and had completly different architecture.
